@@ -21,6 +21,11 @@
 		CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */; };
 		CE5C648322C74AE900EC8AF4 /* MungGu_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648222C74AE900EC8AF4 /* MungGu_iOSTests.swift */; };
 		CE5C648E22C74AE900EC8AF4 /* MungGu_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */; };
+		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
+		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
+		D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759222C79CD900ADF692 /* PDFContent.swift */; };
+		D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D5C7759422C79E6A00ADF692 /* sample.pdf */; };
+		D5C7759722C79F7700ADF692 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759622C79F7700ADF692 /* PDFViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +50,23 @@
 		1246F47A57A43DC699BDA815 /* Pods-MungGu iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-MungGu iOSUITests/Pods-MungGu iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D996C9233544F6BB61D4057 /* Pods-MungGu iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOSUITests/Pods-MungGu iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		33D6DE06EDA458689A84CA0B /* Pods_MungGu_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38B5C8FFC8A48F0A79C1CB53 /* Pods-MungGu iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4AA47E521A4DBFC7B9CD4D1B /* Pods-MungGu iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS.release.xcconfig"; sourceTree = "<group>"; };
 		4DC3CB4A7CDC0ECD55E5F073 /* Pods_MungGu_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E32D495D6AE0CA433259530 /* Pods-MungGu iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7B8A1D7E33D90AFC249490DE /* Pods-MungGu iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOSUITests/Pods-MungGu iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9167B7F05C96A19F24FA05A5 /* Pods-MungGu iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		CE47EF4D22C7E3BD003CFFC8 /* Document.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Document.storyboard; sourceTree = "<group>"; };
 		CE47EF5022C7E438003CFFC8 /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		CE47EF5122C7E438003CFFC8 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		CE47EF5222C7E438003CFFC8 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		CE47EF5622C800DC003CFFC8 /* MungGu iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MungGu iOS.entitlements"; sourceTree = "<group>"; };
+=======
+		A50E91042CA73DF9B5BB48F4 /* Pods-MungGu iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		ADEEB2C75E757B3C66C59518 /* Pods-MungGu iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOSUITests/Pods-MungGu iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
+>>>>>>> origin/feature/highlight_textView
 		CE5C646A22C74AE700EC8AF4 /* MungGu iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MungGu iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C646F22C74AE700EC8AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +80,11 @@
 		CE5C648922C74AE900EC8AF4 /* MungGu iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MungGu iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MungGu_iOSUITests.swift; sourceTree = "<group>"; };
 		CE5C648F22C74AE900EC8AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D5C7759222C79CD900ADF692 /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
+		D5C7759422C79E6A00ADF692 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
+		D5C7759622C79F7700ADF692 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
 		DEF745E2C2E9DFB9D50A106C /* Pods-MungGu iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOS.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS.release.xcconfig"; sourceTree = "<group>"; };
 		F90C49BEE1769958BE583C83 /* Pods-MungGu iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +136,12 @@
 				9167B7F05C96A19F24FA05A5 /* Pods-MungGu iOSTests.release.xcconfig */,
 				1246F47A57A43DC699BDA815 /* Pods-MungGu iOSUITests.debug.xcconfig */,
 				2D996C9233544F6BB61D4057 /* Pods-MungGu iOSUITests.release.xcconfig */,
+				A50E91042CA73DF9B5BB48F4 /* Pods-MungGu iOS.debug.xcconfig */,
+				4AA47E521A4DBFC7B9CD4D1B /* Pods-MungGu iOS.release.xcconfig */,
+				4E32D495D6AE0CA433259530 /* Pods-MungGu iOSTests.debug.xcconfig */,
+				38B5C8FFC8A48F0A79C1CB53 /* Pods-MungGu iOSTests.release.xcconfig */,
+				7B8A1D7E33D90AFC249490DE /* Pods-MungGu iOSUITests.debug.xcconfig */,
+				ADEEB2C75E757B3C66C59518 /* Pods-MungGu iOSUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -157,8 +182,13 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				CE47EF5622C800DC003CFFC8 /* MungGu iOS.entitlements */,
 				CE47EF4F22C7E406003CFFC8 /* Document */,
+=======
+				D557614822C7ECC700505CC1 /* Extension */,
+				D5C7759122C79CC500ADF692 /* Resource */,
+>>>>>>> origin/feature/highlight_textView
 				CE6FC73D22C74FC5006FA209 /* Main */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
 				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
@@ -190,6 +220,7 @@
 				CE5C647922C74AE900EC8AF4 /* Info.plist */,
 				CE5C647422C74AE900EC8AF4 /* Assets.xcassets */,
 				CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */,
+				D557614622C7EC6900505CC1 /* Colors.xcassets */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -199,8 +230,26 @@
 			children = (
 				CE5C646F22C74AE700EC8AF4 /* ViewController.swift */,
 				CE5C647122C74AE700EC8AF4 /* Main.storyboard */,
+				D5C7759622C79F7700ADF692 /* PDFViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D557614822C7ECC700505CC1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D557614922C7ECD100505CC1 /* UIColor.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		D5C7759122C79CC500ADF692 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D5C7759422C79E6A00ADF692 /* sample.pdf */,
+				D5C7759222C79CD900ADF692 /* PDFContent.swift */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +366,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */,
+				D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */,
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
 				CE47EF4E22C7E3BD003CFFC8 /* Document.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
@@ -450,11 +501,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				CE47EF5422C7E438003CFFC8 /* Document.swift in Sources */,
 				CE47EF5322C7E438003CFFC8 /* DocumentViewController.swift in Sources */,
 				CE47EF5522C7E438003CFFC8 /* DocumentBrowserViewController.swift in Sources */,
+=======
+				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
+				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
+>>>>>>> origin/feature/highlight_textView
 				CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
+				D5C7759722C79F7700ADF692 /* PDFViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
