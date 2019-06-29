@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C1Y-Fy-Yhf">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wrong Answer View Controller-->
+        <scene sceneID="phY-2I-nLY">
+            <objects>
+                <viewController storyboardIdentifier="wrongAnswer" id="CQ1-r3-JvP" customClass="WrongAnswerViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jns-XR-qHo">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ut8-fs-pxe">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="85"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oD5-9z-mBY">
+                                        <rect key="frame" x="0.0" y="20" width="768" height="65"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHf-M5-m6T">
+                                                <rect key="frame" x="718" y="0.0" width="50" height="65"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="mFb-6W-OAZ"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pr3-3F-fUR">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="65"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="zc7-lZ-dhh"/>
+                                                </constraints>
+                                                <state key="normal" title="Back">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goBackBtn:" destination="CQ1-r3-JvP" eventType="touchUpInside" id="o8f-9g-erZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Pr3-3F-fUR" firstAttribute="top" secondItem="oD5-9z-mBY" secondAttribute="top" id="EML-hZ-QIw"/>
+                                            <constraint firstAttribute="bottom" secondItem="nHf-M5-m6T" secondAttribute="bottom" id="Q1H-3C-tI1"/>
+                                            <constraint firstAttribute="height" constant="65" id="WrY-uz-vNK"/>
+                                            <constraint firstItem="Pr3-3F-fUR" firstAttribute="leading" secondItem="oD5-9z-mBY" secondAttribute="leading" id="ZZM-aG-Lk3"/>
+                                            <constraint firstAttribute="trailing" secondItem="nHf-M5-m6T" secondAttribute="trailing" id="diy-sD-6cL"/>
+                                            <constraint firstItem="nHf-M5-m6T" firstAttribute="top" secondItem="oD5-9z-mBY" secondAttribute="top" id="e0U-4B-8fB"/>
+                                            <constraint firstAttribute="bottom" secondItem="Pr3-3F-fUR" secondAttribute="bottom" id="kCk-Ay-Qdm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="oD5-9z-mBY" firstAttribute="top" secondItem="ut8-fs-pxe" secondAttribute="top" constant="20" id="GyL-gC-U4F"/>
+                                    <constraint firstAttribute="trailing" secondItem="oD5-9z-mBY" secondAttribute="trailing" id="nin-3V-BEa"/>
+                                    <constraint firstItem="oD5-9z-mBY" firstAttribute="leading" secondItem="ut8-fs-pxe" secondAttribute="leading" id="tMY-if-3z5"/>
+                                    <constraint firstAttribute="bottom" secondItem="oD5-9z-mBY" secondAttribute="bottom" id="xAe-Ua-BMY"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v7u-ON-3EV">
+                                <rect key="frame" x="30" y="125" width="708" height="789"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">루이스 캐럴(필명)이 속했던 옥스퍼드 크라이스트 처치 칼리지 학장의 딸이자 캐럴과 친분도 있던 앨리스 플레전스 리들을 위해 즉석에서 지어내어 들려주었던 이야기를 수정하여 1865년에 출판하였다. 루이스 캐럴이 직접 삽화까지 그린 &lt;땅속 나라의 앨리스&gt;가 원본으로, &lt;이상한 나라의 앨리스&gt;는 &lt;땅속 나라의 앨리스&gt;의 판매용 개정판이라 볼 수 있다. 
+
+이상한 나라의 앨리스 출간으로부터 약 6년 후 속편 &lt;거울 나라의 앨리스&gt;를 발표하였다. 170여개의 언어로 번역되었으며, 러시아어 판본은 롤리타를 집필한 작가 1.블라디미르 나보코프가 번역했다고 한다.
+처음 출판되기까지 꽤 복잡한 일을 겪은 소설인데 몇권 남지 않은 진짜 초판본은 고서적 분야에서 성배 취급을 받으며 엄청난 가격이 매겨진다.
+이 작품이 사회 전반에 끼친 영향은 실로 대단했다. 앨리스 마니아가 없는 분야가 없을 정도여서, 철학자, 수학자, 물리학자, 심리학자들에게 많은 영감을 주었다. 특히 물리학에서는 빅뱅이론, 카오스 이론, 상대성 이론, 양자역학 등을 설명할 때, 이 작품과 거울 나라의 앨리스가 약방의 감초처럼 인용된다. 그 외에도 2.진화생물학 등 다른 과학계에서도 폭넓게 인용되며, 이상한 나라의 앨리스 증후군이라는 질병도 있다. 롤리타로 유명한 블라디미르 나보코프에게도 많은 영향을 줬다. 
+
+이 책을 가장 잘 이해할 수 있는 사람은 수학자라는 이야기도 있다. 원래 루이스 캐럴이 수학자라서 작품 곳곳에 수학적인 퍼즐과 은유가 넘치기 때문이다.
+수학, 논리학적 관점에서 이 책을 제대로 읽으려 한다면 마틴 가드너의 주석본으로 읽어보는 것을 권한다. 한국 내 번역은 질이 심히 좋지 않으나 원본은 최고의 주석본이다.
+2.2. 삽화[편집]
+
+현재까지 수많은 일러스트레이터들이 앨리스의 모습을 그렸지만, 그 중 유명한 삽화는 최초의 삽화가인 존 테니얼의 삽화가 가장 유명하며, 이외에도 피터 3.뉴웰과 아서 래컴의 삽화가 유명하다.
+이상한 나라의 앨리스 초판본과 거울 나라의 앨리스 초판본의 삽화는 4.존 테니얼(John Tenniel)이 맡았는데 소설 못지 않게 굉장히 유명해져서 원작과 뗄 수 없는 불가분의 관계가 되었다. 반지의 제왕 작가인 톨킨처럼 루이스 캐럴도 자기 작품의 삽화를 자신이 그렸었는데 캐럴의 실력이 썩 뛰어난 편은 아니라 출판사에서 부정적으로 보았기 때문에 전문 일러스트레이터인 테니얼이 새로 삽화를 그리게 되었다. 캐럴은 앨리스의 모델로 검은 머리의 소녀인 앨리스 리델을 삼고 이야기를 썼지만, 테니얼은 5.메리 힐턴 버드콧이란 금발 소녀를 모델로 삽화를 그려나갔다. 
+
+그런데 캐럴은 앨리스 시리즈에 대단히 열성적인만큼 집착도 강해서, 삽화 작업이 어떻게 돼가는지 본다며 몇 번이고 찾아오고, 참견이 많았다. 심지어는 그림 속 앨리스의 치마 길이까지 간섭을 했다고 하니 얼마나 달달 볶았을지... 결국 테니얼은 앨리스 작업 이후로 질려서 비슷한 일을 못 하고 있다고 캐럴에게 편지까지 보냈다(...). 앨리스가 금발로 바뀐건 그대로 놔둔게 신기할 정도 여담으로 루이스 캐럴은 사진의 역사서에도 짧게나마 나올 정도로 사진을 좋아했던 인물이다. 
+
+그 이후로도 많은 삽화가들이 시도를 했는데 이러한 작가들의 그림에서는 앨리스도 좀 다른 모습으로 나온다. 하지만 결정적으로 디즈니가 애니메이션으로 테니얼의 앨리스를 답습한 이후로는 금발의 파란 옷이란 이미지는 산타의 붉은 옷만큼 굳어져서...</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dG-YG-ZRL">
+                                <rect key="frame" x="0.0" y="959" width="768" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1S-oM-Q8O">
+                                        <rect key="frame" x="718" y="0.0" width="50" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="hHg-rc-KlL"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVm-9T-j7g">
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="106" id="aMr-sy-s8g"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="ISR-tD-1gZ"/>
+                                    <constraint firstItem="SVm-9T-j7g" firstAttribute="top" secondItem="6dG-YG-ZRL" secondAttribute="top" id="IkQ-pM-CAV"/>
+                                    <constraint firstAttribute="bottom" secondItem="g1S-oM-Q8O" secondAttribute="bottom" id="YW4-Mh-u1W"/>
+                                    <constraint firstAttribute="bottom" secondItem="SVm-9T-j7g" secondAttribute="bottom" id="gRU-H2-Vc4"/>
+                                    <constraint firstAttribute="trailing" secondItem="g1S-oM-Q8O" secondAttribute="trailing" id="ixj-3e-s1h"/>
+                                    <constraint firstItem="g1S-oM-Q8O" firstAttribute="top" secondItem="6dG-YG-ZRL" secondAttribute="top" id="xvU-3H-TQX"/>
+                                    <constraint firstItem="SVm-9T-j7g" firstAttribute="leading" secondItem="6dG-YG-ZRL" secondAttribute="leading" id="yp8-Qt-CBg"/>
+                                </constraints>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6cu-r0-vJF">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eRy-ev-Xdb">
+                                        <rect key="frame" x="183.5" y="491" width="401" height="42"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 화면을 벗어나시면,  시험 본 히스토리가 삭제됩니다!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yK-tx-5F4">
+                                                <rect key="frame" x="0.5" y="0.0" width="400.5" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신중하게 눌러주세요! " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nae-KF-Fbq">
+                                                <rect key="frame" x="123" y="21" width="155" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="401" id="8Uj-Dw-Skw"/>
+                                            <constraint firstAttribute="height" constant="42" id="hhH-f4-5Zu"/>
+                                        </constraints>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6z-Cm-xmY">
+                                        <rect key="frame" x="311" y="557" width="146" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="146" id="Zse-wV-D3n"/>
+                                            <constraint firstAttribute="height" constant="60" id="huh-RV-MKf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="F6z-Cm-xmY" firstAttribute="centerX" secondItem="6cu-r0-vJF" secondAttribute="centerX" id="4u9-gl-RSx"/>
+                                    <constraint firstItem="eRy-ev-Xdb" firstAttribute="centerY" secondItem="6cu-r0-vJF" secondAttribute="centerY" id="EPW-UZ-RHq"/>
+                                    <constraint firstItem="eRy-ev-Xdb" firstAttribute="centerX" secondItem="6cu-r0-vJF" secondAttribute="centerX" id="naY-nJ-7fw"/>
+                                    <constraint firstItem="F6z-Cm-xmY" firstAttribute="top" secondItem="eRy-ev-Xdb" secondAttribute="bottom" constant="24" id="tdr-yp-rix"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6cu-r0-vJF" firstAttribute="bottom" secondItem="UBg-CU-STH" secondAttribute="bottom" id="Fcu-Wg-mcX"/>
+                            <constraint firstItem="6dG-YG-ZRL" firstAttribute="leading" secondItem="jns-XR-qHo" secondAttribute="leading" id="G4a-1G-d5s"/>
+                            <constraint firstItem="v7u-ON-3EV" firstAttribute="top" secondItem="ut8-fs-pxe" secondAttribute="bottom" constant="40" id="Hc7-za-5ik"/>
+                            <constraint firstItem="ut8-fs-pxe" firstAttribute="leading" secondItem="UBg-CU-STH" secondAttribute="leading" id="IOP-Gv-Wc0"/>
+                            <constraint firstItem="UBg-CU-STH" firstAttribute="bottom" secondItem="v7u-ON-3EV" secondAttribute="bottom" constant="110" id="LHK-RT-XZR"/>
+                            <constraint firstItem="6cu-r0-vJF" firstAttribute="leading" secondItem="UBg-CU-STH" secondAttribute="leading" id="O86-BK-01e"/>
+                            <constraint firstAttribute="trailing" secondItem="ut8-fs-pxe" secondAttribute="trailing" id="X2x-4i-66I"/>
+                            <constraint firstItem="UBg-CU-STH" firstAttribute="trailing" secondItem="v7u-ON-3EV" secondAttribute="trailing" constant="30" id="YS0-ut-WYq"/>
+                            <constraint firstItem="v7u-ON-3EV" firstAttribute="leading" secondItem="UBg-CU-STH" secondAttribute="leading" constant="30" id="d4q-jP-San"/>
+                            <constraint firstAttribute="trailing" secondItem="6dG-YG-ZRL" secondAttribute="trailing" id="fkv-d4-zr1"/>
+                            <constraint firstAttribute="bottom" secondItem="6dG-YG-ZRL" secondAttribute="bottom" id="g0W-5V-4kT"/>
+                            <constraint firstItem="6cu-r0-vJF" firstAttribute="top" secondItem="jns-XR-qHo" secondAttribute="top" id="t1l-kB-Sbb"/>
+                            <constraint firstItem="ut8-fs-pxe" firstAttribute="top" secondItem="jns-XR-qHo" secondAttribute="top" id="wBB-c3-Jic"/>
+                            <constraint firstItem="6cu-r0-vJF" firstAttribute="trailing" secondItem="UBg-CU-STH" secondAttribute="trailing" id="yh2-lH-uNn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UBg-CU-STH"/>
+                    </view>
+                    <connections>
+                        <outlet property="testView" destination="6cu-r0-vJF" id="RMN-Tl-Tv1"/>
+                        <outlet property="textView" destination="v7u-ON-3EV" id="kkN-k0-zlH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Me-F2-jVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="239.0625" y="311.71875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EsG-zb-h6S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="C1Y-Fy-Yhf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zhg-Nv-aH8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Gbq-4J-MbY" kind="relationship" relationship="rootViewController" id="CHC-bz-W4Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wtb-LN-fR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1195.3125" y="311.71875"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="LFl-cw-GIW">
+            <objects>
+                <viewController id="Gbq-4J-MbY" customClass="TestViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WeO-fK-RI2">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fV-lL-pyM">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="85"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JaA-9A-tph">
+                                        <rect key="frame" x="0.0" y="20" width="768" height="65"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lD1-4C-oje">
+                                                <rect key="frame" x="718" y="0.0" width="50" height="65"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="VXA-2M-kq0"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0k-aX-gHp">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="65"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="hvV-0g-1SG"/>
+                                                </constraints>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="expandBtn:" destination="Gbq-4J-MbY" eventType="touchUpInside" id="za5-OG-dQw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="lD1-4C-oje" firstAttribute="top" secondItem="JaA-9A-tph" secondAttribute="top" id="586-4J-M29"/>
+                                            <constraint firstItem="P0k-aX-gHp" firstAttribute="leading" secondItem="JaA-9A-tph" secondAttribute="leading" id="7vR-Nm-Z8a"/>
+                                            <constraint firstAttribute="trailing" secondItem="lD1-4C-oje" secondAttribute="trailing" id="Fso-Wq-ld9"/>
+                                            <constraint firstItem="P0k-aX-gHp" firstAttribute="top" secondItem="JaA-9A-tph" secondAttribute="top" id="Kjf-X9-qo4"/>
+                                            <constraint firstAttribute="height" constant="65" id="VZY-FO-Hb2"/>
+                                            <constraint firstAttribute="bottom" secondItem="P0k-aX-gHp" secondAttribute="bottom" id="e1s-62-g5o"/>
+                                            <constraint firstAttribute="bottom" secondItem="lD1-4C-oje" secondAttribute="bottom" id="gvb-2s-4VG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="JaA-9A-tph" firstAttribute="leading" secondItem="8fV-lL-pyM" secondAttribute="leading" id="AYV-Yu-MK6"/>
+                                    <constraint firstAttribute="trailing" secondItem="JaA-9A-tph" secondAttribute="trailing" id="Ezg-fX-sC0"/>
+                                    <constraint firstAttribute="bottom" secondItem="JaA-9A-tph" secondAttribute="bottom" id="ifz-mm-jX0"/>
+                                    <constraint firstItem="JaA-9A-tph" firstAttribute="top" secondItem="8fV-lL-pyM" secondAttribute="top" constant="20" id="u1y-cM-JDN"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sna-sm-L4L">
+                                <rect key="frame" x="30" y="125" width="708" height="789"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">루이스 캐럴(필명)이 속했던 옥스퍼드 크라이스트 처치 칼리지 학장의 딸이자 캐럴과 친분도 있던 앨리스 플레전스 리들을 위해 즉석에서 지어내어 들려주었던 이야기를 수정하여 1865년에 출판하였다. 루이스 캐럴이 직접 삽화까지 그린 &lt;땅속 나라의 앨리스&gt;가 원본으로, &lt;이상한 나라의 앨리스&gt;는 &lt;땅속 나라의 앨리스&gt;의 판매용 개정판이라 볼 수 있다. 
+
+이상한 나라의 앨리스 출간으로부터 약 6년 후 속편 &lt;거울 나라의 앨리스&gt;를 발표하였다. 170여개의 언어로 번역되었으며, 러시아어 판본은 롤리타를 집필한 작가 블라디미르  나         했다고 한다.
+처음 출판되기까지 꽤 복잡한 일을 겪은 소설인데 몇권 남지 않은 진짜 초판본은 고서적 분야에서 성배 취급을 받으며 엄청난 가격이 매겨진다.
+이 작품이 사회 전반에 끼친 영향은 실로 대단했다. 앨리스 마니아가 없는 분야가 없을 정도여서, 철학자, 수학자, 물리학자, 심리학자들에게 많은 영감을 주었다. 특히 물리학에서는 빅뱅이론, 카오스 이론, 상대성 이론, 양자역학 등을 설명할 때, 이 작품과 거울 나라의 앨리스가 약방의 감초처럼 인용된다. 그 외에도 진화생물학 등 다른 과학계에서도 폭넓게 인용되며, 이상한 나라의 앨리스 증후군이라는 질병도 있다. 롤리타로 유명한 블라디미르 나보코프에게도 많은 영향을 줬다. 
+
+이 책을 가장 잘 이해할 수 있는 사람은 수학자라는 이야기도 있다. 원래 루이스 캐럴이 수학자라서 작품 곳곳에 수학적인 퍼즐과 은유가 넘치기 때문이다.
+수학, 논리학적 관점에서 이 책을 제대로 읽으려 한다면 마틴 가드너의 주석본으로 읽어보는 것을 권한다. 한국 내 번역은 질이 심히 좋지 않으나 원본은 최고의 주석본이다.
+2.2. 삽화[편집]
+
+현재까지 수많은 일러스트레이터들이 앨리스의 모습을 그렸지만, 그 중 유명한 삽화는 최초의 삽화가인 존 테니얼의 삽화가 가장 유명하며, 이외에도 피터 뉴웰과 아서 래컴의 삽화가 유명하다.
+이상한 나라의 앨리스 초판본과 거울 나라의 앨리스 초판본의 삽화는 존 테니얼(John Tenniel)이 맡았는데 소설 못지 않게 굉장히 유명해져서 원작과 뗄 수 없는 불가분의 관계가 되었다. 반지의 제왕 작가인 톨킨처럼 루이스 캐럴도 자기 작품의 삽화를 자신이 그렸었는데 캐럴의 실력이 썩 뛰어난 편은 아니라 출판사에서 부정적으로 보았기 때문에 전문 일러스트레이터인 테니얼이 새로 삽화를 그리게 되었다. 캐럴은 앨리스의 모델로 검은 머리의 소녀인 앨리스 리델을 삼고 이야기를 썼지만, 테니얼은 메리 힐턴 버드콧이란 금발 소녀를 모델로 삽화를 그려나갔다. 
+
+그런데 캐럴은 앨리스 시리즈에 대단히 열성적인만큼 집착도 강해서, 삽화 작업이 어떻게 돼가는지 본다며 몇 번이고 찾아오고, 참견이 많았다. 심지어는 그림 속 앨리스의 치마 길이까지 간섭을 했다고 하니 얼마나 달달 볶았을지... 결국 테니얼은 앨리스 작업 이후로 질려서 비슷한 일을 못 하고 있다고 캐럴에게 편지까지 보냈다(...). 앨리스가 금발로 바뀐건 그대로 놔둔게 신기할 정도 여담으로 루이스 캐럴은 사진의 역사서에도 짧게나마 나올 정도로 사진을 좋아했던 인물이다. 
+
+그 이후로도 많은 삽화가들이 시도를 했는데 이러한 작가들의 그림에서는 앨리스도 좀 다른 모습으로 나온다. 하지만 결정적으로 디즈니가 애니메이션으로 테니얼의 앨리스를 답습한 이후로는 금발의 파란 옷이란 이미지는 산타의 붉은 옷만큼 굳어져서...</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swm-oP-3Ww">
+                                <rect key="frame" x="0.0" y="959" width="768" height="65"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sdm-u7-U7I">
+                                        <rect key="frame" x="718" y="0.0" width="50" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="srX-t1-Jh4"/>
+                                        </constraints>
+                                        <state key="normal" title="OK"/>
+                                        <connections>
+                                            <action selector="showResultBtn:" destination="Gbq-4J-MbY" eventType="touchUpInside" id="Lxq-N9-dah"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bz-nP-Mwh">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="yAd-ag-xbz"/>
+                                        </constraints>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="expandBtn:" destination="Gbq-4J-MbY" eventType="touchUpInside" id="4Mj-EJ-Nuj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="6Bz-nP-Mwh" firstAttribute="top" secondItem="Swm-oP-3Ww" secondAttribute="top" id="3ij-JV-B0o"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Bz-nP-Mwh" secondAttribute="bottom" id="Khl-in-CDn"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sdm-u7-U7I" secondAttribute="trailing" id="ZIQ-oS-hCy"/>
+                                    <constraint firstAttribute="bottom" secondItem="Sdm-u7-U7I" secondAttribute="bottom" id="ZRd-U3-din"/>
+                                    <constraint firstItem="Sdm-u7-U7I" firstAttribute="top" secondItem="Swm-oP-3Ww" secondAttribute="top" id="mEj-yz-c7E"/>
+                                    <constraint firstAttribute="height" constant="65" id="rpB-WB-TAY"/>
+                                    <constraint firstItem="6Bz-nP-Mwh" firstAttribute="leading" secondItem="Swm-oP-3Ww" secondAttribute="leading" id="sZt-pq-zFB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sna-sm-L4L" firstAttribute="top" secondItem="8fV-lL-pyM" secondAttribute="bottom" constant="40" id="CSP-zG-wRJ"/>
+                            <constraint firstItem="UTL-O2-9bW" firstAttribute="bottom" secondItem="sna-sm-L4L" secondAttribute="bottom" constant="110" id="Jgn-Y6-aYE"/>
+                            <constraint firstItem="sna-sm-L4L" firstAttribute="leading" secondItem="UTL-O2-9bW" secondAttribute="leading" constant="30" id="WjZ-il-PKX"/>
+                            <constraint firstAttribute="trailing" secondItem="Swm-oP-3Ww" secondAttribute="trailing" id="WsG-Rf-VqQ"/>
+                            <constraint firstItem="8fV-lL-pyM" firstAttribute="top" secondItem="WeO-fK-RI2" secondAttribute="top" id="lLO-6e-a9A"/>
+                            <constraint firstItem="UTL-O2-9bW" firstAttribute="trailing" secondItem="sna-sm-L4L" secondAttribute="trailing" constant="30" id="lWN-0e-Ac6"/>
+                            <constraint firstAttribute="bottom" secondItem="Swm-oP-3Ww" secondAttribute="bottom" id="n4E-9u-ZHL"/>
+                            <constraint firstAttribute="trailing" secondItem="8fV-lL-pyM" secondAttribute="trailing" id="o7a-aL-8nq"/>
+                            <constraint firstItem="8fV-lL-pyM" firstAttribute="leading" secondItem="UTL-O2-9bW" secondAttribute="leading" id="omY-Zl-rCj"/>
+                            <constraint firstItem="Swm-oP-3Ww" firstAttribute="leading" secondItem="WeO-fK-RI2" secondAttribute="leading" id="snc-DX-ujo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UTL-O2-9bW"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="w42-kK-Qlg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PiO-Qf-uez" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-456.25" y="311.71875"/>
+        </scene>
+    </scenes>
+</document>
