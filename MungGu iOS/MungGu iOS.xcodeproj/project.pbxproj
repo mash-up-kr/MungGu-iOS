@@ -17,6 +17,8 @@
 		CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */; };
 		CE5C648322C74AE900EC8AF4 /* MungGu_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648222C74AE900EC8AF4 /* MungGu_iOSTests.swift */; };
 		CE5C648E22C74AE900EC8AF4 /* MungGu_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */; };
+		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
+		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
 		D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759222C79CD900ADF692 /* PDFContent.swift */; };
 		D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D5C7759422C79E6A00ADF692 /* sample.pdf */; };
 		D5C7759722C79F7700ADF692 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759622C79F7700ADF692 /* PDFViewController.swift */; };
@@ -66,6 +68,8 @@
 		CE5C648922C74AE900EC8AF4 /* MungGu iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MungGu iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MungGu_iOSUITests.swift; sourceTree = "<group>"; };
 		CE5C648F22C74AE900EC8AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D5C7759222C79CD900ADF692 /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
 		D5C7759422C79E6A00ADF692 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		D5C7759622C79F7700ADF692 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D557614822C7ECC700505CC1 /* Extension */,
 				D5C7759122C79CC500ADF692 /* Resource */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
@@ -187,6 +192,7 @@
 				CE5C647922C74AE900EC8AF4 /* Info.plist */,
 				CE5C647422C74AE900EC8AF4 /* Assets.xcassets */,
 				CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */,
+				D557614622C7EC6900505CC1 /* Colors.xcassets */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -199,6 +205,14 @@
 				D5C7759622C79F7700ADF692 /* PDFViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D557614822C7ECC700505CC1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D557614922C7ECD100505CC1 /* UIColor.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		D5C7759122C79CC500ADF692 /* Resource */ = {
@@ -319,6 +333,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */,
 				D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */,
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
@@ -453,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
+				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D5C7759722C79F7700ADF692 /* PDFViewController.swift in Sources */,
@@ -634,7 +650,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/MungGu iOS/Supports/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,7 +671,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/MungGu iOS/Supports/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

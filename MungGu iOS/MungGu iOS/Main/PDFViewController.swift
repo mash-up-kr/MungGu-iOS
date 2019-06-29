@@ -13,12 +13,8 @@ class PDFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let pdf = PDFContent(fileName: "sample")
-        self.navigationController?.title = pdf.fileName
-        if #available(iOS 11.0, *) {
-            textView.text = pdf.readPDF()
-        } else {
-            // Fallback on earlier versions
-        }
+        self.navigationItem.title = pdf.fileName
+        self.textView.text = pdf.readPDF()
     }
 
     private var startPosition: UITextPosition?
@@ -29,11 +25,12 @@ class PDFViewController: UIViewController {
 
     @IBAction private func didTapTextView(_ sender: UIPanGestureRecognizer) {
         let point = sender.location(in: self.textView)
-        self.endPosition = self.textView.closestPosition(to: point)
+        let position = self.textView.closestPosition(to: point)
+        self.endPosition = position
         if sender.state == .began,
-            let start = self.textView.closestPosition(to: point) {
-            self.startPosition = start
-            self.checkHighlight(position: start)
+            let startPosition = position {
+            self.startPosition = startPosition
+            self.checkHighlight(position: startPosition)
         } else if sender.state == .changed {
             if let start = self.startPosition,
                 let end = self.endPosition {
@@ -41,7 +38,7 @@ class PDFViewController: UIViewController {
                 let range = self.rangeOf(textView, start: start, end: end)
                 self.textView.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
                     if self.shouldBeHighlight {
-                        textStorage.addAttribute(.backgroundColor, value: UIColor.yellow.withAlphaComponent(0.5), range: range)
+                        textStorage.addAttribute(.backgroundColor, value: UIColor.lightPeach, range: range)
                     } else {
                         textStorage.removeAttribute(.backgroundColor, range: range)
                     }
