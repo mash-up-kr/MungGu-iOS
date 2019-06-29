@@ -52,29 +52,45 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="tLf-gt-8uZ" appends="YES" id="qAi-74-KfG"/>
+                                    <outletCollection property="gestureRecognizers" destination="kOq-9P-YG6" appends="YES" id="glo-QW-7ty"/>
                                 </connections>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLQ-8c-i2U">
+                                <rect key="frame" x="307.5" y="791.5" width="47" height="30"/>
+                                <state key="normal" title="Toggle"/>
+                                <connections>
+                                    <action selector="didTapToggleButton:" destination="b7O-YI-mxA" eventType="touchUpInside" id="fIj-Ej-ieN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8E5-0J-4Zh" firstAttribute="trailing" secondItem="nor-df-u67" secondAttribute="trailing" constant="16" id="Bpq-6C-Djx"/>
+                            <constraint firstItem="WLQ-8c-i2U" firstAttribute="centerX" secondItem="1Pb-td-Kcg" secondAttribute="trailing" multiplier="8:10" id="Hy8-SF-TM2"/>
                             <constraint firstItem="8E5-0J-4Zh" firstAttribute="bottom" secondItem="nor-df-u67" secondAttribute="bottom" id="LD1-ob-eN3"/>
                             <constraint firstItem="nor-df-u67" firstAttribute="leading" secondItem="8E5-0J-4Zh" secondAttribute="leading" constant="16" id="dze-d7-FBP"/>
                             <constraint firstItem="nor-df-u67" firstAttribute="top" secondItem="8E5-0J-4Zh" secondAttribute="top" id="pYp-BC-4qc"/>
+                            <constraint firstItem="WLQ-8c-i2U" firstAttribute="centerY" secondItem="1Pb-td-Kcg" secondAttribute="bottom" multiplier="9:10" id="q4V-Io-wBk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8E5-0J-4Zh"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Yzn-W1-GRs"/>
                     <connections>
+                        <outlet property="panGesture" destination="tLf-gt-8uZ" id="Rj4-uR-coK"/>
                         <outlet property="textView" destination="nor-df-u67" id="17S-zN-5eM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzc-Bb-1fR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="tLf-gt-8uZ">
                     <connections>
-                        <action selector="didTapTextView:" destination="b7O-YI-mxA" id="Lnx-up-dJ4"/>
+                        <action selector="didPanTextView:" destination="b7O-YI-mxA" id="wwa-Mk-ayg"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" id="kOq-9P-YG6">
+                    <connections>
+                        <action selector="didTapTextView:" destination="b7O-YI-mxA" id="vb3-K7-RpK"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1868.1159420289857" y="61.607142857142854"/>
         </scene>

@@ -19,31 +19,80 @@ class PDFViewController: UIViewController {
 
     private var startPosition: UITextPosition?
     private var endPosition: UITextPosition?
-    private var shouldBeHighlight: Bool = false
+    private var currentRange: NSRange?
+    private var highlightedRanges: [NSRange] = []
+    private var isTest: Bool = false
 
     @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private var panGesture: UIPanGestureRecognizer!
 
-    @IBAction private func didTapTextView(_ sender: UIPanGestureRecognizer) {
+    @IBAction private func didPanTextView(_ sender: UIPanGestureRecognizer) {
         let point = sender.location(in: self.textView)
         let position = self.textView.closestPosition(to: point)
         self.endPosition = position
-        if sender.state == .began,
-            let startPosition = position {
-            self.startPosition = startPosition
-            self.checkHighlight(position: startPosition)
-        } else if sender.state == .changed {
+
+        switch sender.state {
+        case .began:
+            self.startPosition = position
+        case .changed:
             if let start = self.startPosition,
                 let end = self.endPosition {
-                let textStorage = self.textView.textStorage
                 let range = self.rangeOf(textView, start: start, end: end)
-                self.textView.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
-                    if self.shouldBeHighlight {
-                        textStorage.addAttribute(.backgroundColor, value: UIColor.lightPeach, range: range)
-                    } else {
-                        textStorage.removeAttribute(.backgroundColor, range: range)
-                    }
+                self.addHighlighting(range: range)
+            }
+        case .ended:
+            self.panGesture.isEnabled = true
+            if self.currentRange != nil {
+                self.highlightedRanges.append(currentRange!)
+                self.currentRange = nil
+            }
+        default:
+            ()
+        }
+    }
+
+    @IBAction private func didTapTextView(_ sender: UITapGestureRecognizer) {
+        let point = sender.location(in: self.textView)
+        if let position = self.textView.closestPosition(to: point) {
+            self.removeHighlighting(position: position)
+        }
+    }
+
+    @IBAction private func didTapToggleButton(_ sender: UIButton) {
+        self.isTest.toggle()
+        self.highlightedRanges.forEach { range in
+            let textStorage = self.textView.textStorage
+            self.textView.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+                if self.isTest {
+                    textStorage.addAttribute(.foregroundColor, value: UIColor.lightPeach, range: range)
+                } else {
+                    textStorage.removeAttribute(.foregroundColor, range: range)
                 }
             }
+        }
+    }
+
+    private func addHighlighting(range: NSRange) {
+        let textStorage = self.textView.textStorage
+        self.textView.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+            textStorage.addAttribute(.backgroundColor, value: UIColor.lightPeach, range: range)
+        }
+        self.currentRange = range
+    }
+
+    private func removeHighlighting(position: UITextPosition) {
+        let location = self.textView.offset(from: textView.beginningOfDocument, to: position)
+        var rangeAmount = 0
+        self.highlightedRanges.removeAll(where: { range -> Bool in
+            if range.contains(location) {
+                self.textView.textStorage.removeAttribute(.backgroundColor, range: range)
+                rangeAmount += 1
+                return true
+            }
+            return false
+        })
+        if rangeAmount != 0 {
+            textView.setNeedsDisplay()
         }
     }
 
@@ -67,8 +116,8 @@ class PDFViewController: UIViewController {
             return
         }
         let range = self.rangeOf(self.textView, start: start, end: end)
-        self.textView.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { attributes, _, _ in
-            self.shouldBeHighlight = attributes[.backgroundColor] == nil
+        self.textView.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, _, _ in
+//            self.shouldBeHighlight = attributes[.backgroundColor] == nil
         }
     }
 
