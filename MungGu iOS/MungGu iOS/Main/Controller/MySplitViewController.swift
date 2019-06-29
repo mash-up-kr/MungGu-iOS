@@ -9,11 +9,11 @@
 import UIKit
 
 class MySplitViewController: UISplitViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.preferredDisplayMode = UISplitViewController.DisplayMode.allVisible
-        
+
         guard let leftNavController = viewControllers.first as? UINavigationController,
             let masterViewController = leftNavController.topViewController as? MasterViewController,
             let detailViewController = viewControllers.last as? DetailViewController
