@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A054C5E60CCE51FE88BD8C8 /* Pods_MungGu_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */; };
 		8303F5518DAF62F7B89732AF /* Pods_MungGu_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC3CB4A7CDC0ECD55E5F073 /* Pods_MungGu_iOSUITests.framework */; };
+		83FA99CE22C7993F009B1EA6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */; };
+		83FA99D022C79A70009B1EA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */; };
+		83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */; };
 		C29AD8153EE3C43FE16969CB /* Pods_MungGu_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D6DE06EDA458689A84CA0B /* Pods_MungGu_iOS.framework */; };
 		CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */; };
 		CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C646F22C74AE700EC8AF4 /* ViewController.swift */; };
@@ -43,6 +46,9 @@
 		33D6DE06EDA458689A84CA0B /* Pods_MungGu_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC3CB4A7CDC0ECD55E5F073 /* Pods_MungGu_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplitViewController.swift; sourceTree = "<group>"; };
 		9167B7F05C96A19F24FA05A5 /* Pods-MungGu iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE5C646A22C74AE700EC8AF4 /* MungGu iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MungGu iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,9 @@
 			children = (
 				CE5C646F22C74AE700EC8AF4 /* ViewController.swift */,
 				CE5C647122C74AE700EC8AF4 /* Main.storyboard */,
+				83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */,
+				83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */,
+				83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -423,7 +432,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */,
+				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
+				83FA99CE22C7993F009B1EA6 /* MasterViewController.swift in Sources */,
+				83FA99D022C79A70009B1EA6 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
