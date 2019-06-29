@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2A054C5E60CCE51FE88BD8C8 /* Pods_MungGu_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */; };
 		8303F5518DAF62F7B89732AF /* Pods_MungGu_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC3CB4A7CDC0ECD55E5F073 /* Pods_MungGu_iOSUITests.framework */; };
+		83F2F1E422C7EEB600CDD5E5 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F2F1E322C7EEB600CDD5E5 /* Test.storyboard */; };
+		83F2F1E622C8010800CDD5E5 /* WrongAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2F1E522C8010800CDD5E5 /* WrongAnswerViewController.swift */; };
+		83F2F1E822C8013A00CDD5E5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F2F1E722C8013A00CDD5E5 /* TestViewController.swift */; };
 		83FA99CE22C7993F009B1EA6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */; };
 		83FA99D022C79A70009B1EA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */; };
 		83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */; };
@@ -59,6 +62,9 @@
 		4E32D495D6AE0CA433259530 /* Pods-MungGu iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7B8A1D7E33D90AFC249490DE /* Pods-MungGu iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MungGu iOSUITests/Pods-MungGu iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83F2F1E322C7EEB600CDD5E5 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		83F2F1E522C8010800CDD5E5 /* WrongAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongAnswerViewController.swift; sourceTree = "<group>"; };
+		83F2F1E722C8013A00CDD5E5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplitViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +236,9 @@
 			children = (
 				CE5C647122C74AE700EC8AF4 /* Main.storyboard */,
 				D5C7759622C79F7700ADF692 /* PDFViewController.swift */,
+				83F2F1E322C7EEB600CDD5E5 /* Test.storyboard */,
+				83F2F1E722C8013A00CDD5E5 /* TestViewController.swift */,
+				83F2F1E522C8010800CDD5E5 /* WrongAnswerViewController.swift */,
 				83FA99D322C7C2E1009B1EA6 /* FIle.swift */,
 				83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */,
 				83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */,
@@ -374,6 +383,7 @@
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
 				CE47EF4E22C7E3BD003CFFC8 /* Document.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
+				83F2F1E422C7EEB600CDD5E5 /* Test.storyboard in Resources */,
 				CE5C647322C74AE700EC8AF4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,10 +522,12 @@
 				CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D5C7759722C79F7700ADF692 /* PDFViewController.swift in Sources */,
+				83F2F1E822C8013A00CDD5E5 /* TestViewController.swift in Sources */,
 				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				83FA99CE22C7993F009B1EA6 /* MasterViewController.swift in Sources */,
 				83FA99D022C79A70009B1EA6 /* DetailViewController.swift in Sources */,
+				83F2F1E622C8010800CDD5E5 /* WrongAnswerViewController.swift in Sources */,
 				83FA99D422C7C2E1009B1EA6 /* FIle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
