@@ -19,6 +19,9 @@
 		CE5C648E22C74AE900EC8AF4 /* MungGu_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */; };
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
 		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
+		D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */; };
+		D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614E22C8E20600505CC1 /* HighlightType.swift */; };
+		D557615522C8E4D400505CC1 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557615422C8E4D400505CC1 /* Highlight.swift */; };
 		D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759222C79CD900ADF692 /* PDFContent.swift */; };
 		D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D5C7759422C79E6A00ADF692 /* sample.pdf */; };
 		D5C7759722C79F7700ADF692 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759622C79F7700ADF692 /* PDFViewController.swift */; };
@@ -70,6 +73,9 @@
 		CE5C648F22C74AE900EC8AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextView.swift; sourceTree = "<group>"; };
+		D557614E22C8E20600505CC1 /* HighlightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightType.swift; sourceTree = "<group>"; };
+		D557615422C8E4D400505CC1 /* Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		D5C7759222C79CD900ADF692 /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
 		D5C7759422C79E6A00ADF692 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		D5C7759622C79F7700ADF692 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +165,7 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D557614B22C8DA6F00505CC1 /* Highlighting */,
 				D557614822C7ECC700505CC1 /* Extension */,
 				D5C7759122C79CC500ADF692 /* Resource */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
@@ -213,6 +220,16 @@
 				D557614922C7ECD100505CC1 /* UIColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D557614B22C8DA6F00505CC1 /* Highlighting */ = {
+			isa = PBXGroup;
+			children = (
+				D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */,
+				D557614E22C8E20600505CC1 /* HighlightType.swift */,
+				D557615422C8E4D400505CC1 /* Highlight.swift */,
+			);
+			path = Highlighting;
 			sourceTree = "<group>";
 		};
 		D5C7759122C79CC500ADF692 /* Resource */ = {
@@ -467,6 +484,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */,
+				D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */,
+				D557615522C8E4D400505CC1 /* Highlight.swift in Sources */,
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
 				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */,

@@ -44,16 +44,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="dfdkjflkdjkf" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nor-df-u67">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="dfdkjflkdjkf" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nor-df-u67" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="88" width="382" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="tLf-gt-8uZ" appends="YES" id="qAi-74-KfG"/>
-                                    <outletCollection property="gestureRecognizers" destination="kOq-9P-YG6" appends="YES" id="glo-QW-7ty"/>
-                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLQ-8c-i2U">
                                 <rect key="frame" x="307.5" y="791.5" width="47" height="30"/>
@@ -76,21 +72,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Yzn-W1-GRs"/>
                     <connections>
-                        <outlet property="panGesture" destination="tLf-gt-8uZ" id="Rj4-uR-coK"/>
                         <outlet property="textView" destination="nor-df-u67" id="17S-zN-5eM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzc-Bb-1fR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="tLf-gt-8uZ">
-                    <connections>
-                        <action selector="didPanTextView:" destination="b7O-YI-mxA" id="wwa-Mk-ayg"/>
-                    </connections>
-                </panGestureRecognizer>
-                <tapGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" id="kOq-9P-YG6">
-                    <connections>
-                        <action selector="didTapTextView:" destination="b7O-YI-mxA" id="vb3-K7-RpK"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1868.1159420289857" y="61.607142857142854"/>
         </scene>
