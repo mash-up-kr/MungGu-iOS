@@ -13,14 +13,16 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellLabel: UILabel!
     @IBOutlet weak var setStar: UIButton!
+
+    @IBAction func setStar(_ sender: UIButton) {
+        setStar.isSelected.toggle()
+    }
+
     func configureCell(_ text: [String]) {
         for tx in text {
             cellLabel.text = tx
         }
         setStar.setImage(#imageLiteral(resourceName: "iconImportantR"), for: .normal)
         setStar.setImage(#imageLiteral(resourceName: "iconImportantG"), for: .selected)
-    }
-    @IBAction private func star(_ sender: UIButton) {
-        setStar.isSelected.toggle()
     }
 }

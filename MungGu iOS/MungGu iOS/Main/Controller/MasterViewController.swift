@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol MasterViewControllerDelegate: class {
-    func didselect(with data: File)
-}
-
 class MasterViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var mySearchBar: UISearchBar!
@@ -60,6 +56,7 @@ class MasterViewController: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedData = files[indexPath.row]
+        print(selectedData)
         delegate?.didselect(with: selectedData)
 
     }

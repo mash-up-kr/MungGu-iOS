@@ -1,5 +1,5 @@
 //
-//  MenuViewController.swift
+//  DetailMenuViewController.swift
 //  MungGu iOS
 //
 //  Created by Cloud on 30/06/2019.
@@ -8,44 +8,42 @@
 
 import UIKit
 
-class DetailMenuViewController: UIViewController {
+class DetailMenuController: UIViewController {
 
-    // MARK: - Propertise
     @IBOutlet weak var tbView: UITableView!
-    var arr = [String]()
+    var list = [String]()
 
-    // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        initDelegate()
+        configureDelegate()
     }
 
-    // MARK: - Handlers
-    func initDelegate() {
-        tbView.dataSource = self
+    func configureDelegate() {
         tbView.delegate = self
+        tbView.dataSource = self
     }
 }
 
-extension DetailMenuViewController: UITableViewDelegate {
-}
-
-extension DetailMenuViewController: UITableViewDataSource {
+extension DetailMenuController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tbView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
-        cell.configureCell(arr)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        cell.configureCell(list)
         return cell
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "삭제") { _, index in
-            self.arr.remove(at: index.row)
+            self.list.remove(at: index.row)
             self.tbView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
         return [deleteAction]
     }
+}
+
+extension DetailMenuController: UITableViewDelegate {
+
 }

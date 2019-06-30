@@ -1,30 +1,25 @@
 //
-//  DetailViewController.swift
+//  DetailHomeViewController.swift
 //  MungGu iOS
 //
-//  Created by 안예림 on 29/06/2019.
+//  Created by Cloud on 30/06/2019.
 //  Copyright © 2019 Daeyun Ethan. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class DetailViewController: UIViewController, UISplitViewControllerDelegate {
-
-    // MARK: - Properties
+class DetailContainerController: UIViewController {
     var isExpanded = false
     @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
 
-    // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    // MARK: - Handlers
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let homeViewController = segue.destination as? DetailHomeViewController
+        let homeViewController = segue.destination as? DetailViewController
         homeViewController?.delegate = self
-        print(homeViewController?.delegate)
     }
 
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
@@ -34,16 +29,16 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
     func animatePanel(shouldExpanded: Bool) {
         if shouldExpanded {
             toggleSlideMenuConstraint.constant = 0
-            UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseInOut], animations: { [weak self] in
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
                 self?.view.layoutIfNeeded()
-                }, completion: nil)
+            }, completion: nil)
         } else {
-            UIView.animate(withDuration: 0.25) {
-                self.toggleSlideMenuConstraint.constant = -320
-                self.view.layoutIfNeeded()
-            }
+            toggleSlideMenuConstraint.constant = -320
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: { [weak self] in
+                self?.view.layoutIfNeeded()
+            }, completion: nil)
+            animateStatusBar()
         }
-        animateStatusBar()
     }
 
     func animateStatusBar() {
@@ -51,26 +46,17 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
             self.setNeedsStatusBarAppearanceUpdate()
         }, completion: nil)
     }
+
 }
 
-extension DetailViewController: DeatilHomeDelegate {
-
-    func handleToggle(sender: UIButton) {
-        //
+extension DetailContainerController: HomeControllerDelegate {
+    func handleToggleMenu(btn: UIButton) {
         if isExpanded {
-            sender.setImage(#imageLiteral(resourceName: "iconImportantR"), for: .normal)
+            btn.setImage(#imageLiteral(resourceName: "iconImportantR"), for: .normal)
         } else {
-            sender.setImage(#imageLiteral(resourceName: "iconExpand"), for: .normal)
-
+            btn.setImage(#imageLiteral(resourceName: "iconExpand"), for: .normal)
         }
         isExpanded.toggle()
         animatePanel(shouldExpanded: isExpanded)
     }
-}
-
-extension DetailViewController: MasterViewControllerDelegate {
-    func didselect(with data: File) {
-
-    }
-
 }

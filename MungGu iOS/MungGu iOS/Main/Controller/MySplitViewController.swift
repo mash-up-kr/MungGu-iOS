@@ -12,15 +12,25 @@ class MySplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.preferredDisplayMode = UISplitViewController.DisplayMode.allVisible
+        preferredDisplayMode = UISplitViewController.DisplayMode.allVisible
 
         guard let leftNavController = viewControllers.first as? UINavigationController,
             let masterViewController = leftNavController.topViewController as? MasterViewController,
-            let detailViewController = viewControllers.last as? DetailViewController
+            let viewController = viewControllers.last as? UINavigationController,
+            let detailViewController = viewController.viewControllers.last as? TestViewController
+
             else {
                 fatalError()
         }
+
         masterViewController.delegate = detailViewController
+        detailViewController.delegate = self
         detailViewController.navigationItem.leftBarButtonItem = displayModeButtonItem
+    }
+}
+
+extension MySplitViewController: TestViewControllerDelegate {
+    func didTap() {
+        preferredDisplayMode = .primaryHidden
     }
 }
