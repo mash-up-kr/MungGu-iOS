@@ -91,6 +91,14 @@
             </objects>
             <point key="canvasLocation" x="-204" y="667"/>
         </scene>
+        <!--Document-->
+        <scene sceneID="DB7-Wg-K32">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Document" id="BKj-ry-5Fm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cfe-3p-cM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="383" y="-778"/>
+        </scene>
         <!--Master View Controller-->
         <scene sceneID="qqg-Vs-eFk">
             <objects>
@@ -112,6 +120,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lq-M2-VRH">
                                     <rect key="frame" x="257" y="15" width="46" height="30"/>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <segue destination="BKj-ry-5Fm" kind="presentation" id="8cq-aZ-93x"/>
+                                    </connections>
                                 </button>
                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pIi-wA-jah">
                                     <rect key="frame" x="13" y="133" width="295" height="45"/>
@@ -166,6 +177,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGW-DV-Qy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="550.78125" y="-321.09375"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ku7-n0-bhW">
+            <objects>
+                <viewController id="l8e-YK-N4T" customClass="PDFViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Am-6s-g6F">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l9P-Ay-s90">
+                                <rect key="frame" x="16" y="36" width="992" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YSv-ou-GtA" appends="YES" id="m6p-Cb-LeS"/>
+                                    <outletCollection property="gestureRecognizers" destination="Y2R-xC-JHD" appends="YES" id="n7Z-wq-6Tj"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Uv-hL-e4K">
+                                <rect key="frame" x="942" y="702" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTapToggleButton:" destination="l8e-YK-N4T" eventType="touchUpInside" id="ecZ-Kl-tVk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l9P-Ay-s90" firstAttribute="top" secondItem="fV3-Tl-iwz" secondAttribute="top" constant="16" id="Ddg-i9-gMi"/>
+                            <constraint firstItem="fV3-Tl-iwz" firstAttribute="bottom" secondItem="l9P-Ay-s90" secondAttribute="bottom" constant="16" id="RXl-u8-cwJ"/>
+                            <constraint firstItem="fV3-Tl-iwz" firstAttribute="bottom" secondItem="2Uv-hL-e4K" secondAttribute="bottom" constant="36" id="gjD-Gu-o5T"/>
+                            <constraint firstItem="fV3-Tl-iwz" firstAttribute="trailing" secondItem="2Uv-hL-e4K" secondAttribute="trailing" constant="36" id="j9u-5Z-0pH"/>
+                            <constraint firstItem="fV3-Tl-iwz" firstAttribute="trailing" secondItem="l9P-Ay-s90" secondAttribute="trailing" constant="16" id="m3q-mk-sUz"/>
+                            <constraint firstItem="l9P-Ay-s90" firstAttribute="leading" secondItem="fV3-Tl-iwz" secondAttribute="leading" constant="16" id="mBu-c2-oCb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fV3-Tl-iwz"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="l9P-Ay-s90" id="cnQ-Ot-7WF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vyh-0l-iRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YSv-ou-GtA">
+                    <connections>
+                        <action selector="didTapTextView:" destination="l8e-YK-N4T" id="uaI-sK-2Uo"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Y2R-xC-JHD">
+                    <connections>
+                        <action selector="didPanTextView:" destination="l8e-YK-N4T" id="hB6-RL-GKw"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="532" y="404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F4b-Ov-4Ym">

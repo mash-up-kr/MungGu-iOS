@@ -12,8 +12,8 @@ protocol MasterViewControllerDelegate: class {
     func didselect(with data: File)
 }
 
-class MasterViewController: UITableViewController,UISearchBarDelegate {
-    
+class MasterViewController: UITableViewController, UISearchBarDelegate {
+
     @IBOutlet weak var mySearchBar: UISearchBar!
     var files = [
         File(title: "인간행동과 심리", content: "인간행동과 심리 파일이 없습니다.", date: 0627),
@@ -27,7 +27,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
         filteredFiles = files
         setUpSearchBar()
     }
-    
+
     private func setUpSearchBar() {
         mySearchBar.delegate = self
     }
@@ -43,7 +43,7 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
 
         return cell
     }
-    
+
     //SearchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
@@ -51,16 +51,16 @@ class MasterViewController: UITableViewController,UISearchBarDelegate {
             tableView.reloadData()
             return
         }
-        filteredFiles = files.filter({ (file) -> Bool in
+        filteredFiles = files.filter({ file -> Bool in
             file.title.contains(searchText)
         })
         tableView.reloadData()
-        
+
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedData = files[indexPath.row]
         delegate?.didselect(with: selectedData)
-        
+
     }
 }

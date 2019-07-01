@@ -9,11 +9,11 @@
 import Foundation
 
 class File {
-    var title:String
-    var content:String
-    var date:Int
-    
-    init(title:String,content:String,date:Int){
+    var title: String
+    var content: String
+    var date: Int
+
+    init(title: String, content: String, date: Int) {
         self.title = title
         self.content = content
         self.date = date

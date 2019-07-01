@@ -9,7 +9,7 @@
 import UIKit
 
 class MySplitViewController: UISplitViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredDisplayMode = UISplitViewController.DisplayMode.allVisible
