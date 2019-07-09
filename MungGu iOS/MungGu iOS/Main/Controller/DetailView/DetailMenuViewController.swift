@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailMenuController: UIViewController {
+class DetailMenuViewController: UIViewController {
 
     // MARK: - Properties
     @IBOutlet var firstView: UIView!
@@ -24,6 +24,7 @@ class DetailMenuController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         filteredFiles = files
+        view.endEditing(true)
         configureDelegate()
     }
 
@@ -35,13 +36,13 @@ class DetailMenuController: UIViewController {
     }
 }
 
-extension DetailMenuController: UITableViewDataSource {
+extension DetailMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredFiles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? DetailMenuTableViewCell else { return UITableViewCell() }
         let file = filteredFiles[indexPath.row]
         cell.cellLabel.text = file.title
         return cell
@@ -56,15 +57,13 @@ extension DetailMenuController: UITableViewDataSource {
     }
 }
 
-extension DetailMenuController: UITableViewDelegate {
-
+extension DetailMenuViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
 }
 
-extension DetailMenuController: UISearchBarDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.firstView.endEditing(true)
-    }
-
+extension DetailMenuViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             guard !searchText.isEmpty else {
                 filteredFiles = files

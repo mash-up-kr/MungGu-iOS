@@ -21,11 +21,12 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
             refreshUI()
         }
     }
-    var delegate: HomeControllerDelegate?
+    weak var delegate: ContainerViewControllerDelegate?
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.endEditing(true)
         toggleButton.isHidden = true
     }
 
@@ -62,7 +63,8 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
 
     @IBAction private func toggleMenu(_ sender: UIButton) {
         hideToggleButton()
-        delegate?.handleToggleMenu(btn: sender)
+        sender.isSelected.toggle()
+        delegate?.handleToggleMenu()
     }
 
     @IBAction private func goTest(_ sender: UIButton) {
@@ -71,23 +73,17 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
     @IBAction private func blindText(_ sender: UIButton) {
         eyeButton.isSelected.toggle()
     }
+    @IBAction private func unwind(segue: UIStoryboardSegue) { }
 }
 
 extension DetailViewController: MasterViewControllerDelegate {
     func didselect(with data: File) {
-        print(data)
         textView.text = data.content
     }
 }
 
-extension DetailViewController: HomeControllerDelegate {
-    func handleToggleMenu(btn: UIButton) {
-        delegate?.handleToggleMenu(btn: btn)
-    }
-}
-
-extension DetailViewController: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+extension DetailViewController: ContainerViewControllerDelegate {
+    func handleToggleMenu() {
+        delegate?.handleToggleMenu()
     }
 }

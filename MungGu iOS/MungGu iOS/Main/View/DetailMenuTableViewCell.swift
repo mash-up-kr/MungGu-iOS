@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class DetailMenuTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     @IBOutlet weak var cellLabel: UILabel!

@@ -7,14 +7,10 @@
 //
 import UIKit
 
-protocol HomeControllerDelegate {
-    func handleToggleMenu(btn: UIButton)
+protocol ContainerViewControllerDelegate: class {
+    func handleToggleMenu()
 }
 
 protocol MasterViewControllerDelegate: class {
     func didselect(with data: File)
-}
-
-protocol TestViewControllerDelegate: class {
-    func didTap()
 }

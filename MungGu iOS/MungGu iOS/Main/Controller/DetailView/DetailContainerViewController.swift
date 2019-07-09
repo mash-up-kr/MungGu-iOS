@@ -52,13 +52,8 @@ class DetailContainerController: UIViewController {
 
 }
 
-extension DetailContainerController: HomeControllerDelegate {
-    func handleToggleMenu(btn: UIButton) {
-        if isExpanded {
-            btn.setImage(#imageLiteral(resourceName: "iconImportantMenu"), for: .normal)
-        } else {
-            btn.setImage(#imageLiteral(resourceName: "iconExpand"), for: .normal)
-        }
+extension DetailContainerController: ContainerViewControllerDelegate {
+    func handleToggleMenu() {
         isExpanded.toggle()
         animatePanel(shouldExpanded: isExpanded)
     }
