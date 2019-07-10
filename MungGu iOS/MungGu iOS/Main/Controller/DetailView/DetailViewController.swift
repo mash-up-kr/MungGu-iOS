@@ -57,8 +57,10 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
     @IBAction private func expandBtn(_ sender: UIButton) {
         hideExpandButton()
         self.splitViewController?.delegate = self
-        let primaryHidden = splitViewController?.preferredDisplayMode ?? .primaryHidden
-        splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            let primaryHidden = self.splitViewController?.preferredDisplayMode ?? .primaryHidden
+            self.splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
+        })
     }
 
     @IBAction private func toggleMenu(_ sender: UIButton) {
