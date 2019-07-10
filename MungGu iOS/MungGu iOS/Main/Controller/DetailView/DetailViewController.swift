@@ -10,11 +10,13 @@ import UIKit
 
 class DetailViewController: UIViewController, UISplitViewControllerDelegate {
 
-    // MARK: - Properties
+    // MARK: - IBOutlet
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var toggleButton: UIButton!
     @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var eyeButton: UIButton!
+
+    // MARK: - Properties
     var hide = false
     var file: File? {
         didSet {
@@ -54,6 +56,7 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
         hide.toggle()
     }
 
+    // MARK: - IBActions
     @IBAction private func expandBtn(_ sender: UIButton) {
         hideExpandButton()
         self.splitViewController?.delegate = self
@@ -75,6 +78,7 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
     @IBAction private func blindText(_ sender: UIButton) {
         eyeButton.isSelected.toggle()
     }
+
     @IBAction private func unwind(segue: UIStoryboardSegue) { }
 }
 

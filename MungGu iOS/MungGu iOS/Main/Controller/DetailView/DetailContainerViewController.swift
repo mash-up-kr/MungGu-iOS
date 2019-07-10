@@ -11,14 +11,17 @@ import UIKit
 
 class DetailContainerController: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
+
     // MARK: - Properties
     var isExpanded = false
-    @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     // MARK: - Handlers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let homeViewController = segue.destination as? DetailViewController

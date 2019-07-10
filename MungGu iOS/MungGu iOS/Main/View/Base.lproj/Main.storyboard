@@ -202,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fj6-0b-TF1">
-                                <rect key="frame" x="44" y="1175" width="70" height="52"/>
+                                <rect key="frame" x="44" y="1175" width="160" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="1dK-U5-R66"/>
                                     <constraint firstAttribute="height" constant="52" id="V8P-bB-hBa"/>
@@ -234,7 +234,7 @@
                                 <rect key="frame" x="302" y="400" width="420" height="220"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWA-sS-l4S">
-                                        <rect key="frame" x="9" y="10" width="402" height="60"/>
+                                        <rect key="frame" x="9" y="40" width="402" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="402" id="ces-gZ-eWA"/>
                                             <constraint firstAttribute="height" constant="60" id="zuT-1q-eUQ"/>
@@ -246,7 +246,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 / 20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="md5-6s-Gnq">
-                                        <rect key="frame" x="100" y="85" width="220" height="100"/>
+                                        <rect key="frame" x="100" y="115" width="220" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="Wlq-Ut-8Q7"/>
                                             <constraint firstAttribute="height" constant="100" id="Yya-16-gKK"/>
@@ -255,14 +255,25 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqr-TL-Lyr" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="90" y="0.0" width="240" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="9qk-pq-BDm"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="gWA-sS-l4S" firstAttribute="top" secondItem="Hvt-3i-7so" secondAttribute="top" constant="10" id="3mH-0f-UWV"/>
+                                    <constraint firstItem="gWA-sS-l4S" firstAttribute="top" secondItem="Hvt-3i-7so" secondAttribute="top" constant="40" id="3mH-0f-UWV"/>
                                     <constraint firstItem="md5-6s-Gnq" firstAttribute="centerX" secondItem="Hvt-3i-7so" secondAttribute="centerX" id="8YB-Xf-M71"/>
                                     <constraint firstAttribute="width" constant="420" id="9Oo-6c-Vx1"/>
                                     <constraint firstItem="gWA-sS-l4S" firstAttribute="centerX" secondItem="Hvt-3i-7so" secondAttribute="centerX" id="CWs-va-Y4A"/>
+                                    <constraint firstItem="tqr-TL-Lyr" firstAttribute="top" secondItem="Hvt-3i-7so" secondAttribute="top" id="JuH-Tj-hT4"/>
+                                    <constraint firstItem="tqr-TL-Lyr" firstAttribute="leading" secondItem="Hvt-3i-7so" secondAttribute="leading" constant="90" id="K2H-pU-vHI"/>
                                     <constraint firstItem="md5-6s-Gnq" firstAttribute="top" secondItem="gWA-sS-l4S" secondAttribute="bottom" constant="15" id="YLA-8d-LEC"/>
+                                    <constraint firstAttribute="trailing" secondItem="tqr-TL-Lyr" secondAttribute="trailing" constant="90" id="buF-sz-Ipj"/>
+                                    <constraint firstItem="tqr-TL-Lyr" firstAttribute="centerX" secondItem="Hvt-3i-7so" secondAttribute="centerX" id="cZD-0h-4Da"/>
                                     <constraint firstAttribute="height" constant="220" id="w8e-J1-bEV"/>
                                 </constraints>
                             </view>
@@ -324,6 +335,7 @@
                         <viewLayoutGuide key="safeArea" id="pra-yF-1gD"/>
                     </view>
                     <connections>
+                        <outlet property="animateDot" destination="tqr-TL-Lyr" id="eRt-uC-je8"/>
                         <outlet property="blindButton" destination="tWC-Qb-P6Q" id="bsW-SA-BAY"/>
                         <outlet property="gradeView" destination="Hvt-3i-7so" id="F6s-y2-cTV"/>
                         <outlet property="naviBar" destination="w7A-Cf-1OB" id="uLo-QK-xj5"/>

@@ -11,6 +11,8 @@ import UIKit
 
 class TestViewController: UIViewController {
 
+    // MARK: - IBOutlet
+
     // MARK: - Properties
 
     // MARK: - Init
@@ -19,7 +21,9 @@ class TestViewController: UIViewController {
     }
 
     // MARK: - Handlers
-    @IBAction func exitButton(_ sender: Any) {
+
+    // MARK: - IBActions
+    @IBAction private func exitButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
 

@@ -11,9 +11,11 @@ import UIKit
 
 class ResultContainerViewController: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
+
     // MARK: - Properties
     var isExpanded = false
-    @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
 
     // MARK: - Init
     override func viewDidLoad() {
@@ -40,7 +42,6 @@ class ResultContainerViewController: UIViewController {
             }, completion: nil)
         }
     }
-
 }
 
 extension ResultContainerViewController: ContainerViewControllerDelegate {

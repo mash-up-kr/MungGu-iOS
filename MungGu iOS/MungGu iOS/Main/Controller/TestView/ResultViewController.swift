@@ -8,32 +8,45 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
 
 class ResultViewController: UIViewController {
 
-    // MARK: - Properties
+    // MARK: - IBOutlet
     @IBOutlet weak var redoButton: UIButton!
     @IBOutlet weak var naviBar: UIView!
     @IBOutlet weak var blindButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var gradeView: UIView!
-    var delegate: ContainerViewControllerDelegate?
+    @IBOutlet weak var animateDot: NVActivityIndicatorView!
+
+    // MARK: - Properties
+    weak var delegate: ContainerViewControllerDelegate?
     var isHide = false
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         hideAll()
         UIView.animate(withDuration: 2.0, animations: {
             self.gradeView.alpha = 0
+            self.initDot()
         }) { _ in
             self.hideAll()
         }
     }
 
     // MARK: - Handlers
+    func initDot() {
+        animateDot.color = .orange
+        animateDot.type = .ballPulse
+        animateDot.startAnimating()
+    }
+
     func hideAll() {
         isHide.toggle()
         redoButton.isHidden = isHide
@@ -41,16 +54,21 @@ class ResultViewController: UIViewController {
         blindButton.isHidden = isHide
         textView.isHidden = isHide
     }
+
+    // MARK: - IBActions
     @IBAction private func redoButton(_ sender: UIButton) {
 
     }
+
     @IBAction private func blindButton(_ sender: UIButton) {
         sender.isSelected.toggle()
     }
+
     @IBAction private func toggleSlide(_ sender: UIButton) {
         sender.isSelected.toggle()
         delegate?.handleToggleMenu()
     }
+
     @IBAction private func backButton(_ sender: UIButton) {
         performSegue(withIdentifier: "unwindViewController", sender: self)
     }
