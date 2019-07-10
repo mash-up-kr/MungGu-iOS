@@ -17,7 +17,6 @@
 		AECC601222C8477B00561DCF /* DetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601122C8477B00561DCF /* DetailContainerViewController.swift */; };
 		AECC601422C8478800561DCF /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601322C8478800561DCF /* DetailMenuViewController.swift */; };
 		AECC601722C84BBF00561DCF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601622C84BBF00561DCF /* Protocol.swift */; };
-		AEF33B5D22D329D90084F242 /* GradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B5C22D329D90084F242 /* GradeViewController.swift */; };
 		AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B5E22D32A050084F242 /* ResultViewController.swift */; };
 		AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */; };
 		AEF33B6422D3881C0084F242 /* ResultMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */; };
@@ -65,7 +64,6 @@
 		AECC601122C8477B00561DCF /* DetailContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContainerViewController.swift; sourceTree = "<group>"; };
 		AECC601322C8478800561DCF /* DetailMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
 		AECC601622C84BBF00561DCF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		AEF33B5C22D329D90084F242 /* GradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeViewController.swift; sourceTree = "<group>"; };
 		AEF33B5E22D32A050084F242 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainerViewController.swift; sourceTree = "<group>"; };
 		AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuViewController.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 		AEF33B6022D387630084F242 /* TestView */ = {
 			isa = PBXGroup;
 			children = (
-				AEF33B5C22D329D90084F242 /* GradeViewController.swift */,
 				AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */,
 				AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */,
 				AEF33B5E22D32A050084F242 /* ResultViewController.swift */,
@@ -518,7 +515,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AECC601722C84BBF00561DCF /* Protocol.swift in Sources */,
-				AEF33B5D22D329D90084F242 /* GradeViewController.swift in Sources */,
 				AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */,
 				AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */,
 				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,

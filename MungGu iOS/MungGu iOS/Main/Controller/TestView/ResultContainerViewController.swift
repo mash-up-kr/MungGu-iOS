@@ -24,7 +24,6 @@ class ResultContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let homeViewController = segue.destination as? ResultViewController
         homeViewController?.delegate = self
-
     }
 
     func animatePanel(shouldExpanded: Bool) {

@@ -12,15 +12,21 @@ import UIKit
 class GradeViewController: UIViewController {
 
     // MARK: - Properties
-    @IBOutlet weak var gradeLabel: UIButton!
 
+    @IBOutlet weak var someView: UIView!
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    // MARK: - Handlers
-    @IBAction func exitButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 2.0, animations: {
+            self.someView.alpha = 0
+        }) { _ in
+            self.view.removeFromSuperview()
+            self.performSegue(withIdentifier: "result", sender: self)
+        }
     }
-}
+
+    }
+    // MARK: - Handlers
