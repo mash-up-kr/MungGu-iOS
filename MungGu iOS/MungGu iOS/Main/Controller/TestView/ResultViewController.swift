@@ -25,13 +25,10 @@ class ResultViewController: UIViewController {
     weak var delegate: ContainerViewControllerDelegate?
     var isHide = false
     var fileTile: String?
-    let alert = UIAlertController(title: "경고", message: "시험 본 히스토리가 삭제됩니다.", preferredStyle: .alert
-    )
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        initAlert()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,24 +41,14 @@ class ResultViewController: UIViewController {
             self.hideAll()
             self.fileLabel.text = self.fileTile
         }
+
     }
 
     // MARK: - Handlers
     @objc func dismissFunc() {
-        alert.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
-    func initAlert() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(dismissFunc), name: UIApplication.willResignActiveNotification, object: nil)
 
-        let backAlertAction = UIAlertAction(title: "확인", style: .default) { _ in
-            self.performSegue(withIdentifier: "unwindViewController", sender: self)
-        }
-        let cancleAlertAction = UIAlertAction(title: "취소", style: .cancel) { _ in
-        }
-        alert.addAction(cancleAlertAction)
-        alert.addAction(backAlertAction)
-    }
     func initDot() {
         animateDot.color = .orange
         animateDot.type = .ballPulse
@@ -91,7 +78,27 @@ class ResultViewController: UIViewController {
     }
 
     @IBAction private func backButton(_ sender: UIButton) {
+        var alert = UIAlertController(title: "경고", message: "시험 본 히스토리가 삭제됩니다.", preferredStyle: .actionSheet)
+        
+        if let popoverController = alert.popoverPresentationController {
+            popoverController.sourceView = self.view
+            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(dismissFunc), name: UIApplication.willResignActiveNotification, object: nil)
+        
+        let backAlertAction = UIAlertAction(title: "확인", style: .destructive) { _ in
+            self.performSegue(withIdentifier: "unwindViewController", sender: self)
+        }
+        let cancleAlertAction = UIAlertAction(title: "취소", style: .default) { _ in
+        }
+        alert.addAction(backAlertAction)
+        alert.addAction(cancleAlertAction)
+        
         present(alert, animated: true, completion: nil)
+        
+        alert = UIAlertController(title: "asd", message: "Asd", preferredStyle: .actionSheet)
     }
 
 }
