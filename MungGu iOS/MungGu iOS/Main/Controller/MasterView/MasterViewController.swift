@@ -61,6 +61,7 @@ extension MasterViewController: UITableViewDelegate {
         self.view.endEditing(true)
         let selectedData = filteredFiles[indexPath.row]
         delegate?.didselect(with: selectedData)
+
     }
 }
 

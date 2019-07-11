@@ -16,6 +16,7 @@ class ResultContainerViewController: UIViewController {
 
     // MARK: - Properties
     var isExpanded = false
+    var fileTitle: String?
 
     // MARK: - Init
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class ResultContainerViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let homeViewController = segue.destination as? ResultViewController
         homeViewController?.delegate = self
+        homeViewController?.fileTile = self.fileTitle
     }
 
     func animatePanel(shouldExpanded: Bool) {

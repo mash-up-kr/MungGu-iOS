@@ -47,6 +47,12 @@
                                                     <action selector="expandBtn:" destination="P8U-p4-3eV" eventType="touchUpInside" id="IwA-Dc-MxQ"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wue-Fj-Hta">
+                                                <rect key="frame" x="512" y="32.5" width="0.0" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -54,9 +60,11 @@
                                             <constraint firstAttribute="bottom" secondItem="N6T-H7-itT" secondAttribute="bottom" id="K0i-qy-KCV"/>
                                             <constraint firstAttribute="trailing" secondItem="N6T-H7-itT" secondAttribute="trailing" id="LS1-gO-Kix"/>
                                             <constraint firstAttribute="height" constant="65" id="coj-Al-2w4"/>
+                                            <constraint firstItem="Wue-Fj-Hta" firstAttribute="centerY" secondItem="26o-Mp-Kv0" secondAttribute="centerY" id="hay-cS-UjS"/>
                                             <constraint firstItem="4tt-iy-p1z" firstAttribute="leading" secondItem="26o-Mp-Kv0" secondAttribute="leading" id="re9-5v-o0Y"/>
                                             <constraint firstAttribute="bottom" secondItem="4tt-iy-p1z" secondAttribute="bottom" id="tRf-kE-DPB"/>
                                             <constraint firstItem="N6T-H7-itT" firstAttribute="top" secondItem="26o-Mp-Kv0" secondAttribute="top" id="w0A-nl-9GO"/>
+                                            <constraint firstItem="Wue-Fj-Hta" firstAttribute="centerX" secondItem="26o-Mp-Kv0" secondAttribute="centerX" id="xfc-cL-yje"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -120,6 +128,7 @@
                     <connections>
                         <outlet property="expandButton" destination="4tt-iy-p1z" id="Gh8-cS-YrB"/>
                         <outlet property="eyeButton" destination="9ah-MS-j9g" id="qsZ-tN-Juj"/>
+                        <outlet property="fileLabel" destination="Wue-Fj-Hta" id="pMO-ar-D92"/>
                         <outlet property="textView" destination="WK2-cR-3Kr" id="GyT-qI-PiO"/>
                         <outlet property="toggleButton" destination="N6T-H7-itT" id="qOe-xz-8YE"/>
                     </connections>
@@ -156,10 +165,18 @@
                                             <action selector="exitButton:" destination="3Ae-TL-a03" eventType="touchUpInside" id="NmS-60-xHp"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7k-bR-gme">
+                                        <rect key="frame" x="512" y="28" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="43p-Yl-tKn"/>
+                                    <constraint firstItem="H7k-bR-gme" firstAttribute="centerY" secondItem="XCY-k3-Wmi" secondAttribute="centerY" id="hzl-0Y-6lp"/>
+                                    <constraint firstItem="H7k-bR-gme" firstAttribute="centerX" secondItem="XCY-k3-Wmi" secondAttribute="centerX" id="k4H-qY-l0E"/>
                                     <constraint firstItem="hy0-GU-Z38" firstAttribute="leading" secondItem="XCY-k3-Wmi" secondAttribute="leading" constant="10" id="kui-hg-KOT"/>
                                     <constraint firstAttribute="bottom" secondItem="hy0-GU-Z38" secondAttribute="bottom" constant="4" id="raK-8y-ZH3"/>
                                     <constraint firstItem="hy0-GU-Z38" firstAttribute="top" secondItem="XCY-k3-Wmi" secondAttribute="top" constant="4" id="zZR-5l-0fS"/>
@@ -188,6 +205,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kVm-AP-RbG"/>
                     </view>
+                    <connections>
+                        <outlet property="fileLabel" destination="H7k-bR-gme" id="3Xt-C8-sHW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fif-mM-0o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,7 +227,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="1dK-U5-R66"/>
                                     <constraint firstAttribute="height" constant="52" id="V8P-bB-hBa"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="rectangle"/>
+                                <state key="normal" title="Button" image="btnRedo"/>
                                 <connections>
                                     <action selector="redoButton:" destination="Xzk-oX-Jhj" eventType="touchUpInside" id="e4p-Mj-1pb"/>
                                 </connections>
@@ -303,11 +323,19 @@
                                             <action selector="toggleSlide:" destination="Xzk-oX-Jhj" eventType="touchUpInside" id="Xs2-NK-5it"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yun-ZT-hop">
+                                        <rect key="frame" x="512" y="28" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="Yun-ZT-hop" firstAttribute="centerX" secondItem="w7A-Cf-1OB" secondAttribute="centerX" id="7qp-Ds-Ho6"/>
                                     <constraint firstItem="xZU-br-g2L" firstAttribute="leading" secondItem="w7A-Cf-1OB" secondAttribute="leading" constant="6" id="J8J-kG-eVc"/>
                                     <constraint firstAttribute="bottom" secondItem="ZdW-YP-3C4" secondAttribute="bottom" constant="5" id="WCs-u2-74c"/>
+                                    <constraint firstItem="Yun-ZT-hop" firstAttribute="centerY" secondItem="w7A-Cf-1OB" secondAttribute="centerY" id="aFn-9h-FK4"/>
                                     <constraint firstAttribute="trailing" secondItem="ZdW-YP-3C4" secondAttribute="trailing" constant="12" id="hUf-CD-gGL"/>
                                     <constraint firstAttribute="bottom" secondItem="xZU-br-g2L" secondAttribute="bottom" constant="5" id="pax-p7-QbW"/>
                                     <constraint firstAttribute="height" constant="56" id="zRx-LN-Kez"/>
@@ -337,6 +365,7 @@
                     <connections>
                         <outlet property="animateDot" destination="tqr-TL-Lyr" id="eRt-uC-je8"/>
                         <outlet property="blindButton" destination="tWC-Qb-P6Q" id="bsW-SA-BAY"/>
+                        <outlet property="fileLabel" destination="Yun-ZT-hop" id="y7Y-Qc-UoQ"/>
                         <outlet property="gradeView" destination="Hvt-3i-7so" id="F6s-y2-cTV"/>
                         <outlet property="naviBar" destination="w7A-Cf-1OB" id="uLo-QK-xj5"/>
                         <outlet property="redoButton" destination="fj6-0b-TF1" id="kjn-Hi-oqL"/>
@@ -748,6 +777,7 @@
     </scenes>
     <resources>
         <image name="btnEye" width="52" height="52"/>
+        <image name="btnRedo" width="106" height="52"/>
         <image name="iconExpand" width="48" height="48"/>
         <image name="iconEyeHide" width="52" height="52"/>
         <image name="iconImportantG" width="48" height="48"/>

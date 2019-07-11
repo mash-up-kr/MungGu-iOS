@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
     @IBOutlet weak var toggleButton: UIButton!
     @IBOutlet weak var expandButton: UIButton!
     @IBOutlet weak var eyeButton: UIButton!
+    @IBOutlet weak var fileLabel: UILabel!
 
     // MARK: - Properties
     var hide = false
@@ -56,6 +57,11 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
         hide.toggle()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let testViewController = segue.destination as? TestViewController
+        testViewController?.fileTitle = file?.title
+    }
+
     // MARK: - IBActions
     @IBAction private func expandBtn(_ sender: UIButton) {
         hideExpandButton()
@@ -85,6 +91,8 @@ class DetailViewController: UIViewController, UISplitViewControllerDelegate {
 extension DetailViewController: MasterViewControllerDelegate {
     func didselect(with data: File) {
         textView.text = data.content
+        fileLabel.text = data.title
+        file = data
     }
 }
 

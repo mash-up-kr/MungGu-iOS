@@ -19,11 +19,13 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var gradeView: UIView!
     @IBOutlet weak var animateDot: NVActivityIndicatorView!
+    @IBOutlet weak var fileLabel: UILabel!
 
     // MARK: - Properties
     weak var delegate: ContainerViewControllerDelegate?
     var isHide = false
-
+    var fileTile: String?
+    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,7 @@ class ResultViewController: UIViewController {
             self.initDot()
         }) { _ in
             self.hideAll()
+            self.fileLabel.text = self.fileTile
         }
     }
 
