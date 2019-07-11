@@ -25,10 +25,13 @@ class ResultViewController: UIViewController {
     weak var delegate: ContainerViewControllerDelegate?
     var isHide = false
     var fileTile: String?
+    let alert = UIAlertController(title: "경고", message: "시험 본 히스토리가 삭제됩니다.", preferredStyle: .alert
+    )
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
+        initAlert()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +47,21 @@ class ResultViewController: UIViewController {
     }
 
     // MARK: - Handlers
+    @objc func dismissFunc() {
+        alert.dismiss(animated: true, completion: nil)
+    }
+    func initAlert() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(dismissFunc), name: UIApplication.willResignActiveNotification, object: nil)
+
+        let backAlertAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.performSegue(withIdentifier: "unwindViewController", sender: self)
+        }
+        let cancleAlertAction = UIAlertAction(title: "취소", style: .cancel) { _ in
+        }
+        alert.addAction(cancleAlertAction)
+        alert.addAction(backAlertAction)
+    }
     func initDot() {
         animateDot.color = .orange
         animateDot.type = .ballPulse
@@ -73,8 +91,9 @@ class ResultViewController: UIViewController {
     }
 
     @IBAction private func backButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindViewController", sender: self)
+        present(alert, animated: true, completion: nil)
     }
+
 }
 
 extension ResultViewController: ContainerViewControllerDelegate {
