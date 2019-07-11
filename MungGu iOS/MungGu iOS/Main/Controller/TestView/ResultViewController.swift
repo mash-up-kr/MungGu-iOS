@@ -25,7 +25,7 @@ class ResultViewController: UIViewController {
     weak var delegate: ContainerViewControllerDelegate?
     var isHide = false
     var fileTile: String?
-    
+
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
