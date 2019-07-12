@@ -59,7 +59,7 @@ class HighlightingTextView: UITextView {
         let position = self.closestPosition(to: point)
         self.endPosition = position
         self.tapGestrue?.isEnabled = false
-        
+
         switch sender.state {
         case .began:
             self.startPosition = position

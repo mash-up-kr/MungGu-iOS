@@ -6,6 +6,7 @@ target 'MungGu iOS' do
   use_frameworks!
 
   # Pods for MungGu iOS
+  pod 'NVActivityIndicatorView'
 
   target 'MungGu iOSTests' do
     inherit! :search_paths
