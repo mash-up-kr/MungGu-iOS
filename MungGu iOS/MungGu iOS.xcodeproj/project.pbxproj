@@ -9,9 +9,21 @@
 /* Begin PBXBuildFile section */
 		2A054C5E60CCE51FE88BD8C8 /* Pods_MungGu_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */; };
 		8303F5518DAF62F7B89732AF /* Pods_MungGu_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DC3CB4A7CDC0ECD55E5F073 /* Pods_MungGu_iOSUITests.framework */; };
+		83FA99CE22C7993F009B1EA6 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */; };
+		83FA99D022C79A70009B1EA6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */; };
+		83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */; };
+		83FA99D422C7C2E1009B1EA6 /* FIle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FA99D322C7C2E1009B1EA6 /* FIle.swift */; };
+		AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC600F22C8432C00561DCF /* DetailMenuTableViewCell.swift */; };
+		AECC601222C8477B00561DCF /* DetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601122C8477B00561DCF /* DetailContainerViewController.swift */; };
+		AECC601422C8478800561DCF /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601322C8478800561DCF /* DetailMenuViewController.swift */; };
+		AECC601722C84BBF00561DCF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601622C84BBF00561DCF /* Protocol.swift */; };
+		AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B5E22D32A050084F242 /* ResultViewController.swift */; };
+		AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */; };
+		AEF33B6422D3881C0084F242 /* ResultMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */; };
+		AEF33B6622D398900084F242 /* ResultMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6522D398900084F242 /* ResultMenuTableViewCell.swift */; };
+		AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6722D3AD580084F242 /* TestViewController.swift */; };
 		C29AD8153EE3C43FE16969CB /* Pods_MungGu_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D6DE06EDA458689A84CA0B /* Pods_MungGu_iOS.framework */; };
 		CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */; };
-		CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C646F22C74AE700EC8AF4 /* ViewController.swift */; };
 		CE5C647322C74AE700EC8AF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647122C74AE700EC8AF4 /* Main.storyboard */; };
 		CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647422C74AE900EC8AF4 /* Assets.xcassets */; };
 		CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */; };
@@ -43,10 +55,22 @@
 		33D6DE06EDA458689A84CA0B /* Pods_MungGu_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC3CB4A7CDC0ECD55E5F073 /* Pods_MungGu_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C5E8E093C2C1B3CFE35E8F4 /* Pods_MungGu_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MungGu_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplitViewController.swift; sourceTree = "<group>"; };
+		83FA99D322C7C2E1009B1EA6 /* FIle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIle.swift; sourceTree = "<group>"; };
 		9167B7F05C96A19F24FA05A5 /* Pods-MungGu iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		AECC600F22C8432C00561DCF /* DetailMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuTableViewCell.swift; sourceTree = "<group>"; };
+		AECC601122C8477B00561DCF /* DetailContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContainerViewController.swift; sourceTree = "<group>"; };
+		AECC601322C8478800561DCF /* DetailMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
+		AECC601622C84BBF00561DCF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		AEF33B5E22D32A050084F242 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainerViewController.swift; sourceTree = "<group>"; };
+		AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuViewController.swift; sourceTree = "<group>"; };
+		AEF33B6522D398900084F242 /* ResultMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuTableViewCell.swift; sourceTree = "<group>"; };
+		AEF33B6722D3AD580084F242 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CE5C646A22C74AE700EC8AF4 /* MungGu iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MungGu iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE5C646F22C74AE700EC8AF4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE5C647222C74AE700EC8AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE5C647422C74AE900EC8AF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5C647722C74AE900EC8AF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -112,15 +136,81 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AEBEF66B22D0E9900070FB87 /* MasterView */ = {
+			isa = PBXGroup;
+			children = (
+				83FA99CD22C7993F009B1EA6 /* MasterViewController.swift */,
+			);
+			path = MasterView;
+			sourceTree = "<group>";
+		};
+		AECC600C22C842F400561DCF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE5C647122C74AE700EC8AF4 /* Main.storyboard */,
+				AECC600F22C8432C00561DCF /* DetailMenuTableViewCell.swift */,
+				AEF33B6522D398900084F242 /* ResultMenuTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AECC600D22C842FC00561DCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83FA99D322C7C2E1009B1EA6 /* FIle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AECC600E22C8430500561DCF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */,
+				AEF33B6022D387630084F242 /* TestView */,
+				AECC601822C855B900561DCF /* DetailView */,
+				AEBEF66B22D0E9900070FB87 /* MasterView */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AECC601522C84BA300561DCF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AECC601622C84BBF00561DCF /* Protocol.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AECC601822C855B900561DCF /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				AECC601122C8477B00561DCF /* DetailContainerViewController.swift */,
+				83FA99CF22C79A70009B1EA6 /* DetailViewController.swift */,
+				AECC601322C8478800561DCF /* DetailMenuViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		AEF33B6022D387630084F242 /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+				AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */,
+				AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */,
+				AEF33B5E22D32A050084F242 /* ResultViewController.swift */,
+				AEF33B6722D3AD580084F242 /* TestViewController.swift */,
+			);
+			path = TestView;
+			sourceTree = "<group>";
+		};
 		CE5C646122C74AE700EC8AF4 = {
 			isa = PBXGroup;
 			children = (
+				353BDE1CED88398BF25670B6 /* Frameworks */,
 				CE5C646C22C74AE700EC8AF4 /* MungGu iOS */,
 				CE5C648122C74AE900EC8AF4 /* MungGu iOSTests */,
 				CE5C648C22C74AE900EC8AF4 /* MungGu iOSUITests */,
-				CE5C646B22C74AE700EC8AF4 /* Products */,
 				7CEBFC48B2075AFD1910BDCE /* Pods */,
-				353BDE1CED88398BF25670B6 /* Frameworks */,
+				CE5C646B22C74AE700EC8AF4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,9 +227,9 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
-				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
 			);
 			path = "MungGu iOS";
 			sourceTree = "<group>";
@@ -175,8 +265,10 @@
 		CE6FC73D22C74FC5006FA209 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				CE5C646F22C74AE700EC8AF4 /* ViewController.swift */,
-				CE5C647122C74AE700EC8AF4 /* Main.storyboard */,
+				AECC601522C84BA300561DCF /* Utils */,
+				AECC600C22C842F400561DCF /* View */,
+				AECC600E22C8430500561DCF /* Controller */,
+				AECC600D22C842FC00561DCF /* Model */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -194,6 +286,7 @@
 				CE5C646622C74AE700EC8AF4 /* Sources */,
 				CE5C646722C74AE700EC8AF4 /* Frameworks */,
 				CE5C646822C74AE700EC8AF4 /* Resources */,
+				9022E3747C6EBD44DD7CCB54 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -335,6 +428,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9022E3747C6EBD44DD7CCB54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BA94B456A42934EBA474CB60 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -422,8 +532,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE5C647022C74AE700EC8AF4 /* ViewController.swift in Sources */,
+				AECC601722C84BBF00561DCF /* Protocol.swift in Sources */,
+				AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */,
+				AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */,
+				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,
+				AECC601222C8477B00561DCF /* DetailContainerViewController.swift in Sources */,
+				AEF33B6622D398900084F242 /* ResultMenuTableViewCell.swift in Sources */,
+				AEF33B6422D3881C0084F242 /* ResultMenuViewController.swift in Sources */,
+				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
+				AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */,
+				83FA99CE22C7993F009B1EA6 /* MasterViewController.swift in Sources */,
+				AECC601422C8478800561DCF /* DetailMenuViewController.swift in Sources */,
+				83FA99D022C79A70009B1EA6 /* DetailViewController.swift in Sources */,
+				83FA99D422C7C2E1009B1EA6 /* FIle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
