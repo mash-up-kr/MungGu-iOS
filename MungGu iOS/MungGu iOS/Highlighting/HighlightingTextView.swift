@@ -11,7 +11,8 @@ import UIKit
 class HighlightingTextView: UITextView {
 
     var highlighType: HighlightType = .general
-    var isHighlightingActive: Bool = true {
+
+    @IBInspectable var isHighlightingActive: Bool = true {
         didSet {
             self.panGesture?.isEnabled = self.isHighlightingActive
             self.tapGestrue?.isEnabled = self.isHighlightingActive
@@ -104,6 +105,7 @@ class HighlightingTextView: UITextView {
         self.highlightings.removeAll(where: { highlight -> Bool in
             if highlight.range.contains(location) {
                 self.textStorage.removeAttribute(.backgroundColor, range: highlight.range)
+                self.textStorage.removeAttribute(.foregroundColor, range: highlight.range)
                 matchedCount += 1
                 self.highlighDelegate?.didRemove(highlight)
                 return true

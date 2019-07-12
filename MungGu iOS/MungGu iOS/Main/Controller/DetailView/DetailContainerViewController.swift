@@ -15,7 +15,7 @@ class DetailContainerController: UIViewController {
     @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
 
     // MARK: - Properties
-    var isExpanded = false
+    var isExpanded = true
 
     // MARK: - Init
     override func viewDidLoad() {
@@ -24,8 +24,9 @@ class DetailContainerController: UIViewController {
 
     // MARK: - Handlers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let homeViewController = segue.destination as? DetailViewController
-        homeViewController?.delegate = self
+        if let detailViewController = segue.destination as? FileDetailViewController {
+            detailViewController.containderDelegate = self
+        }
     }
 
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
@@ -57,7 +58,7 @@ class DetailContainerController: UIViewController {
 
 extension DetailContainerController: ContainerViewControllerDelegate {
     func handleToggleMenu() {
-        isExpanded.toggle()
         animatePanel(shouldExpanded: isExpanded)
+        isExpanded.toggle()
     }
 }

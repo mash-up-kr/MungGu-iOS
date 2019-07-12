@@ -6,14 +6,15 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail View Controller-->
+        <!--File Detail View Controller-->
         <scene sceneID="Sgs-al-28A">
             <objects>
-                <viewController storyboardIdentifier="detailHome" id="P8U-p4-3eV" customClass="DetailViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailHome" id="P8U-p4-3eV" customClass="FileDetailViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAr-uJ-oHk">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1322"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +33,7 @@
                                                 <state key="normal" title="Button" image="iconImportantMenu"/>
                                                 <state key="selected" image="iconExpand"/>
                                                 <connections>
-                                                    <action selector="toggleMenu:" destination="P8U-p4-3eV" eventType="touchUpInside" id="or3-Sa-J0S"/>
+                                                    <action selector="tapRightMenu:" destination="P8U-p4-3eV" eventType="touchUpInside" id="or3-Sa-J0S"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tt-iy-p1z">
@@ -44,7 +45,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="expandBtn:" destination="P8U-p4-3eV" eventType="touchUpInside" id="IwA-Dc-MxQ"/>
+                                                    <action selector="tapLeftMenu:" destination="P8U-p4-3eV" eventType="touchUpInside" id="IwA-Dc-MxQ"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wue-Fj-Hta">
@@ -76,11 +77,14 @@
                                     <constraint firstItem="26o-Mp-Kv0" firstAttribute="top" secondItem="oxR-5Q-mM4" secondAttribute="top" constant="20" id="xs2-uy-kfJ"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-cR-3Kr">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WK2-cR-3Kr" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
                                 <rect key="frame" x="40" y="115" width="944" height="1074"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHighlightingActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pu-gB-0YL">
                                 <rect key="frame" x="44" y="1220" width="106" height="52"/>
@@ -126,11 +130,11 @@
                         <viewLayoutGuide key="safeArea" id="zk2-uq-3CV"/>
                     </view>
                     <connections>
-                        <outlet property="expandButton" destination="4tt-iy-p1z" id="Gh8-cS-YrB"/>
                         <outlet property="eyeButton" destination="9ah-MS-j9g" id="qsZ-tN-Juj"/>
                         <outlet property="fileLabel" destination="Wue-Fj-Hta" id="pMO-ar-D92"/>
+                        <outlet property="leftMenuButton" destination="4tt-iy-p1z" id="Gh8-cS-YrB"/>
+                        <outlet property="rightMenuButton" destination="N6T-H7-itT" id="qOe-xz-8YE"/>
                         <outlet property="textView" destination="WK2-cR-3Kr" id="GyT-qI-PiO"/>
-                        <outlet property="toggleButton" destination="N6T-H7-itT" id="qOe-xz-8YE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kI2-2Y-EpS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -378,72 +382,80 @@
             </objects>
             <point key="canvasLocation" x="3373" y="540"/>
         </scene>
-        <!--Master View Controller-->
+        <!--파일 목록-->
         <scene sceneID="qqg-Vs-eFk">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ldP-b9-HJH" customClass="MasterViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ToP-ZX-gz8">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="ldP-b9-HJH" customClass="FileListViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ToP-ZX-gz8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="fDr-F1-UEs">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="198"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="파일 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpb-1a-JOU">
-                                    <rect key="frame" x="24" y="81" width="111" height="36"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lq-M2-VRH">
-                                    <rect key="frame" x="338" y="15" width="22" height="22"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="22" id="Gdr-T0-G1H"/>
-                                        <constraint firstAttribute="width" constant="22" id="hLj-Cq-fs9"/>
-                                    </constraints>
-                                    <state key="normal" title="Button" image="iconPlus"/>
-                                </button>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="pIi-wA-jah">
-                                    <rect key="frame" x="13" y="133" width="350" height="45"/>
+                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="pIi-wA-jah">
+                                    <rect key="frame" x="13" y="14" width="350" height="56"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="pIi-wA-jah" secondAttribute="trailing" constant="12" id="2el-8w-Yyr"/>
-                                <constraint firstItem="7Lq-M2-VRH" firstAttribute="top" secondItem="fDr-F1-UEs" secondAttribute="top" constant="15" id="35r-Bb-Vka"/>
-                                <constraint firstAttribute="trailing" secondItem="7Lq-M2-VRH" secondAttribute="trailing" constant="15" id="857-Yr-nFw"/>
-                                <constraint firstItem="gpb-1a-JOU" firstAttribute="leading" secondItem="fDr-F1-UEs" secondAttribute="leading" constant="24" id="CZn-4o-1Cv"/>
-                                <constraint firstItem="pIi-wA-jah" firstAttribute="top" secondItem="gpb-1a-JOU" secondAttribute="bottom" constant="16" id="Iv8-hw-lZB"/>
                                 <constraint firstItem="pIi-wA-jah" firstAttribute="leading" secondItem="fDr-F1-UEs" secondAttribute="leading" constant="13" id="NGE-eT-5zD"/>
-                                <constraint firstAttribute="bottom" secondItem="pIi-wA-jah" secondAttribute="bottom" constant="20" id="Wl2-Jw-GZA"/>
-                                <constraint firstItem="gpb-1a-JOU" firstAttribute="top" secondItem="fDr-F1-UEs" secondAttribute="top" constant="81" id="XLN-Z5-4wI"/>
-                                <constraint firstItem="pIi-wA-jah" firstAttribute="top" secondItem="fDr-F1-UEs" secondAttribute="top" constant="133" id="bxl-bY-xLO"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pIi-wA-jah" secondAttribute="bottom" constant="20" id="Wl2-Jw-GZA"/>
+                                <constraint firstItem="pIi-wA-jah" firstAttribute="top" secondItem="fDr-F1-UEs" secondAttribute="top" constant="14" id="bxl-bY-xLO"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="I1Z-yV-rwq">
-                            <rect key="frame" x="0.0" y="285" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="208" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="LLi-rT-3yr" rowHeight="59" style="IBUITableViewCellStyleDefault" id="GlI-e1-vH7">
-                                <rect key="frame" x="0.0" y="226" width="375" height="59"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="file_table_cell" rowHeight="55" id="GlI-e1-vH7" customClass="FileTableViewCell" customModule="MungGu_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="153" width="375" height="55"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GlI-e1-vH7" id="U4p-um-klC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="58.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GlI-e1-vH7" id="U4p-um-klC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LLi-rT-3yr">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="58.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="파일명" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-Mh-okg">
+                                            <rect key="frame" x="24" y="19" width="327" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMO-OB-MTm">
+                                            <rect key="frame" x="5" y="6.5" width="4" height="43"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="4" id="IqQ-BQ-HkB"/>
+                                                <constraint firstAttribute="height" constant="43" id="YQu-Lb-4Fe"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <real key="value" value="2.5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
+                                    <color key="backgroundColor" name="backgroundWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="BpB-Mh-okg" firstAttribute="centerY" secondItem="vMO-OB-MTm" secondAttribute="centerY" id="CcE-zD-1qZ"/>
+                                        <constraint firstItem="vMO-OB-MTm" firstAttribute="top" secondItem="U4p-um-klC" secondAttribute="top" constant="6" id="KMz-xK-jNO"/>
+                                        <constraint firstAttribute="trailing" secondItem="BpB-Mh-okg" secondAttribute="trailing" constant="24" id="O2a-UY-XaC"/>
+                                        <constraint firstItem="BpB-Mh-okg" firstAttribute="leading" secondItem="U4p-um-klC" secondAttribute="leading" constant="24" id="hKn-D0-db2"/>
+                                        <constraint firstItem="BpB-Mh-okg" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="U4p-um-klC" secondAttribute="bottom" id="ijE-kS-5xx"/>
+                                        <constraint firstItem="BpB-Mh-okg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="U4p-um-klC" secondAttribute="top" id="jTL-6M-TA3"/>
+                                        <constraint firstAttribute="bottom" secondItem="vMO-OB-MTm" secondAttribute="bottom" constant="6" id="qTi-d3-AxX"/>
+                                        <constraint firstItem="vMO-OB-MTm" firstAttribute="leading" secondItem="U4p-um-klC" secondAttribute="leading" constant="5" id="wQC-Sf-pjb"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="selectedFlagView" destination="vMO-OB-MTm" id="PrO-eJ-xU3"/>
+                                    <outlet property="titleLabel" destination="BpB-Mh-okg" id="eph-6S-PHQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -452,24 +464,28 @@
                             <outlet property="delegate" destination="ldP-b9-HJH" id="i6q-8k-HIh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="AOT-c1-N93">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="1hi-1Q-Wxj"/>
+                    <navigationItem key="navigationItem" title="파일 목록" largeTitleDisplayMode="always" id="AOT-c1-N93">
+                        <barButtonItem key="rightBarButtonItem" image="iconPlus" id="1hi-1Q-Wxj">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="filesTableView" destination="ToP-ZX-gz8" id="NKd-e9-Mkl"/>
                         <outlet property="mySearchBar" destination="pIi-wA-jah" id="9G6-or-q9b"/>
-                        <outlet property="tbView" destination="ToP-ZX-gz8" id="NKd-e9-Mkl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGW-DV-Qy6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="698" y="-641"/>
+            <point key="canvasLocation" x="697.8515625" y="-641.28843338213755"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="F4b-Ov-4Ym">
             <objects>
-                <navigationController navigationBarHidden="YES" id="WIK-EH-cbE" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZoF-W8-VBU">
+                <navigationController id="WIK-EH-cbE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ZoF-W8-VBU">
+                        <rect key="frame" x="0.0" y="24" width="375" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="ldP-b9-HJH" kind="relationship" relationship="rootViewController" id="XMk-d2-cWC"/>
@@ -526,7 +542,7 @@
         <!--My Split View Controller-->
         <scene sceneID="rR4-ck-UAm">
             <objects>
-                <splitViewController id="zPX-9C-cG8" customClass="MySplitViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController presentsWithGesture="NO" id="zPX-9C-cG8" customClass="MySplitViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="WIK-EH-cbE" kind="relationship" relationship="masterViewController" id="Pf2-HH-I32"/>
                         <segue destination="woh-GV-gYO" kind="relationship" relationship="detailViewController" id="2XO-Xa-EZi"/>
@@ -732,7 +748,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpg-en-9Ik">
-                                                    <rect key="frame" x="51" y="48.5" width="269" height="21.5"/>
+                                                    <rect key="frame" x="51" y="48.5" width="269" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -810,5 +826,9 @@
         <image name="iconMenu-1" width="48" height="48"/>
         <image name="iconPlus" width="48" height="48"/>
         <image name="rectangle" width="106" height="52"/>
+        <namedColor name="backgroundWhite">
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
