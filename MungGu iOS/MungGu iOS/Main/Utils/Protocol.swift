@@ -10,7 +10,3 @@ import UIKit
 protocol ContainerViewControllerDelegate: class {
     func handleToggleMenu()
 }
-
-protocol MasterViewControllerDelegate: class {
-    func didselect(with data: File)
-}

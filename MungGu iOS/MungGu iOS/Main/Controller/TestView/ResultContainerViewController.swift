@@ -31,18 +31,10 @@ class ResultContainerViewController: UIViewController {
     }
 
     func animatePanel(shouldExpanded: Bool) {
-        if shouldExpanded {
-            toggleSlideMenuConstraint.constant = 0
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-                [weak self] in
-                self?.view.layoutIfNeeded()
-            }, completion: nil)
-        } else {
-            toggleSlideMenuConstraint.constant = -320
-            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
+        toggleSlideMenuConstraint.constant = shouldExpanded ? 0 : -320
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }
 

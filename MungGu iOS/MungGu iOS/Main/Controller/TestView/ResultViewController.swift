@@ -79,7 +79,7 @@ class ResultViewController: UIViewController {
 
     @IBAction private func backButton(_ sender: UIButton) {
         var alert = UIAlertController(title: "경고", message: "시험 본 히스토리가 삭제됩니다.", preferredStyle: .actionSheet)
-        
+
         if let popoverController = alert.popoverPresentationController {
             popoverController.sourceView = self.view
             popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
@@ -87,7 +87,7 @@ class ResultViewController: UIViewController {
         }
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(dismissFunc), name: UIApplication.willResignActiveNotification, object: nil)
-        
+
         let backAlertAction = UIAlertAction(title: "확인", style: .destructive) { _ in
             self.performSegue(withIdentifier: "unwindViewController", sender: self)
         }
@@ -95,9 +95,9 @@ class ResultViewController: UIViewController {
         }
         alert.addAction(backAlertAction)
         alert.addAction(cancleAlertAction)
-        
+
         present(alert, animated: true, completion: nil)
-        
+
         alert = UIAlertController(title: "asd", message: "Asd", preferredStyle: .actionSheet)
     }
 
