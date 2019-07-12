@@ -22,6 +22,9 @@
 		AEF33B6622D398900084F242 /* ResultMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6522D398900084F242 /* ResultMenuTableViewCell.swift */; };
 		AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6722D3AD580084F242 /* TestViewController.swift */; };
 		C29AD8153EE3C43FE16969CB /* Pods_MungGu_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D6DE06EDA458689A84CA0B /* Pods_MungGu_iOS.framework */; };
+		CE08A9C022D8FF2200281381 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08A9B922D8FF2200281381 /* Service.swift */; };
+		CE08A9C222D8FF2200281381 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08A9BC22D8FF2200281381 /* Model.swift */; };
+		CE08A9C422D8FF2200281381 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE08A9BF22D8FF2200281381 /* NetworkManager.swift */; };
 		CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */; };
 		CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647422C74AE900EC8AF4 /* Assets.xcassets */; };
 		CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */; };
@@ -82,6 +85,9 @@
 		AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuViewController.swift; sourceTree = "<group>"; };
 		AEF33B6522D398900084F242 /* ResultMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AEF33B6722D3AD580084F242 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		CE08A9B922D8FF2200281381 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		CE08A9BC22D8FF2200281381 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		CE08A9BF22D8FF2200281381 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CE5C646A22C74AE700EC8AF4 /* MungGu iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MungGu iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5C647422C74AE900EC8AF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,6 +237,31 @@
 			path = TestView;
 			sourceTree = "<group>";
 		};
+		CE08A9B822D8FF2200281381 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CE08A9BB22D8FF2200281381 /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CE08A9BB22D8FF2200281381 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE08A9B922D8FF2200281381 /* Service.swift */,
+				CE08A9BC22D8FF2200281381 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE08A9BD22D8FF2200281381 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CE08A9BF22D8FF2200281381 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		CE5C646122C74AE700EC8AF4 = {
 			isa = PBXGroup;
 			children = (
@@ -256,12 +287,14 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
+				CE08A9B822D8FF2200281381 /* Network */,
+				CE08A9BD22D8FF2200281381 /* Manager */,
 				D557614B22C8DA6F00505CC1 /* Highlighting */,
 				D557614822C7ECC700505CC1 /* Extension */,
 				D5C7759122C79CC500ADF692 /* Resource */,
-				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
+				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
 			);
 			path = "MungGu iOS";
 			sourceTree = "<group>";
@@ -609,8 +642,10 @@
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
 				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
+				CE08A9C422D8FF2200281381 /* NetworkManager.swift in Sources */,
 				AECC601722C84BBF00561DCF /* Protocol.swift in Sources */,
 				AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */,
+				CE08A9C022D8FF2200281381 /* Service.swift in Sources */,
 				AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */,
 				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,
 				D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */,
@@ -618,6 +653,7 @@
 				AEF33B6622D398900084F242 /* ResultMenuTableViewCell.swift in Sources */,
 				AEF33B6422D3881C0084F242 /* ResultMenuViewController.swift in Sources */,
 				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
+				CE08A9C222D8FF2200281381 /* Model.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */,
 				83FA99CE22C7993F009B1EA6 /* FileListViewController.swift in Sources */,
