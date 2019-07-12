@@ -38,14 +38,6 @@ class FileDetailViewController: UIViewController {
 
     // MARK: - Handlers
 
-        func image(displayMode: UISplitViewController.DisplayMode) -> UIImage? {
-            if displayMode == .allVisible {
-                return Button.expanded.image
-            }
-            return image
-        }
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let testViewController = segue.destination as? TestViewController
         testViewController?.fileTitle = file?.title
@@ -112,7 +104,7 @@ extension FileDetailViewController {
         case left
         case right
         case expanded
-        
+
         var image: UIImage? {
             switch self {
             case .left:
@@ -123,4 +115,12 @@ extension FileDetailViewController {
                 return UIImage(named: "iconExpand")
             }
         }
+
+        func image(displayMode: UISplitViewController.DisplayMode) -> UIImage? {
+            if displayMode == .allVisible {
+                return Button.expanded.image
+            }
+            return image
+        }
+    }
 }
