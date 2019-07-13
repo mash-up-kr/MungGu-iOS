@@ -15,7 +15,6 @@
 		AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC600F22C8432C00561DCF /* DetailMenuTableViewCell.swift */; };
 		AECC601222C8477B00561DCF /* DetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601122C8477B00561DCF /* DetailContainerViewController.swift */; };
 		AECC601422C8478800561DCF /* DetailMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601322C8478800561DCF /* DetailMenuViewController.swift */; };
-		AECC601722C84BBF00561DCF /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC601622C84BBF00561DCF /* Protocol.swift */; };
 		AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B5E22D32A050084F242 /* ResultViewController.swift */; };
 		AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */; };
 		AEF33B6422D3881C0084F242 /* ResultMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */; };
@@ -38,6 +37,9 @@
 		D56A603F22D8C36F0098EA46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56A603D22D8C36F0098EA46 /* Main.storyboard */; };
 		D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */; };
 		D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604222D8E7D90098EA46 /* FileDetailViewController.swift */; };
+		D56A604622D975110098EA46 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604522D975110098EA46 /* Alerts.swift */; };
+		D56A604822D978310098EA46 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604722D978310098EA46 /* Sample.swift */; };
+		D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604922D97B700098EA46 /* UIAlertController+.swift */; };
 		D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759222C79CD900ADF692 /* PDFContent.swift */; };
 		D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D5C7759422C79E6A00ADF692 /* sample.pdf */; };
 /* End PBXBuildFile section */
@@ -79,7 +81,6 @@
 		AECC600F22C8432C00561DCF /* DetailMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuTableViewCell.swift; sourceTree = "<group>"; };
 		AECC601122C8477B00561DCF /* DetailContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContainerViewController.swift; sourceTree = "<group>"; };
 		AECC601322C8478800561DCF /* DetailMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMenuViewController.swift; sourceTree = "<group>"; };
-		AECC601622C84BBF00561DCF /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		AEF33B5E22D32A050084F242 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		AEF33B6122D387AF0084F242 /* ResultContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultContainerViewController.swift; sourceTree = "<group>"; };
 		AEF33B6322D3881C0084F242 /* ResultMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +108,9 @@
 		D56A603E22D8C36F0098EA46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		D56A604222D8E7D90098EA46 /* FileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
+		D56A604522D975110098EA46 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		D56A604722D978310098EA46 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
+		D56A604922D97B700098EA46 /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		D5C7759222C79CD900ADF692 /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
 		D5C7759422C79E6A00ADF692 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		DEF745E2C2E9DFB9D50A106C /* Pods-MungGu iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOS.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,14 +212,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		AECC601522C84BA300561DCF /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				AECC601622C84BBF00561DCF /* Protocol.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		AECC601822C855B900561DCF /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +283,7 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D56A604422D974EE0098EA46 /* Utils */,
 				CE08A9B822D8FF2200281381 /* Network */,
 				CE08A9BD22D8FF2200281381 /* Manager */,
 				D557614B22C8DA6F00505CC1 /* Highlighting */,
@@ -331,7 +328,6 @@
 		CE6FC73D22C74FC5006FA209 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				AECC601522C84BA300561DCF /* Utils */,
 				AECC600C22C842F400561DCF /* View */,
 				AECC600E22C8430500561DCF /* Controller */,
 				AECC600D22C842FC00561DCF /* Model */,
@@ -343,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				D557614922C7ECD100505CC1 /* UIColor.swift */,
+				D56A604922D97B700098EA46 /* UIAlertController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -365,11 +362,20 @@
 			path = Base.lproj;
 			sourceTree = "<group>";
 		};
+		D56A604422D974EE0098EA46 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D56A604522D975110098EA46 /* Alerts.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		D5C7759122C79CC500ADF692 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				D5C7759422C79E6A00ADF692 /* sample.pdf */,
 				D5C7759222C79CD900ADF692 /* PDFContent.swift */,
+				D56A604722D978310098EA46 /* Sample.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -637,15 +643,16 @@
 			files = (
 				D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */,
 				D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */,
+				D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */,
 				D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */,
 				D557615522C8E4D400505CC1 /* Highlight.swift in Sources */,
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
 				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				CE08A9C422D8FF2200281381 /* NetworkManager.swift in Sources */,
-				AECC601722C84BBF00561DCF /* Protocol.swift in Sources */,
 				AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */,
 				CE08A9C022D8FF2200281381 /* Service.swift in Sources */,
+				D56A604622D975110098EA46 /* Alerts.swift in Sources */,
 				AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */,
 				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,
 				D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */,
@@ -655,6 +662,7 @@
 				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
 				CE08A9C222D8FF2200281381 /* Model.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
+				D56A604822D978310098EA46 /* Sample.swift in Sources */,
 				AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */,
 				83FA99CE22C7993F009B1EA6 /* FileListViewController.swift in Sources */,
 				AECC601422C8478800561DCF /* DetailMenuViewController.swift in Sources */,
