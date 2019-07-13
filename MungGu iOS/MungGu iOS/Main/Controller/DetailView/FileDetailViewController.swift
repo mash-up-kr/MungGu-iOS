@@ -18,7 +18,6 @@ class FileDetailViewController: UIViewController {
     @IBOutlet weak var fileLabel: UILabel!
 
     // MARK: - Properties
-    private let expandedImage: UIImage = UIImage(named: "iconExpand")!
     private var currentButtonImage: UIImage?
     private var file: File?
     weak var containderDelegate: ContainerViewControllerDelegate?
@@ -30,6 +29,7 @@ class FileDetailViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         splitViewController?.delegate = self
         if let displayMode = splitViewController?.displayMode {
             updateButton(displayMode: displayMode)
@@ -38,30 +38,44 @@ class FileDetailViewController: UIViewController {
 
     // MARK: - Handlers
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let testViewController = segue.destination as? TestViewController
-        testViewController?.fileTitle = file?.title
-    }
-
     func updateButton(displayMode: UISplitViewController.DisplayMode) {
         rightMenuButton.isHidden = displayMode == .allVisible
         leftMenuButton.setImage(Button.left.image(displayMode: displayMode), for: .normal)
     }
 
     // MARK: - IBActions
-    @IBAction private func tapLeftMenu(_ sender: UIButton) {
+    @IBAction private func didTapLeftMenu(_ sender: UIButton) {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
             let primaryHidden = self.splitViewController?.preferredDisplayMode ?? .primaryHidden
             self.splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
         })
     }
 
-    @IBAction private func tapRightMenu(_ sender: UIButton) {
+    @IBAction private func didTapRightMenu(_ sender: UIButton) {
         sender.isSelected.toggle()
         containderDelegate?.handleToggleMenu()
     }
 
-    @IBAction private func goTest(_ sender: UIButton) {
+    @IBAction private func didTapTestButton(_ sender: UIButton) {
+        guard let testNavigationController = storyboard?.instantiateViewController(withIdentifier: "testNavigationController") as? UINavigationController,
+            let testViewController = testNavigationController.topViewController as? TestViewController
+        else {
+            preconditionFailure("can not find TestViewController")
+        }
+        guard let file = self.file else {
+            let alert = UIAlertController(.noFile)
+            alert.addAction(alert.defaultConfirmAction)
+            present(alert, animated: true)
+            return
+        }
+        guard !textView.highlightings.isEmpty else {
+            let alert = UIAlertController(.noHighlighting)
+            alert.addAction(alert.defaultConfirmAction)
+            present(alert, animated: true)
+            return
+        }
+        testViewController.bind(file)
+        present(testNavigationController, animated: true, completion: nil)
     }
 
     @IBAction private func blindText(_ sender: UIButton) {
@@ -123,4 +137,5 @@ extension FileDetailViewController {
             return image
         }
     }
+
 }

@@ -62,3 +62,7 @@ extension DetailContainerController: ContainerViewControllerDelegate {
         isExpanded.toggle()
     }
 }
+
+protocol ContainerViewControllerDelegate: class {
+    func handleToggleMenu()
+}

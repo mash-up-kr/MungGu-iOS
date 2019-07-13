@@ -18,6 +18,13 @@ class HighlightingTextView: UITextView {
             self.tapGestrue?.isEnabled = self.isHighlightingActive
         }
     }
+
+    @IBInspectable var textContainerInsets: CGFloat = 20 {
+        didSet {
+            self.textContainerInset = UIEdgeInsets(top: self.textContainerInsets, left: 7, bottom: 0, right: 0)
+        }
+    }
+
     weak var highlighDelegate: HighlightingTextViewDelegate?
 
     private var startPosition: UITextPosition?
