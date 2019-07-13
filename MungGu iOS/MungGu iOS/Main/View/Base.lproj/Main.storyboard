@@ -110,6 +110,7 @@
                                 <state key="selected" image="iconEyeHide"/>
                                 <connections>
                                     <action selector="blindText:" destination="P8U-p4-3eV" eventType="touchUpInside" id="uVh-J4-dAj"/>
+                                    <segue destination="Fac-Oa-rcV" kind="presentation" id="zLP-71-pik"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -449,6 +450,9 @@
                     <navigationItem key="navigationItem" title="파일 목록" largeTitleDisplayMode="always" id="AOT-c1-N93">
                         <barButtonItem key="rightBarButtonItem" image="iconPlus" id="1hi-1Q-Wxj">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="Fac-Oa-rcV" kind="presentation" id="Lz3-Dr-HKn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -808,6 +812,14 @@
             </objects>
             <point key="canvasLocation" x="710.7421875" y="1590.9224011713029"/>
         </scene>
+        <!--Document-->
+        <scene sceneID="d85-Yy-IqV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Document" id="Fac-Oa-rcV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bHK-kT-6kG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="355"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btnEye" width="52" height="52"/>
@@ -829,5 +841,8 @@
             <color red="0.93333333333333335" green="0.21176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zLP-71-pik"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
