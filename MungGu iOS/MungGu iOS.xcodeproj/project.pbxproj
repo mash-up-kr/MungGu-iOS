@@ -29,6 +29,11 @@
 		CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */; };
 		CE5C648322C74AE900EC8AF4 /* MungGu_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648222C74AE900EC8AF4 /* MungGu_iOSTests.swift */; };
 		CE5C648E22C74AE900EC8AF4 /* MungGu_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */; };
+		CEC8928D22D91CAB004BA075 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8928722D91CAB004BA075 /* Document.swift */; };
+		CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC8928822D91CAB004BA075 /* Document.storyboard */; };
+		CEC8929022D91CAB004BA075 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8928A22D91CAB004BA075 /* DocumentBrowserViewController.swift */; };
+		CEC8929222D93C27004BA075 /* DocumentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8929122D93C27004BA075 /* DocumentDataManager.swift */; };
+		CEC8929522D94ABA004BA075 /* AlertShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8929422D94ABA004BA075 /* AlertShowable.swift */; };
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
 		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
 		D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */; };
@@ -100,6 +105,12 @@
 		CE5C648922C74AE900EC8AF4 /* MungGu iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MungGu iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MungGu_iOSUITests.swift; sourceTree = "<group>"; };
 		CE5C648F22C74AE900EC8AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEC8928722D91CAB004BA075 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		CEC8928822D91CAB004BA075 /* Document.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Document.storyboard; sourceTree = "<group>"; };
+		CEC8928A22D91CAB004BA075 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
+		CEC8928B22D91CAB004BA075 /* MungGu iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "MungGu iOS.entitlements"; sourceTree = "<group>"; };
+		CEC8929122D93C27004BA075 /* DocumentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataManager.swift; sourceTree = "<group>"; };
+		CEC8929422D94ABA004BA075 /* AlertShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShowable.swift; sourceTree = "<group>"; };
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextView.swift; sourceTree = "<group>"; };
@@ -254,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				CE08A9BF22D8FF2200281381 /* NetworkManager.swift */,
+				CEC8929122D93C27004BA075 /* DocumentDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -261,10 +273,10 @@
 		CE5C646122C74AE700EC8AF4 = {
 			isa = PBXGroup;
 			children = (
-				353BDE1CED88398BF25670B6 /* Frameworks */,
 				CE5C646C22C74AE700EC8AF4 /* MungGu iOS */,
 				CE5C648122C74AE900EC8AF4 /* MungGu iOSTests */,
 				CE5C648C22C74AE900EC8AF4 /* MungGu iOSUITests */,
+				353BDE1CED88398BF25670B6 /* Frameworks */,
 				7CEBFC48B2075AFD1910BDCE /* Pods */,
 				CE5C646B22C74AE700EC8AF4 /* Products */,
 			);
@@ -284,12 +296,15 @@
 			isa = PBXGroup;
 			children = (
 				D56A604422D974EE0098EA46 /* Utils */,
+				CEC8928B22D91CAB004BA075 /* MungGu iOS.entitlements */,
 				CE08A9B822D8FF2200281381 /* Network */,
 				CE08A9BD22D8FF2200281381 /* Manager */,
+				CEC8928522D91CAB004BA075 /* Document */,
 				D557614B22C8DA6F00505CC1 /* Highlighting */,
 				D557614822C7ECC700505CC1 /* Extension */,
 				D5C7759122C79CC500ADF692 /* Resource */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
+				CEC8929322D94A9E004BA075 /* Util */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
 				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
 			);
@@ -318,8 +333,8 @@
 			isa = PBXGroup;
 			children = (
 				CE5C647922C74AE900EC8AF4 /* Info.plist */,
-				CE5C647422C74AE900EC8AF4 /* Assets.xcassets */,
 				CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */,
+				CE5C647422C74AE900EC8AF4 /* Assets.xcassets */,
 				D557614622C7EC6900505CC1 /* Colors.xcassets */,
 			);
 			path = Supports;
@@ -333,6 +348,24 @@
 				AECC600D22C842FC00561DCF /* Model */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		CEC8928522D91CAB004BA075 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				CEC8928722D91CAB004BA075 /* Document.swift */,
+				CEC8928A22D91CAB004BA075 /* DocumentBrowserViewController.swift */,
+				CEC8928822D91CAB004BA075 /* Document.storyboard */,
+			);
+			path = Document;
+			sourceTree = "<group>";
+		};
+		CEC8929322D94A9E004BA075 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CEC8929422D94ABA004BA075 /* AlertShowable.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		D557614822C7ECC700505CC1 /* Extension */ = {
@@ -493,6 +526,7 @@
 				D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */,
 				D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */,
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
+				CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */,
 				D56A603F22D8C36F0098EA46 /* Main.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
 			);
@@ -657,13 +691,17 @@
 				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,
 				D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */,
 				AECC601222C8477B00561DCF /* DetailContainerViewController.swift in Sources */,
+				CEC8929222D93C27004BA075 /* DocumentDataManager.swift in Sources */,
 				AEF33B6622D398900084F242 /* ResultMenuTableViewCell.swift in Sources */,
 				AEF33B6422D3881C0084F242 /* ResultMenuViewController.swift in Sources */,
 				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
+				CEC8929522D94ABA004BA075 /* AlertShowable.swift in Sources */,
+				CEC8929022D91CAB004BA075 /* DocumentBrowserViewController.swift in Sources */,
 				CE08A9C222D8FF2200281381 /* Model.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D56A604822D978310098EA46 /* Sample.swift in Sources */,
 				AEF33B6222D387AF0084F242 /* ResultContainerViewController.swift in Sources */,
+				CEC8928D22D91CAB004BA075 /* Document.swift in Sources */,
 				83FA99CE22C7993F009B1EA6 /* FileListViewController.swift in Sources */,
 				AECC601422C8478800561DCF /* DetailMenuViewController.swift in Sources */,
 				83FA99D422C7C2E1009B1EA6 /* FIle.swift in Sources */,
@@ -842,8 +880,9 @@
 			baseConfigurationReference = 05554277463FF7E6C19AC99A /* Pods-MungGu iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 74Z28YUL8J;
 				INFOPLIST_FILE = "$(SRCROOT)/MungGu iOS/Supports/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -854,7 +893,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -863,8 +902,9 @@
 			baseConfigurationReference = DEF745E2C2E9DFB9D50A106C /* Pods-MungGu iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 74Z28YUL8J;
 				INFOPLIST_FILE = "$(SRCROOT)/MungGu iOS/Supports/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -875,7 +915,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
