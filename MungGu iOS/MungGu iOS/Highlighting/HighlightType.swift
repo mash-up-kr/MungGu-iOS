@@ -12,7 +12,7 @@ enum HighlightType {
     case general
     case imortant
 
-    var color: UIColor {
+    var defaultColor: UIColor {
         switch self {
         case .general:
             return .lightPeach

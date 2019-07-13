@@ -12,14 +12,22 @@ import UIKit
 class TestViewController: UIViewController {
 
     // MARK: - IBOutlet
+    @IBOutlet weak var answerField: UITextField!
+    @IBOutlet weak var textView: HighlightingTextView!
+    @IBOutlet weak var inputViewBottomConstraint: NSLayoutConstraint!
 
     // MARK: - Properties
     private var file: File!
+    private var highlightData: HighlightData!
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = file.title
+        self.navigationItem.title = file.title
+        self.textView.attributedText = highlightData.attributedString
+        self.addNotification()
+        textView.loadData(from: highlightData, state: .test, isGestureEnable: true)
+        textView.highlighDelegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -27,8 +35,9 @@ class TestViewController: UIViewController {
         resultViewController?.fileTitle = file.title
     }
 
-    func bind(_ file: File) {
+    func bind(_ file: File, highlightData: HighlightData) {
         self.file = file
+        self.highlightData = highlightData
     }
 
     // MARK: - IBActions
@@ -39,6 +48,48 @@ class TestViewController: UIViewController {
         })
         alertViewController.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         present(alertViewController, animated: true, completion: nil)
+    }
+
+    private func addNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber else { return }
+        let keyboardFrame = keyboardSize.cgRectValue
+        inputViewBottomConstraint.constant = keyboardFrame.height
+        UIView.animate(withDuration: duration.doubleValue) {
+            self.view.layoutIfNeeded()
+        }
+
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        guard let userInfo = notification.userInfo else { return }
+        guard let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber else { return }
+        inputViewBottomConstraint.constant = 0
+        UIView.animate(withDuration: duration.doubleValue) {
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @IBAction func didTapOK(_ sender: UIButton) {
+
+    }
+
+}
+
+extension TestViewController: HighlightingTextViewDelegate {
+    func didChange(state: HighlightingTextViewState) {
+
+    }
+
+    func didTap(_ highlight: Highlight) {
+        self.answerField.becomeFirstResponder()
+        self.textView.scrollRangeToVisible(highlight.range)
     }
 
 }

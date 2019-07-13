@@ -152,35 +152,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zeV-tt-SqN">
-                                <rect key="frame" x="40" y="104" width="944" height="1172"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muV-9T-Qxp" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
+                                <rect key="frame" x="40" y="104" width="944" height="1182"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">not supported on this platform.
-2019-07-13 10:41:40.176519+0900 MungGu iOS[35502:3991604] [AXMediaCommon] Unable to look up screen scale
-2019-07-13 10:41:40.176629+0900 MungGu iOS[35502:3991604] [AXMediaCommon] Unexpected physical screen orientation
-2019-07-13 10:41:40.213240+0900 MungGu iOS[35502:3991604] [AXMediaCommon] Unable to look up screen scale
-2019-07-13 10:41:40.231200+0900 MungGu iOS[35502:3991604] [AXMediaCommon] Unable to look up screen scale
-2019-07-13 10:41:40.231314+0900 MungGu iOS[35502:3991</mutableString>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc4-zc-kSH">
-                                <rect key="frame" x="66" y="1242" width="306" height="60"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="iLP-8i-wKp" kind="presentation" id="Nfb-Dd-nYG"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ShT-Le-RFh">
+                                <rect key="frame" x="0.0" y="1286" width="1024" height="60"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="답을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-9a-ouR">
+                                        <rect key="frame" x="0.0" y="0.0" width="956" height="60"/>
+                                        <color key="backgroundColor" name="iceBlue"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3nX-lR-b48">
+                                        <rect key="frame" x="964" y="0.0" width="60" height="60"/>
+                                        <state key="normal" image="btnOk"/>
+                                        <connections>
+                                            <action selector="didTapOK:" destination="3Ae-TL-a03" eventType="touchUpInside" id="RWg-ru-ea6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zeV-tt-SqN" firstAttribute="centerX" secondItem="lyX-Er-hxR" secondAttribute="centerX" id="0tP-av-OzP"/>
-                            <constraint firstItem="zeV-tt-SqN" firstAttribute="top" secondItem="kVm-AP-RbG" secondAttribute="top" constant="30" id="3bN-BQ-PcY"/>
-                            <constraint firstItem="Rc4-zc-kSH" firstAttribute="top" secondItem="zeV-tt-SqN" secondAttribute="bottom" constant="10" id="Al3-yb-PtC"/>
-                            <constraint firstItem="Rc4-zc-kSH" firstAttribute="leading" secondItem="kVm-AP-RbG" secondAttribute="leading" constant="20" id="PN9-t5-Zm9"/>
-                            <constraint firstItem="Rc4-zc-kSH" firstAttribute="bottom" secondItem="kVm-AP-RbG" secondAttribute="bottom" id="YjU-wj-wI6"/>
-                            <constraint firstItem="kVm-AP-RbG" firstAttribute="trailing" secondItem="zeV-tt-SqN" secondAttribute="trailing" constant="40" id="ivi-9d-1Xp"/>
-                            <constraint firstItem="kVm-AP-RbG" firstAttribute="bottom" secondItem="zeV-tt-SqN" secondAttribute="bottom" constant="70" id="tOz-Ua-nr1"/>
+                            <constraint firstItem="ShT-Le-RFh" firstAttribute="top" secondItem="muV-9T-Qxp" secondAttribute="bottom" id="220-77-fYZ"/>
+                            <constraint firstItem="muV-9T-Qxp" firstAttribute="top" secondItem="kVm-AP-RbG" secondAttribute="top" constant="30" id="3rX-vz-qLl"/>
+                            <constraint firstItem="kVm-AP-RbG" firstAttribute="trailing" secondItem="muV-9T-Qxp" secondAttribute="trailing" constant="40" id="6zl-Ym-afL"/>
+                            <constraint firstItem="kVm-AP-RbG" firstAttribute="trailing" secondItem="ShT-Le-RFh" secondAttribute="trailing" id="Lq5-1m-4wJ"/>
+                            <constraint firstItem="kVm-AP-RbG" firstAttribute="bottom" secondItem="ShT-Le-RFh" secondAttribute="bottom" id="SSN-1l-wx9"/>
+                            <constraint firstItem="ShT-Le-RFh" firstAttribute="leading" secondItem="kVm-AP-RbG" secondAttribute="leading" id="Ytd-xv-NCj"/>
+                            <constraint firstItem="muV-9T-Qxp" firstAttribute="leading" secondItem="kVm-AP-RbG" secondAttribute="leading" constant="40" id="yVd-0g-deQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kVm-AP-RbG"/>
                     </view>
@@ -191,10 +197,15 @@
                                 <action selector="exit:" destination="3Ae-TL-a03" id="bf8-xy-7wS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="채점하기" id="YL1-zR-71c">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="채점하기" id="YL1-zR-71c">
                             <color key="tintColor" name="tomatoRed"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="answerField" destination="wUu-9a-ouR" id="nm6-Vd-M9b"/>
+                        <outlet property="inputViewBottomConstraint" destination="SSN-1l-wx9" id="cyS-fH-BHn"/>
+                        <outlet property="textView" destination="muV-9T-Qxp" id="18X-SN-HXG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fif-mM-0o6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -823,6 +834,7 @@
     </scenes>
     <resources>
         <image name="btnEye" width="52" height="52"/>
+        <image name="btnOk" width="60" height="60"/>
         <image name="btnRedo" width="106" height="52"/>
         <image name="iconArrowDown" width="30" height="30"/>
         <image name="iconExpand" width="48" height="48"/>
@@ -837,6 +849,9 @@
         <namedColor name="backgroundWhite">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="iceBlue">
+            <color red="0.92941176470588238" green="0.94901960784313721" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="tomatoRed">
             <color red="0.93333333333333335" green="0.21176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -844,5 +859,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="zLP-71-pik"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

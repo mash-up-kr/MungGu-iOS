@@ -25,7 +25,7 @@ class FileDetailViewController: UIViewController {
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView?.setupHighlightingGestures()
+        textView?.isGestureEnable = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class FileDetailViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        testViewController.bind(file)
+        testViewController.bind(file, highlightData: textView.highlightData)
         present(testNavigationController, animated: true, completion: nil)
     }
 
