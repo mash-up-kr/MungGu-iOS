@@ -110,7 +110,6 @@
                                 <state key="selected" image="iconEyeHide"/>
                                 <connections>
                                     <action selector="blindText:" destination="P8U-p4-3eV" eventType="touchUpInside" id="uVh-J4-dAj"/>
-                                    <segue destination="Fac-Oa-rcV" kind="presentation" id="zLP-71-pik"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -856,8 +855,5 @@
             <color red="0.93333333333333335" green="0.21176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="zLP-71-pik"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
