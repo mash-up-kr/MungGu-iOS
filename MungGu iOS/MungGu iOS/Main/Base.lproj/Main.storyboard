@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zPX-9C-cG8">
+    <device id="ipad12_9rounded" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+    </dependencies>
+    <scenes>
+        <!--FileListView-->
+        <scene sceneID="DcY-W4-BLt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FileListView" id="VDX-lp-AaP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e2l-uz-gwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-553" y="-293"/>
+        </scene>
+        <!--My Split View Controller-->
+        <scene sceneID="rR4-ck-UAm">
+            <objects>
+                <splitViewController presentsWithGesture="NO" id="zPX-9C-cG8" customClass="MySplitViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="VDX-lp-AaP" kind="relationship" relationship="masterViewController" id="neC-6F-3xa"/>
+                        <segue destination="AxW-mo-rnd" kind="relationship" relationship="detailViewController" id="7ML-Eq-VfG"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FDt-96-D82" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-992" y="1"/>
+        </scene>
+        <!--RightSlideView-->
+        <scene sceneID="w3s-Az-PCs">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RightSlideView" id="AxW-mo-rnd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1U5-H1-qUk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-512" y="175"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+</document>

@@ -37,7 +37,7 @@ enum Service {
 
 extension Service: TargetType {
     var baseURL: URL {
-        let urlString = "https://13.124.132.184:8080/v1/devices"
+        let urlString = "http://15.164.62.183:8080/v1/devices"
         guard let url = URL(string: urlString) else {
             assertionFailure("\(urlString) doesn't exist!")
             return URL(string: "")!
