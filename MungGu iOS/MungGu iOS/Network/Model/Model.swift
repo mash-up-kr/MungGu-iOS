@@ -27,7 +27,7 @@ struct FileData: Codable {
     let name: String?
 }
 
-struct Hightlight: Codable {
+struct Highlight: Codable {
     let id: Int?
     let fileId: Int?
     let startIndex: Int?

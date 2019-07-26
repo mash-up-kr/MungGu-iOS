@@ -36,11 +36,12 @@
 		CEC8929222D93C27004BA075 /* DocumentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8929122D93C27004BA075 /* DocumentDataManager.swift */; };
 		CEC8929522D94ABA004BA075 /* AlertShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8929422D94ABA004BA075 /* AlertShowable.swift */; };
 		CEC8929822D98A7F004BA075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC8929622D98A7F004BA075 /* Main.storyboard */; };
+		D543B48C22EB4CC70047C3D7 /* UITextView+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */; };
+		D543B48E22EB535A0047C3D7 /* Highlight+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */; };
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
 		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
 		D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */; };
 		D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614E22C8E20600505CC1 /* HighlightType.swift */; };
-		D557615522C8E4D400505CC1 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557615422C8E4D400505CC1 /* Highlight.swift */; };
 		D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */; };
 		D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604222D8E7D90098EA46 /* FileDetailViewController.swift */; };
 		D56A604622D975110098EA46 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604522D975110098EA46 /* Alerts.swift */; };
@@ -116,11 +117,12 @@
 		CEC8929122D93C27004BA075 /* DocumentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataManager.swift; sourceTree = "<group>"; };
 		CEC8929422D94ABA004BA075 /* AlertShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShowable.swift; sourceTree = "<group>"; };
 		CEC8929722D98A7F004BA075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Highlight.swift"; sourceTree = "<group>"; };
+		D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Highlight+NSRange.swift"; sourceTree = "<group>"; };
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextView.swift; sourceTree = "<group>"; };
 		D557614E22C8E20600505CC1 /* HighlightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightType.swift; sourceTree = "<group>"; };
-		D557615422C8E4D400505CC1 /* Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
 		D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		D56A604222D8E7D90098EA46 /* FileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
 		D56A604522D975110098EA46 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -371,6 +373,8 @@
 			children = (
 				D557614922C7ECD100505CC1 /* UIColor.swift */,
 				D56A604922D97B700098EA46 /* UIAlertController+.swift */,
+				D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */,
+				D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -380,7 +384,6 @@
 			children = (
 				D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */,
 				D557614E22C8E20600505CC1 /* HighlightType.swift */,
-				D557615422C8E4D400505CC1 /* Highlight.swift */,
 				D56A604B22D988910098EA46 /* HighlightingTextViewState.swift */,
 				D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */,
 			);
@@ -669,11 +672,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */,
+				D543B48C22EB4CC70047C3D7 /* UITextView+Highlight.swift in Sources */,
 				D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */,
 				D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */,
 				D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */,
 				D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */,
-				D557615522C8E4D400505CC1 /* Highlight.swift in Sources */,
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
 				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
@@ -685,6 +688,7 @@
 				D56A604E22D9929E0098EA46 /* HighlightTextViewDelegate.swift in Sources */,
 				AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */,
 				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,
+				D543B48E22EB535A0047C3D7 /* Highlight+NSRange.swift in Sources */,
 				D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */,
 				AECC601222C8477B00561DCF /* DetailContainerViewController.swift in Sources */,
 				CEC8929222D93C27004BA075 /* DocumentDataManager.swift in Sources */,
