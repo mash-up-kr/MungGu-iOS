@@ -57,7 +57,7 @@ class FileListViewController: UIViewController {
     }
 
     @objc private func didChangedDocumentCount(_ notification: Notification) {
-        filteredFiles = data
+//        filteredFiles = data
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
@@ -86,7 +86,7 @@ extension FileListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
         let selectedData = filteredFiles[indexPath.row]
-//        delegate?.didSelected(with: selectedData)
+        delegate?.didSelected(with: selectedData)
     }
 
 }
@@ -102,7 +102,7 @@ extension FileListViewController: UITableViewDataSource {
         }
         // FIXME
         let file = filteredFiles[indexPath.row]
-        cell.titleLabel.text = file
+        cell.titleLabel.text = file.title
         return cell
     }
 

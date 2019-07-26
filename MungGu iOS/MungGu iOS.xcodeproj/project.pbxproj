@@ -45,6 +45,8 @@
 		D56A604622D975110098EA46 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604522D975110098EA46 /* Alerts.swift */; };
 		D56A604822D978310098EA46 /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604722D978310098EA46 /* Sample.swift */; };
 		D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604922D97B700098EA46 /* UIAlertController+.swift */; };
+		D56A604C22D988910098EA46 /* HighlightingTextViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604B22D988910098EA46 /* HighlightingTextViewState.swift */; };
+		D56A604E22D9929E0098EA46 /* HighlightTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */; };
 		D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759222C79CD900ADF692 /* PDFContent.swift */; };
 		D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D5C7759422C79E6A00ADF692 /* sample.pdf */; };
 /* End PBXBuildFile section */
@@ -122,6 +124,8 @@
 		D56A604522D975110098EA46 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		D56A604722D978310098EA46 /* Sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		D56A604922D97B700098EA46 /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
+		D56A604B22D988910098EA46 /* HighlightingTextViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextViewState.swift; sourceTree = "<group>"; };
+		D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightTextViewDelegate.swift; sourceTree = "<group>"; };
 		D5C7759222C79CD900ADF692 /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
 		D5C7759422C79E6A00ADF692 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
 		DEF745E2C2E9DFB9D50A106C /* Pods-MungGu iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOS.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -383,6 +387,8 @@
 				D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */,
 				D557614E22C8E20600505CC1 /* HighlightType.swift */,
 				D557615422C8E4D400505CC1 /* Highlight.swift */,
+				D56A604B22D988910098EA46 /* HighlightingTextViewState.swift */,
+				D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */,
 			);
 			path = Highlighting;
 			sourceTree = "<group>";
@@ -683,10 +689,12 @@
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
 				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
+				D56A604C22D988910098EA46 /* HighlightingTextViewState.swift in Sources */,
 				CE08A9C422D8FF2200281381 /* NetworkManager.swift in Sources */,
 				AEF33B6822D3AD580084F242 /* TestViewController.swift in Sources */,
 				CE08A9C022D8FF2200281381 /* Service.swift in Sources */,
 				D56A604622D975110098EA46 /* Alerts.swift in Sources */,
+				D56A604E22D9929E0098EA46 /* HighlightTextViewDelegate.swift in Sources */,
 				AEF33B5F22D32A050084F242 /* ResultViewController.swift in Sources */,
 				AECC601022C8432C00561DCF /* DetailMenuTableViewCell.swift in Sources */,
 				D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */,

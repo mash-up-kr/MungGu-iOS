@@ -25,7 +25,7 @@ class FileDetailViewController: UIViewController {
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView?.setupHighlightingGestures()
+        textView?.isGestureEnable = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class FileDetailViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        testViewController.bind(file)
+        testViewController.bind(file, highlightData: textView.highlightData)
         present(testNavigationController, animated: true, completion: nil)
     }
 
@@ -119,22 +119,19 @@ extension FileDetailViewController {
         case right
         case expanded
 
-        var image: UIImage? {
+        var imageName: String {
             switch self {
-            case .left:
-                return UIImage(named: "iconMenu")
-            case .right:
-                return UIImage(named: "iconToggle")
-            case .expanded:
-                return UIImage(named: "iconExpand")
+            case .left: return "iconMenu"
+            case .right: return "iconToggle"
+            case .expanded: return "iconExpand"
             }
         }
 
         func image(displayMode: UISplitViewController.DisplayMode) -> UIImage? {
             if displayMode == .allVisible {
-                return Button.expanded.image
+                return UIImage(named: Button.expanded.imageName)
             }
-            return image
+            return UIImage(named: imageName)
         }
     }
 

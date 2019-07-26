@@ -10,8 +10,6 @@ import UIKit
 
 class HighlightingTextView: UITextView {
 
-    var highlighType: HighlightType = .general
-
     @IBInspectable var isHighlightingActive: Bool = true {
         didSet {
             self.panGesture?.isEnabled = self.isHighlightingActive
@@ -19,30 +17,32 @@ class HighlightingTextView: UITextView {
         }
     }
 
-    @IBInspectable var textContainerInsets: CGFloat = 20 {
+    weak var highlighDelegate: HighlightingTextViewDelegate?
+
+    var highlightData: HighlightData {
+        return HighlightData(attributedString: self.attributedText, highlightings: self.highlightings)
+    }
+    var highlighType: HighlightType = .general
+    var state: HighlightingTextViewState = .highlighting {
         didSet {
-            self.textContainerInset = UIEdgeInsets(top: self.textContainerInsets, left: 7, bottom: 0, right: 0)
+            self.highlighDelegate?.didChange(state: self.state)
+        }
+    }
+    var isGestureEnable: Bool = false {
+        didSet {
+            if self.panGesture == nil || self.tapGestrue == nil {
+                self.setupHighlightingGestures()
+            }
+            self.panGesture?.isEnabled = self.isGestureEnable
+            self.tapGestrue?.isEnabled = self.isGestureEnable
         }
     }
 
-    weak var highlighDelegate: HighlightingTextViewDelegate?
+    func loadData(from data: HighlightData, state: HighlightingTextViewState, isGestureEnable: Bool = false) {
+        self.state = state
+        attributedText = data.attributedString
+        highlightings = data.highlightings
 
-    private var startPosition: UITextPosition?
-    private var endPosition: UITextPosition?
-    private var currentRange: NSRange?
-    private (set) var highlightings: [Highlight] = []
-
-    private var panGesture: UIPanGestureRecognizer?
-    private var tapGestrue: UITapGestureRecognizer?
-
-    func setupHighlightingGestures() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(panGesture)
-        self.panGesture = panGesture
-        let tapGestrue = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
-        self.addGestureRecognizer(tapGestrue)
-        self.tapGestrue = tapGestrue
     }
 
     func showHighlightedText() {
@@ -57,12 +57,27 @@ class HighlightingTextView: UITextView {
         self.highlightings.forEach { highlight in
             self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
                 self.textStorage.removeAttribute(.foregroundColor, range: range)
-                self.textStorage.addAttribute(.foregroundColor, value: highlight.type.color, range: range)
+                self.textStorage.addAttribute(.foregroundColor, value: self.highlightColor, range: range)
             }
         }
     }
 
+    private var startPosition: UITextPosition?
+    private var endPosition: UITextPosition?
+    private var currentRange: NSRange?
+    private (set) var highlightings: [Highlight] = []
+
+    private var panGesture: UIPanGestureRecognizer?
+    private var tapGestrue: UITapGestureRecognizer?
+
+    private var highlightColor: UIColor {
+        return self.highlighDelegate?.colorFor(highlightMode: self.highlighType) ?? self.highlighType.defaultColor
+    }
+
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
+        guard self.state != .test else {
+            return
+        }
         let point = sender.location(in: self)
         let position = self.closestPosition(to: point)
         self.endPosition = position
@@ -75,14 +90,14 @@ class HighlightingTextView: UITextView {
             if let start = self.startPosition,
                 let end = self.endPosition {
                 let range = self.rangeOf(self, start: start, end: end)
-                self.addHighlighting(color: self.highlighType.color, range: range)
+                self.addHighlighting(color: self.highlightColor, range: range)
                 self.currentRange = range
             }
         case .ended:
             self.tapGestrue?.isEnabled = true
             if let range = self.currentRange {
                 let text = self.textStorage.attributedSubstring(from: range).string
-                let highlight = Highlight(range: range, text: text, type: self.highlighType)
+                let highlight = Highlight(start: startPosition, end: endPosition, range: range, text: text, type: self.highlighType)
                 self.highlightings.append(highlight)
                 self.highlighDelegate?.didAdd(highlight)
                 self.currentRange = nil
@@ -95,8 +110,27 @@ class HighlightingTextView: UITextView {
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: self)
         if let position = self.closestPosition(to: point) {
-            self.removeHighlighting(position: position)
+            if state != .test {
+                self.removeHighlighting(position: position)
+            } else if let highlighting = highlightAt(position: position) {
+                self.highlighDelegate?.didTap(highlighting)
+            }
         }
+    }
+
+    private func setupHighlightingGestures() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(panGesture)
+        self.panGesture = panGesture
+        let tapGestrue = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
+        self.addGestureRecognizer(tapGestrue)
+        self.tapGestrue = tapGestrue
+    }
+
+    private func highlightAt(position: UITextPosition) -> Highlight? {
+        let location = self.offset(from: self.beginningOfDocument, to: position)
+        return self.highlightings.first { $0.range.contains(location) }
     }
 
     private func addHighlighting(color: UIColor, range: NSRange) {
@@ -139,10 +173,4 @@ class HighlightingTextView: UITextView {
         }
     }
 
-}
-
-protocol HighlightingTextViewDelegate: class {
-    func colorFor(highlightMode: HighlightType) -> UIColor
-    func didAdd(_ highlight: Highlight)
-    func didRemove(_ highlight: Highlight)
 }
