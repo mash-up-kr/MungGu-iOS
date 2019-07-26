@@ -12,37 +12,47 @@ class HighlightingTextView: UITextView {
 
     @IBInspectable var isHighlightingActive: Bool = true {
         didSet {
-            self.panGesture?.isEnabled = self.isHighlightingActive
-            self.tapGestrue?.isEnabled = self.isHighlightingActive
+            isGestureEnable = isHighlightingActive
         }
     }
 
     weak var highlighDelegate: HighlightingTextViewDelegate?
 
-    var highlightData: HighlightData {
-        return HighlightData(attributedString: self.attributedText, highlightings: self.highlightings)
-    }
     var highlighType: HighlightType = .general
     var state: HighlightingTextViewState = .highlighting {
         didSet {
-            self.highlighDelegate?.didChange(state: self.state)
+            self.highlighDelegate?.didChange(state: state)
         }
     }
     var isGestureEnable: Bool = false {
         didSet {
-            if self.panGesture == nil || self.tapGestrue == nil {
-                self.setupHighlightingGestures()
+            if panGesture == nil || tapGestrue == nil {
+                setupHighlightingGestures()
             }
-            self.panGesture?.isEnabled = self.isGestureEnable
-            self.tapGestrue?.isEnabled = self.isGestureEnable
+            panGesture?.isEnabled = isGestureEnable
+            tapGestrue?.isEnabled = isGestureEnable
         }
     }
 
-    func loadData(from data: HighlightData, state: HighlightingTextViewState, isGestureEnable: Bool = false) {
+    func loadData(content: String, from data: [Highlight], state: HighlightingTextViewState = .highlighting) {
         self.state = state
-        attributedText = data.attributedString
-        highlightings = data.highlightings
+        text = content
+        data.forEach { highlight in
+            addHighlighting(color: highlightColor, range: highlight.range)
+        }
+        highlightings = data
+    }
 
+    func clear() {
+        attributedText = nil
+        text = nil
+        highlightings = []
+        startPosition = nil
+        endPosition = nil
+        currentRange = nil
+        panGesture = nil
+        tapGestrue = nil
+        isGestureEnable = false
     }
 
     func showHighlightedText() {
@@ -89,15 +99,17 @@ class HighlightingTextView: UITextView {
         case .changed:
             if let start = self.startPosition,
                 let end = self.endPosition {
-                let range = self.rangeOf(self, start: start, end: end)
+                let range = self.rangeOf(start: start, end: end)
                 self.addHighlighting(color: self.highlightColor, range: range)
                 self.currentRange = range
             }
         case .ended:
             self.tapGestrue?.isEnabled = true
-            if let range = self.currentRange {
-                let text = self.textStorage.attributedSubstring(from: range).string
-                let highlight = Highlight(start: startPosition, end: endPosition, range: range, text: text, type: self.highlighType)
+            if let range = self.currentRange,
+                let start = startPosition,
+                let end = endPosition {
+
+                let highlight = makeHighlight(range: range, start: start, end: end)
                 self.highlightings.append(highlight)
                 self.highlighDelegate?.didAdd(highlight)
                 self.currentRange = nil
@@ -155,21 +167,6 @@ class HighlightingTextView: UITextView {
         })
         if matchedCount > 0 {
             self.setNeedsDisplay()
-        }
-    }
-
-    private func rangeOf(_ textView: UITextView, start: UITextPosition, end: UITextPosition) -> NSRange {
-        let compareResult = textView.compare(start, to: end)
-        let length = textView.offset(from: start, to: end)
-        switch compareResult {
-        case .orderedAscending:
-            let location = textView.offset(from: textView.beginningOfDocument, to: start)
-            return NSRange(location: location - 1, length: length + 1)
-        case .orderedDescending:
-            let location = textView.offset(from: textView.beginningOfDocument, to: end)
-            return NSRange(location: location, length: length * -1)
-        case .orderedSame:
-            return NSRange()
         }
     }
 

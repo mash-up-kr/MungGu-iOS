@@ -74,15 +74,8 @@ class FileDetailViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        testViewController.bind(file, highlightData: textView.highlightData)
-
-//        let service = Service.quiz(method: .post, data: <#T##Encodable#>, fileID: <#T##String#>)
-
-//        textView.highlightings.map { highlight -> Sequence in
-//            highlight.range
-//        }
-//        Hightlight(id: nil, fileId: 1, startIndex: <#T##Int?#>, endInex: <#T##Int?#>, content: <#T##String?#>, type: <#T##HightlightType?#>, isImportant: <#T##Bool?#>)
-//        NetworkManager.share.request(, completion: <#T##(Response) -> Void#>)
+        testViewController.bind(file, highlights: textView.highlightings)
+        // TODO: Save Dataß
         present(testNavigationController, animated: true, completion: nil)
     }
 
@@ -100,6 +93,10 @@ class FileDetailViewController: UIViewController {
 
 extension FileDetailViewController: FilesViewControllerDelegate {
     func didSelected(with data: File) {
+        // TODO: Save Data
+        let highlightings = textView.highlightings
+        textView.clear()
+        // TODO: Get Data
         textView.text = data.content
         fileLabel.text = data.title
         file = data

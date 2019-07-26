@@ -18,16 +18,16 @@ class TestViewController: UIViewController {
 
     // MARK: - Properties
     private var file: File!
-    private var highlightData: HighlightData!
+    private var highlights: [Highlight]!
 
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = file.title
-        self.textView.attributedText = highlightData.attributedString
         self.addNotification()
-        textView.loadData(from: highlightData, state: .test, isGestureEnable: true)
+        textView.loadData(content: file.content, from: highlights)
         textView.highlighDelegate = self
+        textView.isGestureEnable = true
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,9 +35,9 @@ class TestViewController: UIViewController {
         resultViewController?.fileTitle = file.title
     }
 
-    func bind(_ file: File, highlightData: HighlightData) {
+    func bind(_ file: File, highlights: [Highlight]) {
         self.file = file
-        self.highlightData = highlightData
+        self.highlights = highlights
     }
 
     // MARK: - IBActions
