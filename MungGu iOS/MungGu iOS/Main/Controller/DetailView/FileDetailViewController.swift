@@ -97,9 +97,10 @@ extension FileDetailViewController: FilesViewControllerDelegate {
         let highlightings = textView.highlightings
         textView.clear()
         // TODO: Get Data
-        textView.text = data.content
         fileLabel.text = data.title
         file = data
+        // bind Highlightings to textView
+        textView.loadData(content: data.content, from: highlightings)
     }
 }
 

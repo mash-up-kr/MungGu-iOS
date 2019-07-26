@@ -47,8 +47,6 @@ class HighlightingTextView: UITextView {
         attributedText = nil
         text = nil
         highlightings = []
-        startPosition = nil
-        endPosition = nil
         currentRange = nil
         panGesture = nil
         tapGestrue = nil
@@ -72,8 +70,8 @@ class HighlightingTextView: UITextView {
         }
     }
 
-    private var startPosition: UITextPosition?
-    private var endPosition: UITextPosition?
+    private var startPoint: CGPoint = .zero
+    private var endPoint: CGPoint = .zero
     private var currentRange: NSRange?
     private (set) var highlightings: [Highlight] = []
 
@@ -88,17 +86,26 @@ class HighlightingTextView: UITextView {
         guard self.state != .test else {
             return
         }
+
         let point = sender.location(in: self)
+        if sender.state != .began && point.x <= startPoint.x {
+            return
+        }
+
+        if sender.state != .began {
+            endPoint.y = startPoint.y
+            endPoint.x = max(point.x, endPoint.x)
+        }
+
         let position = self.closestPosition(to: point)
-        self.endPosition = position
         self.tapGestrue?.isEnabled = false
 
         switch sender.state {
         case .began:
-            self.startPosition = position
+            startPoint = point
         case .changed:
-            if let start = self.startPosition,
-                let end = self.endPosition {
+            if let start = closestPosition(to: startPoint),
+                let end = closestPosition(to: endPoint) {
                 let range = self.rangeOf(start: start, end: end)
                 self.addHighlighting(color: self.highlightColor, range: range)
                 self.currentRange = range
@@ -106,14 +113,15 @@ class HighlightingTextView: UITextView {
         case .ended:
             self.tapGestrue?.isEnabled = true
             if let range = self.currentRange,
-                let start = startPosition,
-                let end = endPosition {
-
+                let start = closestPosition(to: startPoint),
+                let end = closestPosition(to: endPoint) {
                 let highlight = makeHighlight(range: range, start: start, end: end)
                 self.highlightings.append(highlight)
                 self.highlighDelegate?.didAdd(highlight)
-                self.currentRange = nil
             }
+            self.currentRange = nil
+            self.startPoint = .zero
+            self.endPoint = .zero
         default:
             ()
         }
@@ -168,6 +176,13 @@ class HighlightingTextView: UITextView {
         if matchedCount > 0 {
             self.setNeedsDisplay()
         }
+    }
+
+}
+
+extension HighlightingTextView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 
 }
