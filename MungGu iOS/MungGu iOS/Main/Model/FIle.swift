@@ -8,14 +8,15 @@
 
 import Foundation
 
-class File {
+struct File {
     var title: String
     var content: String
-    var date: Int
+    var date: String?
+}
 
-    init(title: String, content: String, date: Int) {
+extension File {
+    init(title: String, content: String) {
         self.title = title
         self.content = content
-        self.date = date
     }
 }

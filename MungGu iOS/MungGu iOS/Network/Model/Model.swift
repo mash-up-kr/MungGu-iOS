@@ -12,6 +12,16 @@ enum HightlightType: String, Codable {
     case word = "WORD"
 }
 
+struct AddDevice: Codable {
+    let deviceKey: String?
+}
+
+struct DeviceInfo: Codable {
+    let id: Int?
+    let deviceKey: String?
+    let createdAt: String?
+}
+
 struct FileData: Codable {
     let id: Int?
     let name: String?

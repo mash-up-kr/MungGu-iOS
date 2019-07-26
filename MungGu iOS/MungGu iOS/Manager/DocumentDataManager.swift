@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import PDFKit
 
 class DocumentDataManager {
     static let identifier = "Documents"
     static let share = DocumentDataManager()
+
+    var fileName = ""
 
     struct NotificationName {
         static let documentCountDidChangedNotification = Notification.Name(rawValue: "documentCountDidChanged")
@@ -53,5 +56,14 @@ class DocumentDataManager {
         UserDefaults.standard.set(documents, forKey: DocumentDataManager.identifier)
 
         NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
+    }
+
+    @available(iOS 11.0, *)
+    func readPDF(_ fileName: String) -> String {
+        guard let pdf = PDFDocument(url: makeURL(fileName)), let text = pdf.string else {
+            return ""
+        }
+
+        return text
     }
 }

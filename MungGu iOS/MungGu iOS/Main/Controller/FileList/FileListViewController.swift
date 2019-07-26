@@ -20,7 +20,7 @@ class FileListViewController: UIViewController {
 
     // MARK: - Properties
     private let fileTableViewCellIdentifier: String = "file_table_cell"
-    private var filteredFiles = [File]() // [String]
+    private var filteredFiles: [String] = []
     weak var delegate: FilesViewControllerDelegate?
 
     private var data: [String] {
@@ -40,9 +40,8 @@ class FileListViewController: UIViewController {
         filesTableView.delegate = self
         filesTableView.dataSource = self
         view.endEditing(true)
-        filteredFiles = UIViewController.sampleFiles
 
-        // filteredFiles = data
+        filteredFiles = data
 
         setUpSearchBar()
     }
@@ -57,7 +56,7 @@ class FileListViewController: UIViewController {
     }
 
     @objc private func didChangedDocumentCount(_ notification: Notification) {
-//        filteredFiles = data
+        filteredFiles = data
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
 
@@ -70,14 +69,10 @@ class FileListViewController: UIViewController {
 extension FileListViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
-            filteredFiles = UIViewController.sampleFiles
+            filteredFiles = data
         } else {
-            filteredFiles = UIViewController.sampleFiles.filter { $0.title.contains(searchText) }
+            filteredFiles = data.filter({ $0.contains(searchText) })
         }
-            // filteredFiles = data
-//         } else {
-//             filteredFiles = data.filter { $0.contains(searchText) }
-//         }
         filesTableView.reloadData()
     }
 }
@@ -85,10 +80,15 @@ extension FileListViewController: UISearchBarDelegate {
 extension FileListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
-        let selectedData = filteredFiles[indexPath.row]
-        delegate?.didSelected(with: selectedData)
-    }
+//        let selectedData = filteredFiles[indexPath.row]
+//        delegate?.didSelected(with: selectedData)
 
+         let fileName = filteredFiles[indexPath.row]
+         let content = DocumentDataManager.share.readPDF(fileName)
+         let file = File(title: fileName, content: content)
+
+         delegate?.didSelected(with: file)
+    }
 }
 
 extension FileListViewController: UITableViewDataSource {
@@ -102,8 +102,7 @@ extension FileListViewController: UITableViewDataSource {
         }
         // FIXME
         let file = filteredFiles[indexPath.row]
-        cell.titleLabel.text = file.title
+        cell.titleLabel.text = file
         return cell
     }
-
 }
