@@ -12,7 +12,9 @@ import Moya
 class NetworkManager {
     static let share = NetworkManager()
 
-    let provider = MoyaProvider<Service>()
+    private let provider = MoyaProvider<Service>()
+
+    private init() { }
 
     // MARK: - API Methods
 

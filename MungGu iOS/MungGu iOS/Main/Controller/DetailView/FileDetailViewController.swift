@@ -75,6 +75,14 @@ class FileDetailViewController: UIViewController {
             return
         }
         testViewController.bind(file, highlightData: textView.highlightData)
+
+//        let service = Service.quiz(method: .post, data: <#T##Encodable#>, fileID: <#T##String#>)
+
+//        textView.highlightings.map { highlight -> Sequence in
+//            highlight.range
+//        }
+//        Hightlight(id: nil, fileId: 1, startIndex: <#T##Int?#>, endInex: <#T##Int?#>, content: <#T##String?#>, type: <#T##HightlightType?#>, isImportant: <#T##Bool?#>)
+//        NetworkManager.share.request(, completion: <#T##(Response) -> Void#>)
         present(testNavigationController, animated: true, completion: nil)
     }
 

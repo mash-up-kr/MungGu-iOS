@@ -29,17 +29,18 @@
 		CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5C647622C74AE900EC8AF4 /* LaunchScreen.storyboard */; };
 		CE5C648322C74AE900EC8AF4 /* MungGu_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648222C74AE900EC8AF4 /* MungGu_iOSTests.swift */; };
 		CE5C648E22C74AE900EC8AF4 /* MungGu_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */; };
+		CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */; };
 		CEC8928D22D91CAB004BA075 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8928722D91CAB004BA075 /* Document.swift */; };
 		CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC8928822D91CAB004BA075 /* Document.storyboard */; };
 		CEC8929022D91CAB004BA075 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8928A22D91CAB004BA075 /* DocumentBrowserViewController.swift */; };
 		CEC8929222D93C27004BA075 /* DocumentDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8929122D93C27004BA075 /* DocumentDataManager.swift */; };
 		CEC8929522D94ABA004BA075 /* AlertShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8929422D94ABA004BA075 /* AlertShowable.swift */; };
+		CEC8929822D98A7F004BA075 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC8929622D98A7F004BA075 /* Main.storyboard */; };
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
 		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
 		D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */; };
 		D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614E22C8E20600505CC1 /* HighlightType.swift */; };
 		D557615522C8E4D400505CC1 /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557615422C8E4D400505CC1 /* Highlight.swift */; };
-		D56A603F22D8C36F0098EA46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56A603D22D8C36F0098EA46 /* Main.storyboard */; };
 		D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */; };
 		D56A604322D8E7D90098EA46 /* FileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604222D8E7D90098EA46 /* FileDetailViewController.swift */; };
 		D56A604622D975110098EA46 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604522D975110098EA46 /* Alerts.swift */; };
@@ -107,18 +108,19 @@
 		CE5C648922C74AE900EC8AF4 /* MungGu iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MungGu iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MungGu_iOSUITests.swift; sourceTree = "<group>"; };
 		CE5C648F22C74AE900EC8AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		CEC8928722D91CAB004BA075 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		CEC8928822D91CAB004BA075 /* Document.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Document.storyboard; sourceTree = "<group>"; };
 		CEC8928A22D91CAB004BA075 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
 		CEC8928B22D91CAB004BA075 /* MungGu iOS.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "MungGu iOS.entitlements"; sourceTree = "<group>"; };
 		CEC8929122D93C27004BA075 /* DocumentDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataManager.swift; sourceTree = "<group>"; };
 		CEC8929422D94ABA004BA075 /* AlertShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertShowable.swift; sourceTree = "<group>"; };
+		CEC8929722D98A7F004BA075 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextView.swift; sourceTree = "<group>"; };
 		D557614E22C8E20600505CC1 /* HighlightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightType.swift; sourceTree = "<group>"; };
 		D557615422C8E4D400505CC1 /* Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlight.swift; sourceTree = "<group>"; };
-		D56A603E22D8C36F0098EA46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		D56A604222D8E7D90098EA46 /* FileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDetailViewController.swift; sourceTree = "<group>"; };
 		D56A604522D975110098EA46 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -201,7 +203,7 @@
 		AECC600C22C842F400561DCF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D56A603C22D8C36F0098EA46 /* Base.lproj */,
+				CEC8929622D98A7F004BA075 /* Main.storyboard */,
 				AECC600F22C8432C00561DCF /* DetailMenuTableViewCell.swift */,
 				AEF33B6522D398900084F242 /* ResultMenuTableViewCell.swift */,
 			);
@@ -219,10 +221,10 @@
 		AECC600E22C8430500561DCF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */,
 				AEF33B6022D387630084F242 /* TestView */,
 				AECC601822C855B900561DCF /* DetailView */,
 				AEBEF66B22D0E9900070FB87 /* FileList */,
+				83FA99D122C79C56009B1EA6 /* MySplitViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -270,6 +272,7 @@
 			children = (
 				CE08A9BF22D8FF2200281381 /* NetworkManager.swift */,
 				CEC8929122D93C27004BA075 /* DocumentDataManager.swift */,
+				CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -299,17 +302,16 @@
 		CE5C646C22C74AE700EC8AF4 /* MungGu iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D56A604422D974EE0098EA46 /* Utils */,
 				CEC8928B22D91CAB004BA075 /* MungGu iOS.entitlements */,
 				CE08A9B822D8FF2200281381 /* Network */,
 				CE08A9BD22D8FF2200281381 /* Manager */,
 				CEC8928522D91CAB004BA075 /* Document */,
 				D557614B22C8DA6F00505CC1 /* Highlighting */,
 				D557614822C7ECC700505CC1 /* Extension */,
-				D5C7759122C79CC500ADF692 /* Resource */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
-				CEC8929322D94A9E004BA075 /* Util */,
+				D56A604422D974EE0098EA46 /* Utils */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
+				D5C7759122C79CC500ADF692 /* Resource */,
 				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
 			);
 			path = "MungGu iOS";
@@ -364,14 +366,6 @@
 			path = Document;
 			sourceTree = "<group>";
 		};
-		CEC8929322D94A9E004BA075 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				CEC8929422D94ABA004BA075 /* AlertShowable.swift */,
-			);
-			path = Util;
-			sourceTree = "<group>";
-		};
 		D557614822C7ECC700505CC1 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,17 +387,11 @@
 			path = Highlighting;
 			sourceTree = "<group>";
 		};
-		D56A603C22D8C36F0098EA46 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				D56A603D22D8C36F0098EA46 /* Main.storyboard */,
-			);
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
 		D56A604422D974EE0098EA46 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CEC8929422D94ABA004BA075 /* AlertShowable.swift */,
+				D5C7759422C79E6A00ADF692 /* sample.pdf */,
 				D56A604522D975110098EA46 /* Alerts.swift */,
 			);
 			path = Utils;
@@ -412,7 +400,6 @@
 		D5C7759122C79CC500ADF692 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				D5C7759422C79E6A00ADF692 /* sample.pdf */,
 				D5C7759222C79CD900ADF692 /* PDFContent.swift */,
 				D56A604722D978310098EA46 /* Sample.swift */,
 			);
@@ -532,8 +519,8 @@
 				D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */,
 				D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */,
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
+				CEC8929822D98A7F004BA075 /* Main.storyboard in Resources */,
 				CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */,
-				D56A603F22D8C36F0098EA46 /* Main.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,6 +668,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */,
 				D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */,
 				D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */,
 				D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */,
@@ -756,10 +744,10 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		D56A603D22D8C36F0098EA46 /* Main.storyboard */ = {
+		CEC8929622D98A7F004BA075 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D56A603E22D8C36F0098EA46 /* Base */,
+				CEC8929722D98A7F004BA075 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
