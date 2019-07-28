@@ -41,6 +41,8 @@
 		CECCE9F622EB7859009A1123 /* TestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCE9F522EB7859009A1123 /* TestView.storyboard */; };
 		CECCE9F922EB78E2009A1123 /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECCE9F822EB78E2009A1123 /* Result.storyboard */; };
 		CECCE9FB22EB7A01009A1123 /* ResultContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCE9FA22EB7A01009A1123 /* ResultContainerViewController.swift */; };
+		CECCE9FE22EB7BB3009A1123 /* CommonNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECCE9FD22EB7BB3009A1123 /* CommonNavigationView.xib */; };
+		CECCEA0022EB7BCD009A1123 /* CommonNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCE9FF22EB7BCD009A1123 /* CommonNavigationView.swift */; };
 		D543B48C22EB4CC70047C3D7 /* UITextView+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */; };
 		D543B48E22EB535A0047C3D7 /* Highlight+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */; };
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
@@ -127,6 +129,8 @@
 		CECCE9F522EB7859009A1123 /* TestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestView.storyboard; sourceTree = "<group>"; };
 		CECCE9F822EB78E2009A1123 /* Result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		CECCE9FA22EB7A01009A1123 /* ResultContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultContainerViewController.swift; sourceTree = "<group>"; };
+		CECCE9FD22EB7BB3009A1123 /* CommonNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonNavigationView.xib; sourceTree = "<group>"; };
+		CECCE9FF22EB7BCD009A1123 /* CommonNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonNavigationView.swift; sourceTree = "<group>"; };
 		D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Highlight.swift"; sourceTree = "<group>"; };
 		D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Highlight+NSRange.swift"; sourceTree = "<group>"; };
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				D5C7759122C79CC500ADF692 /* Resource */,
 				CE6FC73C22C74F85006FA209 /* Supports */,
 				D56A604422D974EE0098EA46 /* Utils */,
+				CECCE9FC22EB7B8C009A1123 /* Common */,
 				D557614822C7ECC700505CC1 /* Extension */,
 				CE08A9B822D8FF2200281381 /* Network */,
 				CE08A9BD22D8FF2200281381 /* Manager */,
@@ -373,6 +378,15 @@
 				CECCE9F822EB78E2009A1123 /* Result.storyboard */,
 			);
 			path = Result;
+			sourceTree = "<group>";
+		};
+		CECCE9FC22EB7B8C009A1123 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CECCE9FD22EB7BB3009A1123 /* CommonNavigationView.xib */,
+				CECCE9FF22EB7BCD009A1123 /* CommonNavigationView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		D557614822C7ECC700505CC1 /* Extension */ = {
@@ -530,6 +544,7 @@
 				CECA294622EB70C400DF3863 /* FileListView.storyboard in Resources */,
 				D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */,
 				CECCE9F922EB78E2009A1123 /* Result.storyboard in Resources */,
+				CECCE9FE22EB7BB3009A1123 /* CommonNavigationView.xib in Resources */,
 				D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */,
 				CECA294822EB728C00DF3863 /* ContentView.storyboard in Resources */,
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
@@ -710,6 +725,7 @@
 				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
 				CEC8929522D94ABA004BA075 /* AlertShowable.swift in Sources */,
 				CEC8929022D91CAB004BA075 /* DocumentBrowserViewController.swift in Sources */,
+				CECCEA0022EB7BCD009A1123 /* CommonNavigationView.swift in Sources */,
 				CE08A9C222D8FF2200281381 /* Model.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D56A604822D978310098EA46 /* Sample.swift in Sources */,
