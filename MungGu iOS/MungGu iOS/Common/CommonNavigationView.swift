@@ -37,10 +37,11 @@ class CommonNavigationView: UIView {
         addSubview(view)
     }
 
-    func configure(title: String, leftButtonImage: UIImage?, rightButtonImage: UIImage?) {
+    func configure(title: String = "", leftButtonImage: UIImage?, rightButtonImage: UIImage?, rightButtonTitle: String = "") {
 
         titleLabel.text = title
         leftButton.setImage(leftButtonImage, for: .normal)
         rightButton.setImage(rightButtonImage, for: .normal)
+        rightButton.setTitle(rightButtonTitle, for: .normal)
     }
 }
