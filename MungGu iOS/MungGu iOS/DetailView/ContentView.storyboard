@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vF6-1m-nLu">
-    <device id="retina6_1" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,81 +15,31 @@
             <objects>
                 <viewController storyboardIdentifier="detailHome" id="vF6-1m-nLu" customClass="FileDetailViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GuI-Z6-ssN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-Yr-UaZ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="75"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X50-0q-Ryz">
-                                        <rect key="frame" x="0.0" y="20" width="414" height="65"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMv-F7-cJS">
-                                                <rect key="frame" x="364" y="0.0" width="50" height="65"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="LNv-Vk-zSC"/>
-                                                </constraints>
-                                                <state key="normal" title="Button" image="iconImportantMenu"/>
-                                                <state key="selected" image="iconExpand"/>
-                                                <connections>
-                                                    <action selector="didTapRightMenu:" destination="vF6-1m-nLu" eventType="touchUpInside" id="I7i-qv-uaW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0H-Ad-HMW">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="65"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="tEK-IY-kr7"/>
-                                                </constraints>
-                                                <state key="normal" title="Button" image="iconMenu">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="didTapLeftMenu:" destination="vF6-1m-nLu" eventType="touchUpInside" id="zcF-qO-0kb"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASt-xb-Af6">
-                                                <rect key="frame" x="207" y="32.5" width="0.0" height="0.0"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X50-0q-Ryz" customClass="CommonNavigationView" customModule="MungGu_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20" width="768" height="55"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="I0H-Ad-HMW" firstAttribute="leading" secondItem="X50-0q-Ryz" secondAttribute="leading" id="ATf-pl-YdE"/>
-                                            <constraint firstItem="ASt-xb-Af6" firstAttribute="centerX" secondItem="X50-0q-Ryz" secondAttribute="centerX" id="Cek-Wk-1A2"/>
-                                            <constraint firstAttribute="bottom" secondItem="I0H-Ad-HMW" secondAttribute="bottom" id="Huo-lm-xWz"/>
-                                            <constraint firstAttribute="height" constant="65" id="WU5-XU-NRg"/>
-                                            <constraint firstAttribute="trailing" secondItem="QMv-F7-cJS" secondAttribute="trailing" id="XdN-5S-dAk"/>
-                                            <constraint firstItem="I0H-Ad-HMW" firstAttribute="top" secondItem="X50-0q-Ryz" secondAttribute="top" id="Y20-KO-mTD"/>
-                                            <constraint firstAttribute="bottom" secondItem="QMv-F7-cJS" secondAttribute="bottom" id="cUf-Qv-B35"/>
-                                            <constraint firstItem="ASt-xb-Af6" firstAttribute="centerY" secondItem="X50-0q-Ryz" secondAttribute="centerY" id="eQT-td-8uI"/>
-                                            <constraint firstItem="QMv-F7-cJS" firstAttribute="top" secondItem="X50-0q-Ryz" secondAttribute="top" id="y9U-2d-bU6"/>
+                                            <constraint firstAttribute="height" constant="55" id="WU5-XU-NRg"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="X50-0q-Ryz" secondAttribute="bottom" id="NXT-kQ-LJF"/>
-                                    <constraint firstItem="X50-0q-Ryz" firstAttribute="top" secondItem="ac9-Yr-UaZ" secondAttribute="top" constant="20" id="fkY-hd-bge"/>
-                                    <constraint firstItem="X50-0q-Ryz" firstAttribute="leading" secondItem="ac9-Yr-UaZ" secondAttribute="leading" id="ntN-fT-4qO"/>
-                                    <constraint firstAttribute="trailing" secondItem="X50-0q-Ryz" secondAttribute="trailing" id="q5y-Fk-M5J"/>
+                                    <constraint firstItem="X50-0q-Ryz" firstAttribute="top" secondItem="4yU-M3-A2j" secondAttribute="top" id="fkY-hd-bge"/>
+                                    <constraint firstItem="X50-0q-Ryz" firstAttribute="leading" secondItem="4yU-M3-A2j" secondAttribute="leading" id="ntN-fT-4qO"/>
+                                    <constraint firstItem="4yU-M3-A2j" firstAttribute="trailing" secondItem="X50-0q-Ryz" secondAttribute="trailing" id="q5y-Fk-M5J"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="4yU-M3-A2j"/>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-NO-yLV" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
-                                <rect key="frame" x="40" y="115" width="334" height="634"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHighlightingActive" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerInsets">
-                                        <real key="value" value="44"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fS-Gu-Odp">
-                                <rect key="frame" x="44" y="780" width="106" height="52"/>
+                                <rect key="frame" x="44" y="942" width="106" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="jUv-rO-IAh"/>
                                     <constraint firstAttribute="width" constant="106" id="vp1-6t-CEr"/>
@@ -100,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP3-ge-X0Y">
-                                <rect key="frame" x="322" y="780" width="52" height="52"/>
+                                <rect key="frame" x="676" y="942" width="52" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="Lff-ua-nIF"/>
                                     <constraint firstAttribute="height" constant="52" id="bcN-rB-XoH"/>
@@ -111,6 +61,18 @@
                                     <action selector="blindText:" destination="vF6-1m-nLu" eventType="touchUpInside" id="v7C-0j-2xS"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-NO-yLV" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
+                                <rect key="frame" x="40" y="105" width="688" height="806"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHighlightingActive" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerInsets">
+                                        <real key="value" value="44"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -132,9 +94,7 @@
                     </view>
                     <connections>
                         <outlet property="eyeButton" destination="qP3-ge-X0Y" id="KNm-KO-Kfg"/>
-                        <outlet property="fileLabel" destination="ASt-xb-Af6" id="8DK-YD-S51"/>
-                        <outlet property="leftMenuButton" destination="I0H-Ad-HMW" id="zm1-1b-54d"/>
-                        <outlet property="rightMenuButton" destination="QMv-F7-cJS" id="ODK-69-hgd"/>
+                        <outlet property="navigationView" destination="X50-0q-Ryz" id="osX-Qk-h9e"/>
                         <outlet property="textView" destination="uwe-NO-yLV" id="swo-3m-g8R"/>
                     </connections>
                 </viewController>
@@ -145,10 +105,7 @@
     </scenes>
     <resources>
         <image name="btnEye" width="52" height="52"/>
-        <image name="iconExpand" width="48" height="48"/>
         <image name="iconEyeHide" width="52" height="52"/>
-        <image name="iconImportantMenu" width="48" height="48"/>
-        <image name="iconMenu" width="48" height="48"/>
         <image name="rectangle" width="106" height="52"/>
     </resources>
 </document>

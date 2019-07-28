@@ -8,21 +8,29 @@
 
 import UIKit
 
+typealias FileDetailButton = FileDetailViewController.Button
+
 class FileDetailViewController: UIViewController {
 
     // MARK: - IBOutlet
+
     @IBOutlet weak var textView: HighlightingTextView!
-    @IBOutlet weak var rightMenuButton: UIButton!
-    @IBOutlet weak var leftMenuButton: UIButton!
     @IBOutlet weak var eyeButton: UIButton!
-    @IBOutlet weak var fileLabel: UILabel!
+    @IBOutlet weak var navigationView: CommonNavigationView! {
+        didSet {
+            navigationView.leftButton.addTarget(self, action: #selector(didTapLeftMenu), for: .touchUpInside)
+            navigationView.rightButton.addTarget(self, action: #selector(didTapRightMenu), for: .touchUpInside)
+        }
+    }
 
     // MARK: - Properties
+
     private var currentButtonImage: UIImage?
     private var file: File?
     weak var containderDelegate: ContainerViewControllerDelegate?
 
     // MARK: - Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
         textView?.isGestureEnable = true
@@ -30,28 +38,25 @@ class FileDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         splitViewController?.delegate = self
+
+        navigationView.configure(title: "", leftButtonImage: UIImage(named: Button.left.imageName), rightButtonImage: UIImage(named: Button.right.imageName))
         if let displayMode = splitViewController?.displayMode {
-            updateButton(displayMode: displayMode)
+            navigationView.updateButton(displayMode: displayMode)
         }
     }
 
-    // MARK: - Handlers
-
-    func updateButton(displayMode: UISplitViewController.DisplayMode) {
-        rightMenuButton.isHidden = displayMode == .allVisible
-        leftMenuButton.setImage(Button.left.image(displayMode: displayMode), for: .normal)
-    }
-
     // MARK: - IBActions
-    @IBAction private func didTapLeftMenu(_ sender: UIButton) {
+
+    @objc private func didTapLeftMenu(_ sender: UIButton) {
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
             let primaryHidden = self.splitViewController?.preferredDisplayMode ?? .primaryHidden
             self.splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
         })
     }
 
-    @IBAction private func didTapRightMenu(_ sender: UIButton) {
+    @objc private func didTapRightMenu(_ sender: UIButton) {
         sender.isSelected.toggle()
         containderDelegate?.handleToggleMenu()
     }
@@ -97,7 +102,7 @@ extension FileDetailViewController: FilesViewControllerDelegate {
         let highlightings = textView.highlightings
         textView.clear()
         // TODO: Get Data
-        fileLabel.text = data.title
+        navigationView.titleLabel.text = data.title
         file = data
         // bind Highlightings to textView
         textView.loadData(content: data.content, from: [])
@@ -111,15 +116,12 @@ extension FileDetailViewController: ContainerViewControllerDelegate {
 }
 
 extension FileDetailViewController: UISplitViewControllerDelegate {
-
     func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
-        updateButton(displayMode: displayMode)
+        navigationView.updateButton(displayMode: displayMode)
     }
-
 }
 
 extension FileDetailViewController {
-
     enum Button {
         case left
         case right
@@ -128,7 +130,7 @@ extension FileDetailViewController {
         var imageName: String {
             switch self {
             case .left: return "iconMenu"
-            case .right: return "iconToggle"
+            case .right: return "iconImportantMenu"
             case .expanded: return "iconExpand"
             }
         }
@@ -140,5 +142,11 @@ extension FileDetailViewController {
             return UIImage(named: imageName)
         }
     }
+}
 
+private extension CommonNavigationView {
+    func updateButton(displayMode: UISplitViewController.DisplayMode) {
+        rightButton.isHidden = displayMode == .allVisible
+        leftButton.setImage(FileDetailButton.left.image(displayMode: displayMode), for: .normal)
+    }
 }

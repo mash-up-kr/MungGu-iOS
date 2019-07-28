@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommonNavigationView" customModule="MungGu_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="leftButton" destination="hRJ-rx-pzg" id="ASB-9s-x3k"/>
+                <outlet property="rightButton" destination="Yxd-FH-RWz" id="t4W-ZI-i7N"/>
+                <outlet property="titleLabel" destination="xQh-2b-Vrl" id="IbI-ht-crj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxd-FH-RWz">
+                    <rect key="frame" x="354" y="1.6666666666666679" width="50" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="4wO-Ca-VK0"/>
+                    </constraints>
+                    <state key="normal" image="iconImportantMenu"/>
+                    <state key="selected" image="iconExpand"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQh-2b-Vrl">
+                    <rect key="frame" x="207" y="27.666666666666668" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRJ-rx-pzg">
+                    <rect key="frame" x="10" y="1.6666666666666679" width="50" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="kC4-KK-hfa"/>
+                    </constraints>
+                    <state key="normal" image="iconMenu">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="xQh-2b-Vrl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="2hu-fF-Ynk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yxd-FH-RWz" secondAttribute="trailing" constant="10" id="8D5-aD-Yga"/>
+                <constraint firstItem="Yxd-FH-RWz" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-2" id="Lqx-eY-kjp"/>
+                <constraint firstItem="hRJ-rx-pzg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="aKG-ql-ZOv"/>
+                <constraint firstItem="xQh-2b-Vrl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="egj-6i-V17"/>
+                <constraint firstItem="xQh-2b-Vrl" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="opR-by-8jO"/>
+                <constraint firstItem="hRJ-rx-pzg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-2" id="xxF-gu-uPc"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="iconExpand" width="48" height="48"/>
+        <image name="iconImportantMenu" width="48" height="48"/>
+        <image name="iconMenu" width="48" height="48"/>
+    </resources>
+</document>
