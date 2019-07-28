@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DetailMenuTableViewCell: UITableViewCell {
+class RightSlideMenuTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     @IBOutlet weak var cellLabel: UILabel!

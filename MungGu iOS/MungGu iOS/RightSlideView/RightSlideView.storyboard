@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detail Container Controller-->
+        <!--Content Container Controller-->
         <scene sceneID="Bzq-y5-568">
             <objects>
-                <viewController id="1vB-Sj-hng" customClass="DetailContainerController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1vB-Sj-hng" customClass="ContentContainerController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LBx-Vt-Kib">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,13 +24,13 @@
                                     <constraint firstAttribute="width" constant="320" id="RYf-1Y-dOm"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="i9e-9D-xcG" kind="embed" id="k3J-0f-pu3"/>
+                                    <segue destination="i9e-9D-xcG" kind="embed" identifier="RightSlideSegue" id="k3J-0f-pu3"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xOh-4q-cfh">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <connections>
-                                    <segue destination="afn-O2-i2b" kind="embed" id="cer-D4-c3l"/>
+                                    <segue destination="afn-O2-i2b" kind="embed" identifier="ContentContainerSegue" id="cer-D4-c3l"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -47,6 +47,8 @@
                         <viewLayoutGuide key="safeArea" id="SNf-m0-uLl"/>
                     </view>
                     <connections>
+                        <outlet property="contentContainerView" destination="xOh-4q-cfh" id="IUL-hQ-G1I"/>
+                        <outlet property="rightSlideView" destination="eYL-k3-az6" id="lwF-RC-jG1"/>
                         <outlet property="toggleSlideMenuConstraint" destination="WCw-sn-jEL" id="RFc-5a-Dl3"/>
                     </connections>
                 </viewController>
@@ -62,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="406" y="541"/>
         </scene>
-        <!--Detail Menu View Controller-->
+        <!--Right Slide Menu View Controller-->
         <scene sceneID="uOf-bc-WmC">
             <objects>
-                <viewController id="i9e-9D-xcG" customClass="DetailMenuViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i9e-9D-xcG" customClass="RightSlideMenuViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mjw-YM-kP4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,7 +87,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="55" id="Jkh-06-SEb" customClass="DetailMenuTableViewCell" customModule="MungGu_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RightSlideMenuTableViewCell" rowHeight="55" id="Jkh-06-SEb" customClass="RightSlideMenuTableViewCell" customModule="MungGu_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jkh-06-SEb" id="Zik-al-fcI">

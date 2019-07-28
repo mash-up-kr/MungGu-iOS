@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--File Detail View Controller-->
+        <!--Content View Controller-->
         <scene sceneID="aue-bQ-0Sx">
             <objects>
-                <viewController storyboardIdentifier="detailHome" id="vF6-1m-nLu" customClass="FileDetailViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailHome" id="vF6-1m-nLu" customClass="ContentViewController" customModule="MungGu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GuI-Z6-ssN">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,6 +95,7 @@
                     <connections>
                         <outlet property="eyeButton" destination="qP3-ge-X0Y" id="KNm-KO-Kfg"/>
                         <outlet property="navigationView" destination="X50-0q-Ryz" id="osX-Qk-h9e"/>
+                        <outlet property="testButton" destination="3fS-Gu-Odp" id="qXI-xK-2Yg"/>
                         <outlet property="textView" destination="uwe-NO-yLV" id="swo-3m-g8R"/>
                     </connections>
                 </viewController>

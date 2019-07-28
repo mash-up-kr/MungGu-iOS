@@ -37,7 +37,7 @@ extension ResultMenuViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tbView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ResultMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tbView.dequeueReusableCell(withIdentifier: "ResultMenuTableViewCell", for: indexPath) as? ResultMenuTableViewCell else { return UITableViewCell() }
         cell.wrongLabel.text = " 틀린거 "
         cell.correctLabel.text = " 고친거 "
         return cell

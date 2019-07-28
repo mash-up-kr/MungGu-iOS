@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  ContentViewController.swift
 //  MungGu iOS
 //
 //  Created by 안예림 on 29/06/2019.
@@ -8,13 +8,19 @@
 
 import UIKit
 
-typealias FileDetailButton = FileDetailViewController.Button
+typealias ContentViewButton = ContentViewController.Button
 
-class FileDetailViewController: UIViewController {
+protocol ContentViewControllerDelegate: class {
+    var viewType: ContentViewType { get set }
+    func handleToggleMenu()
+}
+
+class ContentViewController: UIViewController {
 
     // MARK: - IBOutlet
 
     @IBOutlet weak var textView: HighlightingTextView!
+    @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var navigationView: CommonNavigationView! {
         didSet {
@@ -27,7 +33,7 @@ class FileDetailViewController: UIViewController {
 
     private var currentButtonImage: UIImage?
     private var file: File?
-    weak var containderDelegate: ContainerViewControllerDelegate?
+    weak var delegate: ContentViewControllerDelegate?
 
     // MARK: - Init
 
@@ -45,6 +51,20 @@ class FileDetailViewController: UIViewController {
         if let displayMode = splitViewController?.displayMode {
             navigationView.updateButton(displayMode: displayMode)
         }
+
+        configureBottomButton()
+
+        print("Test.. current viewType: \(delegate?.viewType)")
+    }
+
+    func configureBottomButton() {
+        guard let type = delegate?.viewType else {
+            preconditionFailure("no type")
+        }
+
+        eyeButton.isHidden = type.hideBottomButton
+        testButton.isHidden = type.hideBottomButton
+        testButton.setTitle(type.testButtonText, for: .normal)
     }
 
     // MARK: - IBActions
@@ -58,15 +78,20 @@ class FileDetailViewController: UIViewController {
 
     @objc private func didTapRightMenu(_ sender: UIButton) {
         sender.isSelected.toggle()
-        containderDelegate?.handleToggleMenu()
+        delegate?.handleToggleMenu()
     }
 
     @IBAction private func didTapTestButton(_ sender: UIButton) {
-        guard let testNavigationController = storyboard?.instantiateViewController(withIdentifier: "testNavigationController") as? UINavigationController,
-            let testViewController = testNavigationController.topViewController as? TestViewController
-        else {
+        // TODO: 테스트 뷰 띄우기
+        guard let testViewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
             preconditionFailure("can not find TestViewController")
         }
+
+        testViewController.viewType = .test
+
+        print("aaa \(testViewController.contentViewController)")
+        present(testViewController, animated: true, completion: nil)
+        /*
         guard let file = self.file else {
             let alert = UIAlertController(.noFile)
             alert.addAction(alert.defaultConfirmAction)
@@ -79,9 +104,12 @@ class FileDetailViewController: UIViewController {
             present(alert, animated: true)
             return
         }
+        
         testViewController.bind(file, highlights: textView.highlightings)
         // TODO: Save Dataß
         present(testNavigationController, animated: true, completion: nil)
+ 
+         */
     }
 
     @IBAction private func blindText(_ sender: UIButton) {
@@ -96,7 +124,7 @@ class FileDetailViewController: UIViewController {
     @IBAction private func unwind(segue: UIStoryboardSegue) { }
 }
 
-extension FileDetailViewController: FilesViewControllerDelegate {
+extension ContentViewController: FilesViewControllerDelegate {
     func didSelected(with data: File) {
         // TODO: Save Data
         let highlightings = textView.highlightings
@@ -109,19 +137,13 @@ extension FileDetailViewController: FilesViewControllerDelegate {
     }
 }
 
-extension FileDetailViewController: ContainerViewControllerDelegate {
-    func handleToggleMenu() {
-        containderDelegate?.handleToggleMenu()
-    }
-}
-
-extension FileDetailViewController: UISplitViewControllerDelegate {
+extension ContentViewController: UISplitViewControllerDelegate {
     func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
         navigationView.updateButton(displayMode: displayMode)
     }
 }
 
-extension FileDetailViewController {
+extension ContentViewController {
     enum Button {
         case left
         case right
@@ -147,6 +169,6 @@ extension FileDetailViewController {
 private extension CommonNavigationView {
     func updateButton(displayMode: UISplitViewController.DisplayMode) {
         rightButton.isHidden = displayMode == .allVisible
-        leftButton.setImage(FileDetailButton.left.image(displayMode: displayMode), for: .normal)
+        leftButton.setImage(ContentViewButton.left.image(displayMode: displayMode), for: .normal)
     }
 }
