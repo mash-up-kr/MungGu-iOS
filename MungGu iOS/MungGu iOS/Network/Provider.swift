@@ -10,12 +10,14 @@ import Foundation
 import Moya
 import Result
 
+typealias ResultCompletion<T: Decodable> = (T) -> Void
+
 struct Provider {
     private static let provider = MoyaProvider<Service>()
 
     // MARK: - API Methods
 
-    static func request(_ service: Service, completion: @escaping ((DeviceInfo) -> Void), failure: @escaping ((Error) -> Void) = { _ in }) {
+    static func request<T: Decodable>(_ service: Service, completion: @escaping ResultCompletion<T>, failure: @escaping ((Error) -> Void) = { _ in }) {
         provider.request(service) { result in
             self.task(result, completion: completion, failure: failure)
         }

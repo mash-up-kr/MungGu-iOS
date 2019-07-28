@@ -45,3 +45,9 @@ struct Quiz: Codable {
 struct Answer: Codable {
     let userAnswer: String?
 }
+
+struct ErrorData: Decodable {
+    let code: Int?
+    let msg: String?
+    let timestamp: String?
+}

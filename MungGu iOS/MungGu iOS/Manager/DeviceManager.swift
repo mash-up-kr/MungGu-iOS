@@ -8,35 +8,61 @@
 
 import Foundation
 
+typealias DeviceIdentifier = DeviceManager.Identifier
+
 class DeviceManager {
     static let share = DeviceManager()
 
-    private let deviceKeyID = "deviceKey"
+    struct Identifier {
+        static let deviceKey = "deviceKey"
+        static let deviceID = "deviceID"
+    }
+
+    private(set) var id: String?
 
     private init() { }
 
+    func configure() {
+        if let id = getDeviceID() {
+            self.id = id
+        } else {
+            requestDeviceID()
+        }
+    }
+
     private func makeDeviceKey() -> String {
-        if let deviceKey = UserDefaults.standard.string(forKey: deviceKeyID) {
+        if let deviceKey = UserDefaults.standard.string(forKey: Identifier.deviceKey) {
             return deviceKey
         } else {
             let uuid = UUID().uuidString
-            UserDefaults.standard.set(uuid, forKey: deviceKeyID)
+            UserDefaults.standard.set(uuid, forKey: Identifier.deviceKey)
 
             return uuid
         }
     }
 
-    func requestDeviceID() {
+    private func saveDeviceID(_ id: String) {
+        UserDefaults.standard.set(id, forKey: Identifier.deviceID)
+    }
+
+    private func getDeviceID() -> String? {
+        if let deviceKey = UserDefaults.standard.string(forKey: Identifier.deviceID) {
+            return deviceKey
+        }
+        return nil
+    }
+
+    private func requestDeviceID() {
         let deviceKey = makeDeviceKey()
         let service = Service.addDevice(data: AddDevice(deviceKey: deviceKey))
 
-        NetworkManager.share.request(service) { response in
-            guard let data = try? response.map(DeviceInfo.self) else {
+        Provider.request(service, completion: { (data: DeviceInfo) in
+            guard let id = data.id else {
                 assertionFailure("Fail requestDeviceID!!")
                 return
             }
 
-            print("deviceID \(data)")
-        }
+            self.saveDeviceID(String(id))
+        })
     }
 }
