@@ -72,13 +72,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MO-TB-JSh" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                        <rect key="frame" x="90" y="0.0" width="240" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="dIk-8B-7kZ"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -86,11 +79,7 @@
                                     <constraint firstItem="YIL-FE-hgA" firstAttribute="centerX" secondItem="OKk-ay-rWp" secondAttribute="centerX" id="0SZ-kv-Bar"/>
                                     <constraint firstAttribute="width" constant="420" id="3sT-oY-gqh"/>
                                     <constraint firstItem="YIL-FE-hgA" firstAttribute="top" secondItem="xu1-Mm-d7z" secondAttribute="bottom" constant="15" id="CcM-Zb-dnX"/>
-                                    <constraint firstItem="3MO-TB-JSh" firstAttribute="centerX" secondItem="OKk-ay-rWp" secondAttribute="centerX" id="NRz-cj-0xC"/>
-                                    <constraint firstItem="3MO-TB-JSh" firstAttribute="top" secondItem="OKk-ay-rWp" secondAttribute="top" id="Rsp-P8-ph5"/>
-                                    <constraint firstItem="3MO-TB-JSh" firstAttribute="leading" secondItem="OKk-ay-rWp" secondAttribute="leading" constant="90" id="ZLr-Za-URt"/>
                                     <constraint firstItem="xu1-Mm-d7z" firstAttribute="centerX" secondItem="OKk-ay-rWp" secondAttribute="centerX" id="q1E-9n-qQ5"/>
-                                    <constraint firstAttribute="trailing" secondItem="3MO-TB-JSh" secondAttribute="trailing" constant="90" id="t7e-uf-ANV"/>
                                     <constraint firstAttribute="height" constant="220" id="x7y-yo-Gl7"/>
                                 </constraints>
                             </view>
@@ -160,7 +149,6 @@
                         <viewLayoutGuide key="safeArea" id="lT9-my-i5w"/>
                     </view>
                     <connections>
-                        <outlet property="animateDot" destination="3MO-TB-JSh" id="Rh8-LK-20Y"/>
                         <outlet property="blindButton" destination="szy-Nl-D5b" id="yTR-dJ-RhN"/>
                         <outlet property="fileLabel" destination="5iD-WR-p5R" id="E4I-hK-omy"/>
                         <outlet property="gradeView" destination="OKk-ay-rWp" id="Fyr-LC-wm8"/>
@@ -245,7 +233,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="88" id="0bo-bs-XRa" customClass="ResultMenuTableViewCell" customModule="MungGu_iOS" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="88" id="0bo-bs-XRa" customClass="ResultMenuTableViewCell" customModule="MungGu_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0bo-bs-XRa" id="Hde-Cf-dd4">
@@ -253,13 +241,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-7e-IJa">
-                                                    <rect key="frame" x="17" y="18" width="286" height="20.5"/>
+                                                    <rect key="frame" x="17" y="18" width="192" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yY-od-Vd7">
-                                                    <rect key="frame" x="51" y="48.5" width="269" height="21"/>
+                                                    <rect key="frame" x="51" y="48.5" width="175" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

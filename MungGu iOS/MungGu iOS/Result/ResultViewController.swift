@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import NVActivityIndicatorView
 
 class ResultViewController: UIViewController {
 
@@ -18,7 +17,6 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var blindButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var gradeView: UIView!
-    @IBOutlet weak var animateDot: NVActivityIndicatorView!
     @IBOutlet weak var fileLabel: UILabel!
 
     // MARK: - Properties
@@ -36,7 +34,6 @@ class ResultViewController: UIViewController {
         hideAll()
         UIView.animate(withDuration: 2.0, animations: {
             self.gradeView.alpha = 0
-            self.initDot()
         }) { _ in
             self.hideAll()
             self.fileLabel.text = self.fileTile
@@ -47,12 +44,6 @@ class ResultViewController: UIViewController {
     // MARK: - Handlers
     @objc func dismissFunc() {
         dismiss(animated: true, completion: nil)
-    }
-
-    func initDot() {
-        animateDot.color = .orange
-        animateDot.type = .ballPulse
-        animateDot.startAnimating()
     }
 
     func hideAll() {

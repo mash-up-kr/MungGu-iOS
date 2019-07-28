@@ -6,7 +6,6 @@ target 'MungGu iOS' do
   use_frameworks!
 
   # Pods for MungGu iOS
-  pod 'NVActivityIndicatorView'
   pod 'Moya'
 
   target 'MungGu iOSTests' do
