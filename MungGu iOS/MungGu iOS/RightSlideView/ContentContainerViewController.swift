@@ -1,5 +1,5 @@
 //
-//  DetailHomeViewController.swift
+//  ContentContainerController.swift
 //  MungGu iOS
 //
 //  Created by Cloud on 30/06/2019.
@@ -9,23 +9,61 @@
 import Foundation
 import UIKit
 
-class DetailContainerController: UIViewController {
+typealias ContentViewType = ContentContainerController.ViewType
+class ContentContainerController: UIViewController {
+
+    enum ViewType {
+        case `default`
+        case test
+        case result
+
+        var hideBottomButton: Bool {
+            switch self {
+            case .test:
+                return true
+            default:
+                return false
+            }
+        }
+
+        var testButtonText: String? {
+            switch self {
+            case .default:
+                return "Go test!"
+            case .result:
+                return "Re do!"
+            default:
+                return nil
+            }
+        }
+    }
 
     // MARK: - IBOutlet
+
     @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
+    @IBOutlet weak var contentContainerView: UIView!
+    @IBOutlet weak var rightSlideView: UIView!
 
     // MARK: - Properties
+
     var isExpanded = true
+    var viewType: ViewType = .default
+    var contentViewController: ContentViewController?
 
     // MARK: - Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
     // MARK: - Handlers
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailViewController = segue.destination as? FileDetailViewController {
-            detailViewController.containderDelegate = self
+        if let viewController = segue.destination as? ContentViewController {
+            contentViewController = viewController
+            contentViewController?.delegate = self
+        } else if let _ = segue.destination as? RightSlideMenuViewController {
+
         }
     }
 
@@ -56,13 +94,9 @@ class DetailContainerController: UIViewController {
 
 }
 
-extension DetailContainerController: ContainerViewControllerDelegate {
+extension ContentContainerController: ContentViewControllerDelegate {
     func handleToggleMenu() {
         animatePanel(shouldExpanded: isExpanded)
         isExpanded.toggle()
     }
-}
-
-protocol ContainerViewControllerDelegate: class {
-    func handleToggleMenu()
 }

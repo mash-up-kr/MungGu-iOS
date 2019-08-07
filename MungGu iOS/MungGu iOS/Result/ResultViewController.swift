@@ -20,7 +20,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var fileLabel: UILabel!
 
     // MARK: - Properties
-    weak var delegate: ContainerViewControllerDelegate?
+//    weak var delegate: ContainerViewControllerDelegate?
     var isHide = false
     var fileTile: String?
 
@@ -65,7 +65,7 @@ class ResultViewController: UIViewController {
 
     @IBAction private func toggleSlide(_ sender: UIButton) {
         sender.isSelected.toggle()
-        delegate?.handleToggleMenu()
+//        delegate?.handleToggleMenu()
     }
 
     @IBAction private func backButton(_ sender: UIButton) {
@@ -94,8 +94,10 @@ class ResultViewController: UIViewController {
 
 }
 
+/*
 extension ResultViewController: ContainerViewControllerDelegate {
     func handleToggleMenu() {
         delegate?.handleToggleMenu()
     }
 }
+*/

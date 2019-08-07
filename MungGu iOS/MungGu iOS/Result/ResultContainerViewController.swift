@@ -18,6 +18,8 @@ class ResultContainerViewController: UIViewController {
     var isExpanded = false
     var fileTitle: String?
 
+    var viewType: ContentViewType = .default
+
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class ResultContainerViewController: UIViewController {
     // MARK: - Handers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let homeViewController = segue.destination as? ResultViewController
-        homeViewController?.delegate = self
+//        homeViewController?.delegate = self
         homeViewController?.fileTile = self.fileTitle
     }
 
@@ -38,7 +40,7 @@ class ResultContainerViewController: UIViewController {
     }
 }
 
-extension ResultContainerViewController: ContainerViewControllerDelegate {
+extension ResultContainerViewController: ContentViewControllerDelegate {
     func handleToggleMenu() {
         isExpanded.toggle()
         animatePanel(shouldExpanded: isExpanded)

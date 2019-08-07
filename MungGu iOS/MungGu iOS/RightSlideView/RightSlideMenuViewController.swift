@@ -1,5 +1,5 @@
 //
-//  DetailMenuViewController.swift
+//  RightSlideMenuViewController.swift
 //  MungGu iOS
 //
 //  Created by Cloud on 30/06/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailMenuViewController: UIViewController {
+class RightSlideMenuViewController: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet var firstView: UIView!
@@ -57,13 +57,13 @@ class DetailMenuViewController: UIViewController {
     ]
 }
 
-extension DetailMenuViewController: UITableViewDataSource {
+extension RightSlideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredFiles.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? DetailMenuTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuTableViewCell", for: indexPath) as? RightSlideMenuTableViewCell else { return UITableViewCell() }
         let file = filteredFiles[indexPath.row]
         cell.cellLabel.text = file.title
         return cell
@@ -78,13 +78,13 @@ extension DetailMenuViewController: UITableViewDataSource {
     }
 }
 
-extension DetailMenuViewController: UITableViewDelegate {
+extension RightSlideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
     }
 }
 
-extension DetailMenuViewController: UISearchBarDelegate {
+extension RightSlideMenuViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             guard !searchText.isEmpty else {
                 filteredFiles = files

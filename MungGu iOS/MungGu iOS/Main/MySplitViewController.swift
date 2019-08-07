@@ -17,8 +17,8 @@ class MySplitViewController: UISplitViewController {
 
         guard let leftNavController = viewControllers.first as? UINavigationController,
             let masterViewController = leftNavController.topViewController as? FileListViewController,
-            let detailContainerViewController = viewControllers.last as? DetailContainerController,
-            let detailHomeViewController = detailContainerViewController.children.first(where: { $0.isKind(of: FileDetailViewController.self) }) as? FileDetailViewController
+            let detailContainerViewController = viewControllers.last as? ContentContainerController,
+            let detailHomeViewController = detailContainerViewController.children.first(where: { $0.isKind(of: ContentViewController.self) }) as? ContentViewController
             else {
                 fatalError(description)
         }
