@@ -24,14 +24,14 @@ enum Service {
     }
 
     case addDevice(data: Encodable)
-    case file(method: Method, data: Encodable)
-    case hightlight(method: Method, data: Encodable, fileID: String)
+    case file(method: Method, data: Encodable?)
+    case hightlight(method: Method, data: Encodable?, fileID: String)
     case deleteHightlight(fileID: String, hightlightID: String)
-    case quiz(method: Method, data: Encodable, fileID: String)
+    case quiz(method: Method, data: Encodable?, fileID: String)
     case quizReStart(fileID: String)
 
     var deviceID: String {
-        return ""
+        return DeviceManager.share.id ?? ""
     }
 }
 
@@ -105,7 +105,10 @@ extension Service: TargetType {
 
             switch method {
             case .post:
-                return .requestJSONEncodable(data)
+                if let data = data {
+                    return .requestJSONEncodable(data)
+                }
+                return .requestPlain
             default:
                 return .requestPlain
             }

@@ -24,12 +24,14 @@ struct Provider {
     }
 }
 
-extension Provider {
+private extension Provider {
     static func task<T: Decodable>(_ result: Result<Moya.Response, MoyaError>, completion: @escaping ((T) -> Void), failure: @escaping ((Error) -> Void)) {
         switch result {
         case .success(let response):
             let statusCode = response.statusCode
 
+            let jsonData = try? response.mapJSON()
+            print("\(jsonData)")
             switch statusCode {
             case 200..<300:
                 guard let data = try? response.map(T.self) else {
