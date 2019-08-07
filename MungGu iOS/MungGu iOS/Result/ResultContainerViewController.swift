@@ -41,6 +41,10 @@ class ResultContainerViewController: UIViewController {
 }
 
 extension ResultContainerViewController: ContentViewControllerDelegate {
+    func showContentContainerView(_ type: ContentViewType) {
+
+    }
+
     func handleToggleMenu() {
         isExpanded.toggle()
         animatePanel(shouldExpanded: isExpanded)

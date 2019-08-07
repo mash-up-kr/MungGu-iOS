@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,11 +24,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yxd-FH-RWz">
-                    <rect key="frame" x="354" y="1.6666666666666679" width="50" height="48"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="4wO-Ca-VK0"/>
-                    </constraints>
-                    <state key="normal" image="iconImportantMenu"/>
+                    <rect key="frame" x="356" y="1.6666666666666679" width="48" height="48"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <state key="normal" image="iconImportantMenu">
+                        <color key="titleColor" name="tomatoRed"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" red="0.83921568627450982" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <state key="selected" image="iconExpand"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQh-2b-Vrl">
@@ -64,5 +68,8 @@
         <image name="iconExpand" width="48" height="48"/>
         <image name="iconImportantMenu" width="48" height="48"/>
         <image name="iconMenu" width="48" height="48"/>
+        <namedColor name="tomatoRed">
+            <color red="0.93333333333333335" green="0.21176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -19,7 +19,7 @@ class ContentContainerController: UIViewController {
 
         var hideBottomButton: Bool {
             switch self {
-            case .test:
+            case .test, .result:
                 return true
             default:
                 return false
@@ -62,6 +62,7 @@ class ContentContainerController: UIViewController {
         if let viewController = segue.destination as? ContentViewController {
             contentViewController = viewController
             contentViewController?.delegate = self
+            contentViewController?.viewType = viewType
         } else if let _ = segue.destination as? RightSlideMenuViewController {
 
         }
@@ -98,5 +99,22 @@ extension ContentContainerController: ContentViewControllerDelegate {
     func handleToggleMenu() {
         animatePanel(shouldExpanded: isExpanded)
         isExpanded.toggle()
+    }
+
+    func showContentContainerView(_ type: ContentViewType) {
+        guard let viewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
+            preconditionFailure("can not find TestViewController")
+        }
+
+        viewController.viewType = type
+        present(viewController, animated: true, completion: {
+            viewController.contentViewController?.presentDelegate = self
+        })
+    }
+}
+
+extension ContentContainerController: PresentDelegate {
+    func showContentView(_ type: ContentViewType) {
+        showContentContainerView(type)
     }
 }
