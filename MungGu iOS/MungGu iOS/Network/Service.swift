@@ -69,6 +69,13 @@ extension Service: TargetType {
 
         case .file(let method, _), .hightlight(let method, _, _), .quiz(let method, _, _):
 
+            // TODO: return method로 하는 방법 체크
+            /* Alamofire..
+            if let method = method as? HTTPMethod {
+                return method
+            }
+            */
+
             switch method {
             case .post:
                 return .post

@@ -10,9 +10,14 @@ import UIKit
 
 typealias ContentViewButton = ContentViewController.Button
 
+protocol PresentDelegate: class {
+    func showContentView(_ type: ContentViewType)
+}
+
 protocol ContentViewControllerDelegate: class {
     var viewType: ContentViewType { get set }
     func handleToggleMenu()
+    func showContentContainerView(_ type: ContentViewType)
 }
 
 class ContentViewController: UIViewController {
@@ -34,6 +39,8 @@ class ContentViewController: UIViewController {
     private var currentButtonImage: UIImage?
     private var file: File?
     weak var delegate: ContentViewControllerDelegate?
+    weak var presentDelegate: PresentDelegate?
+    var viewType: ContentViewType = .default
 
     // MARK: - Init
 
@@ -47,7 +54,23 @@ class ContentViewController: UIViewController {
 
         splitViewController?.delegate = self
 
-        navigationView.configure(title: "", leftButtonImage: UIImage(named: Button.left.imageName), rightButtonImage: UIImage(named: Button.right.imageName))
+        var leftImage: UIImage? = nil
+        var rightImage: UIImage? = nil
+        var rightTitle: String = ""
+        switch viewType {
+        case .default:
+            leftImage = UIImage(named: Button.left.imageName)
+            rightImage = UIImage(named: Button.right.imageName)
+        case .test:
+            leftImage = UIImage(named: Button.close.imageName)
+            rightTitle = "채점하기"
+        case .result:
+            leftImage = UIImage(named: Button.close.imageName)
+            rightImage = UIImage(named: Button.right.imageName)
+        }
+
+        navigationView.configure(title: "", leftButtonImage: leftImage, rightButtonImage: rightImage, rightButtonTitle: rightTitle)
+
         if let displayMode = splitViewController?.displayMode {
             navigationView.updateButton(displayMode: displayMode)
         }
@@ -70,27 +93,42 @@ class ContentViewController: UIViewController {
     // MARK: - IBActions
 
     @objc private func didTapLeftMenu(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-            let primaryHidden = self.splitViewController?.preferredDisplayMode ?? .primaryHidden
-            self.splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
-        })
+        switch viewType {
+        case .default:
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                let primaryHidden = self.splitViewController?.preferredDisplayMode ?? .primaryHidden
+                self.splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
+            })
+        case .test, .result:
+            dismiss(animated: true, completion: nil)
+        }
     }
 
     @objc private func didTapRightMenu(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        delegate?.handleToggleMenu()
+        switch viewType {
+        case .default, .result:
+            sender.isSelected.toggle()
+            delegate?.handleToggleMenu()
+        case .test:
+            dismiss(animated: true) {
+                self.presentDelegate?.showContentView(.result)
+            }
+        }
     }
 
     @IBAction private func didTapTestButton(_ sender: UIButton) {
         // TODO: 테스트 뷰 띄우기
+        delegate?.showContentContainerView(.test)
+        /*
         guard let testViewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
             preconditionFailure("can not find TestViewController")
         }
 
+//        testViewController.contentViewController?.presentDelegate =
         testViewController.viewType = .test
 
-        print("aaa \(testViewController.contentViewController)")
         present(testViewController, animated: true, completion: nil)
+         */
         /*
         guard let file = self.file else {
             let alert = UIAlertController(.noFile)
@@ -148,12 +186,14 @@ extension ContentViewController {
         case left
         case right
         case expanded
+        case close
 
         var imageName: String {
             switch self {
             case .left: return "iconMenu"
             case .right: return "iconImportantMenu"
             case .expanded: return "iconExpand"
+            case .close: return "iconMenu-1"
             }
         }
 
