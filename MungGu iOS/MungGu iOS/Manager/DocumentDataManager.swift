@@ -20,7 +20,7 @@ class DocumentDataManager {
     }
 
     // TODO: 중복 데이트 체크 필요.
-    private var documents: [String] = []
+    private var files: [FileData] = []
 
     private var filePathURL: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -35,27 +35,49 @@ class DocumentDataManager {
     }
 
     func fetchDocument() {
+
+        let service = Service.file(method: .get, data: nil)
+        Provider.request(service, completion: { (data: FilesResult) in
+            self.files = data.files
+            print("\(data)")
+        }, failure: { error in
+            print("\(error)")
+        })
+
+        /*
         if let documents = UserDefaults.standard.array(forKey: DocumentDataManager.identifier) as? [String] {
             self.documents = documents
         }
+         */
     }
 
-    func getDocument() -> [String] {
-        return documents
+    func getDocument() -> [FileData] {
+        return files
     }
 
     func canSave(_ fileName: String) -> Bool {
+        return files.filter({ $0.name == fileName }).isEmpty
+
+        /*
         if documents.contains(fileName) {
             return false
         }
         return true
+        */
     }
 
     func saveDocument(_ fileName: String) {
-        documents.append(fileName)
-        UserDefaults.standard.set(documents, forKey: DocumentDataManager.identifier)
+        let data = AddFile(name: fileName)
+        let service = Service.file(method: .post, data: data)
+        Provider.request(service, completion: { (data: FileData) in
+//            UserDefaults.standard.set(documents, forKey: DocumentDataManager.identifier)
 
-        NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
+            NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: FileData.self)
+            print("AddFile: \(data)")
+        }) { error in
+            print(error)
+        }
+
     }
 
     @available(iOS 11.0, *)

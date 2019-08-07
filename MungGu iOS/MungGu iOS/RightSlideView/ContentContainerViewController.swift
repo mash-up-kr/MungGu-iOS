@@ -63,8 +63,6 @@ class ContentContainerController: UIViewController {
             contentViewController = viewController
             contentViewController?.delegate = self
             contentViewController?.viewType = viewType
-        } else if let _ = segue.destination as? RightSlideMenuViewController {
-
         }
     }
 

@@ -22,6 +22,10 @@ struct DeviceInfo: Codable {
     let createdAt: String?
 }
 
+struct AddFile: Codable {
+    let name: String?
+}
+
 struct FileData: Codable {
     let id: Int?
     let name: String?
@@ -50,4 +54,22 @@ struct ErrorData: Decodable {
     let code: Int?
     let msg: String?
     let timestamp: String?
+}
+
+// TODO: API 변경 필요
+struct FilesResult: Decodable {
+    let files: [FileData]
+}
+
+struct QuizzesResult: Decodable {
+    let quizzes: [Quiz]
+}
+
+struct QuizzesRequest: Encodable {
+    let answers: [Answer]
+}
+
+// Request, Response 공통
+struct Highlights: Decodable {
+    let highlights: [Highlight]
 }

@@ -20,10 +20,10 @@ class FileListViewController: UIViewController {
 
     // MARK: - Properties
     private let fileTableViewCellIdentifier: String = "file_table_cell"
-    private var filteredFiles: [String] = []
+    private var filteredFiles: [FileData] = []
     weak var delegate: FilesViewControllerDelegate?
 
-    private var data: [String] {
+    private var data: [FileData] {
         return DocumentDataManager.share.getDocument()
     }
 
@@ -44,6 +44,13 @@ class FileListViewController: UIViewController {
         filteredFiles = data
 
         setUpSearchBar()
+
+        let service = Service.file(method: .get, data: nil)
+        Provider.request(service, completion: { (data: FilesResult) in
+            print("\(data)")
+        }, failure: { _ in
+
+        })
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -71,7 +78,7 @@ extension FileListViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             filteredFiles = data
         } else {
-            filteredFiles = data.filter({ $0.contains(searchText) })
+            filteredFiles = data.filter({ $0.name?.contains(searchText) ?? false })
         }
         filesTableView.reloadData()
     }
@@ -83,9 +90,9 @@ extension FileListViewController: UITableViewDelegate {
 //        let selectedData = filteredFiles[indexPath.row]
 //        delegate?.didSelected(with: selectedData)
 
-         let fileName = filteredFiles[indexPath.row]
-         let content = DocumentDataManager.share.readPDF(fileName)
-         let file = File(title: fileName, content: content)
+         let fileData = filteredFiles[indexPath.row]
+         let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
+         let file = File(title: fileData.name ?? "", content: content)
 
          delegate?.didSelected(with: file)
     }
@@ -102,7 +109,7 @@ extension FileListViewController: UITableViewDataSource {
         }
         // FIXME
         let file = filteredFiles[indexPath.row]
-        cell.titleLabel.text = file
+        cell.titleLabel.text = file.name
         return cell
     }
 }
