@@ -26,9 +26,7 @@ class DocumentDataManager {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
 
-    private init() {
-        fetchDocument()
-    }
+    private init() { }
 
     func makeURL(_ fileName: String) -> URL {
         return filePathURL.appendingPathComponent("\(fileName)")
@@ -39,6 +37,8 @@ class DocumentDataManager {
         let service = Service.file(method: .get, data: nil)
         Provider.request(service, completion: { (data: FilesResult) in
             self.files = data.files
+
+            NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
             print("\(data)")
         }, failure: { error in
             print("\(error)")
@@ -70,10 +70,9 @@ class DocumentDataManager {
         let data = AddFile(name: fileName)
         let service = Service.file(method: .post, data: data)
         Provider.request(service, completion: { (data: FileData) in
-//            UserDefaults.standard.set(documents, forKey: DocumentDataManager.identifier)
+            self.files.append(data)
 
-            NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: FileData.self)
-            print("AddFile: \(data)")
+            NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
         }) { error in
             print(error)
         }
