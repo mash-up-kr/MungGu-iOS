@@ -71,6 +71,18 @@ struct QuizzesRequest: Encodable {
     let answers: [Answer]
 }
 
+struct QuizzesResponse: Decodable {
+    let score: Int?
+    let perfectScore: Int?
+    let results: [QuizMarkResult]?
+}
+
+struct QuizMarkResult: Decodable {
+    let userAnswer: String?
+    let realAnswer: String?
+    let mark: Int?
+}
+
 // Request, Response 공통
 struct Highlights: Codable {
     let highlights: [Highlight]

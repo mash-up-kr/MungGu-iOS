@@ -108,9 +108,18 @@ class ContentViewController: UIViewController {
             sender.isSelected.toggle()
             delegate?.handleToggleMenu()
         case .test:
-            dismiss(animated: true) {
-                self.presentDelegate?.showContentView(.result)
+            let requestTest = QuizzesRequest(answers: [Answer(userAnswer: "안녕"), Answer(userAnswer: "잘가"), Answer(userAnswer: "바이")])
+            let service = Service.quiz(method: .post, data: requestTest, fileID: file?.id ?? "")
+            Provider.request(service, completion: { (data: QuizzesResponse) in
+                print("quiz result: \(data)")
+                
+                self.dismiss(animated: true) {
+                    self.presentDelegate?.showContentView(.result)
+                }
+            }) { error in
+                print("quiz result error: \(error)")
             }
+            
         }
     }
 
