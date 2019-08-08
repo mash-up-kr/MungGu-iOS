@@ -41,16 +41,18 @@ class FileListViewController: UIViewController {
         filesTableView.dataSource = self
         view.endEditing(true)
 
-        filteredFiles = data
-
         setUpSearchBar()
 
+        DocumentDataManager.share.fetchDocument()
+        /*
         let service = Service.file(method: .get, data: nil)
         Provider.request(service, completion: { (data: FilesResult) in
+            data.files
             print("\(data)")
         }, failure: { _ in
 
         })
+         */
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
