@@ -37,10 +37,10 @@ class ContentViewController: UIViewController {
     // MARK: - Properties
 
     private var currentButtonImage: UIImage?
-    private var file: File?
     weak var delegate: ContentViewControllerDelegate?
     weak var presentDelegate: PresentDelegate?
     var viewType: ContentViewType = .default
+    var file: File?
 
     // MARK: - Init
 
@@ -76,8 +76,6 @@ class ContentViewController: UIViewController {
         }
 
         configureBottomButton()
-
-        print("Test.. current viewType: \(delegate?.viewType)")
     }
 
     func configureBottomButton() {
@@ -117,37 +115,7 @@ class ContentViewController: UIViewController {
     }
 
     @IBAction private func didTapTestButton(_ sender: UIButton) {
-        // TODO: 테스트 뷰 띄우기
         delegate?.showContentContainerView(.test)
-        /*
-        guard let testViewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
-            preconditionFailure("can not find TestViewController")
-        }
-
-//        testViewController.contentViewController?.presentDelegate =
-        testViewController.viewType = .test
-
-        present(testViewController, animated: true, completion: nil)
-         */
-        /*
-        guard let file = self.file else {
-            let alert = UIAlertController(.noFile)
-            alert.addAction(alert.defaultConfirmAction)
-            present(alert, animated: true)
-            return
-        }
-        guard !textView.highlightings.isEmpty else {
-            let alert = UIAlertController(.noHighlighting)
-            alert.addAction(alert.defaultConfirmAction)
-            present(alert, animated: true)
-            return
-        }
-        
-        testViewController.bind(file, highlights: textView.highlightings)
-        // TODO: Save Dataß
-        present(testNavigationController, animated: true, completion: nil)
- 
-         */
     }
 
     @IBAction private func blindText(_ sender: UIButton) {

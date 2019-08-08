@@ -31,7 +31,7 @@ private extension Provider {
             let statusCode = response.statusCode
 
             let jsonData = try? response.mapJSON()
-            print("\(jsonData)")
+            print("jsonData: \(jsonData ?? "error")")
             switch statusCode {
             case 200..<300:
                 guard let data = try? response.map(T.self) else {

@@ -43,12 +43,6 @@ class DocumentDataManager {
         }, failure: { error in
             print("\(error)")
         })
-
-        /*
-        if let documents = UserDefaults.standard.array(forKey: DocumentDataManager.identifier) as? [String] {
-            self.documents = documents
-        }
-         */
     }
 
     func getDocument() -> [FileData] {
@@ -57,13 +51,6 @@ class DocumentDataManager {
 
     func canSave(_ fileName: String) -> Bool {
         return files.filter({ $0.name == fileName }).isEmpty
-
-        /*
-        if documents.contains(fileName) {
-            return false
-        }
-        return true
-        */
     }
 
     func saveDocument(_ fileName: String) {

@@ -100,6 +100,32 @@ extension ContentContainerController: ContentViewControllerDelegate {
     }
 
     func showContentContainerView(_ type: ContentViewType) {
+        switch type {
+        case .test:
+            if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.file?.id {
+                let highlights = Highlights(highlights: highlightings)
+                let service = Service.hightlight(method: .post, data: highlights, fileID: id)
+
+                Provider.request(service, completion: { (_: Highlights) in
+                    let quizService = Service.quiz(method: .get, data: nil, fileID: id)
+                    Provider.request(quizService, completion: { (data: QuizzesResult) in
+                        print("### data: \(data)")
+                    }) { error in
+                        print("### quiz: \(error)")
+                    }
+                }) { error in
+                    print("### highlights: \(error)")
+                }
+
+            }
+
+        default:
+            present(type)
+        }
+
+    }
+
+    func present(_ type: ContentViewType) {
         guard let viewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
             preconditionFailure("can not find TestViewController")
         }
