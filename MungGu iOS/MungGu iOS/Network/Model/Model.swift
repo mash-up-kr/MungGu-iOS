@@ -34,11 +34,13 @@ struct FileData: Codable {
 struct Highlight: Codable {
     let id: Int?
     let fileId: Int?
+    
     let startIndex: Int?
     let endInex: Int?
     let content: String?
-    let type: HightlightType?
     let isImportant: Bool?
+    
+    let type: HightlightType?
 }
 
 struct Quiz: Codable {
@@ -70,6 +72,6 @@ struct QuizzesRequest: Encodable {
 }
 
 // Request, Response 공통
-struct Highlights: Decodable {
+struct Highlights: Codable {
     let highlights: [Highlight]
 }

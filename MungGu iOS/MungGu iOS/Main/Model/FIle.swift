@@ -9,13 +9,15 @@
 import Foundation
 
 struct File {
+    var id: String
     var title: String
     var content: String
     var date: String?
 }
 
 extension File {
-    init(title: String, content: String) {
+    init(id: String, title: String, content: String) {
+        self.id = id
         self.title = title
         self.content = content
     }

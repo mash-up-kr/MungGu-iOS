@@ -44,15 +44,6 @@ class FileListViewController: UIViewController {
         setUpSearchBar()
 
         DocumentDataManager.share.fetchDocument()
-        /*
-        let service = Service.file(method: .get, data: nil)
-        Provider.request(service, completion: { (data: FilesResult) in
-            data.files
-            print("\(data)")
-        }, failure: { _ in
-
-        })
-         */
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,14 +80,14 @@ extension FileListViewController: UISearchBarDelegate {
 extension FileListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
-//        let selectedData = filteredFiles[indexPath.row]
-//        delegate?.didSelected(with: selectedData)
 
-         let fileData = filteredFiles[indexPath.row]
-         let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
-         let file = File(title: fileData.name ?? "", content: content)
+        let fileData = filteredFiles[indexPath.row]
+        let fileID = "\(fileData.id ?? -1)"
+        let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
 
-         delegate?.didSelected(with: file)
+        let file = File(id: fileID, title: fileData.name ?? "", content: content)
+
+        delegate?.didSelected(with: file)
     }
 }
 
