@@ -25,8 +25,8 @@ enum Service {
 
     case addDevice(data: Encodable)
     case file(method: Method, data: Encodable?)
-    case hightlight(method: Method, data: Encodable?, fileID: String)
-    case deleteHightlight(fileID: String, hightlightID: String)
+    case highlight(method: Method, data: Encodable?, fileID: String)
+    case deleteHighlight(fileID: String, highlightID: String)
     case quiz(method: Method, data: Encodable?, fileID: String)
     case quizReStart(fileID: String)
 
@@ -51,10 +51,10 @@ extension Service: TargetType {
             return ""
         case .file:
             return "/\(deviceID)/files"
-        case .hightlight(_, _, let fileID):
-            return "/\(deviceID)/files/\(fileID)/hightlights"
-        case .deleteHightlight(let fileID, let hightlightID):
-            return "/\(deviceID)/files/\(fileID)/hightlights/\(hightlightID)"
+        case .highlight(_, _, let fileID):
+            return "/\(deviceID)/files/\(fileID)/highlights"
+        case .deleteHighlight(let fileID, let highlightID):
+            return "/\(deviceID)/files/\(fileID)/highlights/\(highlightID)"
         case .quiz(_, _, let fileID):
             return "/\(deviceID)/files/\(fileID)/quiz"
         case .quizReStart(let fileID):
@@ -67,7 +67,7 @@ extension Service: TargetType {
         case .addDevice:
             return .post
 
-        case .file(let method, _), .hightlight(let method, _, _), .quiz(let method, _, _):
+        case .file(let method, _), .highlight(let method, _, _), .quiz(let method, _, _):
 
             switch method {
             case .post:
@@ -76,7 +76,7 @@ extension Service: TargetType {
                 return .get
             }
 
-        case .deleteHightlight:
+        case .deleteHighlight:
             return .delete
 
         case .quizReStart:
@@ -94,7 +94,7 @@ extension Service: TargetType {
         case .addDevice(let data):
             return .requestJSONEncodable(data)
 
-        case .file(let method, let data), .hightlight(let method, let data, _), .quiz(let method, let data, _):
+        case .file(let method, let data), .highlight(let method, let data, _), .quiz(let method, let data, _):
 
             switch method {
             case .post:
@@ -106,7 +106,7 @@ extension Service: TargetType {
                 return .requestPlain
             }
 
-        case .deleteHightlight:
+        case .deleteHighlight:
             return .requestPlain
 
         case .quizReStart:

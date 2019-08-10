@@ -11,7 +11,7 @@ import Foundation
 extension Highlight {
     var range: NSRange {
         guard let start = startIndex,
-            let end = endInex else {
+            let end = endIndex else {
                 preconditionFailure("start end index couldn't be nil")
         }
 

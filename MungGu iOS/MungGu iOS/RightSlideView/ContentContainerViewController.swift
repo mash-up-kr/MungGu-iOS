@@ -104,12 +104,12 @@ extension ContentContainerController: ContentViewControllerDelegate {
         case .test:
             if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.file?.id {
                 let highlights = Highlights(highlights: highlightings)
-                let service = Service.hightlight(method: .post, data: highlights, fileID: id)
+                let service = Service.highlight(method: .post, data: highlights, fileID: id)
 
                 Provider.request(service, completion: { (_: Highlights) in
                     let quizService = Service.quiz(method: .get, data: nil, fileID: id)
                     Provider.request(quizService, completion: { (data: QuizzesResult) in
-                        print("### data: \(data)")
+                        self.present(type, highlightings: highlightings)
                     }) { error in
                         print("### quiz: \(error)")
                     }
@@ -125,7 +125,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
     }
 
-    func present(_ type: ContentViewType) {
+    func present(_ type: ContentViewType, highlightings: [Highlight]? = nil) {
         guard let viewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
             preconditionFailure("can not find TestViewController")
         }
@@ -133,6 +133,10 @@ extension ContentContainerController: ContentViewControllerDelegate {
         viewController.viewType = type
         present(viewController, animated: true, completion: {
             viewController.contentViewController?.presentDelegate = self
+
+            if let content = self.contentViewController?.file?.content, let highlightings = highlightings {
+                viewController.contentViewController?.textView.loadData(content: content, from: highlightings)
+            }
         })
     }
 }
