@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RightSlideMenuTestViewCell" rowHeight="48" id="iF8-FR-iRb" customClass="RightSlideMenuTestViewCell" customModule="MungGu_iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iF8-FR-iRb" id="ni2-Ts-Vqo">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정답을 입력해주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJS-m7-EOd">
+                        <rect key="frame" x="24" y="18" width="366" height="11.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <color key="textColor" red="0.79215686269999996" green="0.83137254900000002" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbj-mm-MJX">
+                        <rect key="frame" x="7" y="46.5" width="400" height="1"/>
+                        <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="G0U-4A-KsR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.94324541090000003" green="0.9594240785" blue="0.96887964010000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="jbj-mm-MJX" secondAttribute="bottom" id="MSD-49-KcE"/>
+                    <constraint firstAttribute="trailing" secondItem="mJS-m7-EOd" secondAttribute="trailing" constant="24" id="aEf-8a-Uvz"/>
+                    <constraint firstItem="mJS-m7-EOd" firstAttribute="leading" secondItem="ni2-Ts-Vqo" secondAttribute="leading" constant="24" id="baN-ef-K3l"/>
+                    <constraint firstItem="mJS-m7-EOd" firstAttribute="leading" secondItem="ni2-Ts-Vqo" secondAttribute="leading" constant="24" id="blQ-XJ-iOr"/>
+                    <constraint firstAttribute="trailing" secondItem="jbj-mm-MJX" secondAttribute="trailing" constant="7" id="cdy-BR-Aja"/>
+                    <constraint firstItem="mJS-m7-EOd" firstAttribute="top" secondItem="ni2-Ts-Vqo" secondAttribute="top" constant="18" id="wlK-OP-w2Q"/>
+                    <constraint firstAttribute="bottom" secondItem="mJS-m7-EOd" secondAttribute="bottom" constant="18" id="wsm-yj-nLg"/>
+                    <constraint firstItem="jbj-mm-MJX" firstAttribute="leading" secondItem="ni2-Ts-Vqo" secondAttribute="leading" constant="7" id="yIZ-Am-aMP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="answerLabel" destination="mJS-m7-EOd" id="HGe-Gp-QGx"/>
+            </connections>
+            <point key="canvasLocation" x="814" y="-49"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class RightSlideMenuTableViewCell: UITableViewCell {
+class RightSlideMenuMainViewCell: UITableViewCell {
 
     // MARK: - Properties
-    @IBOutlet weak var cellLabel: UILabel!
-    @IBOutlet weak var setStar: UIButton!
+    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var importantButton: UIButton!
 
     // MARK: - Handlers
     @IBAction private func setStar(_ sender: UIButton) {
-        setStar.isSelected.toggle()
+        importantButton.isSelected.toggle()
     }
 }
