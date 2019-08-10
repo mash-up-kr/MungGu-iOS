@@ -46,7 +46,6 @@ class ContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textView?.isGestureEnable = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,12 +58,16 @@ class ContentViewController: UIViewController {
         var rightTitle: String = ""
         switch viewType {
         case .default:
+            textView?.isGestureEnable = true
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         case .test:
+            textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
             rightTitle = "채점하기"
+            delegate?.handleToggleMenu()
         case .result:
+            textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         }
@@ -112,14 +115,14 @@ class ContentViewController: UIViewController {
             let service = Service.quiz(method: .post, data: requestTest, fileID: file?.id ?? "")
             Provider.request(service, completion: { (data: QuizzesResponse) in
                 print("quiz result: \(data)")
-                
+
                 self.dismiss(animated: true) {
                     self.presentDelegate?.showContentView(.result)
                 }
             }) { error in
                 print("quiz result error: \(error)")
             }
-            
+
         }
     }
 
