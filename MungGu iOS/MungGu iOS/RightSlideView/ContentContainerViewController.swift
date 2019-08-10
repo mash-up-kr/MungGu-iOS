@@ -49,6 +49,7 @@ class ContentContainerController: UIViewController {
     var isExpanded = true
     var viewType: ViewType = .default
     var contentViewController: ContentViewController?
+    var rightSlideViewController: RightSlideMenuViewController?
 
     // MARK: - Init
 
@@ -62,6 +63,10 @@ class ContentContainerController: UIViewController {
         if let viewController = segue.destination as? ContentViewController {
             contentViewController = viewController
             contentViewController?.delegate = self
+            contentViewController?.viewType = viewType
+        } else if let viewController = segue.destination as? RightSlideMenuViewController {
+            rightSlideViewController = viewController
+            rightSlideViewController?.delegate = self
             contentViewController?.viewType = viewType
         }
     }
@@ -119,6 +124,8 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
             }
 
+        case .result:
+            present(type, highlightings: contentViewController?.textView.highlightings)
         default:
             present(type)
         }
@@ -136,6 +143,10 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
             if let content = self.contentViewController?.file?.content, let highlightings = highlightings {
                 viewController.contentViewController?.textView.loadData(content: content, from: highlightings)
+                viewController.rightSlideViewController?.setTest(type)
+                if type == .test {
+                    viewController.contentViewController?.testContentView.isHidden = false
+                }
             }
         })
     }
@@ -144,5 +155,11 @@ extension ContentContainerController: ContentViewControllerDelegate {
 extension ContentContainerController: PresentDelegate {
     func showContentView(_ type: ContentViewType) {
         showContentContainerView(type)
+    }
+}
+
+extension ContentContainerController: RightSlideMenuViewControllerDelegate {
+    func test() {
+
     }
 }

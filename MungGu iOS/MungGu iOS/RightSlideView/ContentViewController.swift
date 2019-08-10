@@ -33,6 +33,7 @@ class ContentViewController: UIViewController {
             navigationView.rightButton.addTarget(self, action: #selector(didTapRightMenu), for: .touchUpInside)
         }
     }
+    @IBOutlet weak var testContentView: TestInsideView!
 
     // MARK: - Properties
 
@@ -65,7 +66,6 @@ class ContentViewController: UIViewController {
             textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
             rightTitle = "채점하기"
-            delegate?.handleToggleMenu()
         case .result:
             textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
@@ -120,6 +120,9 @@ class ContentViewController: UIViewController {
                     self.presentDelegate?.showContentView(.result)
                 }
             }) { error in
+                self.dismiss(animated: true) {
+                    self.presentDelegate?.showContentView(.result)
+                }
                 print("quiz result error: \(error)")
             }
 

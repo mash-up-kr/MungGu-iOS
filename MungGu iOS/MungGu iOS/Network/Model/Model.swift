@@ -39,30 +39,9 @@ struct Highlight: Codable {
     let startIndex: Int?
     let endIndex: Int?
     let content: String?
-    let isImportant: Int?
+    let isImportant: Bool?
 
     let type: BlankType?
-}
-
-extension Highlight {
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-
-        id = try values.decodeIfPresent(Int.self, forKey: .id)
-        fileId = try values.decodeIfPresent(Int.self, forKey: .fileId)
-        startIndex = try values.decodeIfPresent(Int.self, forKey: .startIndex)
-        endIndex = try values.decodeIfPresent(Int.self, forKey: .endIndex)
-        content = try values.decodeIfPresent(String.self, forKey: .content)
-        type = try values.decodeIfPresent(BlankType.self, forKey: .type)
-
-        if let intType = try? values.decodeIfPresent(Int.self, forKey: .isImportant) {
-            isImportant = intType
-        } else if let boolType = try? values.decodeIfPresent(Bool.self, forKey: .isImportant) {
-            isImportant = boolType ? 1 : 0
-        } else {
-            isImportant = 0
-        }
-    }
 }
 
 struct Quiz: Codable {
