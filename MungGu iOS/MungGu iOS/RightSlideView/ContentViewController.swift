@@ -43,8 +43,6 @@ class ContentViewController: UIViewController {
     var viewType: ContentViewType = .default
     var currentFile: FileData?
 
-    private let defaultTitle: String = "파일을 선택해 주세요."
-
     // MARK: - Init
 
     override func viewDidLoad() {
@@ -58,13 +56,11 @@ class ContentViewController: UIViewController {
         var leftImage: UIImage?
         var rightImage: UIImage?
         var rightTitle: String = ""
-        var title: String = ""
         switch viewType {
         case .default:
             textView?.isGestureEnable = true
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
-            title = defaultTitle
         case .test:
             textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
@@ -75,7 +71,7 @@ class ContentViewController: UIViewController {
             rightImage = UIImage(named: Button.right.imageName)
         }
 
-        navigationView.configure(title: title, leftButtonImage: leftImage, rightButtonImage: rightImage, rightButtonTitle: rightTitle)
+        navigationView.configure(title: "", leftButtonImage: leftImage, rightButtonImage: rightImage, rightButtonTitle: rightTitle)
 
         if let displayMode = splitViewController?.displayMode {
             navigationView.updateButton(displayMode: displayMode)
