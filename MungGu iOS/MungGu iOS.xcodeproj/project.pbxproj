@@ -56,6 +56,7 @@
 		D56A604E22D9929E0098EA46 /* HighlightTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */; };
 		D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C7759222C79CD900ADF692 /* PDFContent.swift */; };
 		D5C7759522C79E6B00ADF692 /* sample.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D5C7759422C79E6A00ADF692 /* sample.pdf */; };
+		D5F6AB1322FC6B4D00E3ABDE /* HighlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6AB1222FC6B4D00E3ABDE /* HighlightManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightTextViewDelegate.swift; sourceTree = "<group>"; };
 		D5C7759222C79CD900ADF692 /* PDFContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFContent.swift; sourceTree = "<group>"; };
 		D5C7759422C79E6A00ADF692 /* sample.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample.pdf; sourceTree = "<group>"; };
+		D5F6AB1222FC6B4D00E3ABDE /* HighlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightManager.swift; sourceTree = "<group>"; };
 		DEF745E2C2E9DFB9D50A106C /* Pods-MungGu iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOS.release.xcconfig"; path = "Target Support Files/Pods-MungGu iOS/Pods-MungGu iOS.release.xcconfig"; sourceTree = "<group>"; };
 		F90C49BEE1769958BE583C83 /* Pods-MungGu iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MungGu iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MungGu iOSTests/Pods-MungGu iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,6 +259,7 @@
 			children = (
 				CEC8929122D93C27004BA075 /* DocumentDataManager.swift */,
 				CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */,
+				D5F6AB1222FC6B4D00E3ABDE /* HighlightManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				D543B48E22EB535A0047C3D7 /* Highlight+NSRange.swift in Sources */,
 				D56A604322D8E7D90098EA46 /* ContentViewController.swift in Sources */,
 				AECC601222C8477B00561DCF /* ContentContainerViewController.swift in Sources */,
+				D5F6AB1322FC6B4D00E3ABDE /* HighlightManager.swift in Sources */,
 				CEC8929222D93C27004BA075 /* DocumentDataManager.swift in Sources */,
 				83FA99D222C79C56009B1EA6 /* MySplitViewController.swift in Sources */,
 				CEC8929522D94ABA004BA075 /* AlertShowable.swift in Sources */,

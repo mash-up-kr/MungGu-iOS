@@ -17,9 +17,6 @@ protocol HighlightingTextViewDelegate: class {
 }
 
 extension HighlightingTextViewDelegate {
-    func didAdd(_ highlight: Highlight) {}
-    func didRemove(_ highlight: Highlight) {}
-    func didTap(_ highlight: Highlight) {}
     func colorFor(highlightMode: HighlightType) -> UIColor {
         switch highlightMode {
         case .general:

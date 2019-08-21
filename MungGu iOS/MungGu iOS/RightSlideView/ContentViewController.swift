@@ -41,7 +41,9 @@ class ContentViewController: UIViewController {
     weak var delegate: ContentViewControllerDelegate?
     weak var presentDelegate: PresentDelegate?
     var viewType: ContentViewType = .default
-    var file: File?
+    var currentFile: FileData?
+
+    private let defaultTitle: String = "파일을 선택해 주세요."
 
     // MARK: - Init
 
@@ -51,17 +53,18 @@ class ContentViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         splitViewController?.delegate = self
 
-        var leftImage: UIImage? = nil
-        var rightImage: UIImage? = nil
+        var leftImage: UIImage?
+        var rightImage: UIImage?
         var rightTitle: String = ""
+        var title: String = ""
         switch viewType {
         case .default:
             textView?.isGestureEnable = true
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
+            title = defaultTitle
         case .test:
             textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
@@ -72,7 +75,7 @@ class ContentViewController: UIViewController {
             rightImage = UIImage(named: Button.right.imageName)
         }
 
-        navigationView.configure(title: "", leftButtonImage: leftImage, rightButtonImage: rightImage, rightButtonTitle: rightTitle)
+        navigationView.configure(title: title, leftButtonImage: leftImage, rightButtonImage: rightImage, rightButtonTitle: rightTitle)
 
         if let displayMode = splitViewController?.displayMode {
             navigationView.updateButton(displayMode: displayMode)
@@ -111,8 +114,9 @@ class ContentViewController: UIViewController {
             sender.isSelected.toggle()
             delegate?.handleToggleMenu()
         case .test:
+            guard let fileId = currentFile?.id else { return }
             let requestTest = QuizzesRequest(answers: [Answer(userAnswer: "안녕"), Answer(userAnswer: "잘가"), Answer(userAnswer: "바이")])
-            let service = Service.quiz(method: .post, data: requestTest, fileID: file?.id ?? "")
+            let service = Service.quiz(method: .post, data: requestTest, fileID: "\(fileId)")
             Provider.request(service, completion: { (data: QuizzesResponse) in
                 print("quiz result: \(data)")
 
@@ -146,15 +150,28 @@ class ContentViewController: UIViewController {
 }
 
 extension ContentViewController: FilesViewControllerDelegate {
-    func didSelected(with data: File) {
-        // TODO: Save Data
+    func didSelected(with data: FileData) {
+
+        // 같은 파일 선택 시 동작수행하지 않음
+        guard data.id != currentFile?.id else {
+            return
+        }
+
+//        HighlightManager.share.saveFile(fileData: fileData)
+
         let highlightings = textView.highlightings
+        // TODO: Save Current Data
         textView.clear()
-        // TODO: Get Data
-        navigationView.titleLabel.text = data.title
-        file = data
+
+        // TODO: Get Highligh Data with fileData
+        let content = DocumentDataManager.share.readPDF(data.name ?? "")
+        navigationView.titleLabel.text = content
+        // TODO: Send FileData to HighlightManager
+        // HighlightManager will get highlights info for selected file.
+//                HighlightManager.share.loadFile(fileData: fileData)
+        currentFile = data
         // bind Highlightings to textView
-        textView.loadData(content: data.content, from: [])
+        textView.loadData(content: content, from: [])
     }
 }
 

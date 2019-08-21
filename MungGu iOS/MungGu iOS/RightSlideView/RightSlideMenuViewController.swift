@@ -25,8 +25,12 @@ class RightSlideMenuViewController: UIViewController {
     // MARK: - Properties
 
     weak var delegate: RightSlideMenuViewControllerDelegate?
-    var filteredFiles = [File]()
     var viewType: ContentViewType = .default
+    var highlightings = [Highlight]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     // MARK: - Init
 
@@ -71,27 +75,26 @@ class RightSlideMenuViewController: UIViewController {
 
 extension RightSlideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return highlightings.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: 화면 별 분기 처리 필요
-
         switch viewType {
         case .result:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuResultViewCell", for: indexPath) as? RightSlideMenuResultViewCell else { return UITableViewCell() }
+            // answerLabel
             return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuMainViewCell", for: indexPath) as? RightSlideMenuMainViewCell else { return UITableViewCell() }
-            //            let file = filteredFiles[indexPath.row]
-            //            cell.wordLabel.text = file.title
+            let highlight = highlightings[indexPath.row]
+            cell.wordLabel.text = highlight.content
             return cell
         }
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "삭제") { _, index in
-            self.filteredFiles.remove(at: index.row)
+            self.highlightings.remove(at: index.row)
             self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
         return [deleteAction]
@@ -116,7 +119,6 @@ extension RightSlideMenuViewController: UITableViewDelegate {
 extension RightSlideMenuViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             guard !searchText.isEmpty else {
-//                filteredFiles = files
                 tableView.reloadData()
                 return
             }

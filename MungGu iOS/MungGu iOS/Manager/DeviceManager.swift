@@ -43,6 +43,7 @@ class DeviceManager {
 
     private func saveDeviceID(_ id: String) {
         UserDefaults.standard.set(id, forKey: Identifier.deviceID)
+        self.id = id
     }
 
     private func getDeviceID() -> String? {

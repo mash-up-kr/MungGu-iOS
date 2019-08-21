@@ -97,7 +97,6 @@ class HighlightingTextView: UITextView {
             endPoint.x = max(point.x, endPoint.x)
         }
 
-        let position = self.closestPosition(to: point)
         self.tapGestrue?.isEnabled = false
 
         switch sender.state {

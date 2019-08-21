@@ -19,113 +19,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-Yr-UaZ">
-                                <rect key="frame" x="0.0" y="0.0" width="798" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="75"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X50-0q-Ryz" customClass="CommonNavigationView" customModule="MungGu_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="798" height="55"/>
+                                        <rect key="frame" x="0.0" y="20" width="768" height="55"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="WU5-XU-NRg"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tzf-Ne-TrV">
-                                        <rect key="frame" x="0.0" y="74" width="798" height="1"/>
-                                        <color key="backgroundColor" red="0.96078431372549022" green="0.96862745098039216" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="Npl-vW-Flh"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="4yU-M3-A2j" firstAttribute="bottom" secondItem="X50-0q-Ryz" secondAttribute="bottom" id="5HE-Ob-KRY"/>
-                                    <constraint firstAttribute="trailing" secondItem="Tzf-Ne-TrV" secondAttribute="trailing" id="eG2-Xd-QIS"/>
+                                    <constraint firstAttribute="bottom" secondItem="X50-0q-Ryz" secondAttribute="bottom" id="NXT-kQ-LJF"/>
                                     <constraint firstItem="X50-0q-Ryz" firstAttribute="top" secondItem="4yU-M3-A2j" secondAttribute="top" id="fkY-hd-bge"/>
-                                    <constraint firstAttribute="bottom" secondItem="Tzf-Ne-TrV" secondAttribute="bottom" id="gNs-5d-G6m"/>
                                     <constraint firstItem="X50-0q-Ryz" firstAttribute="leading" secondItem="4yU-M3-A2j" secondAttribute="leading" id="ntN-fT-4qO"/>
                                     <constraint firstItem="4yU-M3-A2j" firstAttribute="trailing" secondItem="X50-0q-Ryz" secondAttribute="trailing" id="q5y-Fk-M5J"/>
-                                    <constraint firstItem="Tzf-Ne-TrV" firstAttribute="leading" secondItem="ac9-Yr-UaZ" secondAttribute="leading" id="wg1-bB-Mkz"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="4yU-M3-A2j"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mIY-vB-6YQ">
-                                <rect key="frame" x="0.0" y="75" width="798" height="949"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJd-DR-bGu">
-                                        <rect key="frame" x="0.0" y="0.0" width="798" height="949"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-NO-yLV" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="30" width="718" height="919"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHighlightingActive" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="textContainerInsets">
-                                                        <real key="value" value="44"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="526" translatesAutoresizingMaskIntoConstraints="NO" id="Zn4-NL-C7W">
-                                                <rect key="frame" x="30" y="867" width="738" height="52"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fS-Gu-Odp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="160" height="52"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="52" id="jUv-rO-IAh"/>
-                                                            <constraint firstAttribute="width" constant="106" id="vp1-6t-CEr"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button" image="rectangle"/>
-                                                        <connections>
-                                                            <action selector="didTapTestButton:" destination="vF6-1m-nLu" eventType="touchUpInside" id="Wa0-S3-CKx"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP3-ge-X0Y">
-                                                        <rect key="frame" x="686" y="0.0" width="52" height="52"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="52" id="Lff-ua-nIF"/>
-                                                            <constraint firstAttribute="height" constant="52" id="bcN-rB-XoH"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button" image="btnEye"/>
-                                                        <state key="selected" image="iconEyeHide"/>
-                                                        <connections>
-                                                            <action selector="blindText:" destination="vF6-1m-nLu" eventType="touchUpInside" id="v7C-0j-2xS"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="Zn4-NL-C7W" firstAttribute="leading" secondItem="VIv-gv-N1Y" secondAttribute="leading" constant="30" id="2Cz-uJ-rwk"/>
-                                            <constraint firstItem="uwe-NO-yLV" firstAttribute="top" secondItem="ZJd-DR-bGu" secondAttribute="top" constant="30" id="2qr-Ja-4fr"/>
-                                            <constraint firstItem="uwe-NO-yLV" firstAttribute="leading" secondItem="VIv-gv-N1Y" secondAttribute="leading" constant="40" id="Eh0-JN-Eqf"/>
-                                            <constraint firstItem="VIv-gv-N1Y" firstAttribute="trailing" secondItem="Zn4-NL-C7W" secondAttribute="trailing" constant="30" id="JEL-7d-Aqb"/>
-                                            <constraint firstItem="VIv-gv-N1Y" firstAttribute="trailing" secondItem="uwe-NO-yLV" secondAttribute="trailing" constant="40" id="RCX-GG-CN3"/>
-                                            <constraint firstAttribute="bottom" secondItem="uwe-NO-yLV" secondAttribute="bottom" id="wKx-lB-wUG"/>
-                                            <constraint firstItem="VIv-gv-N1Y" firstAttribute="bottom" secondItem="Zn4-NL-C7W" secondAttribute="bottom" constant="30" id="zUY-pU-ziX"/>
-                                        </constraints>
-                                        <viewLayoutGuide key="safeArea" id="VIv-gv-N1Y"/>
-                                    </view>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULg-ed-t3G" customClass="TestInsideView" customModule="MungGu_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="949"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="320" id="1vF-ff-gkY"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fS-Gu-Odp">
+                                <rect key="frame" x="44" y="942" width="106" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="jUv-rO-IAh"/>
+                                    <constraint firstAttribute="width" constant="106" id="vp1-6t-CEr"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="rectangle"/>
+                                <connections>
+                                    <action selector="didTapTestButton:" destination="vF6-1m-nLu" eventType="touchUpInside" id="Wa0-S3-CKx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP3-ge-X0Y">
+                                <rect key="frame" x="676" y="942" width="52" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="Lff-ua-nIF"/>
+                                    <constraint firstAttribute="height" constant="52" id="bcN-rB-XoH"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="btnEye"/>
+                                <state key="selected" image="iconEyeHide"/>
+                                <connections>
+                                    <action selector="blindText:" destination="vF6-1m-nLu" eventType="touchUpInside" id="v7C-0j-2xS"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwe-NO-yLV" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
+                                <rect key="frame" x="40" y="105" width="688" height="806"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHighlightingActive" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mIY-vB-6YQ" firstAttribute="top" secondItem="ac9-Yr-UaZ" secondAttribute="bottom" id="6bU-tQ-NE5"/>
-                            <constraint firstAttribute="bottom" secondItem="mIY-vB-6YQ" secondAttribute="bottom" id="BHR-HI-gtc"/>
-                            <constraint firstItem="ac9-Yr-UaZ" firstAttribute="top" secondItem="GuI-Z6-ssN" secondAttribute="top" id="WrE-hg-6i6"/>
-                            <constraint firstAttribute="trailing" secondItem="mIY-vB-6YQ" secondAttribute="trailing" id="ZwK-er-MWn"/>
-                            <constraint firstAttribute="trailing" secondItem="ac9-Yr-UaZ" secondAttribute="trailing" id="bB3-1s-qza"/>
-                            <constraint firstItem="ac9-Yr-UaZ" firstAttribute="leading" secondItem="GuI-Z6-ssN" secondAttribute="leading" id="dnq-aP-bbW"/>
-                            <constraint firstItem="mIY-vB-6YQ" firstAttribute="leading" secondItem="GuI-Z6-ssN" secondAttribute="leading" id="mWQ-TG-GA7"/>
+                            <constraint firstItem="uwe-NO-yLV" firstAttribute="leading" secondItem="K8Z-eJ-us4" secondAttribute="leading" constant="40" id="4IW-IF-pfw"/>
+                            <constraint firstItem="3fS-Gu-Odp" firstAttribute="top" secondItem="uwe-NO-yLV" secondAttribute="bottom" constant="31" id="4dR-Ak-vuf"/>
+                            <constraint firstItem="3fS-Gu-Odp" firstAttribute="leading" secondItem="K8Z-eJ-us4" secondAttribute="leading" constant="44" id="67W-y2-AUk"/>
+                            <constraint firstItem="K8Z-eJ-us4" firstAttribute="bottom" secondItem="uwe-NO-yLV" secondAttribute="bottom" constant="113" id="9mg-WQ-UKj"/>
+                            <constraint firstItem="K8Z-eJ-us4" firstAttribute="trailing" secondItem="uwe-NO-yLV" secondAttribute="trailing" constant="40" id="Eob-nT-Pvq"/>
+                            <constraint firstItem="qP3-ge-X0Y" firstAttribute="top" secondItem="uwe-NO-yLV" secondAttribute="bottom" constant="31" id="Jp8-Pg-eDc"/>
+                            <constraint firstAttribute="trailing" secondItem="ac9-Yr-UaZ" secondAttribute="trailing" id="Qxv-ug-hhO"/>
+                            <constraint firstItem="K8Z-eJ-us4" firstAttribute="bottom" secondItem="qP3-ge-X0Y" secondAttribute="bottom" constant="30" id="hxA-HL-U75"/>
+                            <constraint firstItem="K8Z-eJ-us4" firstAttribute="trailing" secondItem="qP3-ge-X0Y" secondAttribute="trailing" constant="40" id="lf4-jZ-NDs"/>
+                            <constraint firstItem="ac9-Yr-UaZ" firstAttribute="leading" secondItem="K8Z-eJ-us4" secondAttribute="leading" id="oVp-nM-9Ca"/>
+                            <constraint firstItem="uwe-NO-yLV" firstAttribute="top" secondItem="ac9-Yr-UaZ" secondAttribute="bottom" constant="30" id="uaF-UW-eFf"/>
+                            <constraint firstItem="ac9-Yr-UaZ" firstAttribute="top" secondItem="GuI-Z6-ssN" secondAttribute="top" id="y11-xE-huH"/>
+                            <constraint firstItem="K8Z-eJ-us4" firstAttribute="bottom" secondItem="3fS-Gu-Odp" secondAttribute="bottom" constant="30" id="zQI-Xl-4RX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K8Z-eJ-us4"/>
                     </view>
@@ -133,7 +93,6 @@
                         <outlet property="eyeButton" destination="qP3-ge-X0Y" id="KNm-KO-Kfg"/>
                         <outlet property="navigationView" destination="X50-0q-Ryz" id="osX-Qk-h9e"/>
                         <outlet property="testButton" destination="3fS-Gu-Odp" id="qXI-xK-2Yg"/>
-                        <outlet property="testContentView" destination="ULg-ed-t3G" id="fdb-YV-j3c"/>
                         <outlet property="textView" destination="uwe-NO-yLV" id="swo-3m-g8R"/>
                     </connections>
                 </viewController>
