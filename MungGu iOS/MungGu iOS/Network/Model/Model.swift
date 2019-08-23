@@ -39,7 +39,7 @@ struct Highlight: Codable {
     let startIndex: Int?
     let endIndex: Int?
     let content: String?
-    let isImportant: Bool?
+    var isImportant: Bool?
 
     let type: BlankType?
 }

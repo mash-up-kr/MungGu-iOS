@@ -51,6 +51,15 @@ class HighlightingTextView: UITextView {
         isGestureEnable = false
     }
 
+    func updateTextView(from data: [Highlight]) {
+        highlightings = []
+        data.forEach { highlight in
+            let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? false, state: self.state) ?? highlightColor
+            addHighlighting(color: updateColor, range: highlight.range)
+        }
+        highlightings = data
+    }
+
     // 하나의 highlight 에 대해 업데이트 할 때 사용하세요.
     func updateTextView(with highlight: Highlight) {
         let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? false, state: self.state) ?? highlightColor

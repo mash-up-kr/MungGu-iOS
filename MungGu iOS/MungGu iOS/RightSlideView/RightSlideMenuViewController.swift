@@ -26,7 +26,7 @@ class RightSlideMenuViewController: UIViewController {
 
     weak var delegate: RightSlideMenuViewControllerDelegate?
     var viewType: ContentViewType = .default
-    var highlightings = [Highlight]() {
+    var highlightings: [Highlight] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -34,11 +34,19 @@ class RightSlideMenuViewController: UIViewController {
 
     // MARK: - Init
 
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: DocumentDataManager.NotificationName.documentCountDidChangedNotification, object: nil)
+    }
+
+    // MARK: - Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
-//        filteredFiles = files
         view.endEditing(true)
         configureDelegate()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeHighlights), name: HighlightManager.DidChangedHighlights, object: nil)
+        self.highlightings = HighlightManager.share.getHighlights()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +79,11 @@ class RightSlideMenuViewController: UIViewController {
             titleLabel.text = "오답 목록"
         }
     }
+
+    @objc func didChangeHighlights() {
+        self.highlightings = HighlightManager.share.getHighlights()
+        self.tableView.reloadData()
+    }
 }
 
 extension RightSlideMenuViewController: UITableViewDataSource {
@@ -88,6 +101,8 @@ extension RightSlideMenuViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuMainViewCell", for: indexPath) as? RightSlideMenuMainViewCell else { return UITableViewCell() }
             let highlight = highlightings[indexPath.row]
             cell.wordLabel.text = highlight.content
+            cell.highlight = highlight
+            cell.delegate = self
             return cell
         }
     }
@@ -122,9 +137,19 @@ extension RightSlideMenuViewController: UISearchBarDelegate {
                 tableView.reloadData()
                 return
             }
-//            filteredFiles = files.filter({ file -> Bool in
-//                file.title.contains(searchText)
-//            })
+            highlightings = highlightings.filter({ highlight -> Bool in
+                highlight.content?.contains(searchText) ?? false
+            })
             tableView.reloadData()
+    }
+}
+
+extension RightSlideMenuViewController: RightSlideMenuMainViewCellDelegate {
+    func toggleStar(_ highlight: Highlight) {
+        guard let indexPath = highlightings.firstIndex(where: { $0.startIndex == highlight.startIndex && $0.endIndex == highlight.endIndex }) else {
+            return
+        }
+        highlightings[indexPath].isImportant?.toggle()
+        HighlightManager.share.highlights = self.highlightings
     }
 }
