@@ -41,33 +41,32 @@ class ContentViewController: UIViewController {
     weak var delegate: ContentViewControllerDelegate?
     weak var presentDelegate: PresentDelegate?
     var viewType: ContentViewType = .default
-    var file: File?
+    var currentFile: FileData?
 
     // MARK: - Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.highlighDelegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         splitViewController?.delegate = self
 
-        var leftImage: UIImage? = nil
-        var rightImage: UIImage? = nil
+        var leftImage: UIImage?
+        var rightImage: UIImage?
         var rightTitle: String = ""
         switch viewType {
         case .default:
-            textView?.isGestureEnable = true
+            textView?.state = .highlighting
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         case .test:
-            textView?.isGestureEnable = false
+            textView?.state = .test
             leftImage = UIImage(named: Button.close.imageName)
             rightTitle = "채점하기"
         case .result:
-            textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         }
@@ -111,8 +110,9 @@ class ContentViewController: UIViewController {
             sender.isSelected.toggle()
             delegate?.handleToggleMenu()
         case .test:
+            guard let fileId = currentFile?.id else { return }
             let requestTest = QuizzesRequest(answers: [Answer(userAnswer: "안녕"), Answer(userAnswer: "잘가"), Answer(userAnswer: "바이")])
-            let service = Service.quiz(method: .post, data: requestTest, fileID: file?.id ?? "")
+            let service = Service.quiz(method: .post, data: requestTest, fileID: "\(fileId)")
             Provider.request(service, completion: { (data: QuizzesResponse) in
                 print("quiz result: \(data)")
 
@@ -146,21 +146,62 @@ class ContentViewController: UIViewController {
 }
 
 extension ContentViewController: FilesViewControllerDelegate {
-    func didSelected(with data: File) {
-        // TODO: Save Data
+    func didSelected(with data: FileData) {
+
+        // 같은 파일 선택 시 동작수행하지 않음
+        guard data.id != currentFile?.id else {
+            return
+        }
+
         let highlightings = textView.highlightings
+//        HighlightManager.share.saveFile(fileData: fileData)
+        // TODO: Save Current Data
         textView.clear()
-        // TODO: Get Data
-        navigationView.titleLabel.text = data.title
-        file = data
+
+        // TODO: Get Highligh Data with fileData
+        let content = DocumentDataManager.share.readPDF(data.name ?? "")
+        navigationView.titleLabel.text = content
+        // TODO: Send FileData to HighlightManager
+        // HighlightManager will get highlights info for selected file.
+//                HighlightManager.share.loadFile(fileData: fileData)
+        currentFile = data
         // bind Highlightings to textView
-        textView.loadData(content: data.content, from: [])
+        textView.loadData(content: content, from: [])
     }
 }
 
 extension ContentViewController: UISplitViewControllerDelegate {
     func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
         navigationView.updateButton(displayMode: displayMode)
+    }
+}
+
+extension ContentViewController: HighlightingTextViewDelegate {
+    func didAdd(_ highlight: Highlight) {
+
+    }
+
+    func didRemove(_ highlight: Highlight) {
+
+    }
+
+    func didTap(_ highlight: Highlight) {
+
+    }
+
+    func didChange(state: HighlightingTextViewState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .highlighting:
+                self.textView.showHighlightedText()
+            case .test:
+                self.textView.hideHighlightedText()
+            case .hide:
+                self.textView.hideHighlightedText()
+            }
+            self.textView.isGestureEnable = state != .test
+            self.textView.setNeedsDisplay()
+        }
     }
 }
 

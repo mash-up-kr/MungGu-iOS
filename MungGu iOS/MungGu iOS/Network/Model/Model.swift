@@ -44,9 +44,16 @@ struct Highlight: Codable {
     let type: BlankType?
 }
 
+extension Highlight {
+    init(quiz: Quiz) {
+        self.init(id: nil, fileId: nil, startIndex: quiz.startIndex, endIndex: quiz.endIndex, content: nil, isImportant: false, type: .word)
+    }
+}
+
 struct Quiz: Codable {
     let startIndex: Int?
     let endIndex: Int?
+
 }
 
 struct Answer: Codable {

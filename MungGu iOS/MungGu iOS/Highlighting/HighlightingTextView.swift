@@ -34,8 +34,7 @@ class HighlightingTextView: UITextView {
         }
     }
 
-    func loadData(content: String, from data: [Highlight], state: HighlightingTextViewState = .highlighting) {
-        self.state = state
+    func loadData(content: String, from data: [Highlight]) {
         text = content
         data.forEach { highlight in
             addHighlighting(color: highlightColor, range: highlight.range)
@@ -97,7 +96,6 @@ class HighlightingTextView: UITextView {
             endPoint.x = max(point.x, endPoint.x)
         }
 
-        let position = self.closestPosition(to: point)
         self.tapGestrue?.isEnabled = false
 
         switch sender.state {

@@ -49,7 +49,7 @@ class ContentContainerController: UIViewController {
     var isExpanded = true
     var viewType: ViewType = .default
     var contentViewController: ContentViewController?
-    var rightSlideViewController: RightSlideMenuViewController?
+    weak var rightSliderViewController: RightSlideMenuViewController?
 
     // MARK: - Init
 
@@ -65,8 +65,8 @@ class ContentContainerController: UIViewController {
             contentViewController?.delegate = self
             contentViewController?.viewType = viewType
         } else if let viewController = segue.destination as? RightSlideMenuViewController {
-            rightSlideViewController = viewController
-            rightSlideViewController?.delegate = self
+            rightSliderViewController = viewController
+            rightSliderViewController?.delegate = self
             contentViewController?.viewType = viewType
         }
     }
@@ -102,19 +102,25 @@ extension ContentContainerController: ContentViewControllerDelegate {
     func handleToggleMenu() {
         animatePanel(shouldExpanded: isExpanded)
         isExpanded.toggle()
+        if isExpanded {
+            guard let highlightings = contentViewController?.textView.highlightings else { return }
+            rightSliderViewController?.highlightings = highlightings
+        }
     }
 
     func showContentContainerView(_ type: ContentViewType) {
         switch type {
         case .test:
-            if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.file?.id {
+            if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.currentFile?.id {
                 let highlights = Highlights(highlights: highlightings)
-                let service = Service.highlight(method: .post, data: highlights, fileID: id)
+                let fileIdString = String(id)
+                let service = Service.highlight(method: .post, data: highlights, fileID: fileIdString)
 
                 Provider.request(service, completion: { (_: Highlights) in
-                    let quizService = Service.quiz(method: .get, data: nil, fileID: id)
+                    let quizService = Service.quiz(method: .get, data: nil, fileID: fileIdString)
                     Provider.request(quizService, completion: { (data: QuizzesResult) in
-                        self.present(type, highlightings: highlightings)
+                        let highlights: [Highlight] = data.quizzes.map { Highlight(quiz: $0) }
+                        self.present(type, highlightings: highlights)
                     }) { error in
                         print("### quiz: \(error)")
                     }
@@ -136,16 +142,20 @@ extension ContentContainerController: ContentViewControllerDelegate {
         guard let viewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
             preconditionFailure("can not find TestViewController")
         }
-
+        self.rightSliderViewController = viewController.children.first as? RightSlideMenuViewController
         viewController.viewType = type
         present(viewController, animated: true, completion: {
             viewController.contentViewController?.presentDelegate = self
 
-            if let content = self.contentViewController?.file?.content, let highlightings = highlightings {
-                viewController.contentViewController?.textView.loadData(content: content, from: highlightings)
-                viewController.rightSlideViewController?.setTest(type)
+            if let fileData = self.contentViewController?.currentFile, let highlightings = highlightings {
+                let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
+                let highlightTextView = viewController.contentViewController?.textView
+                highlightTextView?.state = (type == .test) ? .test : .highlighting
+                highlightTextView?.loadData(content: content, from: highlightings)
+                viewController.rightSliderViewController?.setTest(type)
                 if type == .test {
                     viewController.contentViewController?.testContentView.isHidden = false
+                    viewController.contentViewController?.textView
                 }
             }
         })
