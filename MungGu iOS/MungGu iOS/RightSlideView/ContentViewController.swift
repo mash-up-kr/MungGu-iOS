@@ -119,7 +119,7 @@ class ContentViewController: UIViewController {
             Provider.request(service, completion: { (data: QuizzesResult) in
                 var highlights: [Highlight] = []
                 data.quizzes.forEach({ quiz in
-                    let highlight = Highlight(quiz: quiz)
+                    let highlight = Highlight(id: nil, startIndex: quiz.startIndex, endIndex: quiz.endIndex, content: nil, isImportant: 0)
                     highlights.append(highlight)
                 })
                 self.presentTestView(highlights)

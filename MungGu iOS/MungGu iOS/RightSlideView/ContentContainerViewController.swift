@@ -137,7 +137,7 @@ extension ContentContainerController: RightSlideMenuViewControllerDelegate {
             return
         }
         textView.updateTextView(with: highlight)
-        highlightings[indexPath].isImportant?.toggle()
+        highlightings[indexPath].isImportant = highlightings[indexPath].isImportant == 0 ? 1 : 0
         HighlightManager.share.highlights = highlightings
     }
 

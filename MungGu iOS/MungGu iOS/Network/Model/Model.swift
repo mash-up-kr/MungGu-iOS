@@ -39,7 +39,7 @@ struct Highlight: Codable {
     let startIndex: Int?
     let endIndex: Int?
     let content: String?
-    let isImportant: Int?
+    var isImportant: Int?
 
     let type: BlankType?
 
@@ -73,7 +73,7 @@ struct Highlight: Codable {
 }
 
 extension Highlight {
-    init(id: Int, startIndex: Int, endIndex: Int, content: String, isImportant: Int) {
+    init(id: Int?, startIndex: Int?, endIndex: Int?, content: String?, isImportant: Int?) {
         self.id = id
         self.startIndex = startIndex
         self.endIndex = endIndex

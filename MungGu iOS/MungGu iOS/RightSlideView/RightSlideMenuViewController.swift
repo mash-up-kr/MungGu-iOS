@@ -107,7 +107,7 @@ extension RightSlideMenuViewController: UITableViewDataSource {
             cell.wordLabel.text = highlight.content
             cell.highlight = highlight
             cell.delegate = self
-          
+
             return cell
         case .result:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuResultViewCell", for: indexPath) as? RightSlideMenuResultViewCell else { return UITableViewCell() }
@@ -115,7 +115,7 @@ extension RightSlideMenuViewController: UITableViewDataSource {
 
             cell.answerLabel.text = result?.realAnswer
             cell.userAnswerLabel.text = result?.userAnswer
-          
+
             return cell
         }
     }
@@ -161,7 +161,7 @@ extension RightSlideMenuViewController: UISearchBarDelegate {
 extension RightSlideMenuViewController: RightSlideMenuMainViewCellDelegate {
     func toggleStar(_ highlight: Highlight) {
         var toggled = highlight
-        toggled.isImportant?.toggle()
+        toggled.isImportant = toggled.isImportant == 0 ? 1: 0
         delegate?.didChange(highlight: toggled)
     }
 }

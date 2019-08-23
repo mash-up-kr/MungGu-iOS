@@ -54,7 +54,7 @@ class HighlightingTextView: UITextView {
     func updateTextView(from data: [Highlight]) {
         highlightings = []
         data.forEach { highlight in
-            let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? false, state: self.state) ?? highlightColor
+            let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? 0, state: self.state) ?? highlightColor
             addHighlighting(color: updateColor, range: highlight.range)
         }
         highlightings = data
@@ -92,7 +92,7 @@ class HighlightingTextView: UITextView {
     func hideHighlightedText() {
         self.highlightings.forEach { highlight in
 
-            let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? false, state: self.state) ?? highlightColor
+            let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? 0, state: self.state) ?? highlightColor
             self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
                 self.textStorage.removeAttribute(.foregroundColor, range: range)
                 self.textStorage.addAttribute(.foregroundColor, value: updateColor, range: range)
