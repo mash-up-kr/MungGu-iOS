@@ -14,12 +14,11 @@ class ContentContainerController: UIViewController {
 
     enum ViewType {
         case `default`
-        case test
         case result
 
         var hideBottomButton: Bool {
             switch self {
-            case .test, .result:
+            case .result:
                 return true
             default:
                 return false
@@ -32,8 +31,6 @@ class ContentContainerController: UIViewController {
                 return "Go test!"
             case .result:
                 return "Re do!"
-            default:
-                return nil
             }
         }
     }
@@ -62,6 +59,7 @@ class ContentContainerController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? ContentViewController {
             contentViewController = viewController
+            contentViewController?.containerView = self
             contentViewController?.delegate = self
             contentViewController?.viewType = viewType
         } else if let viewController = segue.destination as? RightSlideMenuViewController {
@@ -110,6 +108,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
     func showContentContainerView(_ type: ContentViewType) {
         switch type {
+            /*
         case .test:
             if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.currentFile?.id {
                 let highlights = Highlights(highlights: highlightings)
@@ -129,6 +128,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
                 }
 
             }
+             */
 
         case .result:
             present(type, highlightings: contentViewController?.textView.highlightings)
@@ -145,14 +145,13 @@ extension ContentContainerController: ContentViewControllerDelegate {
         self.rightSliderViewController = viewController.children.first as? RightSlideMenuViewController
         viewController.viewType = type
         present(viewController, animated: true, completion: {
-            viewController.contentViewController?.presentDelegate = self
-
             if let fileData = self.contentViewController?.currentFile, let highlightings = highlightings {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
                 let highlightTextView = viewController.contentViewController?.textView
-                highlightTextView?.state = (type == .test) ? .test : .highlighting
+                highlightTextView?.state = .highlighting
                 highlightTextView?.loadData(content: content, from: highlightings)
                 viewController.rightSliderViewController?.setTest(type)
+
                 if type == .test {
                     viewController.contentViewController?.testContentView.isHidden = false
                 }

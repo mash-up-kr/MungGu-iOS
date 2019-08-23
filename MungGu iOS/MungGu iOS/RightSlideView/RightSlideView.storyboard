@@ -103,7 +103,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ebI-Ez-psy">
                                         <rect key="frame" x="0.0" y="222" width="320" height="674"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <view key="tableFooterView" contentMode="scaleToFill" id="SmZ-L6-XjG">
+                                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="SmZ-L6-XjG">
                                             <rect key="frame" x="0.0" y="171" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,6 +186,10 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <outlet property="answerLabel" destination="e7f-da-3lX" id="fZA-U4-VGa"/>
+                                                    <outlet property="userAnswerLabel" destination="OuG-Nv-6jo" id="Fbl-aD-dow"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
