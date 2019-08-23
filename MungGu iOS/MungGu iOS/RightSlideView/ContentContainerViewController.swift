@@ -155,7 +155,6 @@ extension ContentContainerController: ContentViewControllerDelegate {
                 viewController.rightSliderViewController?.setTest(type)
                 if type == .test {
                     viewController.contentViewController?.testContentView.isHidden = false
-                    viewController.contentViewController?.textView
                 }
             }
         })

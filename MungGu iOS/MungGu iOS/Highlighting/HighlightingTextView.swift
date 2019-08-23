@@ -18,7 +18,6 @@ class HighlightingTextView: UITextView {
 
     weak var highlighDelegate: HighlightingTextViewDelegate?
 
-    var highlighType: HighlightType = .general
     var state: HighlightingTextViewState = .highlighting {
         didSet {
             self.highlighDelegate?.didChange(state: state)
@@ -52,6 +51,27 @@ class HighlightingTextView: UITextView {
         isGestureEnable = false
     }
 
+    // 하나의 highlight 에 대해 업데이트 할 때 사용하세요.
+    func updateHighlight(highlight: Highlight) {
+        let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? false, state: self.state) ?? highlightColor
+        var updateClosures: [((NSRange) -> Void)] = []
+        updateClosures.append { range in
+            self.textStorage.removeAttribute(.foregroundColor, range: range)
+            self.textStorage.removeAttribute(.backgroundColor, range: range)
+            self.textStorage.addAttribute(.backgroundColor, value: updateColor, range: range)
+        }
+        if state != .highlighting {
+            updateClosures.append { range in
+                self.textStorage.addAttribute(.foregroundColor, value: updateColor, range: range)
+            }
+        }
+        self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+            updateClosures.forEach({ closure in
+                closure(range)
+            })
+        }
+    }
+
     func showHighlightedText() {
         self.highlightings.forEach { highlight in
             self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
@@ -78,7 +98,7 @@ class HighlightingTextView: UITextView {
     private var tapGestrue: UITapGestureRecognizer?
 
     private var highlightColor: UIColor {
-        return self.highlighDelegate?.colorFor(highlightMode: self.highlighType) ?? self.highlighType.defaultColor
+        return self.highlighDelegate?.colorFor(isImportant: false, state: self.state) ?? .lightPeach
     }
 
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
