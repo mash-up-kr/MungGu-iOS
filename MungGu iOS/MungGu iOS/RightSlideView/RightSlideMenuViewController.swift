@@ -10,6 +10,8 @@ import UIKit
 
 protocol RightSlideMenuViewControllerDelegate: class {
     func test()
+    func didSelect(highlight: Highlight)
+    func didChange(highlight: Highlight)
 }
 
 class RightSlideMenuViewController: UIViewController {
@@ -128,6 +130,7 @@ extension RightSlideMenuViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
+        delegate?.didSelect(highlight: highlightings[indexPath.row])
     }
 }
 
@@ -146,10 +149,8 @@ extension RightSlideMenuViewController: UISearchBarDelegate {
 
 extension RightSlideMenuViewController: RightSlideMenuMainViewCellDelegate {
     func toggleStar(_ highlight: Highlight) {
-        guard let indexPath = highlightings.firstIndex(where: { $0.startIndex == highlight.startIndex && $0.endIndex == highlight.endIndex }) else {
-            return
-        }
-        highlightings[indexPath].isImportant?.toggle()
-        HighlightManager.share.highlights = self.highlightings
+        var toggled = highlight
+        toggled.isImportant?.toggle()
+        delegate?.didChange(highlight: toggled)
     }
 }
