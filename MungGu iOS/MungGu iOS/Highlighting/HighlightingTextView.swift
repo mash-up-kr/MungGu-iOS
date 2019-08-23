@@ -52,7 +52,7 @@ class HighlightingTextView: UITextView {
     }
 
     // 하나의 highlight 에 대해 업데이트 할 때 사용하세요.
-    func updateHighlight(highlight: Highlight) {
+    func updateTextView(with highlight: Highlight) {
         let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? false, state: self.state) ?? highlightColor
         var updateClosures: [((NSRange) -> Void)] = []
         updateClosures.append { range in
