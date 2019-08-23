@@ -47,6 +47,7 @@ class ContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        textView.highlighDelegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,15 +59,14 @@ class ContentViewController: UIViewController {
         var rightTitle: String = ""
         switch viewType {
         case .default:
-            textView?.isGestureEnable = true
+            textView?.state = .highlighting
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         case .test:
-            textView?.isGestureEnable = false
+            textView?.state = .test
             leftImage = UIImage(named: Button.close.imageName)
             rightTitle = "채점하기"
         case .result:
-            textView?.isGestureEnable = false
             leftImage = UIImage(named: Button.close.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         }
@@ -153,9 +153,8 @@ extension ContentViewController: FilesViewControllerDelegate {
             return
         }
 
-//        HighlightManager.share.saveFile(fileData: fileData)
-
         let highlightings = textView.highlightings
+//        HighlightManager.share.saveFile(fileData: fileData)
         // TODO: Save Current Data
         textView.clear()
 
@@ -174,6 +173,35 @@ extension ContentViewController: FilesViewControllerDelegate {
 extension ContentViewController: UISplitViewControllerDelegate {
     func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
         navigationView.updateButton(displayMode: displayMode)
+    }
+}
+
+extension ContentViewController: HighlightingTextViewDelegate {
+    func didAdd(_ highlight: Highlight) {
+
+    }
+
+    func didRemove(_ highlight: Highlight) {
+
+    }
+
+    func didTap(_ highlight: Highlight) {
+
+    }
+
+    func didChange(state: HighlightingTextViewState) {
+        DispatchQueue.main.async {
+            switch state {
+            case .highlighting:
+                self.textView.showHighlightedText()
+            case .test:
+                self.textView.hideHighlightedText()
+            case .hide:
+                self.textView.hideHighlightedText()
+            }
+            self.textView.isGestureEnable = state != .test
+            self.textView.setNeedsDisplay()
+        }
     }
 }
 

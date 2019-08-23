@@ -39,17 +39,7 @@ class FileListViewController: UIViewController {
         view.endEditing(true)
 
         setUpSearchBar()
-
-        let service = Service.file(method: .get, data: nil)
-        Provider.request(service, completion: { [weak self] (data: FilesResult) in
-            self?.files = data.files
-            self?.filteredFiles = data.files
-            DispatchQueue.main.async {
-                self?.filesTableView.reloadData()
-            }
-        }, failure: { _ in
-
-        })
+        DocumentDataManager.share.fetchDocument()
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -67,7 +57,6 @@ class FileListViewController: UIViewController {
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-
             self.mySearchBar.text = nil
             self.filesTableView.reloadData()
         }

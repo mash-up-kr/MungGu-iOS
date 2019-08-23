@@ -34,8 +34,7 @@ class HighlightingTextView: UITextView {
         }
     }
 
-    func loadData(content: String, from data: [Highlight], state: HighlightingTextViewState = .highlighting) {
-        self.state = state
+    func loadData(content: String, from data: [Highlight]) {
         text = content
         data.forEach { highlight in
             addHighlighting(color: highlightColor, range: highlight.range)

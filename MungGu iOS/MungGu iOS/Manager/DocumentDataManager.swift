@@ -20,7 +20,11 @@ class DocumentDataManager {
     }
 
     // TODO: 중복 데이트 체크 필요.
-    private var files: [FileData] = []
+    private var files: [FileData] = [] {
+        didSet {
+            print(files)
+        }
+    }
 
     private var filePathURL: URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]

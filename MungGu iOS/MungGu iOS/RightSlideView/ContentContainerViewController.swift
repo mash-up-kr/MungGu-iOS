@@ -118,8 +118,9 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
                 Provider.request(service, completion: { (_: Highlights) in
                     let quizService = Service.quiz(method: .get, data: nil, fileID: fileIdString)
-                    Provider.request(quizService, completion: { (_: QuizzesResult) in
-                        self.present(type, highlightings: highlightings)
+                    Provider.request(quizService, completion: { (data: QuizzesResult) in
+                        let highlights: [Highlight] = data.quizzes.map { Highlight(quiz: $0) }
+                        self.present(type, highlightings: highlights)
                     }) { error in
                         print("### quiz: \(error)")
                     }
@@ -148,10 +149,13 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
             if let fileData = self.contentViewController?.currentFile, let highlightings = highlightings {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
-                viewController.contentViewController?.textView.loadData(content: content, from: highlightings)
+                let highlightTextView = viewController.contentViewController?.textView
+                highlightTextView?.state = (type == .test) ? .test : .highlighting
+                highlightTextView?.loadData(content: content, from: highlightings)
                 viewController.rightSliderViewController?.setTest(type)
                 if type == .test {
                     viewController.contentViewController?.testContentView.isHidden = false
+                    viewController.contentViewController?.textView
                 }
             }
         })
