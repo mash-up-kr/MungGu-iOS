@@ -25,10 +25,9 @@
 		CE5C648322C74AE900EC8AF4 /* MungGu_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648222C74AE900EC8AF4 /* MungGu_iOSTests.swift */; };
 		CE5C648E22C74AE900EC8AF4 /* MungGu_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */; };
 		CE86B01E22FE67F40040714F /* RightSlideMenuTestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86B01D22FE67F40040714F /* RightSlideMenuTestViewCell.swift */; };
-		CE86B02022FE68020040714F /* RightSlideMenuResultViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86B01F22FE68020040714F /* RightSlideMenuResultViewCell.swift */; };
-		CE86B02222FE75F00040714F /* TestInsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE86B02122FE75F00040714F /* TestInsideView.xib */; };
-		CE86B02422FE76190040714F /* TestInsideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86B02322FE76190040714F /* TestInsideView.swift */; };
-		CE86B02622FE7A180040714F /* RightSlideMenuTestViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE86B02522FE7A180040714F /* RightSlideMenuTestViewCell.xib */; };
+		CE86B02022FE68020040714F /* TestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86B01F22FE68020040714F /* TestViewCell.swift */; };
+		CE87B0102310256600BE8026 /* TestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE87B00F2310256600BE8026 /* TestView.storyboard */; };
+		CE87B0122310270300BE8026 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87B0112310270300BE8026 /* TestViewController.swift */; };
 		CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */; };
 		CEC8928D22D91CAB004BA075 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8928722D91CAB004BA075 /* Document.swift */; };
 		CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC8928822D91CAB004BA075 /* Document.storyboard */; };
@@ -111,10 +110,9 @@
 		CE5C648D22C74AE900EC8AF4 /* MungGu_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MungGu_iOSUITests.swift; sourceTree = "<group>"; };
 		CE5C648F22C74AE900EC8AF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE86B01D22FE67F40040714F /* RightSlideMenuTestViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightSlideMenuTestViewCell.swift; sourceTree = "<group>"; };
-		CE86B01F22FE68020040714F /* RightSlideMenuResultViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightSlideMenuResultViewCell.swift; sourceTree = "<group>"; };
-		CE86B02122FE75F00040714F /* TestInsideView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestInsideView.xib; sourceTree = "<group>"; };
-		CE86B02322FE76190040714F /* TestInsideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestInsideView.swift; sourceTree = "<group>"; };
-		CE86B02522FE7A180040714F /* RightSlideMenuTestViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightSlideMenuTestViewCell.xib; sourceTree = "<group>"; };
+		CE86B01F22FE68020040714F /* TestViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewCell.swift; sourceTree = "<group>"; };
+		CE87B00F2310256600BE8026 /* TestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestView.storyboard; sourceTree = "<group>"; };
+		CE87B0112310270300BE8026 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		CEC8928722D91CAB004BA075 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		CEC8928822D91CAB004BA075 /* Document.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Document.storyboard; sourceTree = "<group>"; };
@@ -300,6 +298,7 @@
 				CEC8928522D91CAB004BA075 /* Document */,
 				D557614B22C8DA6F00505CC1 /* Highlighting */,
 				CE6FC73D22C74FC5006FA209 /* Main */,
+				CE87B00E2310254A00BE8026 /* Test */,
 				AEBEF66B22D0E9900070FB87 /* FileList */,
 				AECC601822C855B900561DCF /* RightSlideView */,
 				CE5C646D22C74AE700EC8AF4 /* AppDelegate.swift */,
@@ -346,15 +345,21 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		CE87B00E2310254A00BE8026 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				CE86B01F22FE68020040714F /* TestViewCell.swift */,
+				CE87B0112310270300BE8026 /* TestViewController.swift */,
+				CE87B00F2310256600BE8026 /* TestView.storyboard */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 		CE96A11A22EE176F00C91E84 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				AECC600F22C8432C00561DCF /* RightSlideMenuMainViewCell.swift */,
 				CE86B01D22FE67F40040714F /* RightSlideMenuTestViewCell.swift */,
-				CE86B01F22FE68020040714F /* RightSlideMenuResultViewCell.swift */,
-				CE86B02322FE76190040714F /* TestInsideView.swift */,
-				CE86B02122FE75F00040714F /* TestInsideView.xib */,
-				CE86B02522FE7A180040714F /* RightSlideMenuTestViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -529,9 +534,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE86B02222FE75F00040714F /* TestInsideView.xib in Resources */,
 				CECA294A22EB76FF00DF3863 /* RightSlideView.storyboard in Resources */,
-				CE86B02622FE7A180040714F /* RightSlideMenuTestViewCell.xib in Resources */,
 				CECA294622EB70C400DF3863 /* FileListView.storyboard in Resources */,
 				D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */,
 				CECCE9FE22EB7BB3009A1123 /* CommonNavigationView.xib in Resources */,
@@ -540,6 +543,7 @@
 				CE5C647822C74AE900EC8AF4 /* LaunchScreen.storyboard in Resources */,
 				CEC8929822D98A7F004BA075 /* Main.storyboard in Resources */,
 				CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */,
+				CE87B0102310256600BE8026 /* TestView.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,15 +691,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE87B0122310270300BE8026 /* TestViewController.swift in Sources */,
 				CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */,
 				D543B48C22EB4CC70047C3D7 /* UITextView+Highlight.swift in Sources */,
 				D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */,
 				D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */,
-				CE86B02422FE76190040714F /* TestInsideView.swift in Sources */,
 				D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */,
 				D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */,
 				D5C7759322C79CD900ADF692 /* PDFContent.swift in Sources */,
-				CE86B02022FE68020040714F /* RightSlideMenuResultViewCell.swift in Sources */,
+				CE86B02022FE68020040714F /* TestViewCell.swift in Sources */,
 				D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D56A604C22D988910098EA46 /* HighlightingTextViewState.swift in Sources */,

@@ -14,12 +14,11 @@ class ContentContainerController: UIViewController {
 
     enum ViewType {
         case `default`
-        case test
         case result
 
         var hideBottomButton: Bool {
             switch self {
-            case .test, .result:
+            case .result:
                 return true
             default:
                 return false
@@ -110,6 +109,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
     func showContentContainerView(_ type: ContentViewType) {
         switch type {
+            /*
         case .test:
             if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.currentFile?.id {
                 let highlights = Highlights(highlights: highlightings)
@@ -129,6 +129,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
                 }
 
             }
+             */
 
         case .result:
             present(type, highlightings: contentViewController?.textView.highlightings)
@@ -150,13 +151,9 @@ extension ContentContainerController: ContentViewControllerDelegate {
             if let fileData = self.contentViewController?.currentFile, let highlightings = highlightings {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
                 let highlightTextView = viewController.contentViewController?.textView
-                highlightTextView?.state = (type == .test) ? .test : .highlighting
+                highlightTextView?.state = .highlighting
                 highlightTextView?.loadData(content: content, from: highlightings)
                 viewController.rightSliderViewController?.setTest(type)
-                if type == .test {
-                    viewController.contentViewController?.testContentView.isHidden = false
-                    viewController.contentViewController?.textView
-                }
             }
         })
     }

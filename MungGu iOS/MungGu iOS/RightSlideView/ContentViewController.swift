@@ -33,7 +33,6 @@ class ContentViewController: UIViewController {
             navigationView.rightButton.addTarget(self, action: #selector(didTapRightMenu), for: .touchUpInside)
         }
     }
-    @IBOutlet weak var testContentView: TestInsideView!
 
     // MARK: - Properties
 
@@ -62,10 +61,6 @@ class ContentViewController: UIViewController {
             textView?.state = .highlighting
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
-        case .test:
-            textView?.state = .test
-            leftImage = UIImage(named: Button.close.imageName)
-            rightTitle = "채점하기"
         case .result:
             leftImage = UIImage(named: Button.close.imageName)
             rightImage = UIImage(named: Button.right.imageName)
@@ -99,38 +94,24 @@ class ContentViewController: UIViewController {
                 let primaryHidden = self.splitViewController?.preferredDisplayMode ?? .primaryHidden
                 self.splitViewController?.preferredDisplayMode = primaryHidden == .allVisible ? .primaryHidden : .allVisible
             })
-        case .test, .result:
+        case .result:
             dismiss(animated: true, completion: nil)
         }
     }
 
     @objc private func didTapRightMenu(_ sender: UIButton) {
-        switch viewType {
-        case .default, .result:
-            sender.isSelected.toggle()
-            delegate?.handleToggleMenu()
-        case .test:
-            guard let fileId = currentFile?.id else { return }
-            let requestTest = QuizzesRequest(answers: [Answer(userAnswer: "안녕"), Answer(userAnswer: "잘가"), Answer(userAnswer: "바이")])
-            let service = Service.quiz(method: .post, data: requestTest, fileID: "\(fileId)")
-            Provider.request(service, completion: { (data: QuizzesResponse) in
-                print("quiz result: \(data)")
-
-                self.dismiss(animated: true) {
-                    self.presentDelegate?.showContentView(.result)
-                }
-            }) { error in
-                self.dismiss(animated: true) {
-                    self.presentDelegate?.showContentView(.result)
-                }
-                print("quiz result error: \(error)")
-            }
-
-        }
+        sender.isSelected.toggle()
+        delegate?.handleToggleMenu()
     }
 
     @IBAction private func didTapTestButton(_ sender: UIButton) {
-        delegate?.showContentContainerView(.test)
+        guard let controller = UIStoryboard(name: "TestView", bundle: nil).instantiateInitialViewController() as? TestViewController else {
+            print("Error!! TestViewController doesn't exist!!")
+            return
+        }
+        controller.file = currentFile
+
+        present(controller, animated: true, completion: nil)
     }
 
     @IBAction private func blindText(_ sender: UIButton) {

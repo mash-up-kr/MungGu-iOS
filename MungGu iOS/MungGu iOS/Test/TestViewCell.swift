@@ -1,5 +1,5 @@
 //
-//  RightSlideMenuResultViewCell.swift
+//  TestViewCell.swift
 //  MungGu iOS
 //
 //  Created by Daeyun Ethan on 10/08/2019.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class RightSlideMenuResultViewCell: UITableViewCell {
+class TestViewCell: UITableViewCell {
 
     @IBOutlet weak var answerLabel: UILabel!
-    @IBOutlet weak var userAnswerLabel: UILabel!
 }
