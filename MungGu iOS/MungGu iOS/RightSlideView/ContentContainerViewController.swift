@@ -163,6 +163,21 @@ extension ContentContainerController: PresentDelegate {
 }
 
 extension ContentContainerController: RightSlideMenuViewControllerDelegate {
+    func didChange(highlight: Highlight) {
+        guard let textView = contentViewController?.textView else { return }
+        var highlightings = textView.highlightings
+        guard let indexPath = highlightings.firstIndex(where: { $0.startIndex == highlight.startIndex && $0.endIndex == highlight.endIndex }) else {
+            return
+        }
+        textView.updateTextView(with: highlight)
+        highlightings[indexPath].isImportant?.toggle()
+        HighlightManager.share.highlights = highlightings
+    }
+
+    func didSelect(highlight: Highlight) {
+        contentViewController?.textView.scrollRangeToVisible(highlight.range)
+    }
+
     func test() {
 
     }

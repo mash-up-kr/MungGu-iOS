@@ -18,7 +18,7 @@ class HighlightManager: HighlightManagerType {
             NotificationCenter.default.post(name: HighlightManager.DidChangedSelectedFile, object: fileData)
         }
     }
-    private(set) var highlights: [Highlight] = [] {
+    var highlights: [Highlight] = [] {
         didSet {
             NotificationCenter.default.post(name: HighlightManager.DidChangedHighlights, object: highlights)
         }
@@ -29,15 +29,34 @@ class HighlightManager: HighlightManagerType {
     func loadFile(fileData: FileData) {
         self.fileData = fileData
         guard let fileID = fileData.id else { return }
-        Provider.request(.highlight(method: .get, data: nil, fileID: "\(fileID)"), completion: {[weak self] highlights in
+        self.highlights = []
+//        Provider.request(.highlight(method: .get, data: nil, fileID: "\(fileID)"), completion: {[weak self] response in
+//            let respon: Highlights = response
+//            self?.highlights = response.highlights
+////            completion.(highlights)
+//        }, failure: { error in
+//            print("\(error)")
+//        })
+    }
+
+    func saveFile(_ highlights: [Highlight]) {
+        guard let fileID = fileData?.id else { return }
+        Provider.request(.highlight(method: .post, data: highlights, fileID: "\(fileID)"), completion: {[weak self] highlights in
             self?.highlights = highlights
-//            completion.(highlights)
-        }, failure: { error in
-            print("\(error)")
+            }, failure: { error in
+                print("\(error)")
         })
+    }
+
+    func getHighlights() -> [Highlight] {
+        return highlights
     }
 }
 
 protocol HighlightManagerType {
+    var highlights: [Highlight] { get set }
+
     func loadFile(fileData: FileData)
+    func saveFile(_ highlights: [Highlight])
+    func getHighlights() -> [Highlight]
 }
