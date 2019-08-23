@@ -15,7 +15,7 @@ extension UITextView {
         let startIndex = offset(from: beginningOfDocument, to: start)
         let endIndex = offset(from: beginningOfDocument, to: end)
 
-        return Highlight(id: nil, fileId: nil, startIndex: startIndex, endIndex: endIndex, content: content, isImportant: false, type: nil)
+        return Highlight(id: nil, fileId: nil, startIndex: startIndex, endIndex: endIndex, content: content, isImportant: 0, type: nil)
     }
 
     func rangeOf(start: UITextPosition, end: UITextPosition) -> NSRange {

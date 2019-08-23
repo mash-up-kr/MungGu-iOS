@@ -11,4 +11,5 @@ import UIKit
 class TestViewCell: UITableViewCell {
 
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
 }

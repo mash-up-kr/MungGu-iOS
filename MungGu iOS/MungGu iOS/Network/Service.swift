@@ -56,6 +56,7 @@ extension Service: TargetType {
         case .deleteHighlight(let fileID, let highlightID):
             return "/\(deviceID)/files/\(fileID)/highlights/\(highlightID)"
         case .quiz(_, _, let fileID):
+            print("deviceID: \(deviceID), fileID: \(fileID)")
             return "/\(deviceID)/files/\(fileID)/quiz"
         case .quizReStart(let fileID):
             return "/\(deviceID)/files/\(fileID)/quiz/re"
