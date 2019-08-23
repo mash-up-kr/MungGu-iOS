@@ -39,14 +39,53 @@ struct Highlight: Codable {
     let startIndex: Int?
     let endIndex: Int?
     let content: String?
-    let isImportant: Bool?
+    let isImportant: Int?
 
     let type: BlankType?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case fileId
+        case startIndex
+        case endIndex
+        case content
+        case isImportant
+        case type
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        fileId = try values.decodeIfPresent(Int.self, forKey: .fileId)
+        startIndex = try values.decodeIfPresent(Int.self, forKey: .startIndex)
+        endIndex = try values.decodeIfPresent(Int.self, forKey: .endIndex)
+        content = try values.decodeIfPresent(String.self, forKey: .content)
+        type = try values.decodeIfPresent(BlankType.self, forKey: .type)
+
+        if let isImportant = try? values.decodeIfPresent(Int.self, forKey: .isImportant) {
+            self.isImportant = isImportant
+        } else if let isImportant = try? values.decodeIfPresent(Bool.self, forKey: .isImportant) {
+            self.isImportant = isImportant ? 1 : 0
+        } else {
+            self.isImportant = 0
+        }
+    }
 }
 
 extension Highlight {
+
+    init(id: Int?, fileId: Int?, startIndex: Int?, endIndex: Int?, content: String?, isImportant: Int?, type: BlankType?) {
+        self.id = id
+        self.fileId = fileId
+        self.startIndex = startIndex
+        self.endIndex = endIndex
+        self.content = content
+        self.isImportant = isImportant
+        self.type = type
+    }
+
     init(quiz: Quiz) {
-        self.init(id: nil, fileId: nil, startIndex: quiz.startIndex, endIndex: quiz.endIndex, content: nil, isImportant: false, type: .word)
+        self.init(id: nil, fileId: nil, startIndex: quiz.startIndex, endIndex: quiz.endIndex, content: nil, isImportant: 0, type: .word)
     }
 }
 
@@ -82,7 +121,7 @@ struct QuizzesRequest: Encodable {
 struct QuizzesResponse: Decodable {
     let score: Int?
     let perfectScore: Int?
-    let results: [QuizMarkResult]?
+    let result: [QuizMarkResult]?
 }
 
 struct QuizMarkResult: Decodable {

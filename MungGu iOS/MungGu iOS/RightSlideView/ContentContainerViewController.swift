@@ -16,15 +16,6 @@ class ContentContainerController: UIViewController {
         case `default`
         case result
 
-        var hideBottomButton: Bool {
-            switch self {
-            case .result:
-                return true
-            default:
-                return false
-            }
-        }
-
         var testButtonText: String? {
             switch self {
             case .default:
@@ -106,50 +97,26 @@ extension ContentContainerController: ContentViewControllerDelegate {
         }
     }
 
-    func showContentContainerView(_ type: ContentViewType) {
-        switch type {
-            /*
-        case .test:
-            if let highlightings = contentViewController?.textView.highlightings, let id = contentViewController?.currentFile?.id {
-                let highlights = Highlights(highlights: highlightings)
-                let fileIdString = String(id)
-                let service = Service.highlight(method: .post, data: highlights, fileID: fileIdString)
-
-                Provider.request(service, completion: { (_: Highlights) in
-                    let quizService = Service.quiz(method: .get, data: nil, fileID: fileIdString)
-                    Provider.request(quizService, completion: { (data: QuizzesResult) in
-                        let highlights: [Highlight] = data.quizzes.map { Highlight(quiz: $0) }
-                        self.present(type, highlightings: highlights)
-                    }) { error in
-                        print("### quiz: \(error)")
-                    }
-                }) { error in
-                    print("### highlights: \(error)")
-                }
-
-            }
-             */
-
-        case .result:
-            present(type, highlightings: contentViewController?.textView.highlightings)
-        default:
-            present(type)
-        }
+    func showContentContainerView(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight]) {
+        present(type, result: result, highlights: highlights)
 
     }
 
-    func present(_ type: ContentViewType, highlightings: [Highlight]? = nil) {
+    func present(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight]) {
         guard let viewController = UIStoryboard(name: "RightSlideView", bundle: nil).instantiateInitialViewController() as? ContentContainerController else {
             preconditionFailure("can not find TestViewController")
         }
         self.rightSliderViewController = viewController.children.first as? RightSlideMenuViewController
         viewController.viewType = type
+
         present(viewController, animated: true, completion: {
-            if let fileData = self.contentViewController?.currentFile, let highlightings = highlightings {
+            if let fileData = self.contentViewController?.currentFile {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
                 let highlightTextView = viewController.contentViewController?.textView
+                viewController.contentViewController?.configureBottomButton(.result)
                 highlightTextView?.state = .highlighting
-                highlightTextView?.loadData(content: content, from: highlightings)
+                highlightTextView?.loadData(content: content, from: highlights)
+                viewController.rightSliderViewController?.result = result
                 viewController.rightSliderViewController?.setTest(type)
             }
         })
@@ -157,8 +124,8 @@ extension ContentContainerController: ContentViewControllerDelegate {
 }
 
 extension ContentContainerController: PresentDelegate {
-    func showContentView(_ type: ContentViewType) {
-        showContentContainerView(type)
+    func showContentView(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight]) {
+        showContentContainerView(type, result: result, highlights: highlights)
     }
 }
 

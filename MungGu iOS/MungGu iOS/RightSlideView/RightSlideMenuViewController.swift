@@ -31,6 +31,7 @@ class RightSlideMenuViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    var result: QuizzesResponse?
 
     // MARK: - Init
 
@@ -75,19 +76,29 @@ class RightSlideMenuViewController: UIViewController {
 
 extension RightSlideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return highlightings.count
+        switch viewType {
+        case .default:
+            return highlightings.count
+        case .result:
+            return result?.result?.count ?? 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch viewType {
-        case .result:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuResultViewCell", for: indexPath) as? RightSlideMenuResultViewCell else { return UITableViewCell() }
-            // answerLabel
-            return cell
-        default:
+        case .default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuMainViewCell", for: indexPath) as? RightSlideMenuMainViewCell else { return UITableViewCell() }
             let highlight = highlightings[indexPath.row]
             cell.wordLabel.text = highlight.content
+
+            return cell
+        case .result:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuResultViewCell", for: indexPath) as? RightSlideMenuResultViewCell else { return UITableViewCell() }
+            let result = self.result?.result?[indexPath.row]
+
+            cell.answerLabel.text = result?.realAnswer
+            cell.userAnswerLabel.text = result?.userAnswer
+
             return cell
         }
     }

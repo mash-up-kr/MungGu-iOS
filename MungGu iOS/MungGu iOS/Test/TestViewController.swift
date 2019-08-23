@@ -79,16 +79,14 @@ class TestViewController: UIViewController {
 
         let requestTest = QuizzesRequest(answers: answers ?? [])
         let service = Service.quiz(method: .post, data: requestTest, fileID: "\(fileId)")
+
         Provider.request(service, completion: { (data: QuizzesResponse) in
             print("quiz result: \(data)")
 
             self.dismiss(animated: true) {
-                self.presentDelegate?.showContentView(.result)
+                self.presentDelegate?.showContentView(.result, result: data, highlights: self.highlights ?? [])
             }
         }) { error in
-            self.dismiss(animated: true) {
-                self.presentDelegate?.showContentView(.result)
-            }
             print("quiz result error: \(error)")
         }
     }

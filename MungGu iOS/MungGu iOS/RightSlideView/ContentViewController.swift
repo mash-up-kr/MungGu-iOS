@@ -11,13 +11,13 @@ import UIKit
 typealias ContentViewButton = ContentViewController.Button
 
 protocol PresentDelegate: class {
-    func showContentView(_ type: ContentViewType)
+    func showContentView(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight])
 }
 
 protocol ContentViewControllerDelegate: class {
     var viewType: ContentViewType { get set }
     func handleToggleMenu()
-    func showContentContainerView(_ type: ContentViewType)
+    func showContentContainerView(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight])
 }
 
 class ContentViewController: UIViewController {
@@ -71,17 +71,11 @@ class ContentViewController: UIViewController {
             navigationView.updateButton(displayMode: displayMode)
         }
 
-        configureBottomButton()
+        configureBottomButton(viewType)
     }
 
-    func configureBottomButton() {
-        guard let type = delegate?.viewType else {
-            preconditionFailure("no type")
-        }
-
-        eyeButton.isHidden = type.hideBottomButton
-        testButton.isHidden = type.hideBottomButton
-        testButton.setTitle(type.testButtonText, for: .normal)
+    func configureBottomButton(_ viewType: ContentViewType) {
+        testButton.setTitle(viewType.testButtonText, for: .normal)
     }
 
     // MARK: - IBActions
@@ -100,16 +94,38 @@ class ContentViewController: UIViewController {
 
     @objc private func didTapRightMenu(_ sender: UIButton) {
         sender.isSelected.toggle()
+        navigationView.leftButton.isEnabled = !sender.isSelected
+
         delegate?.handleToggleMenu()
     }
 
     @IBAction private func didTapTestButton(_ sender: UIButton) {
+        guard let fileId = currentFile?.id else { return }
+
+        let highlights = Highlights(highlights: textView.highlightings)
+        let service = Service.highlight(method: .post, data: highlights, fileID: "\(fileId)")
+
+        Provider.request(service, completion: { (data: Highlights) in
+            let service = Service.quiz(method: .get, data: nil, fileID: "\(fileId)")
+
+            Provider.request(service, completion: { (data: QuizzesResult) in
+                var highlights: [Highlight] = []
+                data.quizzes.forEach({ quiz in
+                    let highlight = Highlight(quiz: quiz)
+                    highlights.append(highlight)
+                })
+                self.presentTestView(highlights)
+            })
+        })
+    }
+
+    func presentTestView(_ highlights: [Highlight]) {
         guard let controller = UIStoryboard(name: "TestView", bundle: nil).instantiateInitialViewController() as? TestViewController else {
             print("Error!! TestViewController doesn't exist!!")
             return
         }
         controller.file = currentFile
-        controller.highlights = textView.highlightings
+        controller.highlights = highlights
         controller.presentDelegate = containerView
 
         present(controller, animated: true, completion: nil)
