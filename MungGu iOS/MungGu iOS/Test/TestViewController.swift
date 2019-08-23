@@ -28,11 +28,14 @@ class TestViewController: UIViewController {
     // MARK: - Properties
 
     var file: FileData?
+    var highlights: [Highlight]?
+
+    weak var presentDelegate: PresentDelegate?
 
     func configure() {
         let content = DocumentDataManager.share.readPDF(file?.name ?? "")
         navigationView.titleLabel.text = content
-        textView.loadData(content: content, from: [])
+        textView.loadData(content: content, from: highlights ?? [])
     }
 
     // MARK: - Init
@@ -63,13 +66,13 @@ class TestViewController: UIViewController {
         Provider.request(service, completion: { (data: QuizzesResponse) in
             print("quiz result: \(data)")
 
-//            self.dismiss(animated: true) {
-//                self.presentDelegate?.showContentView(.result)
-//            }
+            self.dismiss(animated: true) {
+                self.presentDelegate?.showContentView(.result)
+            }
         }) { error in
-//            self.dismiss(animated: true) {
-//                self.presentDelegate?.showContentView(.result)
-//            }
+            self.dismiss(animated: true) {
+                self.presentDelegate?.showContentView(.result)
+            }
             print("quiz result error: \(error)")
         }
     }

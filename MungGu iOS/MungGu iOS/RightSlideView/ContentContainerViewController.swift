@@ -31,8 +31,6 @@ class ContentContainerController: UIViewController {
                 return "Go test!"
             case .result:
                 return "Re do!"
-            default:
-                return nil
             }
         }
     }
@@ -61,6 +59,7 @@ class ContentContainerController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? ContentViewController {
             contentViewController = viewController
+            contentViewController?.containerView = self
             contentViewController?.delegate = self
             contentViewController?.viewType = viewType
         } else if let viewController = segue.destination as? RightSlideMenuViewController {
@@ -146,8 +145,6 @@ extension ContentContainerController: ContentViewControllerDelegate {
         self.rightSliderViewController = viewController.children.first as? RightSlideMenuViewController
         viewController.viewType = type
         present(viewController, animated: true, completion: {
-            viewController.contentViewController?.presentDelegate = self
-
             if let fileData = self.contentViewController?.currentFile, let highlightings = highlightings {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
                 let highlightTextView = viewController.contentViewController?.textView

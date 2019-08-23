@@ -38,7 +38,7 @@ class ContentViewController: UIViewController {
 
     private var currentButtonImage: UIImage?
     weak var delegate: ContentViewControllerDelegate?
-    weak var presentDelegate: PresentDelegate?
+    weak var containerView: ContentContainerController?
     var viewType: ContentViewType = .default
     var currentFile: FileData?
 
@@ -55,7 +55,6 @@ class ContentViewController: UIViewController {
 
         var leftImage: UIImage?
         var rightImage: UIImage?
-        var rightTitle: String = ""
         switch viewType {
         case .default:
             textView?.state = .highlighting
@@ -66,7 +65,7 @@ class ContentViewController: UIViewController {
             rightImage = UIImage(named: Button.right.imageName)
         }
 
-        navigationView.configure(title: "", leftButtonImage: leftImage, rightButtonImage: rightImage, rightButtonTitle: rightTitle)
+        navigationView.configure(title: "", leftButtonImage: leftImage, rightButtonImage: rightImage)
 
         if let displayMode = splitViewController?.displayMode {
             navigationView.updateButton(displayMode: displayMode)
@@ -110,6 +109,8 @@ class ContentViewController: UIViewController {
             return
         }
         controller.file = currentFile
+        controller.highlights = textView.highlightings
+        controller.presentDelegate = containerView
 
         present(controller, animated: true, completion: nil)
     }
