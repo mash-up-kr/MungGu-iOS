@@ -151,6 +151,10 @@ extension ContentContainerController: ContentViewControllerDelegate {
                 highlightTextView?.state = .highlighting
                 highlightTextView?.loadData(content: content, from: highlightings)
                 viewController.rightSliderViewController?.setTest(type)
+
+                if type == .test {
+                    viewController.contentViewController?.testContentView.isHidden = false
+                }
             }
         })
     }

@@ -14,6 +14,8 @@ extension UIColor {
     static var lightPeach: UIColor = namedColor(name: "lightPeach")
     static var backgroundWhite: UIColor = namedColor(name: "backgroundWhite")
     static var tomatoRed: UIColor = namedColor(name: "tomatoRed")
+    static var darkBlue: UIColor = namedColor(name: "darkBlue")
+    static var iceBlue: UIColor = namedColor(name: "iceBlue")
 
     static func namedColor(name: String) -> UIColor {
         guard let color = UIColor(named: name) else {
