@@ -46,7 +46,6 @@
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
 		D557614A22C7ECD100505CC1 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614922C7ECD100505CC1 /* UIColor.swift */; };
 		D557614D22C8DAAB00505CC1 /* HighlightingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */; };
-		D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D557614E22C8E20600505CC1 /* HighlightType.swift */; };
 		D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */; };
 		D56A604322D8E7D90098EA46 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604222D8E7D90098EA46 /* ContentViewController.swift */; };
 		D56A604622D975110098EA46 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A604522D975110098EA46 /* Alerts.swift */; };
@@ -133,7 +132,6 @@
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D557614922C7ECD100505CC1 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextView.swift; sourceTree = "<group>"; };
-		D557614E22C8E20600505CC1 /* HighlightType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightType.swift; sourceTree = "<group>"; };
 		D56A604022D8DDAA0098EA46 /* FileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTableViewCell.swift; sourceTree = "<group>"; };
 		D56A604222D8E7D90098EA46 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		D56A604522D975110098EA46 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -393,7 +391,6 @@
 			isa = PBXGroup;
 			children = (
 				D557614C22C8DAAB00505CC1 /* HighlightingTextView.swift */,
-				D557614E22C8E20600505CC1 /* HighlightType.swift */,
 				D56A604B22D988910098EA46 /* HighlightingTextViewState.swift */,
 				D56A604D22D9929E0098EA46 /* HighlightTextViewDelegate.swift */,
 			);
@@ -689,7 +686,6 @@
 			files = (
 				CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */,
 				D543B48C22EB4CC70047C3D7 /* UITextView+Highlight.swift in Sources */,
-				D557614F22C8E20600505CC1 /* HighlightType.swift in Sources */,
 				D56A604122D8DDAA0098EA46 /* FileTableViewCell.swift in Sources */,
 				CE86B02422FE76190040714F /* TestInsideView.swift in Sources */,
 				D56A604A22D97B700098EA46 /* UIAlertController+.swift in Sources */,

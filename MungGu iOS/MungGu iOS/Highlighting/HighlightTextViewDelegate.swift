@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HighlightingTextViewDelegate: class {
-    func colorFor(highlightMode: HighlightType) -> UIColor
+    func colorFor(isImportant: Bool, state: HighlightingTextViewState) -> UIColor
     func didAdd(_ highlight: Highlight)
     func didRemove(_ highlight: Highlight)
     func didTap(_ highlight: Highlight)
@@ -17,12 +17,12 @@ protocol HighlightingTextViewDelegate: class {
 }
 
 extension HighlightingTextViewDelegate {
-    func colorFor(highlightMode: HighlightType) -> UIColor {
-        switch highlightMode {
-        case .general:
-            return .lightPeach
-        case .imortant:
-            return .blush
+    func colorFor(isImportant: Bool, state: HighlightingTextViewState) -> UIColor {
+        switch state {
+        case .test:
+            return isImportant ? .darkBlue : .iceBlue
+        default:
+            return isImportant ? .blush : .lightPeach
         }
     }
 
