@@ -37,6 +37,7 @@ class ContentViewController: UIViewController {
     // MARK: - Properties
 
     private var currentButtonImage: UIImage?
+    private lazy var highlightManager: HighlightManagerType = HighlightManager.share
     weak var delegate: ContentViewControllerDelegate?
     weak var containerView: ContentContainerController?
     var viewType: ContentViewType = .default
@@ -47,6 +48,7 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.highlighDelegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeHighlights), name: HighlightManager.DidChangedHighlights, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +81,12 @@ class ContentViewController: UIViewController {
     }
 
     // MARK: - IBActions
+
+    @objc private func didChangeHighlights() {
+        let highlightings = HighlightManager.share.getHighlights()
+        textView.updateTextView(from: highlightings)
+        textView.setNeedsDisplay()
+    }
 
     @objc private func didTapLeftMenu(_ sender: UIButton) {
         switch viewType {
@@ -152,8 +160,7 @@ extension ContentViewController: FilesViewControllerDelegate {
         }
 
         let highlightings = textView.highlightings
-//        HighlightManager.share.saveFile(fileData: fileData)
-        // TODO: Save Current Data
+        HighlightManager.share.saveFile(highlightings)
         textView.clear()
 
         // TODO: Get Highligh Data with fileData
@@ -161,7 +168,7 @@ extension ContentViewController: FilesViewControllerDelegate {
         navigationView.titleLabel.text = content
         // TODO: Send FileData to HighlightManager
         // HighlightManager will get highlights info for selected file.
-//                HighlightManager.share.loadFile(fileData: fileData)
+        HighlightManager.share.loadFile(fileData: data)
         currentFile = data
         // bind Highlightings to textView
         textView.loadData(content: content, from: [])
@@ -176,11 +183,14 @@ extension ContentViewController: UISplitViewControllerDelegate {
 
 extension ContentViewController: HighlightingTextViewDelegate {
     func didAdd(_ highlight: Highlight) {
-
+        highlightManager.highlights.append(highlight)
     }
 
     func didRemove(_ highlight: Highlight) {
-
+        guard let index = highlightManager.highlights.firstIndex(where: { $0.id == highlight.id }) else {
+            return
+        }
+        highlightManager.highlights.remove(at: index)
     }
 
     func didTap(_ highlight: Highlight) {

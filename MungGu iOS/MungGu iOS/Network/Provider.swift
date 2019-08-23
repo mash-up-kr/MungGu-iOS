@@ -13,7 +13,7 @@ import Result
 typealias ResultCompletion<T: Decodable> = (T) -> Void
 
 struct Provider {
-    private static let provider = MoyaProvider<Service>()
+    private static let provider = MoyaProvider<Service>(plugins: [NetworkLoggerPlugin(verbose: true)])
 
     // MARK: - API Methods
 
@@ -29,11 +29,13 @@ private extension Provider {
         switch result {
         case .success(let response):
             let statusCode = response.statusCode
-
-            let jsonData = try? response.mapJSON()
-            print("jsonData: \(jsonData ?? "error")")
             switch statusCode {
             case 200..<300:
+                do {
+                    let data = try response.map(T.self)
+                } catch let error {
+                    print(error)
+                }
                 guard let data = try? response.map(T.self) else {
                     preconditionFailure("Fail: \(response) does not found !!")
                 }

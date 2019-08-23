@@ -73,19 +73,14 @@ struct Highlight: Codable {
 }
 
 extension Highlight {
-
-    init(id: Int?, fileId: Int?, startIndex: Int?, endIndex: Int?, content: String?, isImportant: Int?, type: BlankType?) {
+    init(id: Int, startIndex: Int, endIndex: Int, content: String, isImportant: Int) {
         self.id = id
-        self.fileId = fileId
         self.startIndex = startIndex
         self.endIndex = endIndex
         self.content = content
         self.isImportant = isImportant
-        self.type = type
-    }
-
-    init(quiz: Quiz) {
-        self.init(id: nil, fileId: nil, startIndex: quiz.startIndex, endIndex: quiz.endIndex, content: nil, isImportant: 0, type: .word)
+        self.type = nil
+        self.fileId = nil
     }
 }
 
