@@ -42,6 +42,7 @@ class ContentViewController: UIViewController {
     weak var containerView: ContentContainerController?
     var viewType: ContentViewType = .default
     var currentFile: FileData?
+    var result: QuizzesResponse?
 
     // MARK: - Init
 
