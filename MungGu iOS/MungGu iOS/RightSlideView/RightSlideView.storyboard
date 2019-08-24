@@ -34,21 +34,51 @@
                                     <segue destination="afn-O2-i2b" kind="embed" identifier="ContentContainerSegue" id="cer-D4-c3l"/>
                                 </connections>
                             </containerView>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilD-JN-jyN">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="테스트를 작성 중입니다." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewz-CQ-WkY">
+                                        <rect key="frame" x="122" y="437.5" width="170" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="l09-Ma-NI6">
+                                        <rect key="frame" x="197" y="395.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ewz-CQ-WkY" secondAttribute="trailing" id="4Ti-M4-jc5"/>
+                                    <constraint firstItem="Ewz-CQ-WkY" firstAttribute="top" secondItem="l09-Ma-NI6" secondAttribute="bottom" constant="22" id="5Fz-ln-Yg2"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ewz-CQ-WkY" secondAttribute="bottom" id="AYx-v4-QAi"/>
+                                    <constraint firstItem="Ewz-CQ-WkY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ilD-JN-jyN" secondAttribute="top" id="D4E-YO-XdA"/>
+                                    <constraint firstItem="Ewz-CQ-WkY" firstAttribute="centerY" secondItem="ilD-JN-jyN" secondAttribute="centerY" id="WUR-cy-CSv"/>
+                                    <constraint firstItem="Ewz-CQ-WkY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ilD-JN-jyN" secondAttribute="leading" id="kfa-tQ-SIP"/>
+                                    <constraint firstItem="Ewz-CQ-WkY" firstAttribute="centerX" secondItem="ilD-JN-jyN" secondAttribute="centerX" id="qmA-GU-tJq"/>
+                                    <constraint firstItem="l09-Ma-NI6" firstAttribute="centerX" secondItem="ilD-JN-jyN" secondAttribute="centerX" id="w4b-tE-lZr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xOh-4q-cfh" firstAttribute="leading" secondItem="SNf-m0-uLl" secondAttribute="leading" id="4Ui-U5-dSO"/>
                             <constraint firstItem="SNf-m0-uLl" firstAttribute="bottom" secondItem="xOh-4q-cfh" secondAttribute="bottom" id="L4d-y2-gxD"/>
                             <constraint firstItem="SNf-m0-uLl" firstAttribute="trailing" secondItem="eYL-k3-az6" secondAttribute="trailing" constant="-320" id="WCw-sn-jEL"/>
+                            <constraint firstItem="ilD-JN-jyN" firstAttribute="top" secondItem="LBx-Vt-Kib" secondAttribute="top" id="ZvF-Au-w4x"/>
+                            <constraint firstAttribute="trailing" secondItem="ilD-JN-jyN" secondAttribute="trailing" id="eh1-ff-5zZ"/>
                             <constraint firstItem="eYL-k3-az6" firstAttribute="leading" secondItem="xOh-4q-cfh" secondAttribute="trailing" id="fWD-S0-2Ke"/>
                             <constraint firstAttribute="bottom" secondItem="eYL-k3-az6" secondAttribute="bottom" id="fro-jY-o1Y"/>
                             <constraint firstItem="xOh-4q-cfh" firstAttribute="top" secondItem="SNf-m0-uLl" secondAttribute="top" id="jqM-Wf-u5W"/>
+                            <constraint firstItem="ilD-JN-jyN" firstAttribute="leading" secondItem="LBx-Vt-Kib" secondAttribute="leading" id="lfx-Ip-uh7"/>
+                            <constraint firstAttribute="bottom" secondItem="ilD-JN-jyN" secondAttribute="bottom" id="sxV-Sr-cvF"/>
                             <constraint firstItem="eYL-k3-az6" firstAttribute="top" secondItem="LBx-Vt-Kib" secondAttribute="top" id="yqI-yt-pqc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SNf-m0-uLl"/>
                     </view>
                     <connections>
                         <outlet property="contentContainerView" destination="xOh-4q-cfh" id="IUL-hQ-G1I"/>
+                        <outlet property="loadingView" destination="ilD-JN-jyN" id="10Y-8v-PCU"/>
                         <outlet property="rightSlideView" destination="eYL-k3-az6" id="lwF-RC-jG1"/>
                         <outlet property="toggleSlideMenuConstraint" destination="WCw-sn-jEL" id="RFc-5a-Dl3"/>
                     </connections>
