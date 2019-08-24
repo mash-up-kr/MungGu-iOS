@@ -118,6 +118,7 @@ class ContentViewController: UIViewController {
         let highlights = Highlights(highlights: textView.highlightings)
         let service = Service.highlight(method: .post, data: highlights, fileID: "\(fileId)")
 
+        containerView?.loadingView.isHidden = false
         Provider.request(service, completion: { (data: Highlights) in
             let service = Service.quiz(method: .get, data: nil, fileID: "\(fileId)")
 
@@ -127,6 +128,7 @@ class ContentViewController: UIViewController {
                     let highlight = Highlight(id: nil, startIndex: quiz.startIndex, endIndex: quiz.endIndex, content: nil, isImportant: 0)
                     highlights.append(highlight)
                 })
+                self.containerView?.loadingView.isHidden = true
                 self.presentTestView(highlights)
             })
         })

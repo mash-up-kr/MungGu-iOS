@@ -125,7 +125,7 @@
                     <connections>
                         <outlet property="eyeButton" destination="4cu-fi-6Cd" id="D46-v0-TTC"/>
                         <outlet property="navigationView" destination="gMG-hU-GR5" id="b3d-VL-DKC"/>
-                        <outlet property="testButton" destination="yg4-0Z-pSL" id="u0v-xd-7fm"/>
+                        <outlet property="testButton" destination="yg4-0Z-pSL" id="MT2-Eg-daC"/>
                         <outlet property="textView" destination="aAf-e6-OQI" id="OHb-6u-3JC"/>
                     </connections>
                 </viewController>

@@ -31,6 +31,7 @@ class ContentContainerController: UIViewController {
     @IBOutlet weak var toggleSlideMenuConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentContainerView: UIView!
     @IBOutlet weak var rightSlideView: UIView!
+    @IBOutlet weak var loadingView: UIView!
 
     // MARK: - Properties
 
