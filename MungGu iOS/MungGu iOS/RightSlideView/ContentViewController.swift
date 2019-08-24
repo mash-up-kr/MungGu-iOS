@@ -85,8 +85,11 @@ class ContentViewController: UIViewController {
 
     @objc private func didChangeHighlights() {
         let highlightings = HighlightManager.share.getHighlights()
-        textView.updateTextView(from: highlightings)
-        textView.setNeedsDisplay()
+
+        DispatchQueue.main.async {
+            self.textView.updateTextView(from: highlightings)
+            self.textView.setNeedsDisplay()
+        }
     }
 
     @objc private func didTapLeftMenu(_ sender: UIButton) {
