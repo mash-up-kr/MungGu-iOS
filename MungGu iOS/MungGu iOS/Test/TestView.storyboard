@@ -225,22 +225,54 @@
                                     </view>
                                 </subviews>
                             </stackView>
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i33-Ne-YQ4">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5m4-6A-oXb">
+                                        <rect key="frame" x="312" y="661.5" width="400.5" height="43"/>
+                                        <string key="text">현재 화면을 벗어나시면,  시험 본 히스토리가 삭제됩니다!
+신중하게 눌러주세요! </string>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zGR-rR-QBY">
+                                        <rect key="frame" x="502" y="619.5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zGR-rR-QBY" firstAttribute="centerX" secondItem="i33-Ne-YQ4" secondAttribute="centerX" id="EjS-fw-8lV"/>
+                                    <constraint firstItem="5m4-6A-oXb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i33-Ne-YQ4" secondAttribute="leading" id="GGB-eQ-UgZ"/>
+                                    <constraint firstItem="5m4-6A-oXb" firstAttribute="top" secondItem="zGR-rR-QBY" secondAttribute="bottom" constant="22" id="IQr-kM-FuZ"/>
+                                    <constraint firstItem="5m4-6A-oXb" firstAttribute="centerY" secondItem="i33-Ne-YQ4" secondAttribute="centerY" id="KbR-3Q-CkH"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5m4-6A-oXb" secondAttribute="bottom" id="YTZ-JN-him"/>
+                                    <constraint firstItem="5m4-6A-oXb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i33-Ne-YQ4" secondAttribute="top" id="lY8-eZ-qLg"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5m4-6A-oXb" secondAttribute="trailing" id="vvG-mQ-Dma"/>
+                                    <constraint firstItem="5m4-6A-oXb" firstAttribute="centerX" secondItem="i33-Ne-YQ4" secondAttribute="centerX" id="wbo-EZ-kdD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="yd6-Of-irS" firstAttribute="top" secondItem="0Ki-ap-ahU" secondAttribute="bottom" id="5Sj-Ic-LeJ"/>
+                            <constraint firstItem="i33-Ne-YQ4" firstAttribute="top" secondItem="XZ6-EI-VXN" secondAttribute="top" id="Qic-wj-mRz"/>
                             <constraint firstItem="0Ki-ap-ahU" firstAttribute="leading" secondItem="XZ6-EI-VXN" secondAttribute="leading" id="Sug-bk-ytL"/>
                             <constraint firstItem="yd6-Of-irS" firstAttribute="leading" secondItem="XZ6-EI-VXN" secondAttribute="leading" id="Ve4-gf-bih"/>
                             <constraint firstAttribute="trailing" secondItem="0Ki-ap-ahU" secondAttribute="trailing" id="XsZ-zO-mrO"/>
                             <constraint firstItem="0Ki-ap-ahU" firstAttribute="top" secondItem="XZ6-EI-VXN" secondAttribute="top" id="aqi-hO-C04"/>
                             <constraint firstAttribute="trailing" secondItem="yd6-Of-irS" secondAttribute="trailing" id="d1a-3V-gSi"/>
                             <constraint firstAttribute="bottom" secondItem="yd6-Of-irS" secondAttribute="bottom" id="fN6-kY-jHA"/>
+                            <constraint firstItem="i33-Ne-YQ4" firstAttribute="leading" secondItem="XZ6-EI-VXN" secondAttribute="leading" id="if9-B3-ydC"/>
+                            <constraint firstAttribute="bottom" secondItem="i33-Ne-YQ4" secondAttribute="bottom" id="xqz-5U-sBM"/>
+                            <constraint firstAttribute="trailing" secondItem="i33-Ne-YQ4" secondAttribute="trailing" id="yGd-GH-0H8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QeB-9i-VEB"/>
                     </view>
                     <connections>
                         <outlet property="firstAnswerLabel" destination="fWo-gS-7GU" id="rtg-mC-mr9"/>
                         <outlet property="firstNumberLabel" destination="GrI-eB-ZM8" id="g6h-Mm-SEq"/>
+                        <outlet property="loadingView" destination="i33-Ne-YQ4" id="ybz-0L-Ae9"/>
                         <outlet property="navigationView" destination="u83-aa-96C" id="nA7-hF-2fx"/>
                         <outlet property="secondNumberLabel" destination="uD2-4T-7Vx" id="uUW-iN-gmL"/>
                         <outlet property="tableView" destination="APn-g4-vtT" id="emn-w0-bpq"/>

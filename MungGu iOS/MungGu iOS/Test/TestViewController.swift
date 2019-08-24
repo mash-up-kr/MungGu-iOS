@@ -22,6 +22,7 @@ class TestViewController: UIViewController {
     @IBOutlet weak var secondNumberLabel: UILabel!
     @IBOutlet weak var firstAnswerLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var loadingView: UIView!
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -80,13 +81,16 @@ class TestViewController: UIViewController {
         let requestTest = QuizzesRequest(answers: answers ?? [])
         let service = Service.quiz(method: .post, data: requestTest, fileID: "\(fileId)")
 
+        loadingView.isHidden = false
         Provider.request(service, completion: { (data: QuizzesResponse) in
             print("quiz result: \(data)")
 
+            self.loadingView.isHidden = true
             self.dismiss(animated: true) {
                 self.presentDelegate?.showContentView(.result, result: data, highlights: self.highlights ?? [])
             }
         }) { error in
+            self.loadingView.isHidden = true
             print("quiz result error: \(error)")
         }
     }
