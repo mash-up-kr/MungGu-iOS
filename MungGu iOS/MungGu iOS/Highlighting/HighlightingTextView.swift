@@ -69,15 +69,35 @@ class HighlightingTextView: UITextView {
             self.textStorage.removeAttribute(.backgroundColor, range: range)
             self.textStorage.addAttribute(.backgroundColor, value: updateColor, range: range)
         }
+
         if state != .highlighting {
             updateClosures.append { range in
                 self.textStorage.addAttribute(.foregroundColor, value: updateColor, range: range)
             }
         }
+
         self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
             updateClosures.forEach({ closure in
                 closure(range)
             })
+        }
+    }
+
+    // 하나의 highlight 에 대해 업데이트 할 때 사용하세요.
+    func updateTextView(results: [QuizMarkResult]) {
+        guard let delegate = self.highlighDelegate else { return }
+        for index in 0..<results.count {
+            let highlight = highlightings[index]
+            let result = results[index]
+
+            let updateColor = delegate.colorFor(result: result)
+
+            self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+                self.textStorage.removeAttribute(.foregroundColor, range: range)
+                self.textStorage.removeAttribute(.backgroundColor, range: range)
+                self.textStorage.addAttribute(.backgroundColor, value: updateColor.background, range: range)
+                self.textStorage.addAttribute(.foregroundColor, value: updateColor.foreground, range: range)
+            }
         }
     }
 

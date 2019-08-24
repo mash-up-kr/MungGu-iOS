@@ -46,7 +46,10 @@ class TestViewController: UIViewController {
 
         let content = DocumentDataManager.share.readPDF(file?.name ?? "")
         navigationView.titleLabel.text = content
+        textView.state = .test
+        textView.isGestureEnable = true
         textView.loadData(content: content, from: highlights ?? [])
+        textView.hideHighlightedText()
         tableView.reloadData()
 
         let count = highlights?.count ?? 0
@@ -102,10 +105,12 @@ extension TestViewController: HighlightingTextViewDelegate {
     }
 
     func didTap(_ highlight: Highlight) {
-        // TODO:
+
+        textView.updateTextView(with: highlight)
     }
 
     func didChange(state: HighlightingTextViewState) {
+//        textView.hideHighlightedText()
     }
 }
 

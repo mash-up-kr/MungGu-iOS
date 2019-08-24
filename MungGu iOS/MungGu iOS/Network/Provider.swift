@@ -31,11 +31,6 @@ private extension Provider {
             let statusCode = response.statusCode
             switch statusCode {
             case 200..<300:
-                do {
-                    let data = try response.map(T.self)
-                } catch let error {
-                    print(error)
-                }
                 guard let data = try? response.map(T.self) else {
                     preconditionFailure("Fail: \(response) does not found !!")
                 }

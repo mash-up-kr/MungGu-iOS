@@ -98,6 +98,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
     }
 
     func showContentContainerView(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight]) {
+
         present(type, result: result, highlights: highlights)
 
     }
@@ -113,9 +114,8 @@ extension ContentContainerController: ContentViewControllerDelegate {
             if let fileData = self.contentViewController?.currentFile {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
                 let highlightTextView = viewController.contentViewController?.textView
-               viewController.contentViewController?.result = result
+                viewController.contentViewController?.result = result
                 viewController.contentViewController?.configureBottomButton(.result)
-                highlightTextView?.state = .highlighting
                 highlightTextView?.loadData(content: content, from: highlights)
                 viewController.rightSliderViewController?.result = result
                 viewController.rightSliderViewController?.setTest(type)

@@ -64,6 +64,7 @@ class ContentViewController: UIViewController {
             leftImage = UIImage(named: Button.left.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         case .result:
+            textView?.state = .result
             leftImage = UIImage(named: Button.close.imageName)
             rightImage = UIImage(named: Button.right.imageName)
         }
@@ -210,6 +211,9 @@ extension ContentViewController: HighlightingTextViewDelegate {
                 self.textView.hideHighlightedText()
             case .hide:
                 self.textView.hideHighlightedText()
+            case .result:
+                guard let results = self.result?.result else { return }
+                self.textView.updateTextView(results: results)
             }
             self.textView.isGestureEnable = state != .test
             self.textView.setNeedsDisplay()

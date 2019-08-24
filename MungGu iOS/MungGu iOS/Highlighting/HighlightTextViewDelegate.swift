@@ -9,6 +9,7 @@
 import UIKit
 
 protocol HighlightingTextViewDelegate: class {
+    func colorFor(result: QuizMarkResult) -> (foreground: UIColor, background: UIColor)
     func colorFor(isImportant: Int, state: HighlightingTextViewState) -> UIColor
     func didAdd(_ highlight: Highlight)
     func didRemove(_ highlight: Highlight)
@@ -17,6 +18,14 @@ protocol HighlightingTextViewDelegate: class {
 }
 
 extension HighlightingTextViewDelegate {
+    func colorFor(result: QuizMarkResult) -> (foreground: UIColor, background: UIColor) {
+        switch result.mark {
+        case 0:
+            return (.white, .tomatoRed)
+        default:
+            return (.lightishBlue, .clear)
+        }
+    }
     func colorFor(isImportant: Int, state: HighlightingTextViewState) -> UIColor {
         switch state {
         case .test:

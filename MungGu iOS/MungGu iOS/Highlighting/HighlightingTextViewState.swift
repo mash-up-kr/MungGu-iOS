@@ -12,4 +12,5 @@ enum HighlightingTextViewState {
     case highlighting
     case hide
     case test
+    case result
 }
