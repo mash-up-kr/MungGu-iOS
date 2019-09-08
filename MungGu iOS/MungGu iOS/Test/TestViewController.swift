@@ -40,6 +40,23 @@ class TestViewController: UIViewController {
     var file: FileData?
     var highlights: [Highlight]?
     var answers: [Answer]?
+    var accessory: TextFieldAccessoryView?
+
+    var index: Int = -1 {
+        didSet {
+            guard oldValue != index, index != -1 else { return }
+
+            if oldValue != -1, let highlight = highlights?[oldValue] {
+                textView.updateTextView(with: highlight, changedColor: .iceBlue)
+            }
+
+            if let highlight = highlights?[index] {
+                textView.updateTextView(with: highlight, changedColor: .darkBlue)
+            }
+
+            textView.setNeedsDisplay()
+        }
+    }
 
     weak var presentDelegate: PresentDelegate?
 
@@ -59,6 +76,10 @@ class TestViewController: UIViewController {
 
         let count = highlights?.count ?? 0
         answers = Array(repeating: Answer(userAnswer: ""), count: count)
+
+        accessory = TextFieldAccessoryView(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 60.0))
+        accessory?.okButton.addTarget(self, action: #selector(actionOKButton), for: .touchUpInside)
+        textField.inputAccessoryView = accessory
     }
 
     // MARK: - Init
@@ -73,6 +94,7 @@ class TestViewController: UIViewController {
 
         configure()
         navigationView.configure(title: "", leftButtonImage: UIImage(named: "iconMenu-1"), rightButtonImage: nil, rightButtonTitle: "채점하기")
+        navigationView.titleLabel.text = file?.name
     }
 
     // MARK: - IBActions
@@ -114,11 +136,9 @@ extension TestViewController: HighlightingTextViewDelegate {
 
     func didTap(_ highlight: Highlight) {
 
-        textView.updateTextView(with: highlight)
     }
 
     func didChange(state: HighlightingTextViewState) {
-//        textView.hideHighlightedText()
     }
 }
 
@@ -140,6 +160,11 @@ extension TestViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         secondNumberLabel.text = "\(indexPath.row + 1)"
         textField.becomeFirstResponder()
+
+        index = indexPath.row
+        if let highlight = highlights?[index] {
+            textView.scrollRangeToVisible(highlight.range)
+        }
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -163,20 +188,44 @@ extension TestViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        guard let text = secondNumberLabel.text, let number = Int(text), let answer = textField.text, !answer.isEmpty else {
+        guard let text = secondNumberLabel.text, let number = Int(text) else {
             return true
         }
 
-        let cell = tableView.cellForRow(at: IndexPath(row: number - 1, section: 0)) as? TestViewCell
-        cell?.answerLabel.text = answer
-        firstAnswerLabel.text = answer
-        firstNumberLabel.text = text
-        answers?[number - 1] = Answer(userAnswer: answer)
-
-        textField.text = nil
+        didChangeAnswer(number)
 
         return true
     }
 
-//    textField
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let text = textField.text ?? ""
+        accessory?.didChangeAnswer(text + string)
+
+        return true
+    }
+
+    func didChangeAnswer(_ index: Int) {
+        guard let answer = textField.text, !answer.isEmpty else {
+            return
+        }
+
+        let cell = tableView.cellForRow(at: IndexPath(row: index - 1, section: 0)) as? TestViewCell
+        cell?.answerLabel.text = answer
+        firstAnswerLabel.text = answer
+        firstNumberLabel.text = "\(index)"
+        answers?[index - 1] = Answer(userAnswer: answer)
+    }
+
+    @objc private func actionOKButton(_ sender: UIButton) {
+        if let text = secondNumberLabel.text, let index = Int(text), let count = highlights?.count, index < count {
+
+            didChangeAnswer(index)
+            secondNumberLabel.text = "\(index + 1)"
+
+            self.index = index + 1
+        } else {
+            textField.resignFirstResponder()
+        }
+    }
 }

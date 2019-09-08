@@ -75,18 +75,18 @@
                                                             <constraint firstAttribute="height" constant="52" id="7UR-NH-Zdg"/>
                                                             <constraint firstAttribute="width" constant="106" id="lzo-uq-wWt"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button" image="rectangle"/>
+                                                        <state key="normal" image="rectangle"/>
                                                         <connections>
                                                             <action selector="didTapTestButton:" destination="Y9h-JQ-fsv" eventType="touchUpInside" id="P2A-aw-Zi7"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cu-fi-6Cd">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cu-fi-6Cd">
                                                         <rect key="frame" x="656" y="0.0" width="52" height="52"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="52" id="R0Q-Fo-zVf"/>
                                                             <constraint firstAttribute="width" constant="52" id="r2D-fK-cXY"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button" image="btnEye"/>
+                                                        <state key="normal" image="btnEye"/>
                                                         <state key="selected" image="iconEyeHide"/>
                                                         <connections>
                                                             <action selector="blindText:" destination="Y9h-JQ-fsv" eventType="touchUpInside" id="vpH-vB-vj7"/>

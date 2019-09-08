@@ -117,9 +117,15 @@ extension ContentContainerController: ContentViewControllerDelegate {
                 let highlightTextView = viewController.contentViewController?.textView
                 viewController.contentViewController?.result = result
                 viewController.contentViewController?.configureBottomButton(.result)
+
+               viewController.contentViewController?.textView.state = .result
+
+                viewController.contentViewController?.navigationView.titleLabel.text = self.contentViewController?.currentFile?.name
+
                 highlightTextView?.loadData(content: content, from: highlights)
                 viewController.rightSliderViewController?.result = result
                 viewController.rightSliderViewController?.setTest(type)
+                viewController.contentViewController?.textView.isGestureEnable = false
             }
         })
     }

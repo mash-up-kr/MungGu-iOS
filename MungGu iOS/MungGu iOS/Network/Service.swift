@@ -23,6 +23,7 @@ enum Service {
         case delete
     }
 
+    case version
     case addDevice(data: Encodable)
     case file(method: Method, data: Encodable?)
     case highlight(method: Method, data: Encodable?, fileID: String)
@@ -37,16 +38,28 @@ enum Service {
 
 extension Service: TargetType {
     var baseURL: URL {
-        let urlString = "http://15.164.62.183:8080/v1/devices"
-        guard let url = URL(string: urlString) else {
-            assertionFailure("\(urlString) doesn't exist!")
-            return URL(string: "")!
+        var urlString = "http://15.164.62.183:8080"
+        switch self {
+        case .version:
+            guard let url = URL(string: urlString) else {
+                assertionFailure("\(urlString) doesn't exist!")
+                return URL(string: "")!
+            }
+            return url
+        default:
+            urlString = "\(urlString)/v1/devices"
+            guard let url = URL(string: urlString) else {
+                assertionFailure("\(urlString) doesn't exist!")
+                return URL(string: "")!
+            }
+            return url
         }
-        return url
     }
 
     var path: String {
         switch self {
+        case .version:
+            return "/version"
         case .addDevice:
             return ""
         case .file:
@@ -65,6 +78,9 @@ extension Service: TargetType {
 
     var method: Moya.Method {
         switch self {
+        case .version, .quizReStart:
+            return .get
+
         case .addDevice:
             return .post
 
@@ -79,9 +95,6 @@ extension Service: TargetType {
 
         case .deleteHighlight:
             return .delete
-
-        case .quizReStart:
-            return .get
         }
     }
 
@@ -92,6 +105,9 @@ extension Service: TargetType {
     // TODO: 해당 부분 작업 할 때, API Document 보고 업데이트 시킬 것.
     var task: Task {
         switch self {
+        case .version, .deleteHighlight, .quizReStart:
+            return .requestPlain
+
         case .addDevice(let data):
             return .requestJSONEncodable(data)
 
@@ -106,12 +122,6 @@ extension Service: TargetType {
             default:
                 return .requestPlain
             }
-
-        case .deleteHighlight:
-            return .requestPlain
-
-        case .quizReStart:
-            return .requestPlain
         }
     }
 

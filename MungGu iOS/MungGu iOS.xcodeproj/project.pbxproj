@@ -40,6 +40,8 @@
 		CECA294A22EB76FF00DF3863 /* RightSlideView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECA294922EB76FF00DF3863 /* RightSlideView.storyboard */; };
 		CECCE9FE22EB7BB3009A1123 /* CommonNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECCE9FD22EB7BB3009A1123 /* CommonNavigationView.xib */; };
 		CECCEA0022EB7BCD009A1123 /* CommonNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECCE9FF22EB7BCD009A1123 /* CommonNavigationView.swift */; };
+		CECDF2292324FA5D00399BAB /* TextFieldAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECDF2282324FA5D00399BAB /* TextFieldAccessoryView.xib */; };
+		CECDF22B2324FA6B00399BAB /* TextFieldAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECDF22A2324FA6B00399BAB /* TextFieldAccessoryView.swift */; };
 		D543B48C22EB4CC70047C3D7 /* UITextView+Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */; };
 		D543B48E22EB535A0047C3D7 /* Highlight+NSRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */; };
 		D557614722C7EC6900505CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D557614622C7EC6900505CC1 /* Colors.xcassets */; };
@@ -125,6 +127,8 @@
 		CECA294922EB76FF00DF3863 /* RightSlideView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RightSlideView.storyboard; sourceTree = "<group>"; };
 		CECCE9FD22EB7BB3009A1123 /* CommonNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonNavigationView.xib; sourceTree = "<group>"; };
 		CECCE9FF22EB7BCD009A1123 /* CommonNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonNavigationView.swift; sourceTree = "<group>"; };
+		CECDF2282324FA5D00399BAB /* TextFieldAccessoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldAccessoryView.xib; sourceTree = "<group>"; };
+		CECDF22A2324FA6B00399BAB /* TextFieldAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAccessoryView.swift; sourceTree = "<group>"; };
 		D543B48B22EB4CC70047C3D7 /* UITextView+Highlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Highlight.swift"; sourceTree = "<group>"; };
 		D543B48D22EB535A0047C3D7 /* Highlight+NSRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Highlight+NSRange.swift"; sourceTree = "<group>"; };
 		D557614622C7EC6900505CC1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -346,7 +350,7 @@
 		CE87B00E2310254A00BE8026 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				CE86B01F22FE68020040714F /* TestViewCell.swift */,
+				CECDF2272324FA2200399BAB /* View */,
 				CE87B0112310270300BE8026 /* TestViewController.swift */,
 				CE87B00F2310256600BE8026 /* TestView.storyboard */,
 			);
@@ -379,6 +383,16 @@
 				CECCE9FF22EB7BCD009A1123 /* CommonNavigationView.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		CECDF2272324FA2200399BAB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE86B01F22FE68020040714F /* TestViewCell.swift */,
+				CECDF2282324FA5D00399BAB /* TextFieldAccessoryView.xib */,
+				CECDF22A2324FA6B00399BAB /* TextFieldAccessoryView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		D557614822C7ECC700505CC1 /* Extension */ = {
@@ -542,6 +556,7 @@
 				CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */,
 				CE87B0102310256600BE8026 /* TestView.storyboard in Resources */,
 				CE5C647522C74AE900EC8AF4 /* Assets.xcassets in Resources */,
+				CECDF2292324FA5D00399BAB /* TextFieldAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -715,6 +730,7 @@
 				CEC8929022D91CAB004BA075 /* DocumentBrowserViewController.swift in Sources */,
 				CECCEA0022EB7BCD009A1123 /* CommonNavigationView.swift in Sources */,
 				CE08A9C222D8FF2200281381 /* Model.swift in Sources */,
+				CECDF22B2324FA6B00399BAB /* TextFieldAccessoryView.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D56A604822D978310098EA46 /* Sample.swift in Sources */,
 				CEC8928D22D91CAB004BA075 /* Document.swift in Sources */,
@@ -905,11 +921,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.K.D.MungGu-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.K.D.Bean;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -927,11 +943,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.K.D.MungGu-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.K.D.Bean;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

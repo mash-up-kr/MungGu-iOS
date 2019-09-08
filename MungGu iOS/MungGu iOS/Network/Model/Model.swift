@@ -13,6 +13,11 @@ enum BlankType: String, Codable {
     case sentence = "SENTENCE"
 }
 
+struct Version: Codable {
+    let version: String?
+    let link: String?
+}
+
 struct AddDevice: Codable {
     let deviceKey: String?
 }

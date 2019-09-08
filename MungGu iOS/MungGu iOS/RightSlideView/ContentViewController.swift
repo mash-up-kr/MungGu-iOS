@@ -54,11 +54,6 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.highlighDelegate = self
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        splitViewController?.delegate = self
 
         var leftImage: UIImage?
         var rightImage: UIImage?
@@ -71,15 +66,26 @@ class ContentViewController: UIViewController {
             textView?.state = .result
             leftImage = UIImage(named: Button.close.imageName)
             rightImage = UIImage(named: Button.right.imageName)
+            buttonStackView.isHidden = false
+            testButton.isHidden = true
         }
 
         navigationView.configure(title: "", leftButtonImage: leftImage, rightButtonImage: rightImage)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        splitViewController?.delegate = self
 
         if let displayMode = splitViewController?.displayMode {
             navigationView.updateButton(displayMode: displayMode)
         }
 
         configureBottomButton(viewType)
+
+        if let name = currentFile?.name {
+            navigationView.titleLabel.text = name
+        }
     }
 
     func configureBottomButton(_ viewType: ContentViewType) {
@@ -176,7 +182,7 @@ extension ContentViewController: FilesViewControllerDelegate {
 
         // TODO: Get Highligh Data with fileData
         let content = DocumentDataManager.share.readPDF(data.name ?? "")
-        navigationView.titleLabel.text = content
+        navigationView.titleLabel.text = data.name
         // TODO: Send FileData to HighlightManager
         // HighlightManager will get highlights info for selected file.
         HighlightManager.share.loadFile(fileData: data)

@@ -29,7 +29,9 @@ extension HighlightingTextViewDelegate {
     func colorFor(isImportant: Int, state: HighlightingTextViewState) -> UIColor {
         switch state {
         case .test:
-            return isImportant == 1 ? .darkBlue : .iceBlue
+            return .iceBlue
+        case .result:
+            return .tomatoRed
         default:
             return isImportant == 1 ? .blush : .lightPeach
         }

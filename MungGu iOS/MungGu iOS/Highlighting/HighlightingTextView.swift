@@ -61,8 +61,12 @@ class HighlightingTextView: UITextView {
     }
 
     // 하나의 highlight 에 대해 업데이트 할 때 사용하세요.
-    func updateTextView(with highlight: Highlight) {
-        let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? 0, state: self.state) ?? highlightColor
+    func updateTextView(with highlight: Highlight, changedColor: UIColor? = nil) {
+        var updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? 0, state: self.state) ?? highlightColor
+        if let color = changedColor {
+            updateColor = color
+        }
+
         var updateClosures: [((NSRange) -> Void)] = []
         updateClosures.append { range in
             self.textStorage.removeAttribute(.foregroundColor, range: range)
@@ -133,7 +137,7 @@ class HighlightingTextView: UITextView {
     }
 
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
-        guard self.state != .test else {
+        guard self.state != .test, state != .result else {
             return
         }
 
@@ -183,7 +187,7 @@ class HighlightingTextView: UITextView {
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: self)
         if let position = self.closestPosition(to: point) {
-            if state != .test {
+            if state != .test, state != .result {
                 self.removeHighlighting(position: position)
             } else if let highlighting = highlightAt(position: position) {
                 self.highlighDelegate?.didTap(highlighting)

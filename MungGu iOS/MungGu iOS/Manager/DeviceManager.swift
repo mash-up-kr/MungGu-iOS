@@ -13,6 +13,14 @@ typealias DeviceIdentifier = DeviceManager.Identifier
 class DeviceManager {
     static let share = DeviceManager()
 
+    static var appVersionString: String? {
+        guard let infoDict = Bundle.main.infoDictionary else {
+            return nil
+        }
+
+        return infoDict["CFBundleShortVersionString"] as? String
+    }
+
     struct Identifier {
         static let deviceKey = "deviceKey"
         static let deviceID = "deviceID"
