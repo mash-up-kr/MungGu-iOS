@@ -56,7 +56,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="610" height="1291"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-lL-IvP" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="30" width="530" height="1261"/>
+                                                <rect key="frame" x="40" y="0.0" width="530" height="1291"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -70,7 +70,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Ftm-lL-IvP" firstAttribute="top" secondItem="out-B6-BHf" secondAttribute="top" constant="30" id="Uhy-tr-oZx"/>
+                                            <constraint firstItem="Ftm-lL-IvP" firstAttribute="top" secondItem="out-B6-BHf" secondAttribute="top" id="Uhy-tr-oZx"/>
                                             <constraint firstAttribute="bottom" secondItem="Ftm-lL-IvP" secondAttribute="bottom" id="btf-lh-ojP"/>
                                             <constraint firstItem="Ftm-lL-IvP" firstAttribute="leading" secondItem="2aj-XQ-nAj" secondAttribute="leading" constant="40" id="g30-I4-sh3"/>
                                             <constraint firstItem="2aj-XQ-nAj" firstAttribute="trailing" secondItem="Ftm-lL-IvP" secondAttribute="trailing" constant="40" id="tR5-gH-1pl"/>

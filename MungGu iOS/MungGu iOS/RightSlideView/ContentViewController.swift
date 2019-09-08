@@ -24,7 +24,12 @@ class ContentViewController: UIViewController {
 
     // MARK: - IBOutlet
 
-    @IBOutlet weak var textView: HighlightingTextView!
+    @IBOutlet weak var textView: HighlightingTextView! {
+        didSet {
+            textView.contentInset = UIEdgeInsets(top: 31.0, left: 0.0, bottom: 112.0, right: 0.0)
+        }
+    }
+    @IBOutlet weak var buttonStackView: UIStackView!
     @IBOutlet weak var testButton: UIButton!
     @IBOutlet weak var eyeButton: UIButton!
     @IBOutlet weak var navigationView: CommonNavigationView! {
@@ -49,7 +54,6 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.highlighDelegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangeHighlights), name: HighlightManager.DidChangedHighlights, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +88,7 @@ class ContentViewController: UIViewController {
 
     // MARK: - IBActions
 
-    @objc private func didChangeHighlights() {
+    func didChangeHighlightImportant() {
         let highlightings = HighlightManager.share.getHighlights()
 
         DispatchQueue.main.async {
@@ -185,6 +189,19 @@ extension ContentViewController: FilesViewControllerDelegate {
 extension ContentViewController: UISplitViewControllerDelegate {
     func splitViewController(_ svc: UISplitViewController, willChangeTo displayMode: UISplitViewController.DisplayMode) {
         navigationView.updateButton(displayMode: displayMode)
+
+        let hide = displayMode == .allVisible
+        if !hide {
+            self.buttonStackView.isHidden = false
+        }
+
+        UIView.animate(withDuration: 1.0, animations: {
+            self.buttonStackView.alpha = hide ? 0 : 1.0
+        }) { _ in
+            if hide {
+                self.buttonStackView.isHidden = true
+            }
+        }
     }
 }
 
@@ -194,7 +211,8 @@ extension ContentViewController: HighlightingTextViewDelegate {
     }
 
     func didRemove(_ highlight: Highlight) {
-        guard let index = highlightManager.highlights.firstIndex(where: { $0.id == highlight.id }) else {
+        // FIXME: highlight의 id 값이 현재 없음..
+        guard let index = highlightManager.highlights.firstIndex(where: { $0.startIndex == highlight.startIndex }) else {
             return
         }
         highlightManager.highlights.remove(at: index)

@@ -18,6 +18,15 @@ final class RightSlideMenuMainViewCell: UITableViewCell {
     weak var delegate: RightSlideMenuMainViewCellDelegate?
     var highlight: Highlight?
 
+    func configure(_ highlight: Highlight) {
+        self.highlight = highlight
+        wordLabel.text = highlight.content
+
+        if let isImportant = highlight.isImportant {
+            importantButton.isSelected = isImportant == 1 ? true : false
+        }
+    }
+
     // MARK: - Handlers
     @IBAction private func setStar(_ sender: UIButton) {
         importantButton.isSelected.toggle()

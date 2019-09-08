@@ -115,18 +115,22 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <searchBar contentMode="redraw" searchBarStyle="minimal" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BP-u2-zhb">
-                                                <rect key="frame" x="0.0" y="122" width="320" height="56"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jaB-jy-cWM">
+                                                <rect key="frame" x="13" y="122" width="294" height="45"/>
+                                                <color key="backgroundColor" name="iceBlue"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
-                                            </searchBar>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="9BP-u2-zhb" firstAttribute="top" secondItem="zAY-ez-cGc" secondAttribute="bottom" constant="25" id="5TL-jK-AF4"/>
                                             <constraint firstAttribute="height" constant="222" id="6e1-tZ-eUW"/>
-                                            <constraint firstAttribute="trailing" secondItem="9BP-u2-zhb" secondAttribute="trailing" id="D5g-1M-KcK"/>
                                             <constraint firstItem="zAY-ez-cGc" firstAttribute="top" secondItem="8dq-iL-55m" secondAttribute="top" constant="61" id="HMN-ta-jws"/>
-                                            <constraint firstItem="9BP-u2-zhb" firstAttribute="leading" secondItem="8dq-iL-55m" secondAttribute="leading" id="yEg-me-d7S"/>
+                                            <constraint firstItem="jaB-jy-cWM" firstAttribute="leading" secondItem="8dq-iL-55m" secondAttribute="leading" constant="13" id="XdN-9L-gfg"/>
+                                            <constraint firstAttribute="trailing" secondItem="jaB-jy-cWM" secondAttribute="trailing" constant="13" id="Xfo-JJ-2cV"/>
+                                            <constraint firstAttribute="bottom" secondItem="jaB-jy-cWM" secondAttribute="bottom" constant="55" id="bg4-HW-7sA"/>
+                                            <constraint firstItem="jaB-jy-cWM" firstAttribute="top" secondItem="zAY-ez-cGc" secondAttribute="bottom" constant="25" id="tHA-Lu-LNX"/>
                                             <constraint firstItem="zAY-ez-cGc" firstAttribute="leading" secondItem="8dq-iL-55m" secondAttribute="leading" constant="24" id="zM0-Ac-5GN"/>
                                         </constraints>
                                     </view>
@@ -249,8 +253,8 @@
                     <connections>
                         <outlet property="containerView" destination="8dq-iL-55m" id="bHT-sP-DqZ"/>
                         <outlet property="firstView" destination="mjw-YM-kP4" id="kAE-6h-p2Y"/>
-                        <outlet property="searchBar" destination="9BP-u2-zhb" id="BYL-6j-1gH"/>
                         <outlet property="tableView" destination="ebI-Ez-psy" id="uHm-hs-t0c"/>
+                        <outlet property="textField" destination="jaB-jy-cWM" id="me9-hl-Xwg"/>
                         <outlet property="titleLabel" destination="zAY-ez-cGc" id="4rY-3j-Igt"/>
                     </connections>
                 </viewController>
@@ -263,6 +267,9 @@
         <image name="iconArrowDown" width="30" height="30"/>
         <image name="iconImportantG" width="48" height="48"/>
         <image name="iconImportantR" width="48" height="48"/>
+        <namedColor name="iceBlue">
+            <color red="0.92941176470588238" green="0.94901960784313721" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="tomatoRed">
             <color red="0.93333333333333335" green="0.21176470588235294" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

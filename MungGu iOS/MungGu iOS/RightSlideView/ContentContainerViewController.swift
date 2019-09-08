@@ -141,6 +141,7 @@ extension ContentContainerController: RightSlideMenuViewControllerDelegate {
         textView.updateTextView(with: highlight)
         highlightings[indexPath].isImportant = highlightings[indexPath].isImportant == 0 ? 1 : 0
         HighlightManager.share.highlights = highlightings
+        contentViewController?.didChangeHighlightImportant()
     }
 
     func didSelect(highlight: Highlight) {

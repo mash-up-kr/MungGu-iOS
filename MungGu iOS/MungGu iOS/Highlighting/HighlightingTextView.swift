@@ -155,7 +155,11 @@ class HighlightingTextView: UITextView {
         case .changed:
             if let start = closestPosition(to: startPoint),
                 let end = closestPosition(to: endPoint) {
-                let range = self.rangeOf(start: start, end: end)
+                guard let range = self.rangeOf(start: start, end: end) else {
+                    currentRange = nil
+                    return
+                }
+
                 self.addHighlighting(color: self.highlightColor, range: range)
                 self.currentRange = range
             }

@@ -15,7 +15,11 @@ protocol FilesViewControllerDelegate: class {
 class FileListViewController: UIViewController {
 
     // MARK: - IBOutlet
-    @IBOutlet weak var mySearchBar: UISearchBar!
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.layer.cornerRadius = 3.0
+        }
+    }
     @IBOutlet weak var filesTableView: UITableView!
 
     // MARK: - Properties
@@ -48,7 +52,7 @@ class FileListViewController: UIViewController {
 
     // MARK: - Handlers
     private func setUpSearchBar() {
-        mySearchBar.delegate = self
+        textField.delegate = self
     }
 
     @objc private func didChangedDocumentCount(_ notification: Notification) {
@@ -57,7 +61,7 @@ class FileListViewController: UIViewController {
 
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.mySearchBar.text = nil
+            self.textField.text = nil
             self.filesTableView.reloadData()
         }
     }
@@ -97,4 +101,8 @@ extension FileListViewController: UITableViewDataSource {
         cell.titleLabel.text = file.name
         return cell
     }
+}
+
+extension FileListViewController: UITextFieldDelegate {
+
 }

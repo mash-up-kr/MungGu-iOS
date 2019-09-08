@@ -17,28 +17,31 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xpz-Oo-Ehg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="backgroundWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Rbm-vZ-AT7">
                             <rect key="frame" x="0.0" y="0.0" width="768" height="125"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="JEy-XW-TPg">
-                                    <rect key="frame" x="13" y="14" width="743" height="56"/>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HOk-jj-eqm">
+                                    <rect key="frame" x="13" y="25" width="742" height="45"/>
+                                    <color key="backgroundColor" name="iceBlue"/>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
-                                </searchBar>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="JEy-XW-TPg" secondAttribute="trailing" constant="12" id="BJe-AC-Mw9"/>
-                                <constraint firstItem="JEy-XW-TPg" firstAttribute="leading" secondItem="Rbm-vZ-AT7" secondAttribute="leading" constant="13" id="IeE-n9-Yc2"/>
-                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JEy-XW-TPg" secondAttribute="bottom" constant="20" id="YdB-nE-0tv"/>
-                                <constraint firstItem="JEy-XW-TPg" firstAttribute="top" secondItem="Rbm-vZ-AT7" secondAttribute="top" constant="14" id="jzr-2k-zwv"/>
+                                <constraint firstAttribute="trailing" secondItem="HOk-jj-eqm" secondAttribute="trailing" constant="13" id="6Nz-g9-TiL"/>
+                                <constraint firstAttribute="bottom" secondItem="HOk-jj-eqm" secondAttribute="bottom" constant="55" id="flb-Oi-k6M"/>
+                                <constraint firstItem="HOk-jj-eqm" firstAttribute="top" secondItem="Rbm-vZ-AT7" secondAttribute="top" constant="25" id="o2F-pA-6Nn"/>
+                                <constraint firstItem="HOk-jj-eqm" firstAttribute="leading" secondItem="Rbm-vZ-AT7" secondAttribute="leading" constant="13" id="vUT-mH-ZWh"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ZHP-tL-Tbq">
                             <rect key="frame" x="0.0" y="208" width="768" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="backgroundWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="file_table_cell" rowHeight="55" id="l6F-3E-rSo" customClass="FileTableViewCell" customModule="MungGu_iOS" customModuleProvider="target">
@@ -102,7 +105,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filesTableView" destination="xpz-Oo-Ehg" id="zd1-ft-goh"/>
-                        <outlet property="mySearchBar" destination="JEy-XW-TPg" id="NXz-zt-23q"/>
+                        <outlet property="textField" destination="HOk-jj-eqm" id="7xw-a9-PaB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNh-ia-a5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,6 +142,9 @@
         <image name="iconPlus" width="48" height="48"/>
         <namedColor name="backgroundWhite">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="iceBlue">
+            <color red="0.92941176470588238" green="0.94901960784313721" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

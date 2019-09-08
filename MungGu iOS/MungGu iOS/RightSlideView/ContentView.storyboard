@@ -55,7 +55,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="949"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAf-e6-OQI" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="30" width="688" height="919"/>
+                                                <rect key="frame" x="40" y="0.0" width="688" height="949"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -66,7 +66,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hUG-Of-kd4">
+                                            <stackView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="hUG-Of-kd4">
                                                 <rect key="frame" x="30" y="867" width="708" height="52"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yg4-0Z-pSL">
@@ -98,7 +98,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="aAf-e6-OQI" secondAttribute="bottom" id="6TI-rG-ON3"/>
-                                            <constraint firstItem="aAf-e6-OQI" firstAttribute="top" secondItem="q2J-Q1-npn" secondAttribute="top" constant="30" id="V66-Co-LdX"/>
+                                            <constraint firstItem="aAf-e6-OQI" firstAttribute="top" secondItem="q2J-Q1-npn" secondAttribute="top" id="V66-Co-LdX"/>
                                             <constraint firstItem="hUG-Of-kd4" firstAttribute="leading" secondItem="0bu-iy-Pcc" secondAttribute="leading" constant="30" id="WbC-Uh-rcL"/>
                                             <constraint firstItem="0bu-iy-Pcc" firstAttribute="trailing" secondItem="aAf-e6-OQI" secondAttribute="trailing" constant="40" id="cbS-Ie-Hd6"/>
                                             <constraint firstItem="0bu-iy-Pcc" firstAttribute="trailing" secondItem="hUG-Of-kd4" secondAttribute="trailing" constant="30" id="hel-Lc-aIn"/>
@@ -123,6 +123,7 @@
                         <viewLayoutGuide key="safeArea" id="570-Pi-bES"/>
                     </view>
                     <connections>
+                        <outlet property="buttonStackView" destination="hUG-Of-kd4" id="WJS-4r-Lhk"/>
                         <outlet property="eyeButton" destination="4cu-fi-6Cd" id="D46-v0-TTC"/>
                         <outlet property="navigationView" destination="gMG-hU-GR5" id="b3d-VL-DKC"/>
                         <outlet property="testButton" destination="yg4-0Z-pSL" id="MT2-Eg-daC"/>

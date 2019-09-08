@@ -10,7 +10,11 @@ import UIKit
 
 class TestViewController: UIViewController {
 
-    @IBOutlet weak var textView: HighlightingTextView!
+    @IBOutlet weak var textView: HighlightingTextView! {
+        didSet {
+            textView.contentInset = UIEdgeInsets(top: 31.0, left: 0.0, bottom: 112.0, right: 0.0)
+        }
+    }
     @IBOutlet weak var navigationView: CommonNavigationView! {
         didSet {
             navigationView.leftButton.addTarget(self, action: #selector(didTapLeftMenu), for: .touchUpInside)

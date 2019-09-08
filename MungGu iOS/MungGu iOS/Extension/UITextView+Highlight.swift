@@ -18,9 +18,14 @@ extension UITextView {
         return Highlight(id: nil, startIndex: startIndex, endIndex: endIndex, content: content, isImportant: 0)
     }
 
-    func rangeOf(start: UITextPosition, end: UITextPosition) -> NSRange {
+    func rangeOf(start: UITextPosition, end: UITextPosition) -> NSRange? {
         let compareResult = self.compare(start, to: end)
         let length = self.offset(from: start, to: end)
+
+        if length < 1 {
+            return nil
+        }
+
         switch compareResult {
         case .orderedAscending:
             let location = self.offset(from: self.beginningOfDocument, to: start)

@@ -21,7 +21,11 @@ class RightSlideMenuViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet var firstView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var textField: UITextField! {
+        didSet {
+            textField.layer.cornerRadius = 3.0
+        }
+    }
     @IBOutlet weak var titleLabel: UILabel!
 
     // MARK: - Properties
@@ -34,12 +38,6 @@ class RightSlideMenuViewController: UIViewController {
         }
     }
     var result: QuizzesResponse?
-
-    // MARK: - Init
-
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: DocumentDataManager.NotificationName.documentCountDidChangedNotification, object: nil)
-    }
 
     // MARK: - Init
 
@@ -67,7 +65,7 @@ class RightSlideMenuViewController: UIViewController {
     func configureDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
+        textField.delegate = self
     }
 
     func setTest(_ viewType: ContentViewType) {
@@ -104,9 +102,8 @@ extension RightSlideMenuViewController: UITableViewDataSource {
         case .default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuMainViewCell", for: indexPath) as? RightSlideMenuMainViewCell else { return UITableViewCell() }
             let highlight = highlightings[indexPath.row]
-            cell.wordLabel.text = highlight.content
-            cell.highlight = highlight
             cell.delegate = self
+            cell.configure(highlight)
 
             return cell
         case .result:
@@ -164,4 +161,8 @@ extension RightSlideMenuViewController: RightSlideMenuMainViewCellDelegate {
         toggled.isImportant = toggled.isImportant == 0 ? 1: 0
         delegate?.didChange(highlight: toggled)
     }
+}
+
+extension RightSlideMenuViewController: UITextFieldDelegate {
+
 }
