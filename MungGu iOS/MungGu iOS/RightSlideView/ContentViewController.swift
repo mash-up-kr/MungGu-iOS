@@ -128,10 +128,14 @@ class ContentViewController: UIViewController {
         let highlights = Highlights(highlights: textView.highlightings)
         let service = Service.highlight(method: .post, data: highlights, fileID: "\(fileId)")
 
+        let errorAlert = UIAlertController(title: "Network Error", message: "통신이 원할 하지 않습니다. 잠시후, 다시 시도 부탁 드립니다.", preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "확인", style: .default, handler: { _ in
+            self.containerView?.loadingView.isHidden = true
+        }))
+
         containerView?.loadingView.isHidden = false
         Provider.request(service, completion: { (data: Highlights) in
             let service = Service.quiz(method: .get, data: nil, fileID: "\(fileId)")
-
             Provider.request(service, completion: { (data: QuizzesResult) in
                 var highlights: [Highlight] = []
                 data.quizzes.forEach({ quiz in
@@ -140,8 +144,12 @@ class ContentViewController: UIViewController {
                 })
                 self.containerView?.loadingView.isHidden = true
                 self.presentTestView(highlights)
-            })
-        })
+            }) { error in
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+        }) { error in
+            self.present(errorAlert, animated: true, completion: nil)
+        }
     }
 
     func presentTestView(_ highlights: [Highlight]) {

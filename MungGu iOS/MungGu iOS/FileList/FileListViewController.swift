@@ -67,17 +67,6 @@ class FileListViewController: UIViewController {
     }
 }
 
-extension FileListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            filteredFiles = files
-        } else {
-            filteredFiles = files.filter({ $0.name?.contains(searchText) ?? false })
-        }
-        filesTableView.reloadData()
-    }
-}
-
 extension FileListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         view.endEditing(true)
@@ -104,5 +93,28 @@ extension FileListViewController: UITableViewDataSource {
 }
 
 extension FileListViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textDidChanged(string)
+        return true
+    }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textDidChanged("")
+        return true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textDidChanged("")
+        return true
+    }
+
+    func textDidChanged(_ string: String) {
+        if let text = textField.text, text.isEmpty {
+            filteredFiles = files
+        } else {
+            let text = textField.text ?? ""
+            filteredFiles = files.filter({ $0.name?.contains(text + string) ?? false })
+        }
+        filesTableView.reloadData()
+    }
 }

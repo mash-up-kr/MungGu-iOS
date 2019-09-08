@@ -29,7 +29,7 @@ class DocumentDataManager {
     private init() { }
 
     func makeURL(_ fileName: String) -> URL {
-        return filePathURL.appendingPathComponent("\(fileName)")
+        return filePathURL.appendingPathComponent("\(fileName).pdf")
     }
 
     func fetchDocument() {

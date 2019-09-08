@@ -124,6 +124,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
 
                 highlightTextView?.loadData(content: content, from: highlights)
                 viewController.rightSliderViewController?.result = result
+                viewController.rightSliderViewController?.filteredResult = result.result
                 viewController.rightSliderViewController?.setTest(type)
                 viewController.contentViewController?.textView.isGestureEnable = false
             }

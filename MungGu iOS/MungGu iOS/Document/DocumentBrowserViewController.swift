@@ -59,7 +59,7 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
         DispatchQueue.global().async { [weak self] in
 
             let fileName = documentURL.absoluteString.components(separatedBy: "/").last ?? ""
-            DocumentDataManager.share.fileName = fileName
+            DocumentDataManager.share.fileName = fileName.removingPercentEncoding ?? ""
             document.open { [weak self] success in
                 guard success else { return }
 

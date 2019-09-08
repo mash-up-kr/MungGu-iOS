@@ -37,7 +37,15 @@ class RightSlideMenuViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    private var filteredHighlightings: [Highlight] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     var result: QuizzesResponse?
+
+    var filteredResult: [QuizMarkResult]?
 
     // MARK: - Init
 
@@ -47,7 +55,8 @@ class RightSlideMenuViewController: UIViewController {
         configureDelegate()
 
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeHighlights), name: HighlightManager.DidChangedHighlights, object: nil)
-        self.highlightings = HighlightManager.share.getHighlights()
+        highlightings = HighlightManager.share.getHighlights()
+        filteredHighlightings = highlightings
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +68,8 @@ class RightSlideMenuViewController: UIViewController {
         default:
             containerView.isHidden = true
         }
+
+        filteredResult = result?.result
     }
 
     // MARK: - Handlers
@@ -83,6 +94,7 @@ class RightSlideMenuViewController: UIViewController {
 
     @objc func didChangeHighlights() {
         self.highlightings = HighlightManager.share.getHighlights()
+        self.filteredHighlightings = highlightings
         self.tableView.reloadData()
     }
 }
@@ -91,9 +103,9 @@ extension RightSlideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch viewType {
         case .default:
-            return highlightings.count
+            return filteredHighlightings.count
         case .result:
-            return result?.result?.count ?? 0
+            return filteredResult?.count ?? 0
         }
     }
 
@@ -101,14 +113,14 @@ extension RightSlideMenuViewController: UITableViewDataSource {
         switch viewType {
         case .default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuMainViewCell", for: indexPath) as? RightSlideMenuMainViewCell else { return UITableViewCell() }
-            let highlight = highlightings[indexPath.row]
+            let highlight = filteredHighlightings[indexPath.row]
             cell.delegate = self
             cell.configure(highlight)
 
             return cell
         case .result:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RightSlideMenuResultViewCell", for: indexPath) as? RightSlideMenuResultViewCell else { return UITableViewCell() }
-            let result = self.result?.result?[indexPath.row]
+            let result = self.filteredResult?[indexPath.row]
 
             cell.answerLabel.text = result?.realAnswer
             cell.userAnswerLabel.text = result?.userAnswer
@@ -119,7 +131,9 @@ extension RightSlideMenuViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "삭제") { _, index in
-            self.highlightings.remove(at: index.row)
+            let highlighting = self.filteredHighlightings[indexPath.row]
+            self.highlightings.removeAll(where: { $0.startIndex == highlighting.startIndex })
+            self.filteredHighlightings.remove(at: index.row)
             self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
         return [deleteAction]
@@ -138,20 +152,7 @@ extension RightSlideMenuViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
-        delegate?.didSelect(highlight: highlightings[indexPath.row])
-    }
-}
-
-extension RightSlideMenuViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            guard !searchText.isEmpty else {
-                tableView.reloadData()
-                return
-            }
-            highlightings = highlightings.filter({ highlight -> Bool in
-                highlight.content?.contains(searchText) ?? false
-            })
-            tableView.reloadData()
+        delegate?.didSelect(highlight: filteredHighlightings[indexPath.row])
     }
 }
 
@@ -164,5 +165,40 @@ extension RightSlideMenuViewController: RightSlideMenuMainViewCellDelegate {
 }
 
 extension RightSlideMenuViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textDidChanged(string)
+        return true
+    }
 
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textDidChanged("")
+        return true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        textDidChanged("")
+        return true
+    }
+
+    func textDidChanged(_ string: String) {
+        let text = textField.text ?? ""
+        switch viewType {
+        case .result:
+            if text.isEmpty {
+                filteredResult = result?.result
+            } else {
+                filteredResult = result?.result?.filter({ $0.realAnswer?.contains(text) ?? false })
+            }
+        default:
+            if text.isEmpty {
+                filteredHighlightings = highlightings
+            } else {
+                let text = textField.text ?? ""
+                filteredHighlightings = highlightings.filter({
+                    $0.content?.contains(text + string) ?? false })
+            }
+        }
+
+        tableView.reloadData()
+    }
 }
