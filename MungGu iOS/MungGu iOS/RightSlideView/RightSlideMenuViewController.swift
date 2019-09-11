@@ -32,16 +32,8 @@ class RightSlideMenuViewController: UIViewController {
 
     weak var delegate: RightSlideMenuViewControllerDelegate?
     var viewType: ContentViewType = .default
-    var highlightings: [Highlight] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    private var filteredHighlightings: [Highlight] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var highlightings: [Highlight] = []
+    private var filteredHighlightings: [Highlight] = []
 
     var result: QuizzesResponse?
 
@@ -57,6 +49,7 @@ class RightSlideMenuViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeHighlights), name: HighlightManager.DidChangedHighlights, object: nil)
         highlightings = HighlightManager.share.getHighlights()
         filteredHighlightings = highlightings
+        tableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -129,12 +122,21 @@ extension RightSlideMenuViewController: UITableViewDataSource {
         }
     }
 
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        switch viewType {
+        case .default:
+            return true
+        case .result:
+            return false
+        }
+    }
+
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "삭제") { _, index in
-            let highlighting = self.filteredHighlightings[indexPath.row]
+            let highlighting = self.filteredHighlightings[index.row]
             self.highlightings.removeAll(where: { $0.startIndex == highlighting.startIndex })
             self.filteredHighlightings.remove(at: index.row)
-            self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            self.tableView.deleteRows(at: [index], with: UITableView.RowAnimation.automatic)
         }
         return [deleteAction]
     }
