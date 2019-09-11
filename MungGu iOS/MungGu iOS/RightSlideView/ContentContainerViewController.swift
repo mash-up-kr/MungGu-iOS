@@ -155,6 +155,10 @@ extension ContentContainerController: RightSlideMenuViewControllerDelegate {
         contentViewController?.textView.scrollRangeToVisible(highlight.range)
     }
 
+    func didDelete(highlight: Highlight) {
+        contentViewController?.textView.removeHighlight(highlight)
+    }
+
     func test() {
 
     }

@@ -218,12 +218,18 @@ extension TestViewController: UITextFieldDelegate {
     }
 
     @objc private func actionOKButton(_ sender: UIButton) {
+        if accessory?.answerLabel.text == nil {
+            return
+        }
+
         if let text = secondNumberLabel.text, let index = Int(text), let count = highlights?.count, index < count {
 
             didChangeAnswer(index)
             secondNumberLabel.text = "\(index + 1)"
+            self.index = index
 
-            self.index = index + 1
+            accessory?.didChangeAnswer(nil)
+            textField.text = nil
         } else {
             textField.resignFirstResponder()
         }
