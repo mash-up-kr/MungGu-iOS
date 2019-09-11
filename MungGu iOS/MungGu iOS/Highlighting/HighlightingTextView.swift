@@ -124,6 +124,25 @@ class HighlightingTextView: UITextView {
         }
     }
 
+    func removeHighlight(_ highlight: Highlight) {
+        var matchedCount = 0
+
+        highlightings.removeAll(where: { highlighting -> Bool in
+
+            if highlighting.startIndex == highlight.startIndex {
+                self.textStorage.removeAttribute(.backgroundColor, range: highlight.range)
+                self.textStorage.removeAttribute(.foregroundColor, range: highlight.range)
+                matchedCount += 1
+                return true
+            }
+            return false
+        })
+
+        if matchedCount > 0 {
+            self.setNeedsDisplay()
+        }
+    }
+
     private var startPoint: CGPoint = .zero
     private var endPoint: CGPoint = .zero
     private var currentRange: NSRange?

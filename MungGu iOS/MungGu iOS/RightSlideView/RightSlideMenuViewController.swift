@@ -12,6 +12,7 @@ protocol RightSlideMenuViewControllerDelegate: class {
     func test()
     func didSelect(highlight: Highlight)
     func didChange(highlight: Highlight)
+    func didDelete(highlight: Highlight)
 }
 
 class RightSlideMenuViewController: UIViewController {
@@ -137,6 +138,7 @@ extension RightSlideMenuViewController: UITableViewDataSource {
             self.highlightings.removeAll(where: { $0.startIndex == highlighting.startIndex })
             self.filteredHighlightings.remove(at: index.row)
             self.tableView.deleteRows(at: [index], with: UITableView.RowAnimation.automatic)
+            self.delegate?.didDelete(highlight: highlighting)
         }
         return [deleteAction]
     }
