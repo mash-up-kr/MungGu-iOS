@@ -21,6 +21,21 @@ class DeviceManager {
         return infoDict["CFBundleShortVersionString"] as? String
     }
 
+    static func getAppStoreVersion() -> String? {
+        guard let info = Bundle.main.infoDictionary, let bundleID = info["CFBundleIdentifier"] as? String,
+            let url = URL(string: "http://itunes.apple.com/lookup?bundleId=\(bundleID)") else {
+                return nil
+        }
+
+        guard let data = try? Data(contentsOf: url),
+            let json = try? JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any],
+            let result = (json["results"] as? [Any])?.first as? [String: Any], let version = result["version"] as? String else {
+                return nil
+        }
+
+        return version
+    }
+
     struct Identifier {
         static let deviceKey = "deviceKey"
         static let deviceID = "deviceID"
