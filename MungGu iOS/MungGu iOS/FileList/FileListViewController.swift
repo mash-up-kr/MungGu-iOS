@@ -46,8 +46,46 @@ class FileListViewController: UIViewController {
         DocumentDataManager.share.fetchDocument()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkUpdate()
+    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+
+    private func checkUpdate() {
+        DispatchQueue.global().async {
+            guard let appStoreVersion = DeviceManager.getAppStoreVersion(),
+                let currentVersion = DeviceManager.appVersionString else {
+                    assertionFailure("Couldn't load app version")
+                    return
+            }
+
+            if currentVersion.compare(appStoreVersion, options: .numeric) == .orderedAscending {
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
+            }
+        }
+    }
+
+    private func showAlert() {
+        let alertController = UIAlertController(title: "업데이트", message: "필수 업데이트가 있습니다. 업데이트하시겠습니까?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "확인", style: .default, handler: { action in
+
+            if let url = URL(string: "itms-apps://itunes.apple.com/kr/app/apple-store/1479335828"),
+                UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:]) { opened in
+                    if opened {
+                        print("App Store Opened")
+                    }
+                    exit(-1)
+                }
+            }
+        }))
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Handlers

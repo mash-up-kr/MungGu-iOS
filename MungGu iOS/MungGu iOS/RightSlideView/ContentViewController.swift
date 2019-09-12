@@ -180,7 +180,9 @@ extension ContentViewController: FilesViewControllerDelegate {
     func didSelected(with data: FileData) {
 
         // 같은 파일 선택 시 동작수행하지 않음
-        guard data.id != currentFile?.id else {
+        guard data.id != currentFile?.id, let name = data.name,
+            let extensionType = name.split(separator: ".").last,
+            let type = DocumentType(typeName: String(extensionType)) else {
             return
         }
 
@@ -188,14 +190,22 @@ extension ContentViewController: FilesViewControllerDelegate {
         HighlightManager.share.saveFile(highlightings)
         textView.clear()
 
-        // TODO: Get Highligh Data with fileData
-        let content = DocumentDataManager.share.readPDF(data.name ?? "")
+        var content: String
+        switch type {
+        case .pdf:
+            // TODO: Get Highligh Data with fileData
+            content = DocumentDataManager.share.readPDF(name)
+
+            // TODO: Send FileData to HighlightManager
+            // HighlightManager will get highlights info for selected file.
+        // bind Highlightings to textView
+        case .txt:
+            content = DocumentDataManager.share.readText(name)
+        }
+
         navigationView.titleLabel.text = data.name
-        // TODO: Send FileData to HighlightManager
-        // HighlightManager will get highlights info for selected file.
         HighlightManager.share.loadFile(fileData: data)
         currentFile = data
-        // bind Highlightings to textView
         textView.loadData(content: content, from: [])
     }
 }

@@ -28,8 +28,8 @@ class DocumentDataManager {
 
     private init() { }
 
-    func makeURL(_ fileName: String) -> URL {
-        return filePathURL.appendingPathComponent("\(fileName).pdf")
+    func makeURL(_ fileName: String, type: String) -> URL {
+        return filePathURL.appendingPathComponent("\(fileName).\(type)")
     }
 
     func fetchDocument() {
@@ -68,7 +68,15 @@ class DocumentDataManager {
 
     @available(iOS 11.0, *)
     func readPDF(_ fileName: String) -> String {
-        guard let pdf = PDFDocument(url: makeURL(fileName)), let text = pdf.string else {
+        guard let pdf = PDFDocument(url: makeURL(fileName, type: DocumentType.pdf.rawValue)), let text = pdf.string else {
+            return ""
+        }
+
+        return text
+    }
+
+    func readText(_ fileName: String) -> String {
+        guard let text = try? String(contentsOf: makeURL(fileName, type: DocumentType.txt.rawValue), encoding: String.Encoding.utf8) else {
             return ""
         }
 
