@@ -159,8 +159,8 @@ class HighlightingTextView: UITextView {
 
     private func setTextView() {
         let style = NSMutableParagraphStyle()
-        style.minimumLineHeight = 40.0
-        style.lineSpacing = 20.0
+        style.minimumLineHeight = 25.0
+        style.lineSpacing = 2.0
         let font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
         let attributes = [NSAttributedString.Key.paragraphStyle: style,
                           NSAttributedString.Key.font: font]
