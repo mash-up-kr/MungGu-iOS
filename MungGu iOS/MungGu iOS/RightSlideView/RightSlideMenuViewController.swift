@@ -34,7 +34,7 @@ class RightSlideMenuViewController: UIViewController {
     weak var delegate: RightSlideMenuViewControllerDelegate?
     var viewType: ContentViewType = .default
     var highlightings: [Highlight] = []
-    private var filteredHighlightings: [Highlight] = []
+    var filteredHighlightings: [Highlight] = []
 
     var result: QuizzesResponse?
 

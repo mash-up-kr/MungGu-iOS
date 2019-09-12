@@ -111,6 +111,7 @@ extension ContentContainerController: ContentViewControllerDelegate {
         self.rightSliderViewController = viewController.children.first as? RightSlideMenuViewController
         viewController.viewType = type
 
+        // FIXME: 정리 필요
         present(viewController, animated: true, completion: {
             if let fileData = self.contentViewController?.currentFile {
                 let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
@@ -119,11 +120,12 @@ extension ContentContainerController: ContentViewControllerDelegate {
                 viewController.contentViewController?.configureBottomButton(.result)
 
                viewController.contentViewController?.textView.state = .result
-
                 viewController.contentViewController?.navigationView.titleLabel.text = self.contentViewController?.currentFile?.name
 
                 highlightTextView?.loadData(content: content, from: highlights)
                 viewController.rightSliderViewController?.result = result
+               viewController.rightSliderViewController?.highlightings = highlights
+                 viewController.rightSliderViewController?.filteredHighlightings = highlights
                 viewController.rightSliderViewController?.filteredResult = result.result
                 viewController.rightSliderViewController?.setTest(type)
                 viewController.contentViewController?.textView.isGestureEnable = false

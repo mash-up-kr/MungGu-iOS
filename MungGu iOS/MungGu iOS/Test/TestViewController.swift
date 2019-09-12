@@ -27,6 +27,7 @@ class TestViewController: UIViewController {
     @IBOutlet weak var firstAnswerLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -84,8 +85,16 @@ class TestViewController: UIViewController {
 
     // MARK: - Init
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+
         textView.highlighDelegate = self
     }
 
@@ -165,6 +174,7 @@ extension TestViewController: UITableViewDelegate {
         if let highlight = highlights?[index] {
             textView.scrollRangeToVisible(highlight.range)
         }
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -224,6 +234,11 @@ extension TestViewController: UITextFieldDelegate {
 
         if let text = secondNumberLabel.text, let index = Int(text), let count = highlights?.count, index < count {
 
+            if let highlight = highlights?[index] {
+                textView.scrollRangeToVisible(highlight.range)
+            }
+            tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
+
             didChangeAnswer(index)
             secondNumberLabel.text = "\(index + 1)"
             self.index = index
@@ -232,6 +247,25 @@ extension TestViewController: UITextFieldDelegate {
             textField.text = nil
         } else {
             textField.resignFirstResponder()
+        }
+    }
+
+    @objc private func keyboardWillShow(_ notification: NSNotification) {
+        if let frame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let rect = frame.cgRectValue
+            let height = rect.height
+
+            bottomConstraint.constant = height
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: NSNotification) {
+        bottomConstraint.constant = 0.0
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
         }
     }
 }

@@ -55,10 +55,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="out-B6-BHf">
                                         <rect key="frame" x="0.0" y="0.0" width="610" height="1291"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-lL-IvP" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ftm-lL-IvP" customClass="HighlightingTextView" customModule="MungGu_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="40" y="0.0" width="530" height="1291"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <attributedString key="attributedText"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHighlightingActive" value="YES"/>
@@ -270,6 +270,7 @@
                         <viewLayoutGuide key="safeArea" id="QeB-9i-VEB"/>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="fN6-kY-jHA" id="Kvt-ae-Qwd"/>
                         <outlet property="firstAnswerLabel" destination="fWo-gS-7GU" id="rtg-mC-mr9"/>
                         <outlet property="firstNumberLabel" destination="GrI-eB-ZM8" id="g6h-Mm-SEq"/>
                         <outlet property="loadingView" destination="i33-Ne-YQ4" id="ybz-0L-Ae9"/>
