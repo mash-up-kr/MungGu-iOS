@@ -20,7 +20,7 @@ class HighlightingTextView: UITextView {
 
     var state: HighlightingTextViewState = .highlighting {
         didSet {
-            self.highlighDelegate?.didChange(state: state)
+            highlighDelegate?.didChange(state: state)
         }
     }
     var isGestureEnable: Bool = false {
@@ -35,6 +35,8 @@ class HighlightingTextView: UITextView {
 
     func loadData(content: String, from data: [Highlight]) {
         text = content
+        setTextView()
+
         data.forEach { highlight in
             addHighlighting(color: highlightColor, range: highlight.range)
         }
@@ -80,7 +82,7 @@ class HighlightingTextView: UITextView {
             }
         }
 
-        self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+        attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
             updateClosures.forEach({ closure in
                 closure(range)
             })
@@ -89,14 +91,14 @@ class HighlightingTextView: UITextView {
 
     // 하나의 highlight 에 대해 업데이트 할 때 사용하세요.
     func updateTextView(results: [QuizMarkResult]) {
-        guard let delegate = self.highlighDelegate else { return }
+        guard let delegate = highlighDelegate else { return }
         for index in 0..<results.count {
             let highlight = highlightings[index]
             let result = results[index]
 
             let updateColor = delegate.colorFor(result: result)
 
-            self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+            attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
                 self.textStorage.removeAttribute(.foregroundColor, range: range)
                 self.textStorage.removeAttribute(.backgroundColor, range: range)
                 self.textStorage.addAttribute(.backgroundColor, value: updateColor.background, range: range)
@@ -106,7 +108,7 @@ class HighlightingTextView: UITextView {
     }
 
     func showHighlightedText() {
-        self.highlightings.forEach { highlight in
+        highlightings.forEach { highlight in
             self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
                 self.textStorage.removeAttribute(.foregroundColor, range: range)
             }
@@ -114,10 +116,10 @@ class HighlightingTextView: UITextView {
     }
 
     func hideHighlightedText() {
-        self.highlightings.forEach { highlight in
+        highlightings.forEach { highlight in
 
             let updateColor = self.highlighDelegate?.colorFor(isImportant: highlight.isImportant ?? 0, state: self.state) ?? highlightColor
-            self.attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+            attributedText.enumerateAttributes(in: highlight.range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
                 self.textStorage.removeAttribute(.foregroundColor, range: range)
                 self.textStorage.addAttribute(.foregroundColor, value: updateColor, range: range)
             }
@@ -139,7 +141,7 @@ class HighlightingTextView: UITextView {
         })
 
         if matchedCount > 0 {
-            self.setNeedsDisplay()
+            setNeedsDisplay()
         }
     }
 
@@ -152,11 +154,21 @@ class HighlightingTextView: UITextView {
     private var tapGestrue: UITapGestureRecognizer?
 
     private var highlightColor: UIColor {
-        return self.highlighDelegate?.colorFor(isImportant: 0, state: self.state) ?? .lightPeach
+        return highlighDelegate?.colorFor(isImportant: 0, state: state) ?? .lightPeach
+    }
+
+    private func setTextView() {
+        let style = NSMutableParagraphStyle()
+        style.minimumLineHeight = 40.0
+        style.lineSpacing = 20.0
+        let font = UIFont.systemFont(ofSize: 20.0, weight: .regular)
+        let attributes = [NSAttributedString.Key.paragraphStyle: style,
+                          NSAttributedString.Key.font: font]
+        attributedText = NSAttributedString(string: attributedText.string, attributes: attributes)
     }
 
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
-        guard self.state != .test, state != .result else {
+        guard state != .test, state != .result else {
             return
         }
 
@@ -170,7 +182,7 @@ class HighlightingTextView: UITextView {
             endPoint.x = max(point.x, endPoint.x)
         }
 
-        self.tapGestrue?.isEnabled = false
+        tapGestrue?.isEnabled = false
 
         switch sender.state {
         case .began:
@@ -178,26 +190,26 @@ class HighlightingTextView: UITextView {
         case .changed:
             if let start = closestPosition(to: startPoint),
                 let end = closestPosition(to: endPoint) {
-                guard let range = self.rangeOf(start: start, end: end) else {
+                guard let range = rangeOf(start: start, end: end) else {
                     currentRange = nil
                     return
                 }
 
-                self.addHighlighting(color: self.highlightColor, range: range)
-                self.currentRange = range
+                addHighlighting(color: highlightColor, range: range)
+                currentRange = range
             }
         case .ended:
-            self.tapGestrue?.isEnabled = true
-            if let range = self.currentRange,
+            tapGestrue?.isEnabled = true
+            if let range = currentRange,
                 let start = closestPosition(to: startPoint),
                 let end = closestPosition(to: endPoint) {
                 let highlight = makeHighlight(range: range, start: start, end: end)
-                self.highlightings.append(highlight)
-                self.highlighDelegate?.didAdd(highlight)
+                highlightings.append(highlight)
+                highlighDelegate?.didAdd(highlight)
             }
-            self.currentRange = nil
-            self.startPoint = .zero
-            self.endPoint = .zero
+            currentRange = nil
+            startPoint = .zero
+            endPoint = .zero
         default:
             ()
         }
@@ -205,52 +217,52 @@ class HighlightingTextView: UITextView {
 
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
         let point = sender.location(in: self)
-        if let position = self.closestPosition(to: point) {
+        if let position = closestPosition(to: point) {
             if state != .test, state != .result {
-                self.removeHighlighting(position: position)
+                removeHighlighting(position: position)
             } else if let highlighting = highlightAt(position: position) {
-                self.highlighDelegate?.didTap(highlighting)
+                highlighDelegate?.didTap(highlighting)
             }
         }
     }
 
     private func setupHighlightingGestures() {
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(panGesture)
+        isUserInteractionEnabled = true
+        addGestureRecognizer(panGesture)
         self.panGesture = panGesture
         let tapGestrue = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
-        self.addGestureRecognizer(tapGestrue)
+        addGestureRecognizer(tapGestrue)
         self.tapGestrue = tapGestrue
     }
 
     private func highlightAt(position: UITextPosition) -> Highlight? {
-        let location = self.offset(from: self.beginningOfDocument, to: position)
-        return self.highlightings.first { $0.range.contains(location) }
+        let location = offset(from: beginningOfDocument, to: position)
+        return highlightings.first { $0.range.contains(location) }
     }
 
     private func addHighlighting(color: UIColor, range: NSRange) {
         let textStorage = self.textStorage
-        self.attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
+        attributedText.enumerateAttributes(in: range, options: .longestEffectiveRangeNotRequired) { _, range, _ in
             textStorage.addAttribute(.backgroundColor, value: color, range: range)
         }
     }
 
     private func removeHighlighting(position: UITextPosition) {
-        let location = self.offset(from: self.beginningOfDocument, to: position)
+        let location = offset(from: beginningOfDocument, to: position)
         var matchedCount = 0
         self.highlightings.removeAll(where: { highlight -> Bool in
             if highlight.range.contains(location) {
-                self.textStorage.removeAttribute(.backgroundColor, range: highlight.range)
-                self.textStorage.removeAttribute(.foregroundColor, range: highlight.range)
+                textStorage.removeAttribute(.backgroundColor, range: highlight.range)
+                textStorage.removeAttribute(.foregroundColor, range: highlight.range)
                 matchedCount += 1
-                self.highlighDelegate?.didRemove(highlight)
+                highlighDelegate?.didRemove(highlight)
                 return true
             }
             return false
         })
         if matchedCount > 0 {
-            self.setNeedsDisplay()
+            setNeedsDisplay()
         }
     }
 
