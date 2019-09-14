@@ -114,7 +114,17 @@ extension ContentContainerController: ContentViewControllerDelegate {
         // FIXME: 정리 필요
         present(viewController, animated: true, completion: {
             if let fileData = self.contentViewController?.currentFile {
-                let content = DocumentDataManager.share.readPDF(fileData.name ?? "")
+                let documentType = self.contentViewController?.documentType ?? .pdf
+                viewController.contentViewController?.documentType = documentType
+
+                var content: String
+                switch documentType {
+                case .pdf:
+                    content = DocumentDataManager.share.readPDF(fileData.name ?? "")
+                case .txt:
+                    content = DocumentDataManager.share.readText(fileData.name ?? "")
+                }
+
                 let highlightTextView = viewController.contentViewController?.textView
                 viewController.contentViewController?.result = result
                 viewController.contentViewController?.configureBottomButton(.result)

@@ -28,6 +28,7 @@
 		CE86B02022FE68020040714F /* TestViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE86B01F22FE68020040714F /* TestViewCell.swift */; };
 		CE87B0102310256600BE8026 /* TestView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE87B00F2310256600BE8026 /* TestView.storyboard */; };
 		CE87B0122310270300BE8026 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE87B0112310270300BE8026 /* TestViewController.swift */; };
+		CE9A04A6232CA8FD0046B793 /* NetworkErrorPopUpShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9A04A5232CA8FD0046B793 /* NetworkErrorPopUpShowable.swift */; };
 		CEB8DE7A22E8985A00DEB6AA /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */; };
 		CEC8928D22D91CAB004BA075 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC8928722D91CAB004BA075 /* Document.swift */; };
 		CEC8928E22D91CAB004BA075 /* Document.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC8928822D91CAB004BA075 /* Document.storyboard */; };
@@ -114,6 +115,7 @@
 		CE86B01F22FE68020040714F /* TestViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewCell.swift; sourceTree = "<group>"; };
 		CE87B00F2310256600BE8026 /* TestView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestView.storyboard; sourceTree = "<group>"; };
 		CE87B0112310270300BE8026 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		CE9A04A5232CA8FD0046B793 /* NetworkErrorPopUpShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorPopUpShowable.swift; sourceTree = "<group>"; };
 		CEB8DE7922E8985A00DEB6AA /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		CEC8928722D91CAB004BA075 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		CEC8928822D91CAB004BA075 /* Document.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Document.storyboard; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC8929422D94ABA004BA075 /* AlertShowable.swift */,
+				CE9A04A5232CA8FD0046B793 /* NetworkErrorPopUpShowable.swift */,
 				D5C7759422C79E6A00ADF692 /* sample.pdf */,
 				D56A604522D975110098EA46 /* Alerts.swift */,
 			);
@@ -733,6 +736,7 @@
 				CECDF22B2324FA6B00399BAB /* TextFieldAccessoryView.swift in Sources */,
 				CE5C646E22C74AE700EC8AF4 /* AppDelegate.swift in Sources */,
 				D56A604822D978310098EA46 /* Sample.swift in Sources */,
+				CE9A04A6232CA8FD0046B793 /* NetworkErrorPopUpShowable.swift in Sources */,
 				CEC8928D22D91CAB004BA075 /* Document.swift in Sources */,
 				83FA99CE22C7993F009B1EA6 /* FileListViewController.swift in Sources */,
 				AECC601422C8478800561DCF /* RightSlideMenuViewController.swift in Sources */,

@@ -20,7 +20,7 @@ protocol ContentViewControllerDelegate: class {
     func showContentContainerView(_ type: ContentViewType, result: QuizzesResponse, highlights: [Highlight])
 }
 
-class ContentViewController: UIViewController {
+class ContentViewController: UIViewController, NetworkErrorPopUpShowable {
 
     // MARK: - IBOutlet
 
@@ -46,6 +46,7 @@ class ContentViewController: UIViewController {
     weak var delegate: ContentViewControllerDelegate?
     weak var containerView: ContentContainerController?
     var viewType: ContentViewType = .default
+    var documentType: DocumentType = .pdf
     var currentFile: FileData?
     var result: QuizzesResponse?
 
@@ -122,7 +123,7 @@ class ContentViewController: UIViewController {
         delegate?.handleToggleMenu()
     }
 
-    @IBAction private func didTapTestButton(_ sender: UIButton) {
+    @IBAction private func didTapTestButton(_ sender: UIButton? = nil) {
         guard let fileId = currentFile?.id else { return }
 
         let highlights = Highlights(highlights: textView.highlightings)
@@ -144,12 +145,18 @@ class ContentViewController: UIViewController {
                 })
                 self.containerView?.loadingView.isHidden = true
                 self.presentTestView(highlights)
-            }) { error in
+            }) { error, _ in
                 self.present(errorAlert, animated: true, completion: nil)
             }
-        }) { error in
-            self.present(errorAlert, animated: true, completion: nil)
-        }
+        }, failure: { error, networkError in
+            if networkError {
+                self.showNetworkErrorAlert(okayAction: { _ in
+                    self.didTapTestButton()
+                })
+            } else {
+                print(error)
+            }
+        })
     }
 
     func presentTestView(_ highlights: [Highlight]) {
@@ -157,6 +164,7 @@ class ContentViewController: UIViewController {
             print("Error!! TestViewController doesn't exist!!")
             return
         }
+        controller.documentType = documentType
         controller.file = currentFile
         controller.highlights = highlights
         controller.presentDelegate = containerView
@@ -186,9 +194,13 @@ extension ContentViewController: FilesViewControllerDelegate {
             return
         }
 
+        /*
+         TODO: 하이라이팅 불러오는 부분 추가 될 때, 추가
         let highlightings = textView.highlightings
         HighlightManager.share.saveFile(highlightings)
+         */
         textView.clear()
+        documentType = type
 
         var content: String
         switch type {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestViewController: UIViewController {
+class TestViewController: UIViewController, NetworkErrorPopUpShowable {
 
     @IBOutlet weak var textView: HighlightingTextView! {
         didSet {
@@ -38,6 +38,7 @@ class TestViewController: UIViewController {
 
     // MARK: - Properties
 
+    var documentType: DocumentType = .pdf
     var file: FileData?
     var highlights: [Highlight]?
     var answers: [Answer]?
@@ -67,7 +68,14 @@ class TestViewController: UIViewController {
         firstAnswerLabel.text = ""
         textField.delegate = self
 
-        let content = DocumentDataManager.share.readPDF(file?.name ?? "")
+        var content: String
+        switch documentType {
+        case .pdf:
+            content = DocumentDataManager.share.readPDF(file?.name ?? "")
+        case .txt:
+            content = DocumentDataManager.share.readText(file?.name ?? "")
+        }
+
         navigationView.titleLabel.text = content
         textView.state = .test
         textView.isGestureEnable = true
@@ -112,7 +120,7 @@ class TestViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @objc private func didTapRightMenu(_ sender: UIButton) {
+    @objc private func didTapRightMenu(_ sender: UIButton? = nil) {
 
         guard let fileId = file?.id else { return }
 
@@ -127,10 +135,15 @@ class TestViewController: UIViewController {
             self.dismiss(animated: true) {
                 self.presentDelegate?.showContentView(.result, result: data, highlights: self.highlights ?? [])
             }
-        }) { error in
-            self.loadingView.isHidden = true
-            print("quiz result error: \(error)")
-        }
+        }, failure: { error, networkError in
+            if networkError {
+                self.showNetworkErrorAlert(okayAction: { _ in
+                    self.didTapRightMenu()
+                })
+            } else {
+                print(error)
+            }
+        })
     }
 }
 
