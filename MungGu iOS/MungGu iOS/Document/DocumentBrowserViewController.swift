@@ -9,7 +9,7 @@
 import UIKit
 import PDFKit
 
-class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate, AlertShowable {
+class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,21 +54,29 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
     // MARK: Document Presentation
 
     func presentDocument(at documentURL: URL) {
-        let document = Document(fileURL: documentURL)
-
         DispatchQueue.global().async { [weak self] in
+            let fileName = (documentURL.absoluteString.components(separatedBy: "/").last ?? "").removingPercentEncoding ?? ""
 
-            let fileName = documentURL.absoluteString.components(separatedBy: "/").last ?? ""
-            DocumentDataManager.share.fileName = fileName.removingPercentEncoding ?? ""
-            document.open { [weak self] success in
-                guard success else { return }
+            let names = fileName.split(separator: ".")
+            let firstName = names.first ?? ""
+            let fileExtension = names.dropFirst()
+            let setExtension = Set(fileExtension)
+            let name = "\(firstName).\(setExtension.joined())"
 
-                guard DocumentDataManager.share.canSave(fileName) else {
+            DocumentDataManager.share.fileName = name
+
+            guard DocumentDataManager.share.canSave(name) else {
+                DispatchQueue.main.async { [weak self] in
                     self?.showAlert(title: "이미 동일한 이름의 파일이 존재 합니다.", message: nil, preferredStyle: .alert, needOkay: false, okayAction: { [weak self] _ in
                         self?.actionCancel()
                     })
-                    return
                 }
+                return
+            }
+
+            let document = Document(fileURL: documentURL)
+            document.open { [weak self] success in
+                guard success else { return }
 
                 DispatchQueue.main.async { [weak self] in
                     self?.actionCancel()

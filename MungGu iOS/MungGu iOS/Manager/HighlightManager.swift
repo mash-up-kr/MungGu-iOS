@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HighlightManager: HighlightManagerType {
+class HighlightManager: HighlightManagerType, NetworkErrorPopUpShowable {
     static let DidChangedSelectedFile: Notification.Name = Notification.Name("didChangedSelectedFile")
     static let DidChangedHighlights: Notification.Name = Notification.Name("didChangedHighlights")
     static let share = HighlightManager()
@@ -43,8 +43,14 @@ class HighlightManager: HighlightManagerType {
         guard let fileID = fileData?.id else { return }
         Provider.request(.highlight(method: .post, data: highlights, fileID: "\(fileID)"), completion: {[weak self] highlights in
             self?.highlights = highlights
-            }, failure: { error in
-                print("\(error)")
+            }, failure: { error, networkError in
+                if networkError {
+                    self.showNetworkErrorAlert(okayAction: { _ in
+                        self.saveFile(highlights)
+                    })
+                } else {
+                    print(error)
+                }
         })
     }
 

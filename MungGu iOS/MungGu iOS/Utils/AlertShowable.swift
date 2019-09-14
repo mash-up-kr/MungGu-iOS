@@ -17,7 +17,7 @@ extension AlertShowable where Self: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
         let cancelTitle = needOkay ? "취소" : "확인"
-        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel, handler: needOkay ? nil : okayAction)
         alert.addAction(cancelAction)
 
         if needOkay {
@@ -28,3 +28,5 @@ extension AlertShowable where Self: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+extension UIViewController: AlertShowable { }

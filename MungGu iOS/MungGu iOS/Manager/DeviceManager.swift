@@ -10,7 +10,7 @@ import Foundation
 
 typealias DeviceIdentifier = DeviceManager.Identifier
 
-class DeviceManager {
+class DeviceManager: NetworkErrorPopUpShowable {
     static let share = DeviceManager()
 
     static var appVersionString: String? {
@@ -87,6 +87,14 @@ class DeviceManager {
             }
 
             self.saveDeviceID(String(id))
+        }, failure: { error, networkError in
+            if networkError {
+                self.showNetworkErrorAlert(okayAction: { _ in
+                    self.requestDeviceID()
+                })
+            } else {
+                print(error)
+            }
         })
     }
 }

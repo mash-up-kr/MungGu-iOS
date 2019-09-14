@@ -9,7 +9,7 @@
 import Foundation
 import PDFKit
 
-class DocumentDataManager {
+class DocumentDataManager: NetworkErrorPopUpShowable {
     static let identifier = "Documents"
     static let share = DocumentDataManager()
 
@@ -33,15 +33,20 @@ class DocumentDataManager {
     }
 
     func fetchDocument() {
-
         let service = Service.file(method: .get, data: nil)
+
         Provider.request(service, completion: { (data: FilesResult) in
             self.files = data.files
 
             NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
-            print("\(data)")
-        }, failure: { error in
-            print("\(error)")
+        }, failure: { error, networkError in
+            if networkError {
+                self.showNetworkErrorAlert(okayAction: { _ in
+                    self.fetchDocument()
+                })
+            } else {
+                print(error)
+            }
         })
     }
 
@@ -60,10 +65,17 @@ class DocumentDataManager {
             self.files.append(data)
 
             NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
-        }) { error in
-            print(error)
-        }
+        }) { error, networkError in
 
+            NotificationCenter.default.post(name: NotificationName.documentCountDidChangedNotification, object: nil)
+            if networkError {
+                self.showNetworkErrorAlert(okayAction: { _ in
+                    self.saveDocument(fileName)
+                })
+            } else {
+                print(error)
+            }
+        }
     }
 
     @available(iOS 11.0, *)
